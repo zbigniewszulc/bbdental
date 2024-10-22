@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-i@^h#&^cmg)f68rmr$*f-r8k)342^#*e4c^hxvw@y-+$ruq*hd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-zbigniewszulc-bbdental-4we8mlvi0qk.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-zbigniewszulc-bbdental-vs50klhqnki.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-LOGIN_URL = '/account/login/'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
