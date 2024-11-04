@@ -14,6 +14,7 @@
     {% block base_css %}
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block base_js %}
@@ -27,7 +28,28 @@
   </head>
   <body>
 
-    <header class="container-fluid fixed-top"></header>
+      <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">BBdental</h5>
+
+        <nav class="my-2 my-md-0 mr-md-3">
+          {% if request.user.is_authenticated %}
+            {% if request.user.is_staff %}
+              <!-- Links visible only to staff users -->
+              <a class="p-2 text-dark" href="#">All Orders</a>
+              <a class="p-2 text-dark" href="#">VAT</a>
+              <a class="p-2 text-dark" href="#">Users</a>
+            {% else %}
+              <!-- Links visible only to non-staff users -->
+              <a class="p-2 text-dark" href="#">Products</a>
+              <a class="p-2 text-dark" href="#">My Orders</a>
+              <a class="p-2 text-dark" href="#">Basket</a>
+            {% endif %}
+          {% endif %}
+        </nav>
+
+        <a class="btn btn-outline-primary" href="#">Sign up</a>
+      </header>
+
 
     {% if messages %}
       <div class="messages"></div>
@@ -35,6 +57,17 @@
 
     {% block content %}
     {% endblock %}
+
+
+    <!-- Footer Section --> 
+    <footer class="footer mt-auto py-3 bg-white border-top shadow-sm">
+      <div class="container">
+        <span class="text-muted mx-3"><a href="#">&copy; {% now "Y" %} BBdental.</a></span>
+        <span class="text-muted mx-3"><a href="#">Terms of Service</a></span>
+        <span class="text-muted mx-3"><a href="#">Privacy Policy</a></span>
+        <span class="text-muted mx-3"><a href="#">Contact</a></span>
+      </div>
+    </footer>
 
     {% block postload_js %}
     {% endblock %}
