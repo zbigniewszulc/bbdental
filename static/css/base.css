@@ -22,6 +22,10 @@ footer {
     padding: 20px 0; 
 }
 
+#logo {
+    height: 45px;
+}
+
 /***************************** Media queries **********************************/
 /* Extra large devices */
 @media (min-width: 1200px) {

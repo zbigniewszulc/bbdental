@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-i@^h#&^cmg)f68rmr$*f-r8k)342^#*e4c^hxvw@y-+$ruq*hd
 DEBUG = False
 # DEBUG = True
 
-ALLOWED_HOSTS = ['8000-zbigniewszulc-bbdental-vs50klhqnki.ws.codeinstitute-ide.net', 
+ALLOWED_HOSTS = ['8000-zbigniewszulc-bbdental-vs50klhqnki.ws.codeinstitute-ide.net',
+                'localhost', 
                 '.herokuapp.com']
 
 
@@ -86,6 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -150,6 +152,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -26,38 +26,40 @@
     <title>BBdental {% block extend_title %} {% endblock %}</title>
 
   </head>
-  <body>
 
-      <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow">
-        <h5 class="my-0 mr-md-auto font-weight-normal">BBdental</h5>
+    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow">
+      <img id="logo" class="my-0 mr-md-auto" src="{{ MEDIA_URL }}bbdental_logo.png" alt="BBdental Logo">
 
-        <nav class="my-2 my-md-0 mr-md-3">
-          {% if request.user.is_authenticated %}
-            {% if request.user.is_staff %}
-              <!-- Links visible only to staff users -->
-              <a class="p-2 text-dark" href="#">All Orders</a>
-              <a class="p-2 text-dark" href="#">VAT</a>
-              <a class="p-2 text-dark" href="#">Users</a>
-            {% else %}
-              <!-- Links visible only to non-staff users -->
-              <a class="p-2 text-dark" href="#">Products</a>
-              <a class="p-2 text-dark" href="#">My Orders</a>
-              <a class="p-2 text-dark" href="#">Basket</a>
-            {% endif %}
+      <nav class="my-2 my-md-0 mr-md-3">
+        {% if request.user.is_authenticated %}
+          {% if request.user.is_staff %}
+            <!-- Links visible only to staff users -->
+            <a class="p-2 text-dark" href="#">All Orders</a>
+            <a class="p-2 text-dark" href="#">VAT</a>
+            <a class="p-2 text-dark" href="#">Users</a>
+          {% else %}
+            <!-- Links visible only to non-staff users -->
+            <a class="p-2 text-dark" href="#">Products</a>
+            <a class="p-2 text-dark" href="#">My Orders</a>
+            <a class="p-2 text-dark" href="#">Basket</a>
           {% endif %}
-        </nav>
+        {% endif %}
+      </nav>
 
-        <a class="btn btn-outline-primary" href="#">Sign up</a>
-      </header>
+      <a class="btn btn-outline-primary" href="#">Sign up</a>
+    </header>
 
 
+    <div class="container">
     {% if messages %}
       <div class="messages"></div>
     {% endif %}
+    </div>
 
+    <div class="container py-5">
     {% block content %}
     {% endblock %}
-
+    </div>
 
     <!-- Footer Section --> 
     <footer class="footer mt-auto py-3 bg-white border-top shadow-sm">
