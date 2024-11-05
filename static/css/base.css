@@ -27,8 +27,14 @@ footer {
 }
 
 /***************************** Media queries **********************************/
+/* Medium size devices */
+@media (min-width: 768px) {
+    .container {
+      max-width: 95%;
+    }
+}
 /* Extra large devices */
-@media (min-width: 1200px) {
+@media (min-width: 1300px) {
     .container {
       max-width: 82%;
     }
