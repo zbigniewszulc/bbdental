@@ -1,0 +1,56 @@
+[
+	{
+		"pk": 1,
+		"model": "products.CatGroup",
+		"fields": {
+			"group_name": "Endodontics",
+			"group_vat": "12.00",
+			"group_pic_loc": "endo_g7.jpg"
+		}
+	},
+	{
+		"pk": 2,
+		"model": "products.CatGroup",
+		"fields": {
+			"group_name": "Prosthetic",
+			"group_vat": "11.00",
+			"group_pic_loc": "pros_c6.jpg"
+		}
+	},
+	{
+		"pk": 3,
+		"model": "products.CatGroup",
+		"fields": {
+			"group_name": "Linking systems",
+			"group_vat": "10.00",
+			"group_pic_loc": "con_sys_l1.jpg"
+		}
+	},
+	{
+		"pk": 4,
+		"model": "products.CatGroup",
+		"fields": {
+			"group_name": "Filling materials",
+			"group_vat": "9.00",
+			"group_pic_loc": "filling_compo_21.jpg"
+		}
+	},
+	{
+		"pk": 5,
+		"model": "products.CatGroup",
+		"fields": {
+			"group_name": "Dental ends",
+			"group_vat": "8.00",
+			"group_pic_loc": "dent_endT5.jpg"
+		}
+	},
+	{
+		"pk": 6,
+		"model": "products.CatGroup",
+		"fields": {
+			"group_name": "Appliances",
+			"group_vat": "7.00",
+			"group_pic_loc": "app_mg7.jpg"
+		}
+	}
+]

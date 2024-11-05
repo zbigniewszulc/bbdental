@@ -33,7 +33,7 @@ class Product(models.Model):
     category_id = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL) 
     manufacturer_id = models.ForeignKey('Manufacturer', null=True, blank=True, on_delete=models.SET_NULL) 
     product_name = models.CharField(max_length=32)
-    describtion = models.TextField(max_length=1000, null=True, blank=True)
+    description = models.TextField(max_length=1000, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     in_stock = models.IntegerField()
     picture_location = models.ImageField(null=True, blank=True)
