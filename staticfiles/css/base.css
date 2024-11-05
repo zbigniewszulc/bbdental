@@ -1,0 +1,41 @@
+/* Asterisk wildcard selector to override default styles added by the browser */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(243, 243, 243);
+}
+
+header {
+    background-color: #f0f0f0;    
+}
+
+footer {
+    text-align: center; 
+    padding: 20px 0; 
+}
+
+#logo {
+    height: 45px;
+}
+
+/***************************** Media queries **********************************/
+/* Medium size devices */
+@media (min-width: 768px) {
+    .container {
+      max-width: 95%;
+    }
+}
+/* Extra large devices */
+@media (min-width: 1300px) {
+    .container {
+      max-width: 82%;
+    }
+}
