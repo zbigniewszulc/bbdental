@@ -2,77 +2,86 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    
-    {% block base_meta %}
-    <!-- Required meta tags -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% endblock %}
 
-    {% block base_css %}
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% endblock %}
+<head>
 
-    {% block base_js %}
-    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    {% endblock %}
+  {% block base_meta %}
+  <!-- Required meta tags -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% endblock %}
 
-    <title>BBdental {% block extend_title %} {% endblock %}</title>
+  {% block base_css %}
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% endblock %}
 
-  </head>
+  {% block base_js %}
+  <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+  {% endblock %}
 
-    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow">
-      <img id="logo" class="my-0 mr-md-auto" src="{{ MEDIA_URL }}bbdental_logo.webp" alt="BBdental Logo">
+  <title>BBdental {% block extend_title %} {% endblock %}</title>
 
-      <nav class="my-2 my-md-0 mr-md-3">
-        {% if request.user.is_authenticated %}
-          {% if request.user.is_staff %}
-            <!-- Links visible only to staff users -->
-            <a class="p-2 text-dark" href="#">All Orders</a>
-            <a class="p-2 text-dark" href="#">VAT</a>
-            <a class="p-2 text-dark" href="#">Users</a>
-          {% else %}
-            <!-- Links visible only to non-staff users -->
-            <a class="p-2 text-dark" href="#">Products</a>
-            <a class="p-2 text-dark" href="#">My Orders</a>
-            <a class="p-2 text-dark" href="#">Basket</a>
-          {% endif %}
-        {% endif %}
-      </nav>
+</head>
 
-      <a class="btn btn-outline-primary" href="{% url 'login' %}">Sign up</a>
-    </header>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow">
+  <img id="logo" class="my-0 mr-md-auto" src="{{ MEDIA_URL }}bbdental_logo.webp" alt="BBdental Logo">
 
-
-    <div class="container">
-    {% if messages %}
-      <div class="messages"></div>
+  <nav class="my-2 my-md-0 mr-md-3">
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_staff %}
+    <!-- Links visible only to staff users -->
+    <a class="p-2 text-dark" href="#">All Orders</a>
+    <a class="p-2 text-dark" href="#">VAT</a>
+    <a class="p-2 text-dark" href="#">Users</a>
+    {% else %}
+    <!-- Links visible only to non-staff users -->
+    <a class="p-2 text-dark" href="#">Products</a>
+    <a class="p-2 text-dark" href="#">My Orders</a>
+    <a class="p-2 text-dark" href="#">Basket</a>
     {% endif %}
-    </div>
+    {% endif %}
+  </nav>
 
-    <div class="container py-4">
-    {% block content %}
-    {% endblock %}
-    </div>
+  <a href="{% url 'login' %}">Login</a>
+  <span class="mx-2">|</span>
+  <a href="{% url 'account_signup' %}">Register</a>
+</header>
 
-    <!-- Footer Section --> 
-    <footer class="footer mt-auto py-3 bg-white border-top shadow-sm">
-      <div class="container">
-        <span class="text-muted mx-3"><a href="#">&copy; {% now "Y" %} BBdental.</a></span>
-        <span class="text-muted mx-3"><a href="#">Terms of Service</a></span>
-        <span class="text-muted mx-3"><a href="#">Privacy Policy</a></span>
-        <span class="text-muted mx-3"><a href="#">Contact</a></span>
-      </div>
-    </footer>
 
-    {% block postload_js %}
-    {% endblock %}
+<div class="container">
+  {% if messages %}
+  <div class="messages"></div>
+  {% endif %}
+</div>
 
-  </body>
+<div class="container py-4">
+  {% block content %}
+  {% endblock %}
+</div>
+
+<!-- Footer Section -->
+<footer class="footer mt-auto py-3 bg-white border-top shadow-sm">
+  <div class="container">
+    <span class="text-muted mx-3"><a href="#">&copy; {% now "Y" %} BBdental.</a></span>
+    <span class="text-muted mx-3"><a href="#">Terms of Service</a></span>
+    <span class="text-muted mx-3"><a href="#">Privacy Policy</a></span>
+    <span class="text-muted mx-3"><a href="#">Contact</a></span>
+  </div>
+</footer>
+
+{% block postload_js %}
+{% endblock %}
+
+</body>
+
 </html>
