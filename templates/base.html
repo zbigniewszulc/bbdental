@@ -21,7 +21,7 @@
   {% block base_js %}
   <!-- jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   {% endblock %}
 
   <title>BBdental {% block extend_title %} {% endblock %}</title>
@@ -30,66 +30,69 @@
 
 <body>
 
-<header class="d-flex flex-column flex-md-row align-items-center p-4 mb-3 bg-white border-bottom shadow">
-  <img id="logo" class="my-0 mr-md-auto" src="{{ MEDIA_URL }}bbdental_logo.webp" alt="BBdental Logo">
+  <header
+    class="d-flex flex-column flex-md-row align-items-center justify-content-between p-4 mb-3 bg-white border-bottom shadow">
+    <img id="logo" class="my-0 mr-md-auto" src="{{ MEDIA_URL }}bbdental_logo.webp" alt="BBdental Logo">
 
-  <nav class="my-2 my-md-0 mr-md-3 mt-4">
-    <ul class="list-unstyled d-flex flex-wrap justify-content-center justify-content-md-start gap-2 m-0 p-0">
+    <nav class="my-2 my-md-0 mr-md-3 mt-4">
+      <ul class="list-unstyled d-flex flex-wrap justify-content-end gap-3 m-0 p-0">
         {% if request.user.is_authenticated %}
-            {% if request.user.is_staff %}
-                <!-- Links visible only to staff type users -->
-                <li class="nav-item"><a class="nav-link" href="#" aria-label="Link to All Orders page">All Orders</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" aria-label="Link to VAT page">VAT</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" aria-label="Link to Users page">Users</a></li>
-            {% else %}
-                <!-- Links visible only to non-staff users -->
-                <li class="nav-item"><a class="nav-link" href="#" aria-label="Link to Products page">Products</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" aria-label="Link to My Orders page">My Orders</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" aria-label="Link to Basket">Basket</a></li>
-            {% endif %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-label="Log off link">Logout</a></li>
+        {% if request.user.is_staff %}
+        <!-- Links visible only to staff type users -->
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to All Orders page">All Orders</a></li>
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to VAT page">VAT</a></li>
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to Users page">Users</a></li>
         {% else %}
-            <!-- Links for non-authenticated users -->
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}" aria-label="Log in link">Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}" aria-label="Register link">Register</a></li>
+        <!-- Links visible only to non-staff users -->
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to Products page">Products</a></li>
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to My Orders page">My Orders</a></li>
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to Basket">Basket</a></li>
         {% endif %}
-    </ul>
-</nav>
-
-</header>
-
-<div class="container">
-  {% if messages %}
-  <ul class="d-flex justify-content-end list-unstyled m-0">
-    {% for message in messages %}
-    <li class="alert alert-{{ message.level_tag }} alert-dismissible fade show" role="alert">
-      {{message}}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </button>
-    </li>
-    {% endfor %}
-  </ul>
-{% endif %}
-</div>
+        <li class="nav-item"><a class="link" href="{% url 'account_logout' %}" aria-label="Log off link">Logout</a>
+        </li>
+        {% else %}
+        <!-- Links for non-authenticated users -->
+        <li class="nav-item"><a class="link" href="{% url 'login' %}" aria-label="Log in link">Login</a></li>
+        <li class="nav-item"><a class="link" href="{% url 'account_signup' %}"
+            aria-label="Register link">Register</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
 
 
-<div class="container py-4">
-  {% block content %}
-  {% endblock %}
-</div>
-
-<!-- Footer Section -->
-<footer class="footer mt-auto py-3 bg-white border-top shadow-sm">
   <div class="container">
-    <span class="text-muted mx-3"><a href="#">&copy; {% now "Y" %} BBdental.</a></span>
-    <span class="text-muted mx-3"><a href="#">Terms of Service</a></span>
-    <span class="text-muted mx-3"><a href="#">Privacy Policy</a></span>
-    <span class="text-muted mx-3"><a href="#">Contact</a></span>
+    {% if messages %}
+    <ul class="d-flex justify-content-end list-unstyled m-0">
+      {% for message in messages %}
+      <li class="alert alert-{{ message.level_tag }} alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </div>
-</footer>
 
-{% block postload_js %}
-{% endblock %}
+
+  <div class="container py-4">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer mt-auto py-3 bg-white border-top shadow-sm">
+    <div class="container">
+      <span class="mx-3"><a class="link fw-light" href="#">&copy; {% now "Y" %} BBdental.</a></span>
+      <span class="mx-3"><a class="link fw-light" href="#">Terms of Service</a></span>
+      <span class="mx-3"><a class="link fw-light" href="#">Privacy Policy</a></span>
+      <span class="mx-3"><a class="link fw-light" href="#">Contact</a></span>
+    </div>
+  </footer>
+
+  {% block postload_js %}
+  {% endblock %}
 
 
 </body>
