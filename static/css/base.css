@@ -22,17 +22,23 @@ footer {
     padding: 20px 0; 
 }
 
+.active {
+    color: var(--bs-primary) !important;
+    font-weight: 500;
+}
+
 .link {
     color: #878787;  
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.3s ease;  /* Smooth transition for color change */
+    transition: color 0.3s ease;  /* Transition for color change */
   }
 
 .link:hover {
     transition: 0.2s ;
-    color: #116c8b;  /* Color change on hover (Bootstrap primary color) */
-    text-decoration: underline; /* Optional: Add underline on hover */
+    color: var(--bs-primary) !important;  /* (Bootstrap primary color) */
+    text-decoration: overline;
+    transition: color 0.3s ease; 
 }
 
 #logo {

@@ -1,5 +1,9 @@
 {% load static %}
 
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
 <!doctype html>
 <html lang="en">
 
@@ -48,12 +52,12 @@
         <li class="nav-item"><a class="link" href="#" aria-label="Link to My Orders page">My Orders</a></li>
         <li class="nav-item"><a class="link" href="#" aria-label="Link to Basket">Basket</a></li>
         {% endif %}
-        <li class="nav-item"><a class="link" href="{% url 'account_logout' %}" aria-label="Log off link">Logout</a>
+        <li class="nav-item"><a class="link {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" aria-label="Log off link">Logout</a>
         </li>
         {% else %}
         <!-- Links for non-authenticated users -->
-        <li class="nav-item"><a class="link" href="{% url 'login' %}" aria-label="Log in link">Login</a></li>
-        <li class="nav-item"><a class="link" href="{% url 'account_signup' %}"
+        <li class="nav-item"><a class="link {% if request.path == login_url %}active{% endif %}" href="{% url 'login' %}" aria-label="Log in link">Login</a></li>
+        <li class="nav-item"><a class="link {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}"
             aria-label="Register link">Register</a></li>
         {% endif %}
       </ul>
@@ -76,7 +80,7 @@
   </div>
 
 
-  <div class="container py-4">
+  <div class="container mt-1 mb-5">
     {% block content %}
     {% endblock %}
   </div>
