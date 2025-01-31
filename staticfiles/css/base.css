@@ -22,6 +22,53 @@ footer {
     padding: 20px 0; 
 }
 
+.active {
+    /* use bootstrap's primary color */
+    color: var(--bs-primary) !important;
+    font-weight: 500;
+}
+
+.group-container {
+    min-height: 300px; 
+    border-radius: 15px;
+}
+
+.group-container a {
+    text-decoration: none;
+    display: block;
+}
+
+.group-container a:active  {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    transform: translateY(2px);
+}
+
+.group-name {
+    padding: 20px; 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: rgb(1, 64, 165);
+}
+
+.group-name:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255);
+}
+
+.link {
+    color: #727272;  
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;  /* Transition for color change */
+  }
+
+.link:hover {
+    transition: 0.2s ;
+    color: var(--bs-primary) !important;  /* (Bootstrap primary color) */
+    text-decoration: overline;
+    transition: color 0.3s ease;
+}
+
 #logo {
     height: 45px;
 }
