@@ -10,8 +10,7 @@
 
     <h1>{% trans "Confirm Access" %}</h1>
 
-    <p>{% blocktranslate %}To safeguard the security of your account, please enter your password:{% endblocktranslate %}
-    </p>
+    <p>{% blocktrans %}To safeguard the security of your account, please enter your password:{% endblocktrans %}</p>
 
     <form class="reauthenticate" method="POST" action="{% url 'account_reauthenticate' %}">
       {% csrf_token %}
