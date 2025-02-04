@@ -1,0 +1,33 @@
+<header
+    class="d-flex flex-column flex-md-row align-items-center justify-content-between p-4 mb-3 bg-white border-bottom shadow">
+    <a href="/" aria-label="Go to homepage">
+      <img id="logo" class="my-0 mr-md-auto" src="{{ MEDIA_URL }}bbdental_logo.webp" alt="BBdental Logo">
+    </a>
+
+    <nav class="my-2 my-md-0 mr-md-3 mt-4">
+      <ul class="list-unstyled d-flex flex-wrap justify-content-end gap-3 m-0 p-0">
+        {% if request.user.is_authenticated %}
+        {% if request.user.is_staff %}
+        <!-- Links visible only to staff type users -->
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to All Orders page">All Orders</a></li>
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to VAT page">VAT</a></li>
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to Users page">Users</a></li>
+        {% else %}
+        <!-- Links visible only to non-staff users -->
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to Products page">Products</a></li>
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to My Orders page">My Orders</a></li>
+        <li class="nav-item"><a class="link" href="#" aria-label="Link to Basket">Basket</a></li>
+        {% endif %}
+        <li class="nav-item"><a class="link {% if request.path == logout_url %}active{% endif %}"
+            href="{% url 'account_logout' %}" aria-label="Log off link">Logout</a>
+        </li>
+        {% else %}
+        <!-- Links for non-authenticated users -->
+        <li class="nav-item"><a class="link {% if request.path == login_url %}active{% endif %}"
+            href="{% url 'account_login' %}" aria-label="Log in link">Login</a></li>
+        <li class="nav-item"><a class="link {% if request.path == signup_url %}active{% endif %}"
+            href="{% url 'account_signup' %}" aria-label="Register link">Register</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
