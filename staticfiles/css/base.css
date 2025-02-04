@@ -9,7 +9,7 @@
 
 /* General styles */
 body {
-    font-family: "Gantari", serif;
+    font-family: "Gantari", sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
