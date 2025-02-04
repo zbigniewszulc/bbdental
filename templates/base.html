@@ -64,7 +64,7 @@
         {% else %}
         <!-- Links for non-authenticated users -->
         <li class="nav-item"><a class="link {% if request.path == login_url %}active{% endif %}"
-            href="{% url 'login' %}" aria-label="Log in link">Login</a></li>
+            href="{% url 'account_login' %}" aria-label="Log in link">Login</a></li>
         <li class="nav-item"><a class="link {% if request.path == signup_url %}active{% endif %}"
             href="{% url 'account_signup' %}" aria-label="Register link">Register</a></li>
         {% endif %}
