@@ -459,7 +459,7 @@
 	  "pk": 36,
 	  "fields": {
 		"product_name": "PMNG-SR-P Prophy-Mate NEO ",
-		"description": "Prophy-Mate Neo nozzle with two nozzles at 60 \u00c2\u00b0 and 80 \u00c2\u00b0, toothbrush, wire and sandblaster cleaner, 5 pcs 15 g sachet FLASH pearl, key to replace work nozzles",
+		"description": "Prophy-Mate Neo nozzle with two nozzles at 60 ° and 80 °, toothbrush, wire and sandblaster cleaner, 5 pcs 15 g sachet FLASH pearl, key to replace work nozzles",
 		"price": "524",
 		"manufacturer_id": "26",
 		"category_id": "17",
@@ -498,7 +498,7 @@
 	  "pk": 39,
 	  "fields": {
 		"product_name": "AIR-FLOW S1",
-		"description": "AIR-FLOW\u00c2\u00ae nozzles, set of gaskets and needles for cleaning, steribox, AIR-FLOW sanding sleeve",
+		"description": "AIR-FLOW® nozzles, set of gaskets and needles for cleaning, steribox, AIR-FLOW sanding sleeve",
 		"price": "2690",
 		"manufacturer_id": "42",
 		"category_id": "17",
@@ -732,7 +732,7 @@
 	  "pk": 57,
 	  "fields": {
 		"product_name": "SonicFill refill 20x0.3g",
-		"description": "Small, ergonomic Unidose \u00e2\u201e\u00a2 capsule mouths provide easy access to cavities. Foot controller and 5 dosage speeds facilitate control of composite applications. Excellent performance, no tooling, no flow and modeling ease.",
+		"description": "Small, ergonomic Unidose™ capsule mouths provide easy access to cavities. The foot controller and five dosage speeds facilitate precise control of composite applications. Offers excellent performance with no tooling, no flow issues, and ease of modeling.",
 		"price": "59",
 		"manufacturer_id": "18",
 		"category_id": "10",
@@ -1018,7 +1018,7 @@
 	  "pk": 79,
 	  "fields": {
 		"product_name": " Adper Easy One 5ml",
-		"description": "Combination of composite materials and dentifrice and enamel composites, Implantation of prosthetic restorations using RelyX \u00e2\u201e\u00a2 ARC, provided that prior to cement application, the binding system will be cured by lamp light,",
+		"description": "Combination of composite materials and dentifrice and enamel composites, Implantation of prosthetic restorations using RelyX™ ARC, provided that prior to cement application, the binding system will be cured by lamp light",
 		"price": "57",
 		"manufacturer_id": "1",
 		"category_id": "7",
@@ -1577,7 +1577,7 @@
 	  "pk": 122,
 	  "fields": {
 		"product_name": "Mojo set",
-		"description": "Mojo \u00e2\u201e\u00a2 is the latest aesthetic system from Pentron Clinical for cementing veneers both composite and porcelain. It is a material that guarantees the highest aesthetics of the work performed on the day of cementing after the patient has been using the veneer for a long time",
+		"description": "Mojo™ is the latest aesthetic system from Pentron Clinical for cementing veneers, both composite and porcelain. It ensures the highest aesthetics of the restoration, maintaining its appearance even after prolonged use by the patient.",
 		"price": "245",
 		"manufacturer_id": "28",
 		"category_id": "4",
@@ -1668,7 +1668,7 @@
 	  "pk": 129,
 	  "fields": {
 		"product_name": "Express XT Penta ",
-		"description": "First layer weights are available in the Penta system for automatic mixing in Pentamix \u00e2\u201e\u00a2 or manual mixing. All layers of the second layer are designed for automatic mixing in the Garant \u00e2\u201e\u00a2",
+		"description": "First layer weights are available in the Penta system for automatic mixing in Pentamix™ or manual mixing. All second-layer materials are designed for automatic mixing in the Garant™ system.",
 		"price": "46",
 		"manufacturer_id": "1",
 		"category_id": "5",
@@ -1837,7 +1837,7 @@
 	  "pk": 142,
 	  "fields": {
 		"product_name": "Correct Plus Light Body Normal",
-		"description": "Low density poly (vinylsiloxane) mass - Light Body mass. Rare ImpressFlex\u00c2\u00ae VPS Putty masses with excellent flow for single or dual use.",
+		"description": "Low-density poly(vinylsiloxane) mass - Light Body mass. Rare ImpressFlex® VPS Putty masses with excellent flow for single or dual use.",
 		"price": "21",
 		"manufacturer_id": "45",
 		"category_id": "5",
@@ -1850,7 +1850,7 @@
 	  "pk": 143,
 	  "fields": {
 		"product_name": "Correct Plus Putty ",
-		"description": "ImpressFlex\u00c2\u00ae VPS Putty Normal Correct Plus provides enough time to mix, apply on a spoon, and take impression with one- or two-",
+		"description": "ImpressFlex® VPS Putty Normal Correct Plus provides enough time to mix, apply on a spoon, and take an impression with one- or two-step techniques.",
 		"price": "34",
 		"manufacturer_id": "45",
 		"category_id": "5",
