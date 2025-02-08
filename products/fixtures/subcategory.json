@@ -1,0 +1,162 @@
+[
+	{
+		"pk": 1,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Lentulo spiral",
+			"category_id": "1"
+		}
+	},
+	{
+		"pk": 2,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Drills",
+			"category_id": "1"
+		}
+	},
+	{
+		"pk": 3,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Gutta-percha",
+			"category_id": "1"
+		}
+	},
+	{
+		"pk": 4,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Cements",
+			"category_id": "2"
+		}
+	},
+	{
+		"pk": 5,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Dental impressions",
+			"category_id": "2"
+		}
+	},
+	{
+		"pk": 6,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Temporary restaurators",
+			"category_id": "2"
+		}
+	},
+	{
+		"pk": 7,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Connecting systems",
+			"category_id": "3"
+		}
+	},
+	{
+		"pk": 8,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Sleepers",
+			"category_id": "3"
+		}
+	},
+	{
+		"pk": 9,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Etches",
+			"category_id": "3"
+		}
+	},
+	{
+		"pk": 10,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Composites",
+			"category_id": "4"
+		}
+	},
+	{
+		"pk": 11,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Compomors",
+			"category_id": "4"
+		}
+	},
+	{
+		"pk": 12,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Amalgams",
+			"category_id": "4"
+		}
+	},
+	{
+		"pk": 13,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Corner Plates",
+			"category_id": "5"
+		}
+	},
+	{
+		"pk": 14,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "S-Max M Series",
+			"category_id": "5"
+		}
+	},
+	{
+		"pk": 15,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Ti-Max X series",
+			"category_id": "5"
+		}
+	},
+	{
+		"pk": 16,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "FX series",
+			"category_id": "5"
+		}
+	},
+	{
+		"pk": 17,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Sandblasting Machines",
+			"category_id": "5"
+		}
+	},
+	{
+		"pk": 18,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Magnifying glass",
+			"category_id": "6"
+		}
+	},
+	{
+		"pk": 19,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Intraoral cameras",
+			"category_id": "6"
+		}
+	},
+	{
+		"pk": 20,
+		"model": "products.Subcategory",
+		"fields": {
+			"subcategory_name": "Distillers",
+			"category_id": "6"
+		}
+	}
+]

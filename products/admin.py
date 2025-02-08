@@ -1,24 +1,24 @@
 from django.contrib import admin
-from .models import CatGroup, Category, Manufacturer, Product
+from .models import Category, Subcategory, Manufacturer, Product
 
 # Register your models here.
-
-
-class CatGroupAdmin(admin.ModelAdmin):
-    list_display = (
-        'group_name',
-        'group_vat',
-        'group_pic_loc',
-    )
-    ordering = ('group_name',)
 
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'category_name',
-        'group_id',
+        'category_vat',
+        'category_pic_loc',
     )
     ordering = ('category_name',)
+
+
+class SubcategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'subcategory_name',
+        'category_id',
+    )
+    ordering = ('subcategory_name',)
 
 
 class ManufacturerAdmin(admin.ModelAdmin):
@@ -32,7 +32,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'product_name',
         'description',
-        'category_id',
+        'subcategory_id',
         'manufacturer_id',
         'price',
         'in_stock',
@@ -40,7 +40,7 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ('product_name',)
 
 
-admin.site.register(CatGroup, CatGroupAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Subcategory, SubcategoryAdmin)
 admin.site.register(Manufacturer, ManufacturerAdmin)
 admin.site.register(Product, ProductAdmin)
