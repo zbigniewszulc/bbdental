@@ -55,10 +55,10 @@
   </div>
 
 
-  <div class="container mt-1 mb-5">
+  <div class="{% if request.path == '/' %}container-fluid p-0{% else %}container-fluid mt-3 mb-5 px-3 px-sm-4 px-xl-5{% endif %}">
     {% block content %}
     {% endblock %}
-  </div>
+</div>
 
   <!-- Footer Section -->
   <footer class="footer mt-auto py-3 bg-white border-top shadow-sm">

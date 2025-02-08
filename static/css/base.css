@@ -32,7 +32,7 @@ footer {
 }
 
 .group-container {
-    min-height: 300px; 
+    min-height: 280px; 
     border-radius: 15px;
 }
 
@@ -56,6 +56,18 @@ footer {
 .group-name:hover {
     cursor: pointer;
     background-color: rgba(255, 255, 255);
+}
+
+#home-page img{
+    height: calc(100vh - 151px); 
+    object-fit: cover; 
+    object-position: center; 
+    filter: grayscale(1) opacity(0.4)
+}
+
+#home-page div{
+    background: rgba(31, 154, 196, 0.918); 
+    max-width: 620px;
 }
 
 .link {
