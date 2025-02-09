@@ -23,7 +23,10 @@ class Subcategory(models.Model):
 
     subcategory_name = models.CharField(max_length=30)
     category_id = models.ForeignKey(
-        'Category', null=True, blank=True, on_delete=models.SET_NULL
+        'Category',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='subcategories'
     )
 
     def __str__(self):

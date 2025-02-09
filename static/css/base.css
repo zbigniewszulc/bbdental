@@ -88,6 +88,11 @@ footer {
     height: 45px;
 }
 
+.product-card img {
+    height: 185px; 
+    object-fit: contain;
+}
+
 /***************************** Media queries **********************************/
 /* Medium size devices */
 @media (min-width: 768px) {
