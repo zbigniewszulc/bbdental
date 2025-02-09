@@ -23,7 +23,7 @@
                     <div class="accordion-body">
                         <ul class="list-unstyled">
                             {% for subcategory in category.subcategories.all|dictsort:"subcategory_name" %}
-                            <li><a href="#" class="text-decoration-none hover-bold hover-bold">{{ subcategory.subcategory_name }}</a></li>
+                            <li><a href="{% url 'products_by_subcategory' category.id subcategory.id %}" class="text-decoration-none hover-bold hover-bold">{{ subcategory.subcategory_name }}</a></li>
                             {% endfor %}
                         </ul>  
                     </div>
