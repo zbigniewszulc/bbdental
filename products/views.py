@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Product, Category, Subcategory
+from django.shortcuts import render, get_object_or_404
+from .models import Product, Category
 
 # Create your views here.
 
@@ -16,7 +16,7 @@ def all_products(request):
 
     **Template**
 
-    :template:`products/all_products.html`.
+    :template:`products/products.html`.
     """
 
     products = Product.objects.all().order_by('product_name')
@@ -26,7 +26,23 @@ def all_products(request):
         'products': products,
         'categories': categories
     }
-    return render(request, 'products/all_products.html', context)
+    return render(request, 'products/products.html', context)
+
+
+def products_by_category(request, category_id):
+    """ A view to display products filtered by category """
+    category = get_object_or_404(Category, id=category_id)
+    products = Product.objects.filter(
+        subcategory_id__category_id=category.id).order_by('product_name')
+    categories = Category.objects.all().order_by('category_name')
+
+    context = {
+        'category': category,
+        'products': products,
+        'categories': categories
+    }
+
+    return render(request, 'products/products.html', context)
 
 
 def products_menu(request):

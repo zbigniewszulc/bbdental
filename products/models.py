@@ -42,10 +42,12 @@ class Manufacturer(models.Model):
 
 class Product(models.Model):
     subcategory_id = models.ForeignKey(
-        'Subcategory', null=True, blank=True, on_delete=models.SET_NULL
+        'Subcategory', null=True, blank=True, on_delete=models.SET_NULL,
+        related_name='subcategory_products'
     )
     manufacturer_id = models.ForeignKey(
-        'Manufacturer', null=True, blank=True, on_delete=models.SET_NULL
+        'Manufacturer', null=True, blank=True, on_delete=models.SET_NULL,
+        related_name='manufacturer_products'
     )
     product_name = models.CharField(max_length=32)
     description = models.TextField(max_length=1000, null=True, blank=True)
