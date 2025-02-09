@@ -18,9 +18,12 @@ def all_products(request):
 
     :template:`products/products.html`.
     """
-
-    products = Product.objects.all().order_by('product_name')
-    categories = Category.objects.all().order_by('category_name')
+    # select_related and prefetch_related used to solve databse query
+    # performance issue
+    products = Product.objects.select_related(
+        'subcategory_id', 'manufacturer_id').order_by('product_name')
+    categories = Category.objects.prefetch_related(
+        'subcategories').order_by('category_name')
 
     context = {
         'products': products,
@@ -48,10 +51,11 @@ def products_by_category(request, category_id):
 
     :template:`products/products.html`.
     """
-
+    # select_related used to solve databse query performance issue
     category = get_object_or_404(Category, id=category_id)
     products = Product.objects.filter(
-        subcategory_id__category_id=category.id).order_by('product_name')
+        subcategory_id__category_id=category.id).select_related(
+            'subcategory_id', 'manufacturer_id').order_by('product_name')
     categories = Category.objects.all().order_by('category_name')
 
     context = {
@@ -84,13 +88,14 @@ def products_by_subcategory(request, category_id, subcategory_id):
 
     :template:`products/products.html`.
     """
-
+    # select_related used to solve databse query performacne issue
     category = get_object_or_404(Category, id=category_id)
     subcategory = get_object_or_404(
         Subcategory, id=subcategory_id, category_id=category)
 
     products = Product.objects.filter(
-        subcategory_id=subcategory).order_by('product_name')
+        subcategory_id=subcategory).select_related(
+        'subcategory_id', 'manufacturer_id').order_by('product_name')
 
     categories = Category.objects.all().order_by('category_name')
 
