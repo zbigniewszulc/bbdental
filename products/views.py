@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product, Category, Subcategory
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -25,9 +26,14 @@ def all_products(request):
     categories = Category.objects.prefetch_related(
         'subcategories').order_by('category_name')
 
+    # Pagination: 20 products per page
+    paginator = Paginator(products, 20)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'products': products,
-        'categories': categories
+        'categories': categories,
+        'page_obj': page_obj
     }
     return render(request, 'products/products.html', context)
 
@@ -58,10 +64,15 @@ def products_by_category(request, category_id):
             'subcategory_id', 'manufacturer_id').order_by('product_name')
     categories = Category.objects.all().order_by('category_name')
 
+    # Pagination: 20 products per page
+    paginator = Paginator(products, 20)  
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
         'category': category,
-        'products': products,
-        'categories': categories
+        'categories': categories,
+        'page_obj': page_obj
     }
 
     return render(request, 'products/products.html', context)
@@ -92,18 +103,21 @@ def products_by_subcategory(request, category_id, subcategory_id):
     category = get_object_or_404(Category, id=category_id)
     subcategory = get_object_or_404(
         Subcategory, id=subcategory_id, category_id=category)
-
     products = Product.objects.filter(
         subcategory_id=subcategory).select_related(
         'subcategory_id', 'manufacturer_id').order_by('product_name')
-
     categories = Category.objects.all().order_by('category_name')
+
+    # Pagination: 20 products per page
+    paginator = Paginator(products, 20)  
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'category': category,
         'subcategory': subcategory,
-        'products': products,
-        'categories': categories
+        'categories': categories,
+        'page_obj': page_obj
     }
 
     return render(request, 'products/products.html', context)
