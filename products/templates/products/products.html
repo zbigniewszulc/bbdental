@@ -65,15 +65,12 @@
         <!-- Breadcrumbs -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                {% if not category and not subcategory %}
-                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-house"></i></li>
-                {% else %}
                 <li class="breadcrumb-item">
-                    <a href="{% url 'all_products' %}" aria-label="View All Products">
+                    <a href="{% url 'all_products' %}" aria-label="View All Products" data-bs-toggle="tooltip"
+                        title="View All Products">
                         <i class="fa-solid fa-house"></i>
                     </a>
                 </li>
-                {% endif %}
 
                 {% if category %}
                 {% if subcategory %}
