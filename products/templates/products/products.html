@@ -39,33 +39,47 @@
 
     <!-- Main Content: Products Display -->
     <main class="col-lg-10 col-md-9 px-2 px-md-3 px-xl-4 mt-3 mt-md-0">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <!-- Breadcrumbs -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'all_products' %}" aria-label="View All Products" data-bs-toggle="tooltip"
+                            title="View All Products">
+                            <i class="fa-solid fa-house"></i>
+                        </a>
+                    </li>
 
-        <!-- Breadcrumbs -->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="{% url 'all_products' %}" aria-label="View All Products" data-bs-toggle="tooltip"
-                        title="View All Products">
-                        <i class="fa-solid fa-house"></i>
-                    </a>
-                </li>
+                    {% if category %}
+                    {% if subcategory %}
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'products_by_category' category.id %}"
+                            aria-label="View products in {{ category.category_name }}">
+                            {{ category.category_name }}
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ subcategory.subcategory_name }}</li>
+                    {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ category.category_name }}</li>
+                    {% endif %}
+                    {% endif %}
 
-                {% if category %}
-                {% if subcategory %}
-                <li class="breadcrumb-item">
-                    <a href="{% url 'products_by_category' category.id %}"
-                        aria-label="View products in {{ category.category_name }}">
-                        {{ category.category_name }}
-                    </a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ subcategory.subcategory_name }}</li>
-                {% else %}
-                <li class="breadcrumb-item active" aria-current="page">{{ category.category_name }}</li>
-                {% endif %}
-                {% endif %}
+                </ol>
+            </nav>
 
-            </ol>
-        </nav>
+            <!-- Sorting Dropdown -->
+            <div>
+                <label for="sort" class="me-2">Sort by:</label>
+                <select id="sort" class="form-select d-inline-block w-auto" onchange="location = this.value;">
+                    <option value="?sort=name&direction=asc" {% if request.GET.sort == "name" and request.GET.direction == "asc" %}selected{% endif %}>Name (A-Z)</option>
+                    <option value="?sort=name&direction=desc" {% if request.GET.sort == "name" and request.GET.direction == "desc" %}selected{% endif %}>Name (Z-A)</option>
+                    <option value="?sort=price&direction=asc" {% if request.GET.sort == "price" and request.GET.direction == "asc" %}selected{% endif %}>Price (Low to High)</option>
+                    <option value="?sort=price&direction=desc" {% if request.GET.sort == "price" and request.GET.direction == "desc" %}selected{% endif %}>Price (High to Low)</option>
+                    <option value="?sort=manufacturer&direction=asc" {% if request.GET.sort == "manufacturer" and request.GET.direction == "asc" %}selected{% endif %}>Manufacturer (A-Z)</option>
+                    <option value="?sort=manufacturer&direction=desc" {% if request.GET.sort == "manufacturer" and request.GET.direction == "desc" %}selected{% endif %}>Manufacturer (Z-A)</option>
+                </select>
+            </div>
+        </div>
 
         <!-- Product Card -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3">
@@ -174,28 +188,28 @@
 {% endblock %}
 
 {% block postload_js %}
-    {{ block.super }}
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var accordions = document.querySelectorAll(".accordion-collapse");
-        
-            accordions.forEach(function (accordion) {
-                // Check screen size on page load
+{{ block.super }}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var accordions = document.querySelectorAll(".accordion-collapse");
+
+        accordions.forEach(function (accordion) {
+            // Check screen size on page load
+            if (window.innerWidth >= 768) {
+                accordion.classList.add("show");
+            } else {
+                accordion.classList.remove("show");
+            }
+
+            // Listen for window resize to adapt dynamically
+            window.addEventListener("resize", function () {
                 if (window.innerWidth >= 768) {
-                    accordion.classList.add("show"); 
+                    accordion.classList.add("show");
                 } else {
                     accordion.classList.remove("show");
                 }
-        
-                // Listen for window resize to adapt dynamically
-                window.addEventListener("resize", function () {
-                    if (window.innerWidth >= 768) {
-                        accordion.classList.add("show");
-                    } else {
-                        accordion.classList.remove("show");
-                    }
-                });
             });
         });
-        </script>
+    });
+</script>
 {% endblock %}
