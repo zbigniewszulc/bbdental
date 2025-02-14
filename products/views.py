@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Category, Subcategory
+from django.db.models.functions import Lower
 from django.core.paginator import Paginator
+from .models import Product, Category, Subcategory
+
 
 # Create your views here.
 
@@ -19,12 +21,37 @@ def all_products(request):
 
     :template:`products/products.html`.
     """
-    # select_related and prefetch_related used to solve databse query
+    
     # performance issue
-    products = Product.objects.select_related(
-        'subcategory_id', 'manufacturer_id').order_by('product_name')
-    categories = Category.objects.prefetch_related(
-        'subcategories').order_by('category_name')
+
+    # Get sorting parameters with default values
+    sort = request.GET.get('sort', 'name')
+    direction = request.GET.get('direction', 'asc')
+
+    # select_related and prefetch_related used to solve databse query
+    # performance
+    products = Product.objects.annotate(lower_product_name=Lower(
+        'product_name')).select_related('subcategory_id', 'manufacturer_id')
+                 
+    # Sorting
+    if sort == 'name':
+        sortkey = 'lower_product_name'
+    elif sort == 'manufacturer':
+        sortkey = 'manufacturer_id'
+    elif sort == 'price':
+        sortkey = 'price'
+    else:
+        sortkey = 'lower_product_name'  # Default sorting
+
+    if direction == 'desc':
+        sortkey = f'-{sortkey}'
+
+    products = products.order_by(sortkey)
+
+    # Fetch categories
+    categories = Category.objects.prefetch_related('subcategories').annotate(
+        lower_category_name=Lower('category_name')).order_by(
+            'lower_category_name')
 
     # Pagination: 20 products per page
     paginator = Paginator(products, 20)
@@ -33,7 +60,9 @@ def all_products(request):
 
     context = {
         'categories': categories,
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'sort': sort,
+        'direction': direction
     }
     return render(request, 'products/products.html', context)
 

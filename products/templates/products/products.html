@@ -71,12 +71,12 @@
             <div>
                 <label for="sort" class="me-2">Sort by:</label>
                 <select id="sort" class="form-select d-inline-block w-auto" onchange="location = this.value;">
-                    <option value="?sort=name&direction=asc" {% if request.GET.sort == "name" and request.GET.direction == "asc" %}selected{% endif %}>Name (A-Z)</option>
-                    <option value="?sort=name&direction=desc" {% if request.GET.sort == "name" and request.GET.direction == "desc" %}selected{% endif %}>Name (Z-A)</option>
-                    <option value="?sort=price&direction=asc" {% if request.GET.sort == "price" and request.GET.direction == "asc" %}selected{% endif %}>Price (Low to High)</option>
-                    <option value="?sort=price&direction=desc" {% if request.GET.sort == "price" and request.GET.direction == "desc" %}selected{% endif %}>Price (High to Low)</option>
-                    <option value="?sort=manufacturer&direction=asc" {% if request.GET.sort == "manufacturer" and request.GET.direction == "asc" %}selected{% endif %}>Manufacturer (A-Z)</option>
-                    <option value="?sort=manufacturer&direction=desc" {% if request.GET.sort == "manufacturer" and request.GET.direction == "desc" %}selected{% endif %}>Manufacturer (Z-A)</option>
+                    <option value="?sort=name&direction=asc" {% if sort == "name" and direction == "asc" %}selected{% endif %}>Name (A-Z)</option>
+                    <option value="?sort=name&direction=desc" {% if sort == "name" and direction == "desc" %}selected{% endif %}>Name (Z-A)</option>
+                    <option value="?sort=price&direction=asc" {% if sort == "price" and direction == "asc" %}selected{% endif %}>Price (Low to High)</option>
+                    <option value="?sort=price&direction=desc" {% if sort == "price" and direction == "desc" %}selected{% endif %}>Price (High to Low)</option>
+                    <option value="?sort=manufacturer&direction=asc" {% if sort == "manufacturer" and direction == "asc" %}selected{% endif %}>Manufacturer (A-Z)</option>
+                    <option value="?sort=manufacturer&direction=desc" {% if sort == "manufacturer" and direction == "desc" %}selected{% endif %}>Manufacturer (Z-A)</option>
                 </select>
             </div>
         </div>
@@ -137,13 +137,13 @@
                 <!-- First & Previous Buttons -->
                 {% if page_obj.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page=1" aria-label="First Page" data-bs-toggle="tooltip"
+                    <a class="page-link" href="?page=1&sort={{ sort }}&direction={{ direction }}" aria-label="First Page" data-bs-toggle="tooltip"
                         title="First Page">
                         <i class="fa-solid fa-backward-fast"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous Page"
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}&sort={{ sort }}&direction={{ direction }}" aria-label="Previous Page"
                         data-bs-toggle="tooltip" title="Previous Page">
                         <i class="fa-solid fa-backward-step"></i>
                     </a>
@@ -158,7 +158,7 @@
                 </li>
                 {% else %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    <a class="page-link" href="?page={{ num }}&sort={{ sort }}&direction={{ direction }}">{{ num }}</a>
                 </li>
                 {% endif %}
                 {% endfor %}
@@ -166,13 +166,13 @@
                 <!-- Next & Last Buttons -->
                 {% if page_obj.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next Page"
+                    <a class="page-link" href="{{ page_obj.next_page_number }}&sort={{ sort }}&direction={{ direction }}" aria-label="Next Page"
                         data-bs-toggle="tooltip" title="Next Page">
                         <i class="fa-solid fa-forward-step"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last Page"
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&sort={{ sort }}&direction={{ direction }}" aria-label="Last Page"
                         data-bs-toggle="tooltip" title="Last Page">
                         <i class="fa-solid fa-forward-fast"></i>
                     </a>
