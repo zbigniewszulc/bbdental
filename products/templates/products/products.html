@@ -39,38 +39,72 @@
 
     <!-- Main Content: Products Display -->
     <main class="col-lg-10 col-md-9 px-2 px-md-3 px-xl-4 mt-3 mt-md-0">
-        <div class="d-flex justify-content-between align-items-center mb-2">
-            <!-- Breadcrumbs -->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{% url 'all_products' %}" aria-label="View All Products" data-bs-toggle="tooltip"
-                            title="View All Products">
-                            <i class="fa-solid fa-house"></i>
-                        </a>
-                    </li>
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+            <div class="d-flex flex-wrap w-100 align-items-center justify-content-between gap-3">
+                <!-- Breadcrumbs -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0 d-flex">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'all_products' %}" aria-label="View All Products" data-bs-toggle="tooltip"
+                                title="View All Products">
+                                <i class="fa-solid fa-house"></i>
+                            </a>
+                        </li>
 
-                    {% if category %}
-                    {% if subcategory %}
-                    <li class="breadcrumb-item">
-                        <a href="{% url 'products_by_category' category.id %}"
-                            aria-label="View products in {{ category.category_name }}">
-                            {{ category.category_name }}
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ subcategory.subcategory_name }}</li>
-                    {% else %}
-                    <li class="breadcrumb-item active" aria-current="page">{{ category.category_name }}</li>
-                    {% endif %}
-                    {% endif %}
+                        {% if category %}
+                        {% if subcategory %}
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'products_by_category' category.id %}"
+                                aria-label="View products in {{ category.category_name }}">
+                                {{ category.category_name }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ subcategory.subcategory_name }}</li>
+                        {% else %}
+                        <li class="breadcrumb-item active" aria-current="page">{{ category.category_name }}</li>
+                        {% endif %}
+                        {% endif %}
 
-                </ol>
-            </nav>
+                    </ol>
+                </nav>
+
+                <!-- Filter Options -->
+                <div class="d-flex flex-wrap gap-2 ms-auto justify-content-end">
+                    <div class="d-flex align-items-center">
+                        <label for="category_filter" class="me-2">Category:</label>
+                        <select id="category_filter" class="form-select form-select-sm">
+                            <option value="">All Categories</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.category_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="d-flex align-items-center ">
+                        <label for="subcategory_filter" class="me-2">Subcategory:</label>
+                        <select id="subcategory_filter" class="form-select w-auto form-select-sm">
+                            <option value="">All Subcategories</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <label for="manufacturer_filter" class="me-2">Manufacturer:</label>
+                        <select id="manufacturer_filter" class="form-select w-auto form-select-sm">
+                            <option value="">All Manufacturers</option>
+                            {% for manufacturer in manufacturers %}
+                            <option value="{{ manufacturer.id }}">{{ manufacturer.manufacturer_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-secondary btn-sm" onclick="applyFilters()">Apply Filter</button>
+                </div>
+            </div>
 
             <!-- Sorting Dropdown -->
-            <div>
+            <div class="w-100 mt-4 text-end" >
                 <label for="sort" class="me-2">Sort by:</label>
-                <select id="sort" class="form-select d-inline-block w-auto" onchange="location = this.value;">
+                <select id="sort" class="form-select d-inline-block w-auto form-select-sm" onchange="location = this.value;">
                     <option value="?sort=name&direction=asc" {% if sort == "name" and direction == "asc" %}selected{% endif %}>Name (A-Z)</option>
                     <option value="?sort=name&direction=desc" {% if sort == "name" and direction == "desc" %}selected{% endif %}>Name (Z-A)</option>
                     <option value="?sort=price&direction=asc" {% if sort == "price" and direction == "asc" %}selected{% endif %}>Price (Low to High)</option>

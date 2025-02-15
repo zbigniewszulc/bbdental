@@ -74,10 +74,8 @@ def all_products(request):
         Selected sorting direction.
 
     **Template**
-
     :template:`products/products.html`.
     """
-
     # select_related and prefetch_related used to solve database query
     # performance issues
     products = (
@@ -119,8 +117,8 @@ def products_by_category(request, category_id):
         Selected sorting criteria.
     ``direction``
         Selected sorting direction.
-    **Template**
 
+    **Template**
     :template:`products/products.html`.
     """
     # select_related used to solve databse query performance issue
