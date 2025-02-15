@@ -7,6 +7,56 @@ from .models import Product, Category, Subcategory
 # Create your views here.
 
 
+def get_sorted(request, queryset):
+    """
+    Utility function to sort products based on provided queryset
+    """
+    # Get sorting parameters with default values
+    sort = request.GET.get('sort', 'name')
+    direction = request.GET.get('direction', 'asc')
+
+    sort_mapping = {
+        'name': 'lower_product_name',
+        'manufacturer': 'lower_manufacturer_name',
+        'price': 'price'
+    }
+    # Default sorting - lower_product_name
+    sortkey = sort_mapping.get(sort, 'lower_product_name')
+
+    if direction == 'desc':
+        sortkey = f'-{sortkey}'
+
+    sorted_queryset = queryset.order_by(sortkey)
+
+    return sorted_queryset
+
+
+def get_paginated(request, queryset, per_page=20):
+    """
+    Utility function to paginate queryset of products
+    """
+    # Pagination: 20 products per page
+    paginator = Paginator(queryset, per_page)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return page_obj
+
+
+def get_categories():
+    """
+    Utility function to fetch all categories
+    """
+    categories = (
+        Category.objects
+        .prefetch_related('subcategories')
+        .annotate(lower_category_name=Lower('category_name'))
+        .order_by('lower_category_name')
+    )
+
+    return categories
+
+
 def all_products(request):
     """
     A view to render all products page.
@@ -38,41 +88,16 @@ def all_products(request):
         )
         .select_related('subcategory_id', 'manufacturer_id')
     )
-    # Fetch categories
-    categories = Category.objects.prefetch_related('subcategories').annotate(
-        lower_category_name=Lower('category_name')).order_by(
-            'lower_category_name')
-
-    # Get sorting parameters with default values
-    sort = request.GET.get('sort', 'name')
-    direction = request.GET.get('direction', 'asc')
-
-    # Sorting
-    if sort == 'name':
-        sortkey = 'lower_product_name'
-    elif sort == 'manufacturer':
-        sortkey = 'lower_manufacturer_name'
-    elif sort == 'price':
-        sortkey = 'price'
-    else:
-        sortkey = 'lower_product_name'  # Default sorting
-
-    if direction == 'desc':
-        sortkey = f'-{sortkey}'
-
-    products = products.order_by(sortkey)
-
-    # Pagination: 20 products per page
-    paginator = Paginator(products, 20)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    products = get_sorted(request, products)
+    page_obj = get_paginated(request, products)
 
     context = {
-        'categories': categories,
+        'categories': get_categories(),
         'page_obj': page_obj,
-        'sort': sort,
-        'direction': direction
+        'sort': request.GET.get('sort', 'name'),
+        'direction': request.GET.get('direction', 'asc')
     }
+
     return render(request, 'products/products.html', context)
 
 
@@ -109,43 +134,15 @@ def products_by_category(request, category_id):
         )
         .select_related('subcategory_id', 'manufacturer_id')
     )
-    categories = (
-        Category.objects
-        .prefetch_related('subcategories')
-        .annotate(lower_category_name=Lower('category_name'))
-        .order_by('lower_category_name')
-    )
-
-    # Get sorting parameters with default values
-    sort = request.GET.get('sort', 'name')
-    direction = request.GET.get('direction', 'asc')
-
-    # Sorting
-    if sort == 'name':
-        sortkey = 'lower_product_name'
-    elif sort == 'manufacturer':
-        sortkey = 'manufacturer_id'
-    elif sort == 'price':
-        sortkey = 'price'
-    else:
-        sortkey = 'lower_product_name'  # Default sorting
-
-    if direction == 'desc':
-        sortkey = f'-{sortkey}'
-
-    products = products.order_by(sortkey)
-
-    # Pagination: 20 products per page
-    paginator = Paginator(products, 20)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    products = get_sorted(request, products)
+    page_obj = get_paginated(request, products)
 
     context = {
         'category': category,
-        'categories': categories,
+        'categories': get_categories(),
         'page_obj': page_obj,
-        'sort': sort,
-        'direction': direction
+        'sort': request.GET.get('sort', 'name'),
+        'direction': request.GET.get('direction', 'asc')
     }
 
     return render(request, 'products/products.html', context)
@@ -189,41 +186,16 @@ def products_by_subcategory(request, category_id, subcategory_id):
         )
         .select_related('subcategory_id', 'manufacturer_id')
     )
-    categories = Category.objects.prefetch_related('subcategories').annotate(
-        lower_category_name=Lower('category_name')).order_by(
-            'lower_category_name')
-
-    # Get sorting parameters with default values
-    sort = request.GET.get('sort', 'name')
-    direction = request.GET.get('direction', 'asc')
-
-    # Sorting
-    if sort == 'name':
-        sortkey = 'lower_product_name'
-    elif sort == 'manufacturer':
-        sortkey = 'manufacturer_id'
-    elif sort == 'price':
-        sortkey = 'price'
-    else:
-        sortkey = 'lower_product_name'  # Default sorting
-
-    if direction == 'desc':
-        sortkey = f'-{sortkey}'
-
-    products = products.order_by(sortkey)
-
-    # Pagination: 20 products per page
-    paginator = Paginator(products, 20)  
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    products = get_sorted(request, products)
+    page_obj = get_paginated(request, products)
 
     context = {
         'category': category,
         'subcategory': subcategory,
-        'categories': categories,
+        'categories': get_categories(),
         'page_obj': page_obj,      
-        'sort': sort,
-        'direction': direction
+        'sort': request.GET.get('sort', 'name'),
+        'direction': request.GET.get('direction', 'asc')
     }
 
     return render(request, 'products/products.html', context)
