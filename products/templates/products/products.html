@@ -166,7 +166,7 @@
                 <!-- Next & Last Buttons -->
                 {% if page_obj.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="{{ page_obj.next_page_number }}&sort={{ sort }}&direction={{ direction }}" aria-label="Next Page"
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}&sort={{ sort }}&direction={{ direction }}" aria-label="Next Page"
                         data-bs-toggle="tooltip" title="Next Page">
                         <i class="fa-solid fa-forward-step"></i>
                     </a>
