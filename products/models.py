@@ -34,7 +34,7 @@ class Subcategory(models.Model):
 
 
 class Manufacturer(models.Model):
-    manufacturer_name = models.CharField(max_length=50)
+    manufacturer_name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return self.manufacturer_name

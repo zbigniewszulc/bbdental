@@ -1,19 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
-from .models import Product, Category, Subcategory
+from .models import Product, Category, Subcategory, Manufacturer
 
 
 # Create your views here.
 
 
-def get_sorted(request, queryset):
+def get_sorted_filtered(request, queryset):
     """
     Utility function to sort products based on provided queryset
     """
     # Get sorting parameters with default values
     sort = request.GET.get('sort', 'name')
     direction = request.GET.get('direction', 'asc')
+    manufacturer_filter = request.GET.get('manufacturer', '')
 
     sort_mapping = {
         'name': 'lower_product_name',
@@ -25,6 +26,12 @@ def get_sorted(request, queryset):
 
     if direction == 'desc':
         sortkey = f'-{sortkey}'
+
+    # Apply manufacturer filter (if selected)
+    # iexact -> case-insensitive match
+    if manufacturer_filter:
+        queryset = queryset.filter(
+            manufacturer_id__manufacturer_name__iexact=manufacturer_filter)
 
     sorted_queryset = queryset.order_by(sortkey)
 
@@ -57,27 +64,43 @@ def get_categories():
     return categories
 
 
+def get_manufacturers(products):
+    """
+    Utility function to fetch all manufacturers based on product
+    """
+    manufacturers = (
+        Manufacturer.objects
+        .filter(manufacturer_products__in=products)
+        # distinct() removes duplicate records
+        .distinct()
+        .annotate(lower_manufacturer_name=Lower('manufacturer_name'))
+        .order_by('lower_manufacturer_name')
+    )
+    return manufacturers
+
+
 def all_products(request):
     """
     A view to render all products page.
-    Display all :model:`products.Product`.
+    Display all :model:`products.Product` with filtering and sorting
 
     **Context**
 
     ``categories``
         A queryset of all :model:`products.Category`, used for menu display.
+    ``manufacturers`` A queryset of all :model:`products.Manufacturer`
+        used for filtering
     ``page_obj``
         A paginated queryset of :model:`products.Product`.
     ``sort``
         Selected sorting criteria.
     ``direction``
         Selected sorting direction.
-
+    ``selected_manufacturer``
+        Selected manufacturer for filtering.
     **Template**
-
     :template:`products/products.html`.
     """
-
     # select_related and prefetch_related used to solve database query
     # performance issues
     products = (
@@ -88,14 +111,16 @@ def all_products(request):
         )
         .select_related('subcategory_id', 'manufacturer_id')
     )
-    products = get_sorted(request, products)
+    products = get_sorted_filtered(request, products)
     page_obj = get_paginated(request, products)
 
     context = {
         'categories': get_categories(),
+        'manufacturers': get_manufacturers(products),
         'page_obj': page_obj,
         'sort': request.GET.get('sort', 'name'),
-        'direction': request.GET.get('direction', 'asc')
+        'direction': request.GET.get('direction', 'asc'),
+        'selected_manufacturer': request.GET.get('manufacturer', '')
     }
 
     return render(request, 'products/products.html', context)
@@ -113,14 +138,18 @@ def products_by_category(request, category_id):
         An instance of :model:`products.Category`.
     ``categories``
         A queryset of all :model:`products.Category`, used for menu display.
+    ``manufacturers`` A queryset of :model:`products.Manufacturer`
+        used for filtering
     ``page_obj``
         A paginated queryset of :model:`products.Product` filtered by category.
     ``sort``
         Selected sorting criteria.
     ``direction``
         Selected sorting direction.
-    **Template**
+    ``selected_manufacturer``
+        Selected manufacturer for filtering.
 
+    **Template**
     :template:`products/products.html`.
     """
     # select_related used to solve databse query performance issue
@@ -134,15 +163,17 @@ def products_by_category(request, category_id):
         )
         .select_related('subcategory_id', 'manufacturer_id')
     )
-    products = get_sorted(request, products)
+    products = get_sorted_filtered(request, products)
     page_obj = get_paginated(request, products)
 
     context = {
         'category': category,
         'categories': get_categories(),
+        'manufacturers': get_manufacturers(products),
         'page_obj': page_obj,
         'sort': request.GET.get('sort', 'name'),
-        'direction': request.GET.get('direction', 'asc')
+        'direction': request.GET.get('direction', 'asc'),
+        'selected_manufacturer': request.GET.get('manufacturer', '')
     }
 
     return render(request, 'products/products.html', context)
@@ -162,12 +193,16 @@ def products_by_subcategory(request, category_id, subcategory_id):
         An instance of :model:`products.Subcategory`.
     ``categories``
         A queryset of all :model:`products.Category`, used for menu display.
+    `manufacturers`` A queryset of :model:`products.Manufacturer`
+        used for filtering
     ``page_obj``
         Paginated queryset of :model:`products.Product` filtered by subcategory
     ``sort``
         Selected sorting criteria.
     ``direction``
         Selected sorting direction.
+    ``selected_manufacturer``
+        Selected manufacturer for filtering.
 
     **Template**
 
@@ -186,16 +221,18 @@ def products_by_subcategory(request, category_id, subcategory_id):
         )
         .select_related('subcategory_id', 'manufacturer_id')
     )
-    products = get_sorted(request, products)
+    products = get_sorted_filtered(request, products)
     page_obj = get_paginated(request, products)
 
     context = {
         'category': category,
         'subcategory': subcategory,
         'categories': get_categories(),
-        'page_obj': page_obj,      
+        'manufacturers': get_manufacturers(products),
+        'page_obj': page_obj,
         'sort': request.GET.get('sort', 'name'),
-        'direction': request.GET.get('direction', 'asc')
+        'direction': request.GET.get('direction', 'asc'),
+        'selected_manufacturer': request.GET.get('manufacturer', '')
     }
 
     return render(request, 'products/products.html', context)
