@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="container mt-2 mt-md-5 documents">
+        <div class="row align-items-center">
+            <!-- Left: Tilted Image -->
+            <div class="col-md-5 text-center mb-4 mb-md-0">
+                <img src="{% static 'images/contact-us.webp' %}" class="img-fluid rounded shadow"
+                     alt="Contact Us">
+            </div>
+
+            <!-- Right: Contact Details -->
+            <div class="col-md-7">
+                <h1 class="fw-bold">Contact Us</h1>
+                <p class="lead">We’d love to hear from you! Get in touch using the details below.</p>
+
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <i class="fa-solid fa-phone text-primary me-2"></i>
+                        <strong>Phone:</strong> <a href="tel:+123456789" class="text-decoration-none">+01 234 567 89</a>
+                    </li>
+                    <li class="mb-3">
+                        <i class="fa-solid fa-envelope text-primary me-2"></i>
+                        <strong>Email:</strong> <a href="mailto:info@bbdental.shop" class="text-decoration-none">info@bbdental.shop</a>
+                    </li>
+                    <li class="mb-3">
+                        <i class="fa-solid fa-location-dot text-primary me-2"></i>
+                        <strong>Address:</strong> 36 Olszowka, 43-300 Bielsko-Biala, Poland
+                    </li>
+                    <li class="mb-3">
+                        <i class="fa-solid fa-clock text-primary me-2"></i>
+                        <strong>Working Hours:</strong> Mon-Fri, 9:00 AM - 6:00 PM
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

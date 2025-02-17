@@ -15,6 +15,16 @@ def index(request):
     return render(request, 'home/index.html')
 
 
+def contact_page(request):
+    """
+    A view to render Contact Us page.
+
+    **Template**
+    :template:`home/contact.html`
+    """
+    return render(request, 'home/contact.html')
+
+
 def privacy_policy(request):
     """
     A view to render the Privacy Policy page with pdf's

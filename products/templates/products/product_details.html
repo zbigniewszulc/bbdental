@@ -18,9 +18,9 @@
             <h1 class="fw-bold mt-4">{{ product.product_name }}</h1>
             <p class="fs-5 text-muted">{{ product.description }}</p>
             
-            <p class="fs-5"><strong><i class="fa-solid fa-tag"></i>&nbsp; Price:</strong> €{{ product.price }}</p>
-            <p class="fs-6"><strong><i class="fa-solid fa-cart-flatbed"></i>&nbsp; In Stock:</strong> {{ product.in_stock }}</p>
-            <p class="fs-6"><strong><i class="fa-solid fa-industry"></i>&nbsp; Manufacturer:</strong> 
+            <p class="fs-5"><strong><i class="fa-solid fa-tag text-primary me-2"></i>&nbsp; Price:</strong> €{{ product.price }}</p>
+            <p class="fs-6 "><strong><i class="fa-solid fa-cart-flatbed text-primary me-2"></i>&nbsp; In Stock:</strong> {{ product.in_stock }}</p>
+            <p class="fs-6"><strong><i class="fa-solid fa-industry text-primary me-2"></i>&nbsp; Manufacturer:</strong> 
                 {% if product.manufacturer_id %}
                     {{ product.manufacturer_id.manufacturer_name }}
                 {% else %}
