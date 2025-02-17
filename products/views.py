@@ -153,6 +153,28 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
+def product_details(request, product_id):
+    """
+    A view to show idyvidual product details.
+    Display information about :model:`products.Product`
+
+    **Context**
+
+    ``product``
+        An instance of :model:`products.Product`
+
+    **Template**
+    :template:`products/product_details.html`
+    """
+    product = get_object_or_404(Product, pk=product_id)
+
+    context = {
+        'product': product,
+    }
+
+    return render(request, 'products/product_details.html', context)
+
+
 def products_by_category(request, category_id):
     """
     A view to display products filtered by category.

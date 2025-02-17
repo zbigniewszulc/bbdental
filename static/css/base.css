@@ -93,6 +93,11 @@ footer {
     object-fit: contain;
 }
 
+.product_img img{
+    max-height: 600px;
+    object-fit: contain;
+}
+
 /***************************** Media queries **********************************/
 /* Medium size devices */
 @media (min-width: 768px) {

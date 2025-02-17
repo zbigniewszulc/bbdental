@@ -140,7 +140,9 @@
                     </div>
 
                     <div class="card-footer">
-                        <button class="btn btn-primary w-100">View Details</button>
+                        <a href="{% url 'product_details' product.id %}" class="btn btn-primary w-100">
+                            View Details
+                        </a>
                     </div>
                 </div>
             </div>

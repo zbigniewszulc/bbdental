@@ -432,7 +432,7 @@
 	  "model": "products.Product",
 	  "pk": 34,
 	  "fields": {
-		"product_name": "PMNG-WH-P Piaskarka Prophy-Mate",
+		"product_name": "PMNG-WH-P Prophy-Mate Sandblaster",
 		"description": "Prophy-Mate Neo nozzle with two nozzles at 60\u00b0 and 80\u00b0, toothbrush, wire and sandblaster cleaner, 5 pcs 15 g sachet FLASH pearl, key to replace work nozzles",
 		"price": "200",
 		"manufacturer_id": "26",
