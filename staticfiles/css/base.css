@@ -16,6 +16,11 @@ body {
     background-color:rgb(243, 243, 243);
 }
 
+.documents img {
+    max-height: 570px; 
+    width: auto;
+}
+
 header {
     background-color: #f0f0f0;    
 }
@@ -93,11 +98,20 @@ footer {
     object-fit: contain;
 }
 
+.product_img img{
+    max-height: 600px;
+    object-fit: contain;
+}
+
 /***************************** Media queries **********************************/
 /* Medium size devices */
 @media (min-width: 768px) {
     .container {
       max-width: 95%;
+    }
+
+    .documents img {
+        transform: skew(-9deg);
     }
 }
 /* Extra large devices */

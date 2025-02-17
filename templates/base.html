@@ -3,6 +3,8 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
+{% url 'terms_of_service' as terms_url %} 
+{% url 'privacy_policy' as privacy_url %}
 
 <!doctype html>
 <html lang="en">
@@ -64,8 +66,8 @@
   <footer class="footer mt-auto py-3 bg-white border-top shadow-sm">
     <div class="container">
       <span class="mx-3"><a class="link fw-light" href="#">&copy; {% now "Y" %} BBdental.</a></span>
-      <span class="mx-3"><a class="link fw-light" href="#">Terms of Service</a></span>
-      <span class="mx-3"><a class="link fw-light" href="#">Privacy Policy</a></span>
+      <span class="mx-3"><a class="link fw-light" href="{{ terms_url }}">Terms of Service</a></span>
+      <span class="mx-3"><a class="link fw-light" href="{{ privacy_url }}">Privacy Policy</a></span>
       <span class="mx-3"><a class="link fw-light" href="#">Contact</a></span>
     </div>
   </footer>
