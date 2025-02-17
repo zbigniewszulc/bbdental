@@ -1,10 +1,17 @@
-<header
-    class="d-flex flex-column flex-md-row align-items-center justify-content-between p-4 bg-white border-bottom shadow {% if request.path == '/' %}mb-0{% else %}mb-3{% endif %}">
-    <a href="/" aria-label="Go to homepage">
+<header class="d-flex flex-column flex-md-row align-items-center justify-content-between p-4 bg-white border-bottom shadow {% if request.path == '/' %}mb-0{% else %}mb-3{% endif %}">
+    <a href="/" aria-label="Go to homepage order-0">
       <img id="logo" class="my-0 mr-md-auto" src="{{ MEDIA_URL }}bbdental_logo.webp" alt="BBdental Logo">
     </a>
 
-    <nav class="my-2 my-md-0 mr-md-3 mt-4">
+    <form method="GET" action="{% url 'all_products' %}" class="d-flex ms-auto me-auto me-md-5 mt-4 mt-md-0 order-2 order-md-1">
+      <input type="text" name="q" class="form-control form-control-sm"
+          placeholder="Search all products..." value="{{ query|default:'' }}">
+      <button type="submit" class="btn btn-outline-primary btn-sm">
+          <i class="fa fa-search"></i>
+      </button>
+    </form>
+
+    <nav class="my-2 my-md-0 mr-md-3 mt-4 order-1 order-md-2">
       <ul class="list-unstyled d-flex flex-wrap justify-content-end gap-3 m-0 p-0">
         {% if request.user.is_authenticated %}
         {% if request.user.is_staff %}

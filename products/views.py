@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.db.models.functions import Lower
+from django.db.models import Q
 from django.core.paginator import Paginator
+from django.contrib import messages
 from .models import Product, Category, Subcategory, Manufacturer
-
 
 # Create your views here.
 
@@ -15,6 +16,7 @@ def get_sorted_filtered(request, queryset):
     sort = request.GET.get('sort', 'name')
     direction = request.GET.get('direction', 'asc')
     manufacturer_filter = request.GET.get('manufacturer', '')
+    query = request.GET.get('q', '')
 
     sort_mapping = {
         'name': 'lower_product_name',
@@ -26,6 +28,12 @@ def get_sorted_filtered(request, queryset):
 
     if direction == 'desc':
         sortkey = f'-{sortkey}'
+
+    # If query exists apply this filter
+    if query:
+        queryset = queryset.filter(
+            Q(product_name__icontains=query) | Q(description__icontains=query)
+        )
 
     # Apply manufacturer filter (if selected)
     # iexact -> case-insensitive match
@@ -98,11 +106,15 @@ def all_products(request):
         Selected sorting direction.
     ``selected_manufacturer``
         Selected manufacturer for filtering.
+    ``query``
+        Search query entered by user.
+
     **Template**
     :template:`products/products.html`.
     """
     # select_related and prefetch_related used to solve database query
     # performance issues
+    query = None
     products = (
         Product.objects
         .annotate(
@@ -111,6 +123,20 @@ def all_products(request):
         )
         .select_related('subcategory_id', 'manufacturer_id')
     )
+    # Get search query entered by user from URL
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.warning(
+                    request,
+                    "Search field empty. Showing all products."
+                )
+                return redirect(reverse('all_products'))
+            queries = Q(product_name__icontains=query) | Q(
+                description__icontains=query)
+            products = products.filter(queries)
+
     products = get_sorted_filtered(request, products)
     page_obj = get_paginated(request, products)
 
@@ -120,7 +146,8 @@ def all_products(request):
         'page_obj': page_obj,
         'sort': request.GET.get('sort', 'name'),
         'direction': request.GET.get('direction', 'asc'),
-        'selected_manufacturer': request.GET.get('manufacturer', '')
+        'selected_manufacturer': request.GET.get('manufacturer', ''),
+        'query': query
     }
 
     return render(request, 'products/products.html', context)
@@ -158,7 +185,7 @@ def products_by_category(request, category_id):
         Product.objects
         .filter(subcategory_id__category_id=category.id)
         .annotate(
-            lower_product_name=Lower('product_name'), 
+            lower_product_name=Lower('product_name'),
             lower_manufacturer_name=Lower('manufacturer_id__manufacturer_name')
         )
         .select_related('subcategory_id', 'manufacturer_id')

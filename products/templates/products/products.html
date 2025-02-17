@@ -72,12 +72,12 @@
                 <div class="d-flex align-items-center">
                     <label for="manufacturer_filter" class="me-2">Manufacturer:</label>
                     <select id="manufacturer_filter" class="form-select w-auto form-select-sm" onchange="location = this.value;">
-                        <option value="?sort={{ sort }}&direction={{ direction }}&manufacturer=" {% if not selected_manufacturer %}selected{% endif %}>
+                        <option value="?sort={{ sort }}&direction={{ direction }}{% if query %}&q={{ query|urlencode }}{% endif %}" {% if not selected_manufacturer %}selected{% endif %}>
                             All Manufacturers
                         </option>
                     
                         {% for manufacturer in manufacturers %}
-                        <option value="?sort={{ sort }}&direction={{ direction }}&manufacturer={{ manufacturer.manufacturer_name|urlencode }}" 
+                        <option value="?sort={{ sort }}&direction={{ direction }}&manufacturer={{ manufacturer.manufacturer_name|urlencode }}{% if query %}&q={{ query|urlencode }}{% endif %}" 
                             {% if selected_manufacturer == manufacturer.manufacturer_name %}selected{% endif %}>
                             {{ manufacturer.manufacturer_name }}
                         </option>
@@ -88,12 +88,12 @@
                 <div class="d-flex align-items-center">
                     <label for="sort" class="me-2">Sort by:</label>
                     <select id="sort" class="form-select w-auto form-select-sm" onchange="location = this.value;">
-                        <option value="?sort=name&direction=asc&manufacturer={{ selected_manufacturer }}" {% if sort == "name" and direction == "asc" %}selected{% endif %}>Name (A-Z)</option>
-                        <option value="?sort=name&direction=desc&manufacturer={{ selected_manufacturer }}" {% if sort == "name" and direction == "desc" %}selected{% endif %}>Name (Z-A)</option>
-                        <option value="?sort=price&direction=asc&manufacturer={{ selected_manufacturer }}" {% if sort == "price" and direction == "asc" %}selected{% endif %}>Price (Low to High)</option>
-                        <option value="?sort=price&direction=desc&manufacturer={{ selected_manufacturer }}" {% if sort == "price" and direction == "desc" %}selected{% endif %}>Price (High to Low)</option>
-                        <option value="?sort=manufacturer&direction=asc&manufacturer={{ selected_manufacturer }}" {% if sort == "manufacturer" and direction == "asc" %}selected{% endif %}>Manufacturer (A-Z)</option>
-                        <option value="?sort=manufacturer&direction=desc&manufacturer={{ selected_manufacturer }}" {% if sort == "manufacturer" and direction == "desc" %}selected{% endif %}>Manufacturer (Z-A)</option>
+                        <option value="?sort=name&direction=asc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" {% if sort == "name" and direction == "asc" %}selected{% endif %}>Name (A-Z)</option>
+                        <option value="?sort=name&direction=desc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" {% if sort == "name" and direction == "desc" %}selected{% endif %}>Name (Z-A)</option>
+                        <option value="?sort=price&direction=asc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" {% if sort == "price" and direction == "asc" %}selected{% endif %}>Price (Low to High)</option>
+                        <option value="?sort=price&direction=desc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" {% if sort == "price" and direction == "desc" %}selected{% endif %}>Price (High to Low)</option>
+                        <option value="?sort=manufacturer&direction=asc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" {% if sort == "manufacturer" and direction == "asc" %}selected{% endif %}>Manufacturer (A-Z)</option>
+                        <option value="?sort=manufacturer&direction=desc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" {% if sort == "manufacturer" and direction == "desc" %}selected{% endif %}>Manufacturer (Z-A)</option>
                     </select>
                 </div>
             </div>
@@ -155,13 +155,13 @@
                 <!-- First & Previous Buttons -->
                 {% if page_obj.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page=1&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}" aria-label="First Page" data-bs-toggle="tooltip"
+                    <a class="page-link" href="?page=1&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" aria-label="First Page" data-bs-toggle="tooltip"
                         title="First Page">
                         <i class="fa-solid fa-backward-fast"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}" aria-label="Previous Page"
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" aria-label="Previous Page"
                         data-bs-toggle="tooltip" title="Previous Page">
                         <i class="fa-solid fa-backward-step"></i>
                     </a>
@@ -176,7 +176,7 @@
                 </li>
                 {% else %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ num }}&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}">{{ num }}</a>
+                    <a class="page-link" href="?page={{ num }}&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}">{{ num }}</a>
                 </li>
                 {% endif %}
                 {% endfor %}
@@ -184,13 +184,13 @@
                 <!-- Next & Last Buttons -->
                 {% if page_obj.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}" aria-label="Next Page"
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" aria-label="Next Page"
                         data-bs-toggle="tooltip" title="Next Page">
                         <i class="fa-solid fa-forward-step"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}" aria-label="Last Page"
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&sort={{ sort }}&direction={{ direction }}&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}" aria-label="Last Page"
                         data-bs-toggle="tooltip" title="Last Page">
                         <i class="fa-solid fa-forward-fast"></i>
                     </a>
