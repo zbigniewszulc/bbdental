@@ -106,12 +106,10 @@
             <div class="col">
                 <div class="card h-100 shadow-sm d-flex flex-column product-card">
                     <!-- If product has no image dispaly default image of no image -->
-                    {% if product.picture_location.url %}
-                    <img src="{{ product.picture_location.url }}" class="card-img-top img-fluid p-2 rounded"
-                        alt="{{ product.product_name }} image">
+                    {% if product.picture_location %}
+                    <img src="{{ product.picture_location.url }}" class="card-img-top img-fluid p-2 rounded" alt="{{ product.product_name }} image">
                     {% else %}
-                    <img src="{% static 'images/noimage.webp' %}" class="card-img-top img-fluid p-2 rounded"
-                        alt="Image of no image">
+                    <img src="{% static 'images/noimage.webp' %}" class="card-img-top img-fluid p-2 rounded" alt="No Image Available">
                     {% endif %}
 
                     <div class="card-body flex-grow-1 d-flex flex-column">
