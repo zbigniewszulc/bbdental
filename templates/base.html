@@ -43,33 +43,21 @@
 
   {% include 'includes/header.html' %}
 
-  <div class="container">
-    {% if messages %}
-    <ul class="d-flex justify-content-end list-unstyled m-0">
-      {% for message in messages %}
-      <li class="alert alert-{{ message.level_tag }} alert-dismissible fade show" role="alert">
-        {{message}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </button>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </div>
+
 
 
   <div class="{% if request.path == '/' %}container-fluid p-0{% else %}container-fluid mt-3 mb-5 px-3 px-sm-4 px-xl-5{% endif %}">
     {% block content %}
     {% endblock %}
-</div>
+  </div>
 
   <!-- Footer Section -->
   <footer class="footer mt-auto py-3 bg-white border-top shadow-sm">
     <div class="container">
-      <span class="mx-3 fw-light">&copy; {% now "Y" %} BBdental.</span>
-      <span class="mx-3"><a class="link fw-light" href="{{ terms_url }}">Terms of Service</a></span>
-      <span class="mx-3"><a class="link fw-light" href="{{ privacy_url }}">Privacy Policy</a></span>
-      <span class="mx-3"><a class="link fw-light" href="{{ contact_url }}">Contact</a></span>
+      <span class="mx-3 fw-light py-3 py-md-0">&copy; {% now "Y" %} BBdental.</span>
+      <span class="mx-3 "><a class="link d-inline-block py-3 py-md-0" href="{{ terms_url }}">Terms of Service</a></span>
+      <span class="mx-3 "><a class="link d-inline-block py-3 py-md-0" href="{{ privacy_url }}">Privacy Policy</a></span>
+      <span class="mx-3 "><a class="link d-inline-block py-3 py-md-0" href="{{ contact_url }}">Contact</a></span>
     </div>
   </footer>
 

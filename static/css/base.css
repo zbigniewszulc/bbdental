@@ -16,18 +16,39 @@ body {
     background-color:rgb(243, 243, 243);
 }
 
+.alert-container {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%); /* Move to the middle */
+    width: 100%;
+    max-width: 550px;
+    text-align: center;
+    z-index: 999;
+}
+
 .documents img {
     max-height: 570px; 
     width: auto;
 }
 
 header {
+    position: relative;
     background-color: #f0f0f0;    
 }
+
 
 footer {
     text-align: center; 
     padding: 20px 0; 
+}
+
+footer .link {
+    font-weight: normal;
+}
+
+footer .link:hover {
+    font-weight: 500;
 }
 
 .active {
@@ -83,14 +104,16 @@ footer {
   }
 
 .link:hover {
-    transition: 0.2s ;
     color: var(--bs-primary) !important;  /* (Bootstrap primary color) */
-    text-decoration: overline;
-    transition: color 0.3s ease;
+    transform: scale(1.1);
 }
 
 #logo {
     height: 45px;
+}
+
+#logo:hover {
+    transform: scale(1.1);
 }
 
 .product-card img {

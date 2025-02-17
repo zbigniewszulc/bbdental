@@ -12,29 +12,68 @@
     </form>
 
     <nav class="my-2 my-md-0 mr-md-3 mt-4 order-1 order-md-2">
-      <ul class="list-unstyled d-flex flex-wrap justify-content-end gap-3 m-0 p-0">
+      <ul class="list-unstyled d-flex flex-wrap justify-content-end gap-2 gap-lg-3 m-0 p-0">
         {% if request.user.is_authenticated %}
         {% if request.user.is_staff %}
         <!-- Links visible only to staff type users -->
-        <li class="nav-item"><a class="link" href="#" aria-label="Link to All Orders page">All Orders</a></li>
-        <li class="nav-item"><a class="link" href="#" aria-label="Link to VAT page">VAT</a></li>
-        <li class="nav-item"><a class="link" href="#" aria-label="Link to Users page">Users</a></li>
+        <li class="nav-item">
+          <a class="d-flex flex-column align-items-center text-center link" href="#" aria-label="Link to All Orders page">
+            <i class="fa-solid fa-box-archive mb-1"></i> All Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="d-flex flex-column align-items-center text-center link" href="#" aria-label="Link to VAT page">
+            <i class="fa-solid fa-file-invoice-dollar mb-1"></i> VAT</a>
+        </li>
+        <li class="nav-item">
+          <a class="d-flex flex-column align-items-center text-center link" href="#" aria-label="Link to Users page">
+            <i class="fa-solid fa-users mb-1"></i> Users</a>
+        </li>
         {% else %}
         <!-- Links visible only to non-staff users -->
-        <li class="nav-item"><a class="link" href="#" aria-label="Link to Products page">Products</a></li>
-        <li class="nav-item"><a class="link" href="#" aria-label="Link to My Orders page">My Orders</a></li>
-        <li class="nav-item"><a class="link" href="#" aria-label="Link to Basket">Basket</a></li>
+        <li class="nav-item">
+          <a class="d-flex flex-column align-items-center text-center link" href="{% url 'all_products' %}" aria-label="Link to Products page">
+            <i class="fa-solid fa-tooth mb-1"></i> Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="d-flex flex-column align-items-center text-center link" href="#" aria-label="Link to My Orders page">
+            <i class="fa-solid fa-clipboard-list mb-1"></i> My Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="d-flex flex-column align-items-center text-center link" href="{% url 'view_bag' %}" aria-label="Link to Basket">
+            <i class="fa-solid fa-cart-shopping mb-1"></i> Basket</a>
+        </li>
         {% endif %}
-        <li class="nav-item"><a class="link {% if request.path == logout_url %}active{% endif %}"
-            href="{% url 'account_logout' %}" aria-label="Log off link">Logout</a>
+        <li class="nav-item">
+          <a class="d-flex flex-column align-items-center text-center link {% if request.path == logout_url %}active{% endif %}"
+            href="{% url 'account_logout' %}" aria-label="Log off link">
+            <i class="fa-solid fa-right-from-bracket mb-1"></i> Logout</a>
         </li>
         {% else %}
         <!-- Links for non-authenticated users -->
-        <li class="nav-item"><a class="link {% if request.path == login_url %}active{% endif %}"
-            href="{% url 'account_login' %}" aria-label="Log in link">Login</a></li>
-        <li class="nav-item"><a class="link {% if request.path == signup_url %}active{% endif %}"
-            href="{% url 'account_signup' %}" aria-label="Register link">Register</a></li>
+        <li class="nav-item">
+          <a class="d-flex flex-column align-items-center text-center link {% if request.path == login_url %}active{% endif %}"
+            href="{% url 'account_login' %}" aria-label="Log in link">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="d-flex flex-column align-items-center text-center link {% if request.path == signup_url %}active{% endif %}"
+            href="{% url 'account_signup' %}" aria-label="Register link">Register</a>
+          </li>
         {% endif %}
       </ul>
     </nav>
+
+    {% if messages %}
+    <div class="alert-container">
+      <ul class="list-unstyled m-0">
+        {% for message in messages %}
+        <li class="alert alert-{{ message.level_tag }} alert-dismissible fade show m-0 border border-dark" role="alert">
+          {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </button>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
   </header>
