@@ -23,7 +23,7 @@
                             <tbody>
                                 {% for item in bag_items %}
                                 <tr>
-                                    <td>{{ item.product.name }}</td>
+                                    <td>{{ item.product.product_name }}</td>
                                     <td>{{ item.quantity }}</td>
                                     <td>€{{ item.product.price|floatformat:2 }}</td>
                                     <td>€{{ item.total_price|floatformat:2 }}</td>
