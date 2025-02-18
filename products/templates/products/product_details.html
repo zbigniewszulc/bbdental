@@ -30,7 +30,7 @@
 
             <!-- Add to Shopping Bag Section -->
             {% if request.user.is_authenticated %}
-                <form method="POST" action="" class="mt-3">
+                <form method="POST" action="{% url 'add_to_bag' product.id %}" class="mt-3">
                     {% csrf_token %}
                     <div class="d-flex align-items-center">
                         <label for="quantity" class="me-2"><strong>Quantity:</strong></label>
