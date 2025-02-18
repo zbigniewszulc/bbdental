@@ -39,8 +39,8 @@
             <i class="fa-solid fa-clipboard-list mb-1"></i> My Orders</a>
         </li>
         <li class="nav-item">
-          <a class="d-flex flex-column align-items-center text-center link" href="{% url 'view_bag' %}" aria-label="Link to Basket">
-            <i class="fa-solid fa-bag-shopping mb-1"></i> Bag</a>
+          <a class="d-flex flex-column align-items-center text-center link {% if total > 0 %}text-primary{% endif %}" href="{% url 'view_bag' %}" aria-label="Link to Basket">
+            <i class="fa-solid fa-bag-shopping mb-1"></i> €{% if total > 0 %}{{ total|floatformat:2 }}{% else %}0.00{% endif %}</a>
         </li>
         {% endif %}
         <li class="nav-item">
