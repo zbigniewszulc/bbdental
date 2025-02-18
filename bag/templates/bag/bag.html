@@ -3,27 +3,67 @@
 
 {% block content %}
 <main>
-    <section class="container mt-2 mt-md-5 documents">
-        <div class="row align-items-center">
+    <section class="container mt-2 mt-md-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 mx-auto"> 
 
-            <div class="container-fluid p-0">
-                <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                    <div class="container-fluid py-5">
-                      <h1 class="display-5 fw-bold" id="custom-jumbotron">Custom jumbotron</h1>
-                      <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-                      <button class="btn btn-primary btn-lg" type="button">Example button</button>
+                <h2 class="my-4 text-center">Your Shopping Bag</h2>
+
+                {% if bag_items %}
+                    <div class="table-responsive">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in bag_items %}
+                                <tr>
+                                    <td>{{ item.product.name }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>€{{ item.product.price|floatformat:2 }}</td>
+                                    <td>€{{ item.total_price|floatformat:2 }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
-                  </div>
-            </div>
 
+                    <div class="text-end mt-3">
+                        <p class="h6">Subtotal: €{{ total|floatformat:2 }}</p>
+                        <p class="h6">Delivery: €{{ delivery|floatformat:2 }}</p>
+                        <p class="h4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></p>
+
+                        {% if free_delivery_delta > 0 %}
+                            <p class="text-warning bg-dark d-inline-block px-4 py-1 mt-2 rounded">
+                                Spend €{{ free_delivery_delta|floatformat:2 }} more to get free delivery!
+                            </p>
+                        {% endif %}
+
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-end mt-3">
+                            <a href="{% url 'all_products' %}" class="btn btn-outline-primary px-4 py-2">
+                                <i class="fa-solid fa-rotate-left"></i>&nbsp;
+                                Add More Items
+                            </a>
+                            <a href="#" class="btn btn-success px-4 py-2">
+                                Proceed to Checkout &nbsp;
+                                <i class="fa-solid fa-credit-card"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text-center">
+                        <p class="alert alert-warning mx-auto">
+                            Your shopping bag is empty. <a href="{% url 'all_products' %}">Browse Products</a>
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </section>
 </main>
-
-
-
-
-
-
-
 {% endblock %}

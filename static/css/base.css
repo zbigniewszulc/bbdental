@@ -18,7 +18,7 @@ body {
 
 .alert-container {
     position: absolute;
-    top: 100%;
+    top: 95%;
     left: 50%;
     transform: translateX(-50%); /* Move to the middle */
     width: 100%;
@@ -36,7 +36,6 @@ header {
     position: relative;
     background-color: #f0f0f0;    
 }
-
 
 footer {
     text-align: center; 
@@ -135,6 +134,9 @@ footer .link:hover {
 
     .documents img {
         transform: skew(-6deg);
+    }
+    .alert-container {
+        top: 90%;
     }
 }
 /* Extra large devices */
