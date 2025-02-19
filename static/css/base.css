@@ -130,7 +130,17 @@ footer .link:hover {
     width: auto;
 }
 
+#quantity {
+    width: 100px !important;
+}
+
 /***************************** Media queries **********************************/
+/* Small size devices */
+@media (min-width: 576px) {
+    #quantity {
+        width: 110px !important;
+    }
+}
 /* Medium size devices */
 @media (min-width: 768px) {
     .container {
