@@ -125,6 +125,11 @@ footer .link:hover {
     object-fit: contain;
 }
 
+.product-thumbnail img {
+    height: 57px; 
+    width: auto;
+}
+
 /***************************** Media queries **********************************/
 /* Medium size devices */
 @media (min-width: 768px) {
