@@ -126,11 +126,21 @@ footer .link:hover {
 }
 
 .product-thumbnail img {
-    height: 57px; 
+    max-height: 80px; 
     width: auto;
 }
 
+#quantity, .quantity {
+    width: 100px !important;
+}
+
 /***************************** Media queries **********************************/
+/* Small size devices */
+@media (min-width: 576px) {
+    #quantity {
+        width: 110px !important;
+    }
+}
 /* Medium size devices */
 @media (min-width: 768px) {
     .container {

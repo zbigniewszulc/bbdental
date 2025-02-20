@@ -102,10 +102,10 @@
 {% endblock %}
 
 {% block postload_js %}
-
 <script>
     function changeQuantity(change) {
         let quantityInput = document.getElementById('quantity');
+        // if user manually entered value is not valid, set default to 1
         let currentValue = parseInt(quantityInput.value) || 1;
         let min = parseInt(quantityInput.min);
         let max = parseInt(quantityInput.max);
@@ -116,5 +116,4 @@
         }
     }
 </script>
-
 {% endblock %}

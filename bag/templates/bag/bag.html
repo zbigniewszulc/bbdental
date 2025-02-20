@@ -11,21 +11,21 @@
 
                 {% if bag_items %}
                     <div class="table-responsive">
-                        <table class="table ">
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="d-none d-sm-block">Image</th>
+                                    <th class="d-none d-lg-block">Image</th>
                                     <th>Item</th>
-                                    <th class="d-sm-none">Q.</th>
-                                    <th class="d-none d-sm-block">Quantity</th>
-                                    <th>Price</th>
-                                    <th>Total</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-center">Price</th>
+                                    <th class="text-center">Total</th>
+                                    <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for item in bag_items %}
                                 <tr>
-                                    <td class="product-thumbnail d-none d-sm-block">
+                                    <td class="product-thumbnail d-none d-lg-block align-middle">
                                         <a href="{% url 'product_details' item.product.id %}">
                                             {% if item.product.picture_location %}
                                                 <img src="{{ item.product.picture_location.url }}" alt="{{ item.product.product_name }}">
@@ -35,13 +35,33 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="{% url 'product_details' item.product.id %}" class="text-decoration-none fw-bold">
+                                        <a href="{% url 'product_details' item.product.id %}" class="text-decoration-none">
                                             {{ item.product.product_name }}
                                         </a>
                                     </td>
-                                    <td>{{ item.quantity }}</td>
-                                    <td>€{{ item.product.price|floatformat:2 }}</td>
-                                    <td>€{{ item.total_price|floatformat:2 }}</td>
+                                    <td>
+                                        <form method="POST" action="{% url 'update_bag' %}" class="d-flex flex-column align-items-center">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                            <div class="d-flex align-items-center">
+                                                <button type="button" class="btn btn-outline-secondary" onclick="changeBagQuantity('{{ item.product.id }}', -1)" id="decrement-{{ item.product.id }}" {% if item.quantity == 1 %}disabled{% endif %}>-</button>
+                                                <input type="number" id="quantity-{{ item.product.id }}" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.in_stock }}" step="1" class="form-control text-center quantity" required>
+                                                <button type="button" class="btn btn-outline-secondary" onclick="changeBagQuantity('{{ item.product.id }}', 1)" id="increment-{{ item.product.id }}">+</button>
+                                            </div>
+                                            <button type="submit" class="btn btn-link text-primary mt-2 p-0 border-0">Update</button>
+                                        </form>
+                                    </td>
+                                    <td class="text-center">€{{ item.product.price|floatformat:2 }}</td>
+                                    <td class="text-center">€{{ item.total_price|floatformat:2 }}</td>
+                                    <td class="text-center">
+                                        <form method="POST" action="{% url 'update_bag' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                            <input type="hidden" name="quantity" value="0">
+                                            <!-- Trash Button -->
+                                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -81,4 +101,38 @@
         </div>
     </section>
 </main>
+
+{% endblock %}
+
+{% block postload_js %}
+<script>
+    function changeBagQuantity(productId, change) {
+        let quantityInput = document.getElementById(`quantity-${productId}`);
+        let incrementButton = document.getElementById(`increment-${productId}`);
+        let decrementButton = document.getElementById(`decrement-${productId}`);
+        let min = parseInt(quantityInput.min); // get min attribute
+        let max = parseInt(quantityInput.max); // get max attribute
+
+        // Handle button clicks
+        // if user manually entered value is not valid, set default to min
+        let currentValue = parseInt(quantityInput.value) || min;
+        let newValue = currentValue + change;
+
+        if (newValue >= min && newValue <= max) {
+            quantityInput.value = newValue;
+        } else if (newValue > max) {
+            quantityInput.value = max;
+        } else {
+            quantityInput.value = min;
+        }
+
+        // Disable button if min/max reached
+        incrementButton.disabled = (quantityInput.value >= max);
+        decrementButton.disabled = (quantityInput.value <= min);
+
+        if (quantityInput.value == max) {
+            alert("You have reached the maximum stock limit: " + max);
+        }
+    }
+</script>
 {% endblock %}

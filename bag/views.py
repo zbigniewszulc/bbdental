@@ -30,3 +30,20 @@ def add_to_bag(request, product_id):
 
     request.session['bag'] = bag
     return redirect(redirect_url)
+
+
+def update_bag(request):
+    if request.method == "POST":
+        product_id = request.POST.get("product_id")
+        quantity = int(request.POST.get("quantity", 1))
+
+        bag = request.session.get("bag", {})
+
+        if quantity > 0:
+            bag[product_id] = quantity  # Update quantity
+        else:
+            bag.pop(product_id, None)  # Remove item if quantity is 0
+
+        request.session["bag"] = bag  # Save updated bag to session
+
+    return redirect("view_bag")

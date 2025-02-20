@@ -126,11 +126,11 @@ footer .link:hover {
 }
 
 .product-thumbnail img {
-    height: 60px; 
+    max-height: 80px; 
     width: auto;
 }
 
-#quantity {
+#quantity, .quantity {
     width: 100px !important;
 }
 
