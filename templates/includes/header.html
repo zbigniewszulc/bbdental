@@ -40,7 +40,15 @@
         </li>
         <li class="nav-item">
           <a class="d-flex flex-column align-items-center text-center link {% if total > 0 %}text-primary{% endif %}" href="{% url 'view_bag' %}" aria-label="Link to Basket">
-            <i class="fa-solid fa-bag-shopping mb-1"></i> €{% if total > 0 %}{{ total|floatformat:2 }}{% else %}0.00{% endif %}</a>
+            <i class="fa-solid fa-bag-shopping mb-1 position-relative">
+              {% if product_count %}
+              <span class="position-absolute top-0 start-100 translate-middle-y p-2 bg-danger border border-light rounded-circle">
+                <span class="visually-hidden">Items in the bag</span>
+              </span>
+              {% endif %}
+            </i> 
+            €{% if total > 0 %}{{ total|floatformat:2 }}{% else %}0.00{% endif %}
+          </a>
         </li>
         {% endif %}
         <li class="nav-item">
