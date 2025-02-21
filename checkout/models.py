@@ -57,7 +57,8 @@ class Order(models.Model):
 
     def update_total(self):
         """
-        Update total each time a line item is added along with delivery cost
+        Update grand total each time a line item is added
+        along with delivery cost
         """
         self.subtotal = self.line_items.aggregate(
             Sum('line_item_total'))['line_item_total__sum']
@@ -83,7 +84,7 @@ class OrderLineItem(models.Model):
     )
     quantity = models.IntegerField(null=False, blank=False, default=1)
     line_item_total = models.DecimalField(
-        max_digits=6, decimal_places=2, 
+        max_digits=6, decimal_places=2,
         null=False, blank=False, editable=False
     )
 
