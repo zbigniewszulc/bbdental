@@ -26,19 +26,41 @@ def add_to_bag(request, product_id):
         quantity = int(request.POST.get('quantity'))
         redirect_url = request.POST.get('redirect_url')
         bag = request.session.get('bag', {})
+        in_stock = product.in_stock
 
+        # If the product already exists in the shopping bag
         if product_id in list(bag.keys()):
-            bag[product_id] += quantity
-            messages.success(
-                request,
-                f'{product.product_name} has been added to the shopping bag'
-            )
+            new_quantity = bag[product_id] + quantity
+            if new_quantity > in_stock:
+                bag[product_id] = in_stock
+                messages.warning(
+                    request,
+                    f'Only {in_stock} available. Added maximum '
+                    'possible quantity.'
+                )
+            else:
+                bag[product_id] = new_quantity
+                messages.success(
+                    request,
+                    f'{product.product_name} has been added to '
+                    'the shopping bag.'
+                )
+        # If it is a product which is not in the shopping bag yet
         else:
-            bag[product_id] = quantity
-            messages.success(
-                request,
-                f'{product.product_name} has been added to the shopping bag'
-            )
+            if quantity > in_stock:
+                bag[product_id] = in_stock
+                messages.warning(
+                    request,
+                    f'Only {in_stock} available. Added maximum '
+                    'possible quantity.'
+                )
+            else:
+                bag[product_id] = quantity
+                messages.success(
+                    request,
+                    f'{product.product_name} has been added '
+                    'to the shopping bag.'
+                )
 
         request.session['bag'] = bag
 
