@@ -16,17 +16,6 @@ body {
     background-color:rgb(243, 243, 243);
 }
 
-.alert-container {
-    position: absolute;
-    top: 95%;
-    left: 50%;
-    transform: translateX(-50%); /* Move to the middle */
-    width: 100%;
-    max-width: 550px;
-    text-align: center;
-    z-index: 999;
-}
-
 .documents img {
     max-height: 570px; 
     width: auto;
@@ -115,6 +104,10 @@ footer .link:hover {
     transform: scale(1.1);
 }
 
+.messages-container {
+    top: 185px;
+}
+
 .product-card img {
     height: 185px; 
     object-fit: contain;
@@ -150,8 +143,9 @@ footer .link:hover {
     .documents img {
         transform: skew(-6deg);
     }
-    .alert-container {
-        top: 90%;
+
+    .messages-container {
+        top: 60px;
     }
 }
 /* Extra large devices */
