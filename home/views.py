@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 
 # Create your views here.
 
@@ -7,12 +8,19 @@ def index(request):
     """
     A view to render index page.
 
+    **Context**
+    ``free_delivery_threshold``
+        Minimum order amount reqired to qualify for free delivery
+
     **Template**
 
     :template:`home/index.html`.
     """
-
-    return render(request, 'home/index.html')
+    free_delivery_threshold = settings.FREE_DELIVERY_THRESHOLD
+    context = {
+        'free_delivery_threshold': free_delivery_threshold
+    }
+    return render(request, 'home/index.html', context)
 
 
 def contact_page(request):
@@ -41,11 +49,11 @@ def privacy_policy(request):
     """
     privacy_pdfs = [
         {
-            "name": "Privacy and Cookies Policy", 
+            "name": "Privacy and Cookies Policy",
             "file": "privacy-and-cookies-policy.pdf"
         },
         {
-            "name": "Processing of Personal Data", 
+            "name": "Processing of Personal Data",
             "file": "processing-of-personal-data.pdf"
         }
     ]
@@ -73,10 +81,10 @@ def terms_of_service(request):
     """
     terms_pdfs = [
         {
-            "name": "Online Store Regulations", 
+            "name": "Online Store Regulations",
             "file": "online-storage-regulations.pdf"},
         {
-            "name": "Right to Withdraw", 
+            "name": "Right to Withdraw",
             "file": "right-to-withdraw.pdf"
         }
     ]

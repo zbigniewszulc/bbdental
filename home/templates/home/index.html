@@ -3,6 +3,12 @@
 
 {% block content %}
 
+<!-- Free Delivery Banner -->
+<aside class="bg-warning text-dark text-center py-2 fw-bold">
+    <i class="fa-solid fa-truck-fast"></i> Free delivery on all orders above <strong>€{{ free_delivery_threshold }}</strong>! 
+    <a href="{% url 'all_products' %}" class="text-dark" style="text-decoration: underline;">Shop now!</a>
+</aside>
+
 <main>
     <!-- Hero Section -->
     <section class="container-fluid p-0">
