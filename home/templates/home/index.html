@@ -3,19 +3,59 @@
 
 {% block content %}
 
-<div class="container-fluid p-0">
-    <div class="position-relative text-center text-white" id="home-page">
-        <!-- Background image -->
-        <img src="{% static 'images/dentist-428651_1920.webp' %}" alt="Background image" class="img-fluid w-100">
+<main>
+    <!-- Hero Section -->
+    <section class="container-fluid p-0">
+        <div class="position-relative text-center text-white" id="home-page">
+            <!-- Background image -->
+            <img src="{% static 'images/dentist-428651_1920.webp' %}" alt="Background image" class="img-fluid w-100">
 
-        <!-- Jumbotron -->
-        <div class="position-absolute top-50 start-50 translate-middle text-center rounded w-75 w-md-50 px-4 px-md-5 py-4">
-            <h1 class="fw-bold display-5">BBdental Online Shop</h1>
-            <p class="lead py-4">Your trusted source for high-quality dental products.</p>
-            <a href="{% url 'all_products' %}" class="btn btn-warning py-3 btn-lg shadow fw-bold text-dark mb-4">Start
-                Shopping</a>
+            <!-- Jumbotron -->
+            <div class="position-absolute jumbotron top-50 start-50 translate-middle text-center rounded w-75 w-md-50 px-4 px-md-5 py-4">
+                <h1 class="fw-bold display-5">BBdental Online Shop</h1>
+                <p class="lead py-4">Your trusted source for high-quality dental products.</p>
+                <nav>
+                    <a href="{% url 'all_products' %}" class="btn btn-warning py-3 btn-lg shadow fw-bold text-dark mb-4">
+                        Start Shopping
+                    </a>
+                </nav>
+                <!-- Scroll Down Button -->
+                <div class="mt-2">
+                    <button class="btn btn-outline-light btn-lg rounded-circle shadow" onclick="scrollToShipping()" aria-label="Scroll to Shipping Info">
+                        <i class="fa-solid fa-angles-down"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
 
+    <!-- Shipping Information Section -->
+    <section id="shipping-info" class="container my-5">
+        <div class="text-center">
+            <h2 class="fw-bold">Our Shipping Destinations</h2>
+            <p class="lead">We currently deliver to these countries:</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <ul class="list-group list-group-flush">
+                        <!-- Source of the flags: https://emojipedia.org/ -->
+                        <li class="list-group-item">🇨🇿 Czechia</li>
+                        <li class="list-group-item">🇫🇷 France</li>
+                        <li class="list-group-item">🇩🇪 Germany</li>
+                        <li class="list-group-item">🇮🇪 Ireland</li>
+                        <li class="list-group-item">🇵🇱 Poland</li>
+                        <li class="list-group-item">🇸🇰 Slovakia</li>
+                        <li class="list-group-item">🇬🇧 United Kingdom</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+</main>
+
+{% endblock %}
+
+<!-- JavaScript for smooth scrolling -->
+{% block postload_js %}
+    <script src="{% static 'home/js/smooth_scroll.js' %}"></script>
 {% endblock %}
