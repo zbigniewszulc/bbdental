@@ -13,7 +13,7 @@
             {% endif %}
         </div>
 
-        <!-- Product Details -->
+        <!-- Product Details -->    
         <div class="col-md-6">
             <h1 class="fw-bold mt-4">{{ product.product_name }}</h1>
             <p class="fs-5 text-muted">{{ product.description }}</p>
@@ -59,7 +59,7 @@
                         <!-- Add to Bag Button Section -->
                         <div class="mt-2 mt-lg-0">
                             {% if product.in_stock > 0 %}
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     <i class="fa-solid fa-bag-shopping"></i>&nbsp; Add to Bag
                                 </button>
                             {% else %}
@@ -74,12 +74,22 @@
                 </form>
 
                 <!-- Shopping & Checkout Buttons -->
-                <div class="d-flex flex-column flex-lg-row align-items-center gap-2 mt-5">
+                <div class="d-flex flex-column flex-lg-row align-items-center gap-4 mt-5">
                     <a href="{% url 'all_products' %}" class="btn btn-outline-primary">
-                        <i class="fa-solid fa-rotate-left"></i> Keep Shopping
+                        <i class="fa-solid fa-chevron-left"></i> &nbsp; Keep Shopping
                     </a>
-                    <a href="" class="btn btn-outline-success">
-                        Go to Checkout &nbsp;<i class="fa-solid fa-credit-card"></i>
+                    <a href="{% url 'view_bag' %}" class="btn btn-outline-primary position-relative">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        &nbsp; Shopping bag
+                            {% if product_count %}
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                €{% if total > 0 %}{{ total|floatformat:2 }}{% else %}0.00{% endif %}
+                                <span class="visually-hidden">Total of the shopping bag</span>
+                              </span>
+                            {% endif %}
+                    </a>
+                    <a href="{% url 'checkout' %}" class="btn btn-outline-success">
+                        Go to Checkout <i class="fa-solid fa-credit-card"></i>
                     </a>
                 </div>
 
