@@ -30,7 +30,8 @@ class Order(models.Model):
     town = models.CharField(max_length=50, null=False, blank=False)
     postcode = models.CharField(max_length=15, null=True, blank=True)
     # country uses django-countries package
-    country = CountryField(blank_label="Select country", countries=AllowedCountries)
+    country = CountryField(blank_label="Select country",
+                           countries=AllowedCountries)
     # Order details
     date_of_order = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(
@@ -98,4 +99,5 @@ class OrderLineItem(models.Model):
         self.order.update_total()
 
     def __str__(self):
-        return f'{self.product.product_name} on order {self.order.order_number}'
+        return f'{self.product.product_name} on order {
+            self.order.order_number}'

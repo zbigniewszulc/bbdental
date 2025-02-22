@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   {% endblock %}
 
+  {% block extra_css %}
+  {% endblock %}
+
   {% block base_js %}
   <!-- jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -42,9 +45,6 @@
 <body>
 
   {% include 'includes/header.html' %}
-
-
-
 
   <div class="{% if request.path == '/' %}container-fluid p-0{% else %}container-fluid mt-3 mb-5 px-3 px-sm-4 px-xl-5{% endif %}">
     {% block content %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <!-- Checkout section -->
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column">
+                <h2 class="mb-4">Checkout</h2>
+                <form method="POST" action="{% url 'checkout' %}" id="checkout-form">
+                    {% csrf_token %}
+                    {{ order_form|crispy }}
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success w-50 mt-3 mb-4 p-4 p-lg-3">Complete Order</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Order Summary section -->
+            <div class="col-md-6 d-flex align-items-start">
+                <div class="w-100">
+                    <h4 class="mt-4 mt-md-0">Order Summary</h4>
+                    <ul class="list-group mb-3 order-summary">
+                        {% for item in bag_items %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <a href="{% url 'product_details' item.product.id %}">
+                                    {% if item.product.picture_location %}
+                                        <img src="{{ item.product.picture_location.url }}" class="img-fluid d-none d-xl-block" alt="{{ item.product.product_name }}">
+                                    {% else %}
+                                        <img src="{% static 'images/noimage.webp' %}" class="img-fluid rounded d-none d-xl-block" alt="No image available">
+                                    {% endif %}
+                                    </a>
+                                    <a href="{% url 'product_details' item.product.id %}" class="text-decoration-none text-dark">
+                                        {{ item.product.product_name }} (x{{ item.quantity }})
+                                    </a>
+                                </div>
+                                <div>
+                                    €{{ item.product.price|floatformat:2 }} x {{ item.quantity }} = <strong>€{{ item.total_price|floatformat:2 }}</strong>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <p class="text-end"><strong>Subtotal: €{{ total|floatformat:2 }}</strong></p>
+                    <p class="text-end"><strong>Delivery: €{{ delivery|floatformat:2 }}</strong></p>
+                    <p class="text-end"><span class="bg-warning h5 py-1 px-3">Grand Total: €{{ grand_total|floatformat:2 }}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
