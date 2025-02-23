@@ -62,7 +62,7 @@ class Order(models.Model):
         along with delivery cost
         """
         self.subtotal = self.line_items.aggregate(
-            Sum('line_item_total'))['line_item_total__sum']
+            Sum('line_item_total'))['line_item_total__sum'] or 0
 
         if self.subtotal < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = settings.STANDARD_DELIVERY_COST
