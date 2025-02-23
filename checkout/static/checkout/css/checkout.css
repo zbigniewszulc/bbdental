@@ -19,6 +19,11 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 10px;
 }
 
+#success-confirmation {
+    width: 800px; 
+    font-size: 0.8rem;
+}
+
 @media (min-width: 1400px) {
     .list-group-item {
         border: none;

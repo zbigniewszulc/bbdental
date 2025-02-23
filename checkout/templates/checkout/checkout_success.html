@@ -1,13 +1,68 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
 
 {% block content %}
-<main class="d-flex justify-content-center text-center mt-5">
-    <section class="container">
-        <h1>Thank You for Your Purchase!</h1>
-        <p>Your payment has been successfully processed.</p>
-        <p><strong>Order Number:</strong> {{ order.order_number }}</p>
-        <p>A confirmation email has been sent to <strong>{{ order.email }}</strong>.</p>
-        <a href="/" class="btn btn-link mt-5">Return to Main Page</a>
+<main class="d-flex justify-content-center mt-3">
+    <section class="p-4 shadow-lg rounded" id="success-confirmation">
+        <h1 class="text-center mb-5">Thank You for Your Purchase!</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="h5">Order Details:</h2>
+                <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+                <p><strong>Order Date:</strong> {{ order.date_of_order }}</p>
+                <p><strong>Name:</strong> {{ order.name }} {{ order.surname }}</p>
+                <p><strong>Phone:</strong> {{ order.phone_number }}</p>
+                <p><strong>Email:</strong> {{ order.email }}</p>
+            </div>
+            <div class="col-md-6">
+                <h2 class="h5">Shipping Address:</h2>
+                <p>{{ order.address_line_1 }}</p>
+                {% if order.address_line_2 %}<p>{{ order.address_line_2 }}</p>{% endif %}
+                {% if order.address_line_3 %}<p>{{ order.address_line_3 }}</p>{% endif %}
+                <p>{% if order.postcode %} {{ order.postcode }}, {% endif %} {{ order.town }} </p>
+                <p>{{ order.country.name }}</p>
+            </div>
+        </div>
+
+        <h3 class="mt-4">Items Ordered:</h3>
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.line_items.all %}
+                    <tr>
+                        <td>{{ item.product.product_name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>€{{ item.line_item_total }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <h3 class="h5">Order Summary:</h3>
+                <p><strong>Subtotal:</strong> €{{ order.subtotal }}</p>
+                <p><strong>Delivery Cost:</strong> €{{ order.delivery_cost }}</p>
+                <p><strong>Grand Total:</strong> €{{ order.grand_total }}</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">Return to Main Page</a>
+        </div>
     </section>
 </main>
 {% endblock %}
