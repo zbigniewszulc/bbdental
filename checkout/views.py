@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from .forms import OrderForm
+from bag.contexts import bag_contents
+from django.conf import settings
+import stripe
 
 # Create your views here.
 
 
 def checkout(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
     bag = request.session.get('bag', {})
     # Prevent users from staying on checkout page
     # if there are no items in the shopping bag
@@ -16,11 +21,23 @@ def checkout(request):
         )
         return redirect(reverse('all_products'))
 
+    current_bag = bag_contents(request)
+    grand_total = current_bag['grand_total']
+    stripe_grand_total = round(grand_total * 100)
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_grand_total,
+        currency=settings.STRIPE_CURRENCY,
+    )
+
+    if not stripe_public_key:
+        messages.warning(request, 'Public key missing. Contact administrator')
+
     order_form = OrderForm()
     context = {
         'order_form': order_form,
-        'stripe_public_key': 'pk_test_51QvO9sFGwD2JX9ErtZZyKjUshUhU4EWDRDklBdtawNUuFtt63YQtpB5s4acGVOs5hiu5sVj2KJZgfGQP7keHTcCG008q08mc47',
-        'client_secret': 'test client secret'
+        'stripe_public_key': stripe_public_key,
+        'client_secret': intent.client_secret
     }
 
     return render(request, 'checkout/checkout.html', context)
