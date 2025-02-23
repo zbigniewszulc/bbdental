@@ -40,8 +40,9 @@ card.addEventListener('change', function(event) {
 var form = document.getElementById('checkout-form');
 form.addEventListener('submit', function(event) {
     event.preventDefault();
-    card.update({'disabled': true})
-    $('#submit_checkout').attr('disabled', true)
+    card.update({'disabled': true});
+    $('#submit_checkout').attr('disabled', true);
+    $('#loading-overlay').removeClass('d-none');
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
@@ -49,8 +50,9 @@ form.addEventListener('submit', function(event) {
     }).then(function(result) {
         if (result.error) {
             document.getElementById('card-errors').textContent = result.error.message;
-            card.update({'disabled': false})
-            $('#submit_checkout').attr('disabled', false)
+            $('#loading-overlay').addClass('d-none');
+            card.update({'disabled': false});
+            $('#submit_checkout').attr('disabled', false);
         } else {
             if (result.paymentIntent.status === 'succeeded') {
                 form.submit();
