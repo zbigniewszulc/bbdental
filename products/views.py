@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator
 from django.db.models.functions import Lower
 from django.contrib import messages
@@ -293,6 +294,7 @@ def products_menu(request):
     return render(request, 'products/products_menu.html')
 
 
+@staff_member_required
 def manage_products(request):
     """
     Display all :model:`products.Product` with sorting and filtering
@@ -333,6 +335,7 @@ def manage_products(request):
     return render(request, 'products/product_management.html', context)
 
 
+@staff_member_required
 def add_product(request):
     """
     Add new product to the database.
@@ -366,6 +369,7 @@ def add_product(request):
     return render(request, 'products/product_add.html', context)
 
 
+@staff_member_required
 def edit_product(request, product_id):
     """
     A view to edit an existing product details
@@ -404,6 +408,7 @@ def edit_product(request, product_id):
     return render(request, 'products/product_edit.html', context)
 
 
+@staff_member_required
 def delete_product(request, product_id):
     """
     A view to delete an existing product from the database
