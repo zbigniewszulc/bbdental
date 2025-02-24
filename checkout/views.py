@@ -1,10 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from django.contrib import messages
-from .forms import OrderForm
 from bag.contexts import bag_contents
 from django.conf import settings
 from products.models import Product
 from .models import OrderLineItem, Order
+from .forms import OrderForm
 import stripe
 
 # Create your views here.
