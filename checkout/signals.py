@@ -1,4 +1,5 @@
 from django.db.models.signals import post_save, post_delete
+from django.utils.timezone import localtime
 from django.core.mail import send_mail
 from django.dispatch import receiver
 from django.conf import settings
@@ -38,6 +39,10 @@ def send_order_confirmation(sender, instance, created, **kwargs):
     if created and order_items.exists():
         order.update_total()
 
+        # Convert date_of_order to human readable format
+        formatted_order_date = localtime(
+            order.date_of_order).strftime("%d %B %Y, %I:%M %p")
+
         # Build the email content
         subject = f"Order Confirmation - {order.order_number}"
         recipient_email = order.email
@@ -48,7 +53,7 @@ def send_order_confirmation(sender, instance, created, **kwargs):
         Thank you for your order! Here are your order details:
 
         Order Number: {order.order_number}
-        Order Date: {order.date_of_order}
+        Order Date: {formatted_order_date}
 
         Items Ordered:
         ---------------------------------
@@ -63,7 +68,7 @@ def send_order_confirmation(sender, instance, created, **kwargs):
         Delivery Cost: €{order.delivery_cost}
         Grand Total: €{order.grand_total}
 
-        Shipping Address:
+        Delivery Address:
         {order.address_line_1}
         {order.address_line_2 or ""}
 
