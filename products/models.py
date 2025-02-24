@@ -52,7 +52,7 @@ class Product(models.Model):
         related_name='manufacturer_products'
     )
     product_name = models.CharField(max_length=50)
-    description = models.TextField(max_length=1000, null=True, blank=True)
+    description = models.TextField(max_length=1000)
     price = models.DecimalField(
         max_digits=6,
         decimal_places=2,

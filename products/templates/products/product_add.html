@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'products/css/management.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="container mt-2 mt-md-5 prod-management">
+    <section>
+        <header class="bg-transparent">
+            <h2 class="mb-4">Add Product</h2>
+        </header>
+        <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form|crispy }}
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Add Product</button>
+                <a href="{% url 'manage_products' %}" class="btn btn-secondary">Back to All Products</a>
+            </div>
+        </form>
+    </section>
+</main>
+{% endblock %}

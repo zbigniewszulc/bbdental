@@ -96,7 +96,6 @@ def checkout(request):
             amount=stripe_grand_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        print(f"Stripe Client Secret: {intent.client_secret}")  # Debugging
     except Exception as e:
         messages.error(request, f"Stripe Payment Error: {e}")
         intent = None  # Prevent further errors
