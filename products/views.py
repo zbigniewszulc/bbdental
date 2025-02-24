@@ -354,7 +354,7 @@ def add_product(request):
             return redirect('manage_products')
         else:
             messages.success(
-                request, 
+                request,
                 'Unknown error occurred while adding the product'
             )
     else:
@@ -383,12 +383,16 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Product updated successfully!')
+            messages.success(
+                request,
+                f'Product: {product.product_name} updated successfully!'
+            )
             return redirect('edit_product', product_id=product.id)
         else:
             messages.error(
                 request,
-                'Error updating product. Please check the entered details'
+                f'Error updating product: {product.product_name}. '
+                'Please check the entered details'
             )
     else:
         form = ProductForm(instance=product)
@@ -398,3 +402,34 @@ def edit_product(request, product_id):
         'product': product
     }
     return render(request, 'products/product_edit.html', context)
+
+
+def delete_product(request, product_id):
+    """
+    A view to delete an existing product from the database
+
+    **Context**
+    An instance of :model:`products.Product`
+
+    **Template**
+    :template:`products/product_management.html`.
+    """
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == "POST":
+        product.delete()
+        messages.success(
+            request,
+            f"Product: {product.product_name} deleted successfully!"
+        )
+        return redirect("manage_products")
+    else:
+        messages.error(
+             request,
+             "There was an issue with deleting the requested product"
+        )
+
+    context = {
+        "product": product
+    }
+    return render(request, "products/product_management.html", context)
