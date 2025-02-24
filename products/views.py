@@ -131,7 +131,7 @@ def all_products(request):
             if not query:
                 messages.warning(
                     request,
-                    "Search field empty. Showing all products."
+                    'Search field empty. Showing all products.'
                 )
                 return redirect(reverse('all_products'))
             queries = Q(product_name__icontains=query) | Q(
@@ -330,7 +330,7 @@ def manage_products(request):
         'direction': request.GET.get('direction', 'asc'),
         'page_obj': page_obj
     }
-    return render(request, "products/product_management.html", context)
+    return render(request, 'products/product_management.html', context)
 
 
 def add_product(request):
@@ -346,21 +346,55 @@ def add_product(request):
 
     :template:`products/product_add.html`.
     """
-    if request.method == "POST":
+    if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, "Product added successfully!")
-            return redirect("manage_products")
+            messages.success(request, 'Product added successfully!')
+            return redirect('manage_products')
         else:
             messages.success(
                 request, 
-                "Unknown error occurred while adding the product"
+                'Unknown error occurred while adding the product'
             )
     else:
         form = ProductForm()
 
     context = {
-        "form": form
+        'form': form
     }
-    return render(request, "products/product_add.html", context)
+    return render(request, 'products/product_add.html', context)
+
+
+def edit_product(request, product_id):
+    """
+    A view to edit an existing product details
+
+    **Context**
+    ``form``
+        The form used to edit product.
+
+    **Template**
+    :template:`products/product_edit.html`.
+    """
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product updated successfully!')
+            return redirect('edit_product', product_id=product.id)
+        else:
+            messages.error(
+                request,
+                'Error updating product. Please check the entered details'
+            )
+    else:
+        form = ProductForm(instance=product)
+
+    context = {
+        'form': form,
+        'product': product
+    }
+    return render(request, 'products/product_edit.html', context)
