@@ -8,5 +8,6 @@ urlpatterns = [
          name='products_by_category'),
     path('<int:category_id>/<int:subcategory_id>/',
          views.products_by_subcategory, name='products_by_subcategory'),
-    path('menu/', views.products_menu, name='products_menu')
+    path('menu/', views.products_menu, name='products_menu'),
+    path("manage/", views.manage_products, name='manage_products')
 ]

@@ -17,12 +17,8 @@
         {% if request.user.is_staff %}
         <!-- Links visible only to staff type users -->
         <li class="nav-item">
-          <a class="d-flex flex-column align-items-center text-center link" href="#" aria-label="Link to All Orders page">
-            <i class="fa-solid fa-box-archive mb-1"></i> All Orders</a>
-        </li>
-        <li class="nav-item">
-          <a class="d-flex flex-column align-items-center text-center link" href="#" aria-label="Link to Users page">
-            <i class="fa-solid fa-users mb-1"></i> Users</a>
+          <a class="d-flex flex-column align-items-center text-center link" href="{% url 'manage_products' %}" aria-label="Link to Product Management page">
+            <i class="fa-solid fa-box-archive mb-1"></i>All Products</a>
         </li>
         {% else %}
         <!-- Links visible only to non-staff users -->

@@ -290,3 +290,44 @@ def products_by_subcategory(request, category_id, subcategory_id):
 def products_menu(request):
     """ A view to render products menu """
     return render(request, 'products/products_menu.html')
+
+
+def manage_products(request):
+    """
+    Display all :model:`products.Product` with sorting and filtering
+
+    **Context**
+
+    ``manufacturers``
+        A list of all available manufacturers to filter the products by.
+    ``selected_manufacturer``
+        The manufacturer currently selected for filtering.
+    ``sort``
+        Selected sorting method (e.g., name, price, or manufacturer).
+    ``direction``
+        The direction of sorting, either ascending or descending.
+    ``page_obj``
+        A paginated list of products
+
+    **Template**
+
+    :template:`products/product_management.html`.
+    """
+    products = Product.objects.annotate(
+        lower_product_name=Lower('product_name'),
+        lower_manufacturer_name=Lower('manufacturer_id__manufacturer_name')
+    ).select_related('subcategory_id', 'manufacturer_id')
+
+    products = get_sorted_filtered(request, products)
+
+    page_obj = get_paginated(request, products)
+
+    context = {
+        'manufacturers': get_manufacturers(products),
+        'selected_manufacturer': request.GET.get('manufacturer', ''),
+        'sort': request.GET.get('sort', 'name'),
+        'direction': request.GET.get('direction', 'asc'),
+        'page_obj': page_obj
+    }
+    print(context)
+    return render(request, "products/product_management.html", context)
