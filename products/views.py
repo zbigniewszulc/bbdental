@@ -379,22 +379,19 @@ def edit_product(request, product_id):
         A queryset of all :model:`products.Manufacturer` (for dropdown)
     ``subcategories``
         A queryset of all :model:`products.Subcategory` (for dropdown)
-    ``current_manufacturer``
-        Used for preselecting the manufacturer in the form
-    ``current_subcategory``
-        Used for preselecting the subcategory in the form
-
 
     **Template**
     :template:`products/product_edit.html`.
     """
     product = get_object_or_404(Product, id=product_id)
-
-    # Fetch the manufacturers and subcategories to populate the select fields
-    manufacturers = Manufacturer.objects.all()
-    subcategories = Subcategory.objects.all()
+    manufacturers = Manufacturer.objects.all().order_by('manufacturer_name')
+    subcategories = Subcategory.objects.all().order_by('subcategory_name')
 
     if request.method == 'POST':
+        if 'picture_location-clear' in request.POST:
+            product.picture_location = None
+            product.save
+
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
@@ -417,8 +414,6 @@ def edit_product(request, product_id):
         'product': product,
         'manufacturers': manufacturers,
         'subcategories': subcategories,
-        'current_manufacturer': product.manufacturer_id,  
-        'current_subcategory': product.subcategory_id  
     }
     return render(request, 'products/product_edit.html', context)
 

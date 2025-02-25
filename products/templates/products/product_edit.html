@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
 {% load static %}
 
 {% block extra_css %}
@@ -12,15 +11,94 @@
         <header class="bg-transparent">
             <h2>Edit Product - {{ product.product_name }}</h2>
         </header>
-        
+
         <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             {% csrf_token %}
             <fieldset class="mb-4">
                 <legend class="sr-only">Edit Product Information</legend>
-                <div class="form-group">
-                    {{ form|crispy }} 
+                
+                <div class="form-group mb-3">
+                    <label for="id_product_name" class="form-label requiredField">
+                        Product Name <span>*</span>
+                    </label>
+                    <input type="text" name="product_name" value="{{ product.product_name }}" maxlength="50" class="textinput form-control" required id="id_product_name">
                 </div>
+
+                <div class="form-group mb-3">
+                    <label for="id_description" class="form-label requiredField">
+                        Description <span>*</span>
+                    </label>
+                    <textarea name="description" cols="40" rows="10" maxlength="1000" class="textarea form-control" required id="id_description">{{ product.description }}</textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="id_price" class="form-label requiredField">
+                        Price <span>*</span>
+                    </label>
+                    <input type="number" name="price" value="{{ product.price }}" step="0.01" class="numberinput form-control" required id="id_price">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="id_in_stock" class="form-label requiredField">
+                        In Stock <span>*</span>
+                    </label>
+                    <input type="number" name="in_stock" value="{{ product.in_stock }}" min="0" class="numberinput form-control" required id="id_in_stock">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="id_picture_location" class="form-label">
+                        Image
+                    </label>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text">Currently</span>
+                        <div class="form-control d-flex h-auto">
+                            <span class="text-break flex-grow-1">
+                                {% if product.picture_location %}
+                                    <a href="{{ product.picture_location.url }}" target="_blank">{{ product.picture_location }}</a>
+                                {% else %}
+                                    No image uploaded yet.
+                                {% endif %}
+                            </span>
+                            <span class="align-self-center ps-2"> 
+                                <span class="form-check"> 
+                                    <input type="checkbox" name="picture_location-clear" id="picture_location-clear_id" 
+                                    class="form-check-input"> 
+                                    <label class="form-check-label mb-0" for="picture_location-clear_id">
+                                        Clear
+                                    </label> 
+                                </span> 
+                            </span>
+                        </div>
+                    </div>
+                    <input type="file" name="picture_location" class="form-control" id="id_picture_location">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="id_manufacturer_id" class="form-label requiredField">
+                        Manufacturer <span>*</span>
+                    </label>
+                    <select name="manufacturer_id" class="form-control select form-select" required id="id_manufacturer_id">
+                        <option value="">Select Manufacturer</option>
+                        {% for manufacturer in manufacturers %}
+                            <option value="{{ manufacturer.id }}" {% if manufacturer.id == product.manufacturer_id.id %} selected {% endif %}>{{ manufacturer.manufacturer_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="id_subcategory_id" class="form-label requiredField">
+                        Subcategory <span>*</span>
+                    </label>
+                    <select name="subcategory_id" class="form-control select form-select" required id="id_subcategory_id">
+                        <option value="">Select Subcategory</option>
+                        {% for subcategory in subcategories %}
+                            <option value="{{ subcategory.id }}" {% if subcategory.id == product.subcategory_id.id %} selected {% endif %}>{{ subcategory.subcategory_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
             </fieldset>
+
             <div class="form-group">
                 <button type="submit" class="btn btn-warning">Update Product</button>
                 <a href="{% url 'manage_products' %}" class="btn btn-secondary">Back to All Products</a>
