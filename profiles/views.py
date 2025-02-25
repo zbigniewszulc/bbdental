@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
+from .models import UserProfile
 # Create your views here.
 
 
@@ -7,6 +7,9 @@ def profile(request):
     """
     Render user's profile page
     """
-    context = {}
+    profile = get_object_or_404(UserProfile, user=request.user)
+    context = {
+        'profile': profile,
+    }
 
     return render(request, 'profiles/profile.html', context)

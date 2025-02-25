@@ -28,8 +28,8 @@
             <i class="fa-solid fa-tooth mb-1"></i> Products</a>
         </li>
         <li class="nav-item">
-          <a class="d-flex flex-column align-items-center text-center link" href="#" aria-label="Link to My Orders page">
-            <i class="fa-solid fa-clipboard-list mb-1"></i> My Orders</a>
+          <a class="d-flex flex-column align-items-center text-center link" href="{% url 'profile' %}" aria-label="Link to My Profile page">
+            <i class="fa-solid fa-clipboard-list mb-1"></i> My Profile</a>
         </li>
         <li class="nav-item">
           <a class="d-flex flex-column align-items-center text-center link {% if total > 0 %}text-primary{% endif %}" href="{% url 'view_bag' %}" aria-label="Link to Basket">
