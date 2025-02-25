@@ -32,6 +32,13 @@
 ![deletion](/static/documentation/14-staff-access-product-deletion.png "product deletion")
 
 
+# Newsletter Subscription
+## Mailchimp
+- Banner installed:
+  ![mailchimp-banner](static/documentation/15-mailchimp-banner.png)
+- Subscription overview:
+- ![mailchimp-overview](static/documentation/16-mailchimp-overview.png)
+
 
 # Creadits
 1. https://docs.djangoproject.com/en/5.1/ref/contrib/messages/

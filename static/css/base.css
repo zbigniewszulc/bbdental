@@ -45,6 +45,25 @@ footer .link:hover {
     font-weight: 500;
 }
 
+/* Facebook */
+.facebook-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1877F2; 
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.facebook-link i {
+    margin-right: 5px;
+    font-size: 22px;
+}
+
+.facebook-link:hover {
+    color: #0a58ca; 
+    text-decoration: underline;
+}
+
 .group-container {
     min-height: 280px; 
     border-radius: 15px;
