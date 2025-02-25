@@ -1,5 +1,5 @@
 .order-history {
-    max-height: 300px;
+    max-height: 1200px; 
     overflow-y: auto;  
     padding-right: 15px;
 }
