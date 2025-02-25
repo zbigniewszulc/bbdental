@@ -3,16 +3,16 @@
 {% load crispy_forms_tags %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
 
 {% block content %}
     <div class="container my-5">
         <!-- My profile section -->
         <div class="row">
-            <div class="col-md-6 d-flex flex-column">
+            <div class="col-md-6 d-flex flex-column mb-4">
                 <h2 class="mb-4">My profile</h2>
-                <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <form method="POST" action="{% url 'profile' %}">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <button type="submit" class="btn btn-primary mt-3">Update Profile</button>
@@ -20,15 +20,15 @@
             </div>
 
             <!-- Order History section -->
-            <div class="col-md-6 d-flex flex-column">
-                <h2 class="mb-4">Order History</h2>
+            <div class="col-md-6 d-flex flex-column order-history">
+                <h2 class="mb-3">Order History</h2>
                 <ul class="list-group">
                     {% for order in orders %}
                         <li class="list-group-item">
                             Order Number: {{ order.order_number }} <br>
                             Order Date: {{ order.date_of_order }} <br>
                             Total: €{{ order.grand_total|floatformat:2 }} <br>
-                            <a href="{% url 'order_details' order.id %}">View Order Details</a>
+                            <a href="{% url 'order_history' order.order_number %}">View Order Details</a>
                         </li>
                     {% empty %}
                         <li class="list-group-item">No orders found.</li>

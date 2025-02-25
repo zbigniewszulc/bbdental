@@ -8,7 +8,18 @@ from checkout.models import Order
 
 def profile(request):
     """
-    Render user's profile page
+    Render the user's profile page, where they can update their details
+    and view past orders.
+
+    **Context**
+
+    ``form``
+        An instance of :model:`profiles.UserProfileForm`
+    ``orders``
+        A queryset of :model:`checkout.Order`
+
+    **Template**
+    :template:`profiles/profile.html`.
     """
     profile = get_object_or_404(UserProfile, user=request.user)
 
@@ -28,3 +39,24 @@ def profile(request):
     }
 
     return render(request, 'profiles/profile.html', context)
+
+
+def order_history(request, order_number):
+    """
+    Render detailed view of a specific order's information.
+
+    **Context**
+    ``order``
+        An instance of :model:`checkout.Order`
+
+    **Template**
+    :template:`checkout/checkout_success.html`
+    """
+    order = get_object_or_404(Order, order_number=order_number)
+
+    context = {
+        'order': order,
+        'coming_from_profile': True
+    }
+
+    return render(request, 'checkout/checkout_success.html', context)
