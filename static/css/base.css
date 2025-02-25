@@ -123,6 +123,10 @@ footer .link:hover {
     width: auto;
 }
 
+.search-button {
+    border-color: #dee2e6;
+}
+
 #quantity, .quantity {
     width: 100px !important;
 }
