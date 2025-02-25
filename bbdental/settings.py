@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
-    'django_countries'
+    'django_countries',
+    'profiles',
 ]
 
 SITE_ID = 1

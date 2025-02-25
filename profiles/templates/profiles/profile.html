@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <!-- My profile section -->
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column">
+                <h2 class="mb-4">My profile</h2>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block postload_js %}
+{% endblock %}
