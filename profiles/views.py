@@ -31,7 +31,8 @@ def profile(request):
                 request, 'Your profile has been updated successfully'
             )
     form = UserProfileForm(instance=profile)
-    orders = Order.objects.filter(user_profile=profile)
+    orders = Order.objects.filter(
+        user_profile=profile).order_by('-date_of_order')
 
     context = {
         'form': form,
