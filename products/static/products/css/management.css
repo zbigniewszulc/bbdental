@@ -10,3 +10,7 @@
     max-height: 60px;
     max-width: 60px;
 }
+
+#edit-product-form img {
+    height: 100px;
+}

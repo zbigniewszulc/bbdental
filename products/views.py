@@ -289,11 +289,6 @@ def products_by_subcategory(request, category_id, subcategory_id):
     return render(request, 'products/products.html', context)
 
 
-def products_menu(request):
-    """ A view to render products menu """
-    return render(request, 'products/products_menu.html')
-
-
 @staff_member_required
 def manage_products(request):
     """
@@ -375,13 +370,29 @@ def edit_product(request, product_id):
     A view to edit an existing product details
 
     **Context**
+
+    ``product``
+        An instance of :model:`products.Product`
     ``form``
-        The form used to edit product.
+        The form used to edit the product details.
+    ``manufacturers``
+        A queryset of all :model:`products.Manufacturer` (for dropdown)
+    ``subcategories``
+        A queryset of all :model:`products.Subcategory` (for dropdown)
+    ``current_manufacturer``
+        Used for preselecting the manufacturer in the form
+    ``current_subcategory``
+        Used for preselecting the subcategory in the form
+
 
     **Template**
     :template:`products/product_edit.html`.
     """
     product = get_object_or_404(Product, id=product_id)
+
+    # Fetch the manufacturers and subcategories to populate the select fields
+    manufacturers = Manufacturer.objects.all()
+    subcategories = Subcategory.objects.all()
 
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -403,7 +414,11 @@ def edit_product(request, product_id):
 
     context = {
         'form': form,
-        'product': product
+        'product': product,
+        'manufacturers': manufacturers,
+        'subcategories': subcategories,
+        'current_manufacturer': product.manufacturer_id,  
+        'current_subcategory': product.subcategory_id  
     }
     return render(request, 'products/product_edit.html', context)
 
