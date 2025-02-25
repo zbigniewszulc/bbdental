@@ -11,7 +11,10 @@
         <!-- My profile section -->
         <div class="row">
             <div class="col-md-6 d-flex flex-column mb-4">
-                <h2 class="mb-4">My profile</h2>
+                <div class="d-flex align-middle gap-3">
+                    <i class="fs-1 fa-solid fa-user"></i>
+                    <h2 class="mb-4">My profile</h2> 
+                </div>  
                 <form method="POST" action="{% url 'profile' %}">
                     {% csrf_token %}
                     {{ form|crispy }}
@@ -21,7 +24,10 @@
 
             <!-- Order History section -->
             <div class="col-md-6 d-flex flex-column order-history">
-                <h2 class="mb-3">Order History</h2>
+                <div class="d-flex align-middle gap-3">
+                    <i class="fa-solid fa-truck-fast fs-1"></i>
+                    <h2 class="mb-3">Order History</h2>
+                </div>
                 <ul class="list-group">
                     {% for order in orders %}
                         <li class="list-group-item">
