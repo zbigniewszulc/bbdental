@@ -127,6 +127,10 @@ footer .link:hover {
     border-color: #dee2e6;
 }
 
+#not-found {
+    max-width: 700px !important;
+}
+
 #quantity, .quantity {
     width: 100px !important;
 }

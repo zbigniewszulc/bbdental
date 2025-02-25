@@ -1,0 +1,31 @@
+.container {
+    max-width: 1430px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #1a8eb8;
+}
+
+#card-element {
+    border: 1px solid #ced4da;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.order-summary img{
+    width: 50px;
+    height: 50px; 
+    object-fit: cover; 
+    margin-right: 10px;
+}
+
+#success-confirmation {
+    width: 800px; 
+    font-size: 0.8rem;
+}
+
+@media (min-width: 1400px) {
+    .list-group-item {
+        border: none;
+    }
+}
