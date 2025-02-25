@@ -25,7 +25,10 @@
                         <div id="card-errors" class="text-danger mt-2" role="alert"></div>
                     </fieldset>
                     <div class="text-center">
-                        <button type="submit" id="submit_checkout" class="btn btn-success w-50 mt-3 mb-4 p-4 p-lg-3">Complete Order</button>
+                        <button type="submit" id="submit_checkout" class="btn btn-success w-50 mt-3 mb-4 p-4 p-lg-3">
+                            Complete Order &nbsp; &nbsp;
+                            <i class="fa-solid fa-hand-pointer"></i>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -56,7 +59,16 @@
                     </ul>
                     <p class="text-end"><strong>Subtotal: €{{ total|floatformat:2 }}</strong></p>
                     <p class="text-end"><strong>Delivery: €{{ delivery|floatformat:2 }}</strong></p>
-                    <p class="text-end"><span class="bg-warning h5 py-1 px-3">Grand Total: €{{ grand_total|floatformat:2 }}</span></p>
+                    <p class="text-end my-3"><span class="bg-dark text-white fs-4 py-1 px-4">Grand Total: €{{ grand_total|floatformat:2 }}</span></p>
+                    {% if free_delivery_delta > 0 %}
+                    <div class="w-100 text-end mt-1">
+                        <a href="{% url 'all_products' %}" class="text-warning bg-dark d-inline-block h6 px-3 py-1 text-end text-decoration-none">
+                            <i class="fa-solid fa-arrow-right"></i> &nbsp;
+                            Spend €{{ free_delivery_delta|floatformat:2 }} more to get free delivery! &nbsp;
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

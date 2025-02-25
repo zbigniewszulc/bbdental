@@ -74,7 +74,7 @@
                         <p class="h4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></p>
 
                         {% if free_delivery_delta > 0 %}
-                            <p class="text-warning bg-dark d-inline-block px-4 py-1 mt-2 rounded">
+                            <p class="text-warning bg-dark d-inline-block px-4 py-1 mt-2 rounded-0">
                                 Spend €{{ free_delivery_delta|floatformat:2 }} more to get free delivery!
                             </p>
                         {% endif %}
