@@ -1,15 +1,19 @@
 from django.shortcuts import get_object_or_404, render, redirect, reverse
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from bag.contexts import bag_contents
 from django.conf import settings
 from products.models import Product
+from profiles.models import UserProfile
 from .models import OrderLineItem, Order
 from .forms import OrderForm
+
 import stripe
 
 # Create your views here.
 
 
+@login_required
 def checkout(request):
     """
     Handle the checkout process.
@@ -26,10 +30,40 @@ def checkout(request):
     **Template**
     :template:`checkout/checkout.html`.
     """
+    bag = request.session.get('bag', {})
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     intent = None
     order_form = OrderForm()
+
+    try:
+        # Get the user's profile to pre-fill the order form
+        profile = UserProfile.objects.get(user=request.user)
+        print('Profile :::')
+        print(profile)
+        order_form = OrderForm(initial={
+            'name': profile.user.first_name,
+            'surname': profile.user.last_name,
+            'email': profile.user.email,
+            'phone_number': profile.default_phone_number,
+            'country': profile.default_country,
+            'postcode': profile.default_postcode,
+            'town': profile.default_town,
+            'address_line_1': profile.default_address_line_1,
+            'address_line_2': profile.default_address_line_2,
+            'address_line_3': profile.default_address_line_3,
+            'county': profile.default_country,
+        })
+        if bag:
+            messages.info(
+                request, 'Profile details pre-filled for faster checkout.')
+    except UserProfile.DoesNotExist:
+        order_form = OrderForm()
+        messages.warning(
+            request,
+            'Your profile details not found. '
+            'Please enter your details manually.'
+        )
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -48,6 +82,36 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
+
+            # Save data to profile if checkbox selected
+            if 'save_profile' in request.POST:
+                profile = UserProfile.objects.get(user=request.user)
+                profile.user.first_name = order_form.cleaned_data['name']
+                profile.user.last_name = order_form.cleaned_data['surname']
+                profile.user.save() # Save User instance
+                profile.default_phone_number = order_form.cleaned_data[
+                    'phone_number']
+                profile.default_address_line_1 = order_form.cleaned_data[
+                    'address_line_1']
+                profile.default_address_line_2 = order_form.cleaned_data[
+                    'address_line_2']
+                profile.default_address_line_3 = order_form.cleaned_data[
+                    'address_line_3']
+                profile.default_town = order_form.cleaned_data['town']
+                profile.default_postcode = order_form.cleaned_data['postcode']
+                profile.default_country = order_form.cleaned_data['country']
+                profile.save() # Save profile instance
+                messages.success(
+                    request, 
+                    "Your profile has been updated with these details."
+                )
+
+            # Assign the order to the user profile if logged in
+            if request.user.is_authenticated:
+                profile = UserProfile.objects.get(user=request.user)
+                order.user_profile = profile
+                order.save()
+
             for product_id, quantity in bag.items():
                 try:
                     product = Product.objects.get(id=product_id)
@@ -73,9 +137,6 @@ def checkout(request):
                 'Form validation error. Please check your data and try again'
             )
 
-    # Even after a failed form submission at first time
-    # always generate PaymentIntent
-    bag = request.session.get('bag', {})
     # Prevent users from staying on checkout page
     # if there are no items in the shopping bag
     if not bag:
