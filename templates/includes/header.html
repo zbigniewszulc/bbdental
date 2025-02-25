@@ -1,6 +1,7 @@
+{% load static %}
 <header class="d-flex flex-column flex-md-row align-items-center justify-content-between p-4 bg-white border-bottom shadow {% if request.path == '/' %}mb-0{% else %}mb-3{% endif %}">
     <a href="/" aria-label="Go to homepage order-0">
-      <img id="logo" class="my-0 mr-md-auto" src="{{ MEDIA_URL }}bbdental_logo.webp" alt="BBdental Logo">
+      <img id="logo" class="my-0 mr-md-auto" src="{% static 'images/bbdental_logo.webp' %}" alt="BBdental Logo">
     </a>
 
     <form method="GET" action="{% url 'all_products' %}" class="d-flex ms-auto me-auto me-md-5 mt-4 mt-md-0 order-2 order-md-1">
