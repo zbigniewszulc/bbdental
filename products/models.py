@@ -11,10 +11,6 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     category_name = models.CharField(max_length=30)
-    category_vat = models.DecimalField(
-        max_digits=5, decimal_places=2, null=True, blank=True, default=0
-    )
-    category_pic_loc = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.category_name

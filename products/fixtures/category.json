@@ -3,54 +3,42 @@
 		"pk": 1,
 		"model": "products.Category",
 		"fields": {
-			"category_name": "Endodontics",
-			"category_vat": "12.00",
-			"category_pic_loc": "endo_g7.webp"
+			"category_name": "Endodontics"
 		}
 	},
 	{
 		"pk": 2,
 		"model": "products.Category",
 		"fields": {
-			"category_name": "Prosthetic",
-			"category_vat": "11.00",
-			"category_pic_loc": "pros_c6.webp"
+			"category_name": "Prosthetic"
 		}
 	},
 	{
 		"pk": 3,
 		"model": "products.Category",
 		"fields": {
-			"category_name": "Linking systems",
-			"category_vat": "10.00",
-			"category_pic_loc": "con_sys_l1.webp"
+			"category_name": "Linking systems"
 		}
 	},
 	{
 		"pk": 4,
 		"model": "products.Category",
 		"fields": {
-			"category_name": "Filling materials",
-			"category_vat": "9.00",
-			"category_pic_loc": "filling_compo_21.webp"
+			"category_name": "Filling materials"
 		}
 	},
 	{
 		"pk": 5,
 		"model": "products.Category",
 		"fields": {
-			"category_name": "Dental ends",
-			"category_vat": "8.00",
-			"category_pic_loc": "dent_endT5.webp"
+			"category_name": "Dental ends"
 		}
 	},
 	{
 		"pk": 6,
 		"model": "products.Category",
 		"fields": {
-			"category_name": "Appliances",
-			"category_vat": "7.00",
-			"category_pic_loc": "app_mg7.webp"
+			"category_name": "Appliances"
 		}
 	}
 ]

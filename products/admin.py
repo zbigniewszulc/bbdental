@@ -7,8 +7,6 @@ from .models import Category, Subcategory, Manufacturer, Product
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'category_name',
-        'category_vat',
-        'category_pic_loc',
     )
     ordering = ('category_name',)
 
