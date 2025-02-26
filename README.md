@@ -309,6 +309,29 @@ The issue above has been resolved.
 
 ![alt text](static/documentation/26-flake8.png)
 
+### stripe_element.js - no issues found 
+
+![alt text](static/documentation/27-javacript-test.png)
+
+
+### script.js in products app - issues found 
+
+![alt text](static/documentation/28-script.js-issue.png)
+
+Issue resolved:
+![alt text](static/documentation/29-sacript-error.png)
+
+
+### script.js in static - issues found 
+
+![alt text](static/documentation/javascrip-error.png)
+
+Issue resolved:
+![alt text](static/documentation/javascript-issueresolved.png)
+
+
+
+
 
 
 # Credits
