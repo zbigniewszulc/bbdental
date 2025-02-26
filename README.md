@@ -32,6 +32,9 @@
 ![deletion](/static/documentation/14-staff-access-product-deletion.png "product deletion")
 
 
+# Database Schema Diagram
+![database](static/documentation/17-bbdebtal-database-schema.png)
+
 # Newsletter Subscription
 ## Mailchimp
 - Banner installed:
