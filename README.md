@@ -1,35 +1,139 @@
 
+# User stories 
+### User register and login
+As a user I can log in securely so that it will allow me to do shopping
+
+**Acceptance criteria**
+
+- Users can register a new account using an email, username, and password
+
+- Users can log in using either their username or email along with their password
+
+- User must be able to reset their own password
+
+### Browsing Products
+As a user I can browse products so that I can familiarise myself with what is available in the shop
+
+**Acceptance criteria**
+
+- Users should be able to view products categorised by type
+
+- Users should be able to filter products based on specific criteria, such as category, subcategory or manufacturer
+
+- Users should be able to sort products by price, alphabetically, or by manufacturer
+
+### Individual product display
+As a user I can view indivudual product details so that I can make purchasing decision based on the product's specifications, availability, and price
+
+**Acceptance criteria**
+
+- I can see the product name, description, price, manufacturer, and available stock
+
+- If the product has an image, it needs to be displayed
+
+- There is "Add to Bag" button that allows me to add the selected quantity to my cart. I cannot add more than the available stock. Also, "Add to Bag" should be available for logged in users only.
+
+- There are three additional buttons: "Keep Shopping" to return to the product list, "Shopping Bag" and "Go to Checkout" to proceed with the purchase. Same as above, this should be available for logged in users only.
+
+### Search Functionality
+As a user I can search for products globally so that I can quickly find items for faster shopping experience
+
+**Acceptance criteria**
+
+- Search button must be clearly visible, ideally on every page and in the header
+
+- Given search results should be possible to sort and filter by manufacturer
+
+- Search term should be case-insensitive for better results
+
+### Shopping bag
+As a logged-in user I can view my shopping bag so that I can easily review my selected items, check my order summary, and make any necessary adjustments before completing my purchase
+
+**Acceptance criteria**
+
+- The shopping bag should easly accessible, allowing the user to review items they’ve added.
+
+- Users must be able to update item quantities or remove products from the bag as needed
+
+- The order summary should clearly display item details, prices, and the total cost
+
+- If the user’s order qualifies for free delivery, a message should be displayed encouraging them to take advantage of the offer
+
+- There should be an easy way to continue shopping and add more products to the order
+
+### Making a Purchase
+As a logged-in user I can complete my purchase through a smooth checkout so that I can securely finalise my order
+
+**Acceptance criteria**
+
+- The checkout page should display a summary of the order, including product names, total cost, and any applicable delivery charges.
+
+- Before confirming payment, users must be able to enter their shipping information
+
+- Payments should be securely processed using Stripe
+
+- After a successful payment, users should be redirected to an order confirmation page and receive a confirmation email
+
+### User's Profile
+As a user I can manage and review my order hostory so that I can keep track of my purchases and enhance my overal shopping experience
+
+**Acceptance criteria**
+
+- There needs to be a page where users can easly access and view all their past and current orders
+
+- User's shopping data needs to be stored in users profile to facilitate smoother and faster shooping experince
+
+- The stored users data should be used to autopopulate checkout form
+
+### Product Management
+As a staff member I can manage all products so that the store's inventory stays current and accurate
+
+**Acceptance criteria**
+
+- Staff members must have the ability to view, edit, add, and delete products
+
+- The number of items in stock should be manageable to reflect actual availability
+
+- When user makes a purchase, the system should automatically reduce the available stock
+
+- The product management section should be easily accessible, ideally through the navbar menu
+
+- Only authorised staff should have access to this section, and it should be hidden from shoppers
+
+- If there are many products, they should be split across multiple pages to make navigation easier
 
 
 # Wireframes
-## Login
+### Login
 ![login](/static/documentation/1-login.png "login page")
-## Register
+### Register
 ![register](/static/documentation/2-register.png "register page")
-## Password Reset
+### Password Reset
 ![reset](/static/documentation/3-forgot-password.png "regipassword resetster page")
-## Landing Page
+### Landing Page
 ![landing](/static/documentation/4-landing-page.png "landing page")
-## Display Page of the All Products
+### Display Page of the All Products
 ![allproducts](/static/documentation/5-all-producs-display-page.png "all products page")
-## Product Details Page
+### Product Details Page
 ![details](/static/documentation/6-product-details.png "products details page")
-## Shopping bag page
+### Shopping bag page
 ![bag](/static/documentation/7-shopping-bag.png "shopping bag page")
-## Checkout
+### Checkout
 ![checkout](/static/documentation/8-checkout.png "checkout page")
-## Purchase order
+### Purchase order
 ![purchase](/static/documentation/9-purchas-confirmation.png "purchase confirmation")
-## User Profile
+### User Profile
 ![profile](/static/documentation/10-user-profile.png "user profile")
-## Product Management - Staff Only
+### Product Management - Staff Only
 ![management](/static/documentation/11-staff-access-product-management.png "product management")
-## Adding Product
+### Adding Product
 ![adding](/static/documentation/12-staff-access-add-product.png "adding product")
-## Edititng Product
+### Edititng Product
 ![editing](/static/documentation/13-staff-access-edit-product.png "editign product")
-## Product Deletion
+### Product Deletion
 ![deletion](/static/documentation/14-staff-access-product-deletion.png "product deletion")
+
+# 
 
 
 # Database Schema Diagram
@@ -105,4 +209,3 @@
 59. https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/
 60. https://www.geeksforgeeks.org/how-to-set-the-timezone-in-django/
 61. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
-
