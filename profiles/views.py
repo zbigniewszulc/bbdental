@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from checkout.models import Order
 from .models import UserProfile
 from .forms import UserProfileForm
-from checkout.models import Order
 # Create your views here.
 
 
+@login_required
 def profile(request):
     """
     Render the user's profile page, where they can update their details
@@ -42,6 +44,7 @@ def profile(request):
     return render(request, 'profiles/profile.html', context)
 
 
+@login_required
 def order_history(request, order_number):
     """
     Render detailed view of a specific order's information.

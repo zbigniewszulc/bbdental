@@ -88,7 +88,7 @@ def checkout(request):
                 profile = UserProfile.objects.get(user=request.user)
                 profile.user.first_name = order_form.cleaned_data['name']
                 profile.user.last_name = order_form.cleaned_data['surname']
-                profile.user.save() # Save User instance
+                profile.user.save()  # Save User instance
                 profile.default_phone_number = order_form.cleaned_data[
                     'phone_number']
                 profile.default_address_line_1 = order_form.cleaned_data[
@@ -100,9 +100,9 @@ def checkout(request):
                 profile.default_town = order_form.cleaned_data['town']
                 profile.default_postcode = order_form.cleaned_data['postcode']
                 profile.default_country = order_form.cleaned_data['country']
-                profile.save() # Save profile instance
+                profile.save()  # Save profile instance
                 messages.success(
-                    request, 
+                    request,
                     "Your profile has been updated with these details."
                 )
 
@@ -174,6 +174,7 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', context)
 
 
+@login_required
 def checkout_success(request, order_number):
     """
     Render checkout success view.
