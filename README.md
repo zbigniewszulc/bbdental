@@ -133,10 +133,8 @@ As a staff member I can manage all products so that the store's inventory stays 
 ### Product Deletion
 ![deletion](/static/documentation/14-staff-access-product-deletion.png "product deletion")
 
-# 
 
-
-# Database Schema Diagram
+# Database Schema Diagram and Model
 ![database](static/documentation/17-bbdebtal-database-schema.png)
 
 # Newsletter Subscription
@@ -145,6 +143,21 @@ As a staff member I can manage all products so that the store's inventory stays 
   ![mailchimp-banner](static/documentation/15-mailchimp-banner.png)
 - Subscription overview:
 - ![mailchimp-overview](static/documentation/16-mailchimp-overview.png)
+
+## Technologies Used
+
+- **Django** - A free and open-source Python web framework following the MTV pattern.  
+- **Python** - A versatile, high-level programming language.  
+- **Bootstrap 5** - A front-end framework for responsive web development.  
+- **HTML** - The standard markup language for structuring web pages.  
+- **CSS** - A stylesheet language for styling and designing web content.  
+- **JavaScript** - A lightweight programming language for interactivity.  
+- **jQuery** - A JavaScript library that simplifies DOM manipulation.  
+- **Balsamiq** - A tool for creating wireframes and UI mockups.  
+- **GitHub** - A platform for version control and collaborative coding.  
+- **PostgreSQL from Code Institute** - A cloud-hosted relational database system.  
+- **Heroku** - A cloud platform for deploying and managing applications.  
+
 
 
 # Creadits
