@@ -65,13 +65,17 @@
         </div>
         {% if coming_from_profile %}
         <div class="text-center mt-4">
-            <a href="{% url 'profile' %}" class="btn btn-primary">Return to your profile</a>
+            <a href="{% url 'profile' %}" class="btn btn-secondary">
+                <i class="fa-solid fa-chevron-left"></i>
+                &nbsp; Return to your profile
+            </a>
         </div>
         {% else %}
         <div class="text-center mt-4">
             <a href="{% url 'profile' %}" class="btn btn-secondary">
                 <i class="fa-solid fa-chevron-left"></i>
-                &nbsp; Order history</a>
+                &nbsp; Order history
+            </a>
         </div>
         {% endif %}
     </section>
