@@ -339,12 +339,129 @@ Issue resolved:
 
 ### base.css main stylesheet - no issues found
 
+![alt text](static/documentation/base.css.png)
+
 ### html - landing page - issue found
 
+![alt text](static/documentation/html-issue.png)
+
+Issue has been fixed
+
+![alt text](static/documentation/html-fixed.png)
+
+# **Testing Summary – Automatic & Manual Checks**  
+
+## **Landing Page**  
+The **Jumbotron** contains two buttons: one navigates to the content below the screen, while the other directs to the product page. Both buttons function correctly, and the entire page renders well on both large and small screens.  
+
+At the footer of each page, there are links to **Terms of Service, Privacy Policy, Contact, and Facebook**. All links open their intended pages, and the Facebook button correctly opens a new window in the browser.  
+
+At the top of the page, there are buttons for **Products, Profile, Shopping Cart, Logout, "Shop Now," and Search**. Just like before, all links navigate to the correct pages, and the search button properly processes queries and renders search results accordingly.  
+
+![alt text](static/documentation/landing.png)
+
+## **Products Page**  
+The page displays correctly on both large and small screens. **Pagination** at the bottom works as expected, ensuring smooth navigation. No visible or obvious errors were found. 
+
+![alt text](static/documentation/pagination.png)
+
+The **left-side menu expands and collapses** when clicking the header.  
+- **Sorting options** display all data from the database and sort correctly when a selection is made.  
+- **Filtering by Manufacturer** functions as expected.  
+- Clicking **"View Details"** correctly redirects to the detailed product page.  
+
+![alt text](static/documentation/menu.png)
+
+## **Product Details Page**  
+All displayed information corresponds correctly to the selected product, and all product data matches the database records. The **image on the left side renders correctly**, and in cases where a product has no image in the database, a **placeholder image is displayed** instead.  
+
+### **Functional Buttons:**
+- **"Add to Bag"**  
+- **"Keep Shopping"**  
+- **"Shopping Bag"**  
+- **"Go to Checkout"**  
+
+![alt text](<static/documentation/product details.png>)
+
+
+Additionally, all navigation links at the top of the page, including **"Products," "My Profile," "Cart," and "Logout,"** work as intended.  
+
+
+## **Shopping Bag**  
+The shopping bag should be **not accessible when a user is not logged in** and when there are **no items in the cart**—this condition is correctly met.  
+
+Only after adding at least one product does the user gain access to the **checkout process**, ensuring correct functionality.  
+
+![alt text](static/documentation/shoppingbag.png)
+
+## **Checkout**  
+If a **logged-in user** previously **saved their details**, the system attempts to pre-fill the checkout form. This works correctly—users who have stored their information in their profiles see the form **auto-filled with accurate data**.  
+
+The **payment system functions properly**, and after a successful transaction, a **confirmation message** is displayed as per the project’s design. All links on this page work correctly.  
+
+
+![alt text](static/documentation/check.png)
+
+
+## **Order Confirmation**  
+After payment, an **order summary** is displayed, and the order details correctly match the actual purchase.  
+
+All buttons on this page function properly, and clicking **"Order History"** correctly redirects the user to their profile page.  
+
+![alt text](static/documentation/success.png)
+
+## **User Profile**  
+User profile information is displayed **accurately in the form**, matching the stored user details.  
+
+If a user updates their information and clicks **"Update Profile,"** the new details are correctly saved and updated in the system.  
+
+Clicking **"View Order Details"** displays the **correct order details** as expected.  
+
+![alt text](static/documentation/profile.png)
+
+## **Logout**  
+The logout process functions correctly, requiring **confirmation** as per the project's intended design.  
 
 
 
+# **For Store Employees:**  
 
+## **Landing Page**  
+The landing page is **almost identical** to that of regular users, with the difference that **employees** see additional menu options:  
+- **"All Products"**  
+- **"Log Out"**  
+
+
+
+## **All Products**  
+All **CRUD (Create, Read, Update, Delete) operations** work flawlessly.  
+Employees can:  
+- **View product data**  
+- **Edit product information**  
+- **Delete products from the database**  
+
+
+
+## **Add New Product**  
+- The **form renders correctly** and **validation works as expected**.  
+- After entering all required details and submitting the form, the new product is **saved in the database in the correct format**.  
+- A **confirmation message** is displayed upon successful product entry.  
+
+
+
+## **Edit Product**  
+- The **edit page correctly displays** the product’s existing details within the form.  
+- Submitting changes **updates the database successfully**.  
+
+
+
+## **404 Error Page**  
+Entering an **invalid URL** correctly triggers a **404 error message**, ensuring proper error handling.  
+
+
+
+## **Summary**  
+All tested functionalities work as expected, ensuring a **smooth user experience** for both regular users and store employees. Minor **UI/UX improvements** could be considered, but **no critical issues** were found.  
 
 
 
