@@ -41,8 +41,9 @@ class ProductFormTest(TestCase):
 
     def test_product_form_missing_required_fields(self):
         """Test that missing required fields cause form errors"""
-        required_fields = ["product_name", "price", "manufacturer_id", 
-                           "subcategory_id"]
+        required_fields = [
+            "product_name", "price", "manufacturer_id", "subcategory_id"
+        ]
         for field in required_fields:
             data = self.valid_data.copy()
             del data[field]

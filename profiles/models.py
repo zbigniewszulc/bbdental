@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from django_countries import Countries
 from django.dispatch import receiver
-from django.db.models.signals import post_save 
+from django.db.models.signals import post_save
 # Create your models here.
 
 
@@ -15,7 +15,7 @@ class AllowedCountries(Countries):
 
 class UserProfile(models.Model):
     """
-    User profile model for managing default delivery information 
+    User profile model for managing default delivery information
     and order history
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)

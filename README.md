@@ -299,7 +299,15 @@ The company started small but has grown fast, focusing on simple and effective w
 ![alt text](static/documentation/20-dental-keywords.png)
 
 
-# Testing
+# Testing & debugging
+
+### Python code: issues found
+
+![alt text](static/documentation/25-flake8-issues.png)
+
+The issue above has been resolved.
+
+![alt text](static/documentation/26-flake8.png)
 
 
 
