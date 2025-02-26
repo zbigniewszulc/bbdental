@@ -329,6 +329,21 @@ Issue resolved:
 Issue resolved:
 ![alt text](static/documentation/javascript-issueresolved.png)
 
+### checkout.css in checkout folder - no issues found
+![alt text](static/documentation/checkout-css.png)
+
+
+### management.css in products app - no issues found 
+
+![alt text](static/images/management.css.png)
+
+### base.css main stylesheet - no issues found
+
+### html - landing page - issue found
+
+
+
+
 
 
 
