@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /profile/
+Disallow: /admin/
+Sitemap: https://bbdental-4f6c524824c2.herokuapp.com/sitemap.xml
