@@ -1,3 +1,11 @@
+# Overview
+
+The BB Dental website was designed to facilitate the online sale of dental products for B2B traders. As a digital platform, it allows customers to browse and purchase products directly over the internet. The website displays a comprehensive listing of items available for purchase, organized into categories and subcategories for easy navigation. Each product subpage includes a detailed description, product image, price and stock count. 
+To purchase the products, the customer will be prompted to log in or register first. Upon registration, the customer will be able to add products to the chart, update products in the chart, save contact details and complete the payment. Furthermore, a listing of previous orders and their details will be available to view on the Profile page. The personal details provided during the registration can also be amended there. 
+The administrator profile has CRUD functionality, i.e. the administrator has the option to create, view, amend, and delete products. This is particularly useful for updating the number of products in the stock. Additionally, the stock quantity will be updated automatically every time an order is completed. 
+
+
+Linkt to the live application can be found [here](https://bbdental-4f6c524824c2.herokuapp.com/)
 
 # User stories 
 ### User register and login
@@ -102,8 +110,13 @@ As a staff member I can manage all products so that the store's inventory stays 
 
 - If there are many products, they should be split across multiple pages to make navigation easier
 
+User stories were managed via Kanban Board on github:
 
-# Wireframes
+![alt text](static/documentation/24-kanban-board.png)
+
+# Design 
+
+## Wireframes
 ### Login
 ![login](/static/documentation/1-login.png "login page")
 ### Register
@@ -137,12 +150,85 @@ As a staff member I can manage all products so that the store's inventory stays 
 # Database Schema Diagram and Model
 ![database](static/documentation/17-bbdebtal-database-schema.png)
 
-# Newsletter Subscription
-## Mailchimp
-- Banner installed:
-  ![mailchimp-banner](static/documentation/15-mailchimp-banner.png)
-- Subscription overview:
-- ![mailchimp-overview](static/documentation/16-mailchimp-overview.png)
+# Typography
+Font - https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap 
+
+Font Awesome, used on many pages accross the whole website.
+
+# Graphics side
+
+Photo used for purpose creation of Facebook Business Page https://www.istockphoto.com/photos/dental-equipment
+
+[](https://www.pngaaa.com/detail/1887013) - image pleaceholder used across all web page, will show as deafault when there was no image uploaded in first place
+
+https://unsplash.com/photos/text-TtJ0CLjLi6w - used on page 'terms of service'
+
+https://www.pexels.com/photo/close-up-photo-of-a-paper-on-a-vintage-typewriter-4152513/ - used on page 'privacy policy'
+
+[Fotor](https://www.fotor.com/) - to enhance bad image quality
+
+[Cloudinary mage-to-web](https://cloudinary.com/tools/image-to-webp) - for image conversion to web
+
+[Emojipedia](https://emojipedia.org/) - used to populate number of flags which are present on the website.
+
+There are 198 images used across the product section, but I don’t remember where they came from. I downloaded them a long time ago with the idea of using them for a project like this, but only now got the chance to put everything together. Since it’s just a college project, I don’t think using them is an issue, especially since the original shop doesn’t seem to exist anymore. The images weren’t great quality, but Fotor was a lifesaver for fixing them up.
+
+# Features 
+
+### Navigation Bar
+The navigation bar appears on all pages, with different links displayed depending on the page and the user. It allows the user to easily navigate between pages across all devices without the need to use the "back" button to return to the previous page.
+The navigation bar includes various links depending on the page and user:
+To the Home Page, Login, and Register for users who have not signed in.
+To the Home Page, Products, My Profile, Shopping Chart and Logout for signed-in customers.
+To the Home Page, All Products and Logout for signed-in administrator.
+
+### The Footer
+The footer bar appears on all pages, allowing the user to easily access the company's Terms of Services, Privacy Policy and Contact Details. The relevant documents are available to view and download in a PDF format. The Contact Details Page includes interactive phone and email address links. 
+
+### The Landing Page - Welcome Page
+The landing page displays the navigation bar, the footer, the advertising materials and a listing of shipping destinations. The link to the listing of products is positioned in multiple locations to encourage customers to click the link. 
+
+### Product Listing Page
+The product listing page includes a navigation bar at the top of the page and search functions. The search menu is very advanced, offering various search and sorting options, including:
+- sort by name (A to Z) and (Z to A),
+- sort by price (Low to High) and (High to Low)
+- sort by manufacturer name (A to Z) and (Z to A)
+- search by manufacturer.
+The page also includes a side menu which displays the main groups of products and subgroups, giving the customer a clear listing of the main product categories. Upon clicking on a main category bar, the subcategory listing is displayed. Then, upon clicking on the subcategory line, the relevant products within that subcategory are displayed on the page. The side menu is responsive and will adjust to various displays. For example, the subcategories listing will be scaled down for easier browsing. 
+If the client wants to return to the main page showing all products, he can click on the Home button or the Products button. Furthermore, if the client wants to go back to the previous group of products, he/she can click on the desired group in the heading breadcrumb trail.  
+The products are displayed in separate boxes and a photo and a brief description of the product is given. The customer can view further details by clicking the "View Details" button.
+There is a standard footer at the bottom of the page. When the products are displayed on more than one page, a listing of pages with links to particular page numbers is displayed above the footer (pagination function).
+
+### Product Page
+Each product displayed in the shop has a link to its own page. Upon clicking the "View Details" button, the product page will open. The page displays the photo, description, price, stock quantity and the manufacturer information. If the customer is not logged in, a warning will be displayed prompting the customer to log in to continue with the purchase. 
+There is a standard navigation bar and a standard footer. 
+
+### Login Page
+Upon opening, the sign-in form is displayed. The customer or administrator is required to provide their username and password to sign in. An error message will be displayed if an incorrect username or password is entered. Upon signing in, a small green confirmation box will appear in the top right corner, confirming the successful sign-in. Additionally, there is an option to click the "Remember Me" box for future sign-ins and a link to open the Registration page.
+The navigation bar includes links to the Home Page, Log In and Register.  The footer includes links to the company's Terms of Services, Privacy Policy and Contact Details.
+
+### Registration Page
+The sign-up form is displayed. A reminder to sign in for clients who are already registered is shown at the top of the form. Fields highlighted with an asterisk are mandatory, and a warning will appear if they are left blank. There is additional information regarding password requirements at the bottom of the form. Once all fields are completed correctly and the "Sign Up" box is ticked, the system will send an account verification email to the address provided by the customer. To access the account, the customer must first confirm the email address.
+The navigation bar includes links to the Home Page, Login, and Register. The footer includes links to the company's Terms of Services, Privacy Policy and Contact Details.
+
+### Customer Login 
+Landing Page – a listing of all products is displayed. Customers can navigate through the products using the search and sort functions at the top of the page and the side menu is on the left side of the page.
+Upon clicking on a desired product, a product page will be displayed, giving the customer an option to add the product to the shopping basket. The customer can amend the quantity before adding the product to the basket. The system will limit the amount available to add to the basket to the number of products in stock. An orange warning box will appear on the screen if the client tries to add an excessive amount of products (i.e. more than is available in the stock) or enter a negative amount in the quantity box. A green box will appear confirming that the desired quantity was added to the basket. 
+Three additional links are displayed on the bottom part of the product page, allowing the client to easily navigate through the website:
+- Keep Shopping - will take the user one step back,
+- Shopping Bag - will open the Shopping Bag Page and 
+- Go to Checkout - will open the Checkout Page
+The navigation bar includes links to the Home Page, Products, Shopping Bag and Logout. The Footer is standard.  
+The Shopping Bag Page - the listing of products in the basket is displayed. A photo, name, quantity and price are displayed for each product in the basket. The customer has an option to update the quantity and remove the entire product. Subtotal and the delivery cost is displayed under the products listing. If the subtotal is below the "Free delivery" threshold, a message is displayed encouraging the client to add some products to be eligible for a free delivery. There is a link to add more items or proceed to Checkout. 
+The Checkout Page - The order form is displayed. Fields highlighted with an asterisk are mandatory, and a warning will appear if they are left blank. Once all fields are completed correctly and the "Complete Order" box is ticked, the Order Confirmation Page will be displayed. There is an option to save the client details, so those are pre-filled automatically the next time an order is completed. 
+If the Shopping Bag is empty, the system will prevent the user from accessing the Checkout Page. There will be a small red dot and amount displayed next to the Shopping Bag icon once an item is placed in the Shopping Bag.
+The Order Confirmation Page - the order confirmation summary will display the order details, the delivery address, the items purchased and the total cost.  Additionally, a small green confirmation box will be displayed in the top right corner of the page. 
+Logout Page - Upon clicking the "Logout" link, a sign-out window will appear, and the client will be prompted to confirm if they wish to log out
+
+### Administrator Login 
+All Products Page – a listing of all products is displayed in a working table. The administrator can create, update and delete products in the table. Upon clicking on the Home Page button, a listing of products is displayed in the same way as the one visible to the client. 
+Add New Product - the new product form is displayed. Fields highlighted with an asterisk are mandatory, and a warning will appear if they are left blank. There is an option to add a photo of a product, but it's not mandatory. If a photo was not added, a default "No Image Available" image will be displayed. Once all fields are completed correctly and the "Add Product" box is ticked, the new product will be added to the database. A green confirmation box will appear in the top right corner. 
+The navigation bar includes links to the Home Page, All Products working table and Logout. There is a standard footer and the pagination functionality at the bottom of the All Products Page. 
 
 ## Technologies Used
 
@@ -156,15 +242,72 @@ As a staff member I can manage all products so that the store's inventory stays 
 - **Balsamiq** - A tool for creating wireframes and UI mockups.  
 - **GitHub** - A platform for version control and collaborative coding.  
 - **PostgreSQL from Code Institute** - A cloud-hosted relational database system.  
-- **Heroku** - A cloud platform for deploying and managing applications.  
+- **Heroku** - A cloud platform for deploying and managing applications. 
+- **SendGrid** - A cloud-based email service used for sending transactional and marketing emails.  
+- **Cloudinary** - A cloud-based service for managing and optimizing images and videos.  
+
+## E-commerce business model 
+The business will operate on a Business to Business model (B2B).  
+The online shop will sale dental products (such as tools, equipment, consumables, and other related items) directly to other businesses, typically dental practices, clinics and hospitals. It is not foreseen that any Business to Customer (B2C) sale will occur. The company will focus on building strong, long-term relationships with clients, providing competitive pricing, consistent product quality, and reliable customer service.
+Key features of this model include:
+- Product Catalog - the online shop provides a comprehensive range of dental products that can be browsed and promptly ordered online.
+- Account Management - in order to place orders, the customers are required to  create an accounts by registering on the shop website. The personalized features such as order history is available on the website. 
+- Payment methods - currently the shop offers payment by card at the time of placing the order. Going forward, the business will introduce an option to buy on credit for registered and verified clients. 
+- Customer Support -  dedicated support is ready to  answer any queries or to provide technical assistance and product recommendations. Contact details are accessible through the link in the footer. 
+- Shipping - the business engaged fast and reliable logistic partner. Additionally, a free standard shipping is available for customers who place orders with a net value over €50.
+
+# Newsletter Subscription
+The company started small but has grown fast, focusing on simple and effective ways to reach customers. That’s why a business page was launched on Facebook, along with a newsletter – to share updates, offers, and important news more easily.
+## Mailchimp
+- Banner installed:
+  ![mailchimp-banner](static/documentation/15-mailchimp-banner.png)
+- Subscription overview:
+- ![mailchimp-overview](static/documentation/16-mailchimp-overview.png)
+
+## Facebook Business Page
+![facebook business page](<static/documentation/Facebook bbdental.png>)
+
+## Optimized Keyword List for B2B Dental Supply Website
+### Mix of short-tail and long-tail keywords optimized for search volume, relevance, and purchasing intent
+
+#### Short-Tail Keywords (Broad, High Volume):
+1. Dental supplies
+2. Dental equipment supplier
+3. Wholesale dental products
+4. Dental instruments distributor
+5. Dental shop
+
+#### Long-Tail Keywords (Higher Intent, More Targeted):
+1. Wholesale dental supplies
+2. Buy dental equpment
+3. Professional dental products supplier
+4. Best dental practice supplies
+5. Top-rated dental suppliers for clinics
+6. B2B dental equipment distributor
+7. Fast shipping dental supplies
+
+- Keywords That Were Removed:
+  - "Best electric toothbrush supplier" - More relevant to retailers & supermarkets
+  - Buy toothpaste in bulk" - Dental practices don’t typically buy toothpaste in bulk
+  - "Home dental care products" - Clinics buy professional materials
+  - "Dental floss wholesale supplier" - More relevant to supermarkets
+  - "Local dentist supply store" - Most B2B dental buyers prefer wholesale suppliers
+
+![alt text](static/documentation/23-dental-keywords.png)
+![google search](static/documentation/18-dental-kewords.png)
+![google search text](static/documentation/19-dental-keywords.png)
+![alt text](static/documentation/20-dental-keywords.png)
+
+
+# Testing
 
 
 
-# Creadits
+# Credits
 1. https://docs.djangoproject.com/en/5.1/ref/contrib/messages/
 2. https://css-tricks.com/almanac/properties/t/transition/
 3. https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateY
-4. https://medium.com/python-in-my-pajamas/3. using-os-environ-to-manage-your-django-settings-the-easy-way-d2db96e73ab9#4c79
+4. https://medium.com/python-in-my-pajamas/3.using-os-environ-to-manage-your-django-settings-the-easy-way-d2db96e73ab9#4c79
 5. https://www.twilio.com/docs/sendgrid/for-developers/sending-email/django
 6. https://medium.com/@verdyevantyo/authentication-system-using-django-allauth-121f47a6641e
 7. https://getbootstrap.com/docs/5.3/components/card/#images
@@ -218,7 +361,10 @@ As a staff member I can manage all products so that the store's inventory stays 
 55. https://www.programiz.com/python-programming/datetime/strftime
 56. https://docs.djangoproject.com/en/5.1/ref/forms/fields/
 57. https://docs.djangoproject.com/en/5.1/ref/forms/fields/#django.forms.ModelChoiceField
-58. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
-59. https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/
-60. https://www.geeksforgeeks.org/how-to-set-the-timezone-in-django/
-61. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
+58. [ChatGPT](https://openai.com/index/chatgpt/) - used for transtranslation mainly but great companion in explaing errors
+59. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+60. https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/
+61. https://www.geeksforgeeks.org/how-to-set-the-timezone-in-django/
+62. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
+
+I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
