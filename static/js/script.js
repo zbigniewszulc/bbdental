@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    // Initialise Bootstrap tooltips
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    // Initialize Bootstrap tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
-
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 });
