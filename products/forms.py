@@ -5,7 +5,7 @@ from .models import Product, Subcategory, Manufacturer
 class ProductForm(forms.ModelForm):
     """Form for creating and updating products with related fields."""
 
-    manufacturer_id = forms.ModelChoiceField(
+    manufacturer = forms.ModelChoiceField(
         queryset=Manufacturer.objects.all().order_by('manufacturer_name'),
         required=True,
         label="Manufacturer",
@@ -25,7 +25,7 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = [
             "product_name", "description", "price", "in_stock",
-            "picture_location", "manufacturer_id", "subcategory_id"
+            "picture_location", "manufacturer", "subcategory_id"
         ]
 
     def clean_price(self):

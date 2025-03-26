@@ -74,13 +74,13 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="id_manufacturer_id" class="form-label requiredField">
+                    <label for="id_manufacturer" class="form-label requiredField">
                         Manufacturer <span>*</span>
                     </label>
-                    <select name="manufacturer_id" class="form-control select form-select" required id="id_manufacturer_id">
+                    <select name="manufacturer" class="form-control select form-select" required id="id_manufacturer">
                         <option value="">Select Manufacturer</option>
                         {% for manufacturer in manufacturers %}
-                            <option value="{{ manufacturer.id }}" {% if manufacturer.id == product.manufacturer_id.id %} selected {% endif %}>{{ manufacturer.manufacturer_name }}</option>
+                            <option value="{{ manufacturer.id }}" {% if manufacturer.id == product.manufacturer.id %} selected {% endif %}>{{ manufacturer.manufacturer_name }}</option>
                         {% endfor %}
                     </select>
                 </div>

@@ -31,7 +31,7 @@ class ProductAdmin(admin.ModelAdmin):
         'product_name',
         'description',
         'subcategory_id',
-        'manufacturer_id',
+        'manufacturer',
         'price',
         'in_stock',
     )

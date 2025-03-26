@@ -21,8 +21,8 @@
             <p class="fs-5"><strong><i class="fa-solid fa-tag text-primary me-2"></i>&nbsp; Price:</strong> €{{ product.price }}</p>
             <p class="fs-6 "><strong><i class="fa-solid fa-cart-flatbed text-primary me-2"></i>&nbsp; In Stock:</strong> {{ product.in_stock }}</p>
             <p class="fs-6"><strong><i class="fa-solid fa-industry text-primary me-2"></i>&nbsp; Manufacturer:</strong> 
-                {% if product.manufacturer_id %}
-                    {{ product.manufacturer_id.manufacturer_name }}
+                {% if product.manufacturer %}
+                    {{ product.manufacturer.manufacturer_name }}
                 {% else %}
                     <span class="text-muted">Unknown</span>
                 {% endif %}

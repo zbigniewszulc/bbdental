@@ -72,7 +72,7 @@
                     <td>{{ product.product_name }}</td>
                     <td>€{{ product.price }}</td>
                     <td>{{ product.in_stock }}</td>
-                    <td>{{ product.manufacturer_id.manufacturer_name }}</td>
+                    <td>{{ product.manufacturer.manufacturer_name }}</td>
                     <td>
                         <a href="{% url 'edit_product' product.id %}" class="btn btn-warning btn-sm">
                             <i class="fa-solid fa-edit"></i> Edit
