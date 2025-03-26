@@ -44,7 +44,7 @@ class Product(models.Model):
         'Subcategory', null=True, blank=True, on_delete=models.SET_NULL,
         related_name='subcategory_products'
     )
-    manufacturer_id = models.ForeignKey(
+    manufacturer = models.ForeignKey(
         'Manufacturer', null=True, blank=True, on_delete=models.SET_NULL,
         related_name='manufacturer_products'
     )
