@@ -30,7 +30,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'product_name',
         'description',
-        'subcategory_id',
+        'subcategory',
         'manufacturer',
         'price',
         'in_stock',

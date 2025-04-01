@@ -18,7 +18,7 @@ class ProductFormTest(TestCase):
             "in_stock": 10,
             "picture_location": "images/test.jpg",
             "manufacturer": self.manufacturer,
-            "subcategory_id": self.subcategory
+            "subcategory": self.subcategory
         }
 
     def test_product_form_valid(self):
@@ -42,7 +42,7 @@ class ProductFormTest(TestCase):
     def test_product_form_missing_required_fields(self):
         """Test that missing required fields cause form errors"""
         required_fields = [
-            "product_name", "price", "manufacturer", "subcategory_id"
+            "product_name", "price", "manufacturer", "subcategory"
         ]
         for field in required_fields:
             data = self.valid_data.copy()
