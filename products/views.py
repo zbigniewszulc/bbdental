@@ -123,7 +123,7 @@ def all_products(request):
             lower_product_name=Lower('product_name'),
             lower_manufacturer_name=Lower('manufacturer__manufacturer_name')
         )
-        .select_related('subcategory_id', 'manufacturer')
+        .select_related('subcategory', 'manufacturer')
     )
     # Get search query entered by user from URL
     if request.GET:
@@ -207,12 +207,12 @@ def products_by_category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     products = (
         Product.objects
-        .filter(subcategory_id__category_id=category.id)
+        .filter(subcategory__category_id=category.id)
         .annotate(
             lower_product_name=Lower('product_name'),
             lower_manufacturer_name=Lower('manufacturer__manufacturer_name')
         )
-        .select_related('subcategory_id', 'manufacturer')
+        .select_related('subcategory', 'manufacturer')
     )
     products = get_sorted_filtered(request, products)
     page_obj = get_paginated(request, products)
@@ -265,12 +265,12 @@ def products_by_subcategory(request, category_id, subcategory_id):
         Subcategory, id=subcategory_id, category_id=category)
     products = (
         Product.objects
-        .filter(subcategory_id=subcategory)
+        .filter(subcategory=subcategory)
         .annotate(
             lower_product_name=Lower('product_name'),
             lower_manufacturer_name=Lower('manufacturer__manufacturer_name')
         )
-        .select_related('subcategory_id', 'manufacturer')
+        .select_related('subcategory', 'manufacturer')
     )
     products = get_sorted_filtered(request, products)
     page_obj = get_paginated(request, products)
@@ -314,7 +314,7 @@ def manage_products(request):
     products = Product.objects.annotate(
         lower_product_name=Lower('product_name'),
         lower_manufacturer_name=Lower('manufacturer__manufacturer_name')
-    ).select_related('subcategory_id', 'manufacturer')
+    ).select_related('subcategory', 'manufacturer')
 
     products = get_sorted_filtered(request, products)
 

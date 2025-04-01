@@ -13,7 +13,7 @@ class ProductForm(forms.ModelForm):
         widget=forms.Select(attrs={'class': 'form-control'})
     )
 
-    subcategory_id = forms.ModelChoiceField(
+    subcategory = forms.ModelChoiceField(
         queryset=Subcategory.objects.all().order_by('subcategory_name'),
         required=True,
         label="Subcategory",
@@ -25,7 +25,7 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = [
             "product_name", "description", "price", "in_stock",
-            "picture_location", "manufacturer", "subcategory_id"
+            "picture_location", "manufacturer", "subcategory"
         ]
 
     def clean_price(self):

@@ -7,7 +7,7 @@
 		"description": "NAC-Y Cradle head, drill bit change, max. 30,000 rpm, drill bits 2,35mm",
 		"price": "200",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "6",
 		"picture_location": "dent_endCP1.webp"
 	  }
@@ -20,7 +20,7 @@
 		"description": "FPB-Y Cradle head, drill bit change, max. 40,000 rpm, drill bits 2.35 mm",
 		"price": "350",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "2",
 		"picture_location": "dent_endCP2.webp"
 	  }
@@ -33,7 +33,7 @@
 		"description": "NM-Y Miniature contra-angle head, max. 30,000 r. / Min., 2.35mm drill bits.",
 		"price": "400",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "10",
 		"picture_location": "dent_endCP3.webp"
 	  }
@@ -46,7 +46,7 @@
 		"description": "EVA-Y Contour head for EVA type tools, for interdental space, max. 10,000 rpm.",
 		"price": "739",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "4",
 		"picture_location": "dent_endCP4.webp"
 	  }
@@ -59,7 +59,7 @@
 		"description": "TEP-ER10 Angle for channel work, 90 degree rotation, 10x reduction. Up to 4,000 rpm.",
 		"price": "229",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "10",
 		"picture_location": "dent_endCP5.webp"
 	  }
@@ -72,7 +72,7 @@
 		"description": "VM-ER4 Angle for channel work, vertical movement, rotation reduction.",
 		"price": "258",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "6",
 		"picture_location": "dent_endCP6.webp"
 	  }
@@ -85,7 +85,7 @@
 		"description": "Replacing the drill with a paw, external cooling, max. 30,000 rpm",
 		"price": "89",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "7",
 		"picture_location": "dent_endCP7.webp"
 	  }
@@ -98,7 +98,7 @@
 		"description": "Micromotor angle grinder, 10: 1 reduction. Replacement of the drill bit with external cooling.",
 		"price": "149",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "8",
 		"picture_location": "dent_endCP8.webp"
 	  }
@@ -111,7 +111,7 @@
 		"description": "EX-6B Micromotor trimmer, external cooling, max. 40,000 rpm",
 		"price": "139",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "8",
 		"picture_location": "dent_endCP9.webp"
 	  }
@@ -124,7 +124,7 @@
 		"description": "Replacement of drill bits with external cooling, max. 40,000 rpm",
 		"price": "142",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "9",
 		"picture_location": "dent_endCP10.webp"
 	  }
@@ -137,7 +137,7 @@
 		"description": "Angle for backlit micromotor: S-Max M25L, Turbine type: Stainless steel, Internal cooling, Gear ratio: 1: 1",
 		"price": "387",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "10",
 		"picture_location": "dent_endCP11.webp"
 	  }
@@ -150,7 +150,7 @@
 		"description": "Angle for backlit micromotor: S-Max M95L, Type of turbine coating: Stainless steel, Internal cooling, Gear ratio: 1: 5",
 		"price": "499",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "8",
 		"picture_location": "dent_endCP12.webp"
 	  }
@@ -163,7 +163,7 @@
 		"description": "Micromotor backlight without backlight: S-Max M65, Type of turbine coating: Stainless steel, Internal cooling, Gear ratio: 1: 1",
 		"price": "249",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "8",
 		"picture_location": "dent_endCP13.webp"
 	  }
@@ -176,7 +176,7 @@
 		"description": "Micromotor incubator without backlight: Ti-Max X95, Turbine coating type: DURACOAT titanium, Internal cooling, Gear ratio: 1: 5...",
 		"price": "489",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "8",
 		"picture_location": "dent_endCP14.webp"
 	  }
@@ -189,7 +189,7 @@
 		"description": "Ti-Max X65L backlight micrometer, Turbine type coating: DURACOAT titanium, Internal cooling, Gear ratio: 1: 1",
 		"price": "519",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "6",
 		"picture_location": "dent_endCP15.webp"
 	  }
@@ -202,7 +202,7 @@
 		"description": "Body type: Steel, Conductor cover type: Steel, Maximum revolutions: 40,000 m-1",
 		"price": "129",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "8",
 		"picture_location": "dent_endCP16.webp"
 	  }
@@ -215,7 +215,7 @@
 		"description": "Body for micromotor without backlight: FX57m, Gear ratio: 4: 1, Bearing type: Steel, Conductor cover type: Steel, Maximum revolutions: 5,000 m-1",
 		"price": "149",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "9",
 		"picture_location": "dent_endCP17.webp"
 	  }
@@ -228,7 +228,7 @@
 		"description": "ER10 contra-angle body with 10: 1 reduction.",
 		"price": "129",
 		"manufacturer": "26",
-		"subcategory_id": "13",
+		"subcategory": "13",
 		"in_stock": "8",
 		"picture_location": "dent_endCP18.webp"
 	  }
@@ -241,7 +241,7 @@
 		"description": "Micromotor backlight without backlight: S-Max M65, Type of turbine coating: Stainless steel, Internal cooling, Gear ratio: 1: 1",
 		"price": "229",
 		"manufacturer": "26",
-		"subcategory_id": "14",
+		"subcategory": "14",
 		"in_stock": "8",
 		"picture_location": "dent_endS1.webp"
 	  }
@@ -254,7 +254,7 @@
 		"description": "Angle for micro motor without backlight: S-Max M25, Type of turbine coating: Stainless steel, Internal cooling, Gear ratio: 1: 1",
 		"price": "269",
 		"manufacturer": "26",
-		"subcategory_id": "14",
+		"subcategory": "14",
 		"in_stock": "8",
 		"picture_location": "dent_endS2.webp"
 	  }
@@ -267,7 +267,7 @@
 		"description": "Angle for backlit micromotor: S-Max M25L, Turbine type: Stainless steel, Internal cooling, Gear ratio: 1: 1",
 		"price": "379",
 		"manufacturer": "26",
-		"subcategory_id": "14",
+		"subcategory": "14",
 		"in_stock": "8",
 		"picture_location": "dent_endS3.webp"
 	  }
@@ -280,7 +280,7 @@
 		"description": "Angle for micro motor without backlight: S-Max M95, Type of turbine coating: Stainless steel, Internal cooling, Gear ratio: 1:5",
 		"price": "399",
 		"manufacturer": "26",
-		"subcategory_id": "14",
+		"subcategory": "14",
 		"in_stock": "8",
 		"picture_location": "dent_endS4.webp"
 	  }
@@ -293,7 +293,7 @@
 		"description": "Angle for backlit micromotor: S-Max M95L, Type of turbine coating: Stainless steel, Internal cooling, Gear ratio: 1:5",
 		"price": "469",
 		"manufacturer": "26",
-		"subcategory_id": "14",
+		"subcategory": "14",
 		"in_stock": "9",
 		"picture_location": "dent_endS5.webp"
 	  }
@@ -306,7 +306,7 @@
 		"description": "Micromotor incandescent without backlight: Ti-Max X25, Turbine coating type: titanium with DURACOAT coating, Internal cooling, Gear ratio: 1:1",
 		"price": "247",
 		"manufacturer": "26",
-		"subcategory_id": "15",
+		"subcategory": "15",
 		"in_stock": "9",
 		"picture_location": "dent_endT1.webp"
 	  }
@@ -319,7 +319,7 @@
 		"description": "Angle for backlit micromotor: Ti-Max X25L, Turbine coating type: DURACOAT titanium, Internal cooling, Gear ratio: 1:1",
 		"price": "468",
 		"manufacturer": "26",
-		"subcategory_id": "15",
+		"subcategory": "15",
 		"in_stock": "9",
 		"picture_location": "dent_endT2.webp"
 	  }
@@ -332,7 +332,7 @@
 		"description": "Ti-Max X65L backlight micrometer, Turbine type coating: DURACOAT titanium, Internal cooling, Gear ratio: 1:1",
 		"price": "500",
 		"manufacturer": "26",
-		"subcategory_id": "15",
+		"subcategory": "15",
 		"in_stock": "8",
 		"picture_location": "dent_endT3.webp"
 	  }
@@ -345,7 +345,7 @@
 		"description": "Micromotor incubator without backlight: Ti-Max X95, Turbine coating type: DURACOAT titanium, Internal cooling, Gear ratio: 1:5",
 		"price": "478",
 		"manufacturer": "26",
-		"subcategory_id": "15",
+		"subcategory": "15",
 		"in_stock": "5",
 		"picture_location": "dent_endT4.webp"
 	  }
@@ -358,7 +358,7 @@
 		"description": "Angle for backlit micromotor: Ti-Max X95L, Turbine coating type: DURACOAT titanium, Internal cooling, Gear ratio: 1:5",
 		"price": "619",
 		"manufacturer": "26",
-		"subcategory_id": "15",
+		"subcategory": "15",
 		"in_stock": "8",
 		"picture_location": "dent_endT5.webp"
 	  }
@@ -371,7 +371,7 @@
 		"description": "Bearing type: Steel, Conductor cover type: Steel, Maximum revolutions: 40,000 m-1",
 		"price": "128",
 		"manufacturer": "26",
-		"subcategory_id": "16",
+		"subcategory": "16",
 		"in_stock": "7",
 		"picture_location": "dent_endFX1.webp"
 	  }
@@ -384,7 +384,7 @@
 		"description": "Body type: Steel, Conductor cover type: Steel, Max. Revolutions: 10,000 m-1",
 		"price": "248",
 		"manufacturer": "26",
-		"subcategory_id": "16",
+		"subcategory": "16",
 		"in_stock": "9",
 		"picture_location": "dent_endFX2.webp"
 	  }
@@ -397,7 +397,7 @@
 		"description": "Fitting: 4: 1, Bearing type: Steel, Conductor cover type: Steel, Maximum revolutions: 5,000 m-1",
 		"price": "147",
 		"manufacturer": "26",
-		"subcategory_id": "16",
+		"subcategory": "16",
 		"in_stock": "8",
 		"picture_location": "dent_endFX3.webp"
 	  }
@@ -410,7 +410,7 @@
 		"description": "Bearing type: Steel, Conductor cover type: Stainless steel, Maximum revolutions: 40,000 m-1",
 		"price": "138",
 		"manufacturer": "26",
-		"subcategory_id": "16",
+		"subcategory": "16",
 		"in_stock": "10",
 		"picture_location": "dent_endFX4.webp"
 	  }
@@ -423,7 +423,7 @@
 		"description": "Prophy-Mate Neo nozzle with two nozzles at 60\u00b0 and 80\u00b0, toothbrush, wire and sandblaster cleaner, 5 pcs 15 g sachet FLASH pearl, key to replace work nozzles",
 		"price": "537",
 		"manufacturer": "26",
-		"subcategory_id": "17",
+		"subcategory": "17",
 		"in_stock": "6",
 		"picture_location": "dent_end_sand1.webp"
 	  }
@@ -436,7 +436,7 @@
 		"description": "Prophy-Mate Neo nozzle with two nozzles at 60\u00b0 and 80\u00b0, toothbrush, wire and sandblaster cleaner, 5 pcs 15 g sachet FLASH pearl, key to replace work nozzles",
 		"price": "200",
 		"manufacturer": "26",
-		"subcategory_id": "17",
+		"subcategory": "17",
 		"in_stock": "7",
 		"picture_location": "dent_end_sand2.webp"
 	  }
@@ -449,7 +449,7 @@
 		"description": "Prophy-Mate Neo nozzle with two nozzles at 60\u00b0 and 80\u00b0, toothbrush, wire and sandblaster cleaner, 5 pcs 15 g sachet FLASH pearl, key to replace work nozzles",
 		"price": "537",
 		"manufacturer": "26",
-		"subcategory_id": "17",
+		"subcategory": "17",
 		"in_stock": "8",
 		"picture_location": "dent_end_sand3.webp"
 	  }
@@ -462,7 +462,7 @@
 		"description": "Prophy-Mate Neo nozzle with two nozzles at 60 ° and 80 °, toothbrush, wire and sandblaster cleaner, 5 pcs 15 g sachet FLASH pearl, key to replace work nozzles",
 		"price": "524",
 		"manufacturer": "26",
-		"subcategory_id": "17",
+		"subcategory": "17",
 		"in_stock": "7",
 		"picture_location": "dent_end_sand4.webp"
 	  }
@@ -475,7 +475,7 @@
 		"description": "Microetcher IIa - clinical and technical abrasive microscope. Application of a micro-grinder after the development of a drill defect significantly increases the binding force of binding systems.",
 		"price": "378",
 		"manufacturer": "3",
-		"subcategory_id": "17",
+		"subcategory": "17",
 		"in_stock": "7",
 		"picture_location": "dent_end_sand5.webp"
 	  }
@@ -488,7 +488,7 @@
 		"description": "P-Mate I Sandblaster, 2-hole borden joint.",
 		"price": "89",
 		"manufacturer": "13",
-		"subcategory_id": "17",
+		"subcategory": "17",
 		"in_stock": "9",
 		"picture_location": "dent_end_sand6.webp"
 	  }
@@ -501,7 +501,7 @@
 		"description": "AIR-FLOW® nozzles, set of gaskets and needles for cleaning, steribox, AIR-FLOW sanding sleeve",
 		"price": "2690",
 		"manufacturer": "42",
-		"subcategory_id": "17",
+		"subcategory": "17",
 		"in_stock": "9",
 		"picture_location": "dent_end_sand7.webp"
 	  }
@@ -514,7 +514,7 @@
 		"description": "1 x PrepStart H2O abrasive grinder, connection hose, 27 micron sand pack",
 		"price": "3100",
 		"manufacturer": "3",
-		"subcategory_id": "17",
+		"subcategory": "17",
 		"in_stock": "3",
 		"picture_location": "dent_end_sand8.webp"
 	  }
@@ -527,7 +527,7 @@
 		"description": "Perio-Mate, tip, brush, wire and file for cleaning sanding machine, 5 pcs 15 g sachet FLASH pearl",
 		"price": "615",
 		"manufacturer": "26",
-		"subcategory_id": "17",
+		"subcategory": "17",
 		"in_stock": "4",
 		"picture_location": "dent_end_sand9.webp"
 	  }
@@ -540,7 +540,7 @@
 		"description": "Recommended for all types of direct fillings, It has excellent usability, Provides high aesthetics, Easy to polish",
 		"price": "38",
 		"manufacturer": "1",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "15",
 		"picture_location": "filling_compo_1.webp"
 	  }
@@ -553,7 +553,7 @@
 		"description": "Provides excellent performance, Provides high aesthetics, Easy to polish, Gloss that lasts longer.",
 		"price": "238",
 		"manufacturer": "1",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_2.webp"
 	  }
@@ -566,7 +566,7 @@
 		"description": "2 x Filtek Ultimate 4g syringe in A2B shades, 2 x Filtek Ultimate 4g syringe in A3B shades, 1 x Single Bond Universal 5ml, 1x3ml",
 		"price": "210",
 		"manufacturer": "1",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_3.webp"
 	  }
@@ -579,7 +579,7 @@
 		"description": "3 x 4g syringe in colors: A3, B2, C2, Adper Single Bond Bonding System 3ml, Scotchbond gel etching 3ml",
 		"price": "149",
 		"manufacturer": "1",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_4.webp"
 	  }
@@ -592,7 +592,7 @@
 		"description": "Direct filling of the defects in the front and lateral teeth, reconstruction of large coronal cavities, 1 x syringe Filtek Z250 4g",
 		"price": "33",
 		"manufacturer": "1",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_5.webp"
 	  }
@@ -605,7 +605,7 @@
 		"description": "The technology used in the SDR composite provides a unique polymerisation process. During this reaction, the shrinkage stress is greatly reduced, and is growing slowly as the slower dynamics of the various polymerization phases",
 		"price": "68",
 		"manufacturer": "10",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_6.webp"
 	  }
@@ -618,7 +618,7 @@
 		"description": "During this reaction, the shrinkage stress is greatly reduced and is growing slowly as the slower dynamics of the individual polymerisation phases. Therefore, the final value of the shrinkage stress is as low as 60% compared to other commercially available composites",
 		"price": "148",
 		"manufacturer": "10",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "8",
 		"picture_location": "filling_compo_7.webp"
 	  }
@@ -631,7 +631,7 @@
 		"description": "Spectrum TPH3 is a light cured composite material with a universal range of clinical indications. It is designed to build aesthetic fills in the frontal area but at the same time it is able to cope with the loads in the lateral teeth.",
 		"price": "27",
 		"manufacturer": "10",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_8.webp"
 	  }
@@ -644,7 +644,7 @@
 		"description": "Chemical composition has a positive influence on the limited amount of polymerization shrinkage - 1.73% and shrinkage stress. Precise Filler Control Tech has achieved the optimum viscosity of the paste by Precise Filler Control Tech.",
 		"price": "48",
 		"manufacturer": "10",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_9.webp"
 	  }
@@ -657,7 +657,7 @@
 		"description": "5 x syringe 3g in colors: A1, A2, A3, A3.5, A4.1 x Prime & Bond One Select 3.5ml binding system, accessories, 1 x additional syringe A2",
 		"price": "138",
 		"manufacturer": "10",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_10.webp"
 	  }
@@ -670,7 +670,7 @@
 		"description": "Nano-filler allows for excellent polishing and long lasting gloss, which affect the aesthetic effect, improved aesthetics. Optimal opalescence and fluorescence affecting the natural appearance of the fillings",
 		"price": "29",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_11.webp"
 	  }
@@ -683,7 +683,7 @@
 		"description": "6 x 4g syringe with glaze material (A1, A2, A3, A3.5, D2) and dentin A2, 1 x Optibond Solo 5ml, 1x 3g syringe with Kerr Gel etchant applicator",
 		"price": "139",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_12.webp"
 	  }
@@ -696,7 +696,7 @@
 		"description": "1 x OptiBond Solo Plus 5ml bottle, 1 x Syringe 3g Kerr Gel Etchant + 50 applicator applicator syringes",
 		"price": "79",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_13.webp"
 	  }
@@ -709,7 +709,7 @@
 		"description": "8 x syringe 4g with material in shades: Enamel A2, A3, A3.5, B2, Dentine A2, A3, A3.5, Translucent Clear, 1 x OptiBond XTR Primer bottle 5ml, 1 x OptiBond XTR Adhesive bottle 5ml",
 		"price": "222",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_14.webp"
 	  }
@@ -722,7 +722,7 @@
 		"description": "2 x 2g syringe with one shade material, 20 application tips, 20 brushes",
 		"price": "59",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "8",
 		"picture_location": "filling_compo_15.webp"
 	  }
@@ -735,7 +735,7 @@
 		"description": "Small, ergonomic Unidose™ capsule mouths provide easy access to cavities. The foot controller and five dosage speeds facilitate precise control of composite applications. Offers excellent performance with no tooling, no flow issues, and ease of modeling.",
 		"price": "59",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_16.webp"
 	  }
@@ -748,7 +748,7 @@
 		"description": "SonicFill SonicFill, Starter Pack: 5 Unidose capsules with SonicFill and 5 tooth models, 10 x 0.3 g SonicFill A1,20 x 0.3 g SonicFill A2 capsules",
 		"price": "658",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "6",
 		"picture_location": "filling_compo_17.webp"
 	  }
@@ -761,7 +761,7 @@
 		"description": "12 x syringe 4g with material in basic shades (2xA1, 2x A2, 2xA3, A3.5, B2, D3) and opalescent (A2, A3, A3.5), 1 x OptiBond Solo Plus bottle 5ml 2x syringe with etching Kerr Gel Etchant 3g",
 		"price": "435",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_18.webp"
 	  }
@@ -774,7 +774,7 @@
 		"description": "Resin without filler for wetting, which facilitates surface modeling.",
 		"price": "18",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_19.webp"
 	  }
@@ -787,7 +787,7 @@
 		"description": "Intelligent application technology, exceptional bending strength, low polymerisation shrinkage",
 		"price": "24",
 		"manufacturer": "18",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_20.webp"
 	  }
@@ -800,7 +800,7 @@
 		"description": "Excellent mechanical and aesthetic properties, High fracture resistance and occlusion pressure, High abrasion resistance and low abrasion resistance of opposing teeth.",
 		"price": "28",
 		"manufacturer": "15",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "10",
 		"picture_location": "filling_compo_21.webp"
 	  }
@@ -813,7 +813,7 @@
 		"description": "Contains a new kind of nanoparticles in prepolymerized fillers with increased X-ray impermeability, Extra contrast in rt, equivalent to 214% Al,",
 		"price": "28",
 		"manufacturer": "15",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "14",
 		"picture_location": "filling_compo_22.webp"
 	  }
@@ -826,7 +826,7 @@
 		"description": "Easy-to-use, liquid X-ray composite material with all the necessary properties for optimum clinical results.",
 		"price": "47",
 		"manufacturer": "15",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "14",
 		"picture_location": "filling_compo_23.webp"
 	  }
@@ -839,7 +839,7 @@
 		"description": "Polishing paste to improve the aesthetics of use as the last step after ordinary polishing procedures, provides a higher gloss of any polished surfaces.",
 		"price": "28",
 		"manufacturer": "15",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "13",
 		"picture_location": "filling_compo_24.webp"
 	  }
@@ -852,7 +852,7 @@
 		"description": "1 x 40g powder in shade No. 21.3 x 10g powder in shades complementary No. 25, 27, 45, 26g of liquid, 1 x liquid ether",
 		"price": "14",
 		"manufacturer": "28",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "11",
 		"picture_location": "filling_compo_25.webp"
 	  }
@@ -865,7 +865,7 @@
 		"description": "1x 15g paste catalyst, 1x 15g paste base, 1x 3ml bond catalyst, 1x 3ml bond base",
 		"price": "12",
 		"manufacturer": "51",
-		"subcategory_id": "10",
+		"subcategory": "10",
 		"in_stock": "14",
 		"picture_location": "filling_compo_26.webp"
 	  }
@@ -878,7 +878,7 @@
 		"description": "Fillings of minor class I deficits, long-term fillings of lateral defects, fillings of all classes in milk teeth",
 		"price": "30",
 		"manufacturer": "1",
-		"subcategory_id": "11",
+		"subcategory": "11",
 		"in_stock": "13",
 		"picture_location": "filling_compo_c1.webp"
 	  }
@@ -891,7 +891,7 @@
 		"description": "Primer for single and multiple composite fillings, restoration of crown to prosthetic crowns, filling of milk teeth, exposed to fill loads of Class I and Class II",
 		"price": "37",
 		"manufacturer": "1",
-		"subcategory_id": "11",
+		"subcategory": "11",
 		"in_stock": "13",
 		"picture_location": "filling_compo_c2.webp"
 	  }
@@ -904,7 +904,7 @@
 		"description": "The material provides a long lasting karyostatic effect, has a pleasant work consistency and short exposure time. 20 comp to 0.25g",
 		"price": "47",
 		"manufacturer": "10",
-		"subcategory_id": "11",
+		"subcategory": "11",
 		"in_stock": "13",
 		"picture_location": "filling_compo_c3.webp"
 	  }
@@ -917,7 +917,7 @@
 		"description": "Fillings of Class V, I and II cavities and as a backing material and for restoration of the crown framework.",
 		"price": "89",
 		"manufacturer": "15",
-		"subcategory_id": "11",
+		"subcategory": "11",
 		"in_stock": "12",
 		"picture_location": "filling_compo_c4.webp"
 	  }
@@ -930,7 +930,7 @@
 		"description": "Groove sealing, prevention and control of hypersensitivity, root surface protection",
 		"price": "78",
 		"manufacturer": "15",
-		"subcategory_id": "11",
+		"subcategory": "11",
 		"in_stock": "12",
 		"picture_location": "filling_compo_c5.webp"
 	  }
@@ -943,7 +943,7 @@
 		"description": "Fuji VIII is a modified resin glass ionomer material for filling in the front teeth. Fillings of root surface defects. Fillings of Class III and Class V defects.",
 		"price": "99",
 		"manufacturer": "15",
-		"subcategory_id": "11",
+		"subcategory": "11",
 		"in_stock": "7",
 		"picture_location": "filling_compo_c6.webp"
 	  }
@@ -956,7 +956,7 @@
 		"description": "Appilloy amalgam capsules contain strictly metered amounts of melt and mercury needed to prepare the amalgam. Amalgam does not contain gamma or zinc phases.",
 		"price": "11",
 		"manufacturer": "41",
-		"subcategory_id": "12",
+		"subcategory": "12",
 		"in_stock": "0",
 		"picture_location": "filling_compo_a1.webp"
 	  }
@@ -969,7 +969,7 @@
 		"description": "Specially designed capsule system for precise mixing of ingredients, high compressive strength minimizes the risk of cracking and maximizes fill life.",
 		"price": "1",
 		"manufacturer": "30",
-		"subcategory_id": "12",
+		"subcategory": "12",
 		"in_stock": "15",
 		"picture_location": "filling_compo_a2.webp"
 	  }
@@ -982,7 +982,7 @@
 		"description": "Compressive strength 1 h. - 225 MPa, compressive strength 24 hours. 440 MPa, tensile strength 1 h. - 22 MPa",
 		"price": "2",
 		"manufacturer": "30",
-		"subcategory_id": "12",
+		"subcategory": "12",
 		"in_stock": "18",
 		"picture_location": "filling_compo_a3.webp"
 	  }
@@ -995,7 +995,7 @@
 		"description": "Vivacap is a non-gamma-2 amalgam, characterized by flexibility and excellent physical properties. Contains 46% silver.",
 		"price": "56",
 		"manufacturer": "35",
-		"subcategory_id": "12",
+		"subcategory": "12",
 		"in_stock": "15",
 		"picture_location": "filling_compo_a4.webp"
 	  }
@@ -1008,7 +1008,7 @@
 		"description": "Bonding direct fillings from light-cured materials in all classes of defects, prosthetic restoration, in combination with RelyX ARC, combining amalgam fillings with enamel and dentine, in combination with RelyX ARC",
 		"price": "15",
 		"manufacturer": "1",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "13",
 		"picture_location": "con_sys_l1.webp"
 	  }
@@ -1021,7 +1021,7 @@
 		"description": "Combination of composite materials and dentifrice and enamel composites, Implantation of prosthetic restorations using RelyX™ ARC, provided that prior to cement application, the binding system will be cured by lamp light",
 		"price": "57",
 		"manufacturer": "1",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "12",
 		"picture_location": "con_sys_l2.webp"
 	  }
@@ -1034,7 +1034,7 @@
 		"description": "1 x 5ml bottle, 50 micron application tips, tip holder, dispensing stand",
 		"price": "68",
 		"manufacturer": "15",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "20",
 		"picture_location": "con_sys_l3.webp"
 	  }
@@ -1047,7 +1047,7 @@
 		"description": "It can be used as a self-etching adhesive system or with selective enamel etching. It creates a nano-interaction zone providing a strong chemical bond with dentin.",
 		"price": "58",
 		"manufacturer": "15",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "13",
 		"picture_location": "con_sys_l4.webp"
 	  }
@@ -1060,7 +1060,7 @@
 		"description": "One-component system for all digestion techniques. It is hypersensitive, durable bonding to tooth tissue, composites, metals, zirconia and alumina.",
 		"price": "49",
 		"manufacturer": "15",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "18",
 		"picture_location": "con_sys_l5.webp"
 	  }
@@ -1073,7 +1073,7 @@
 		"description": "Direct bonding of composite materials with enamel and / or dentin. Combination of composite materials with composite surface. Combination of composite materials with porcelain and / or metal surface.",
 		"price": "28",
 		"manufacturer": "18",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "15",
 		"picture_location": "con_sys_l6.webp"
 	  }
@@ -1086,7 +1086,7 @@
 		"description": "1 x OptiBond FL Primer 8ml bottle, 1 x OptiBond FL Adhesive bottle 8ml, 1 x Kerr Gel etchant syringe 3g",
 		"price": "99",
 		"manufacturer": "18",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "9",
 		"picture_location": "con_sys_l7.webp"
 	  }
@@ -1099,7 +1099,7 @@
 		"description": "1 x OptiBond XTR Primer Bottle 5ml, 1 x OptiBond XTR Adhesive Bottle 5ml, 100 applicators",
 		"price": "68",
 		"manufacturer": "18",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "12",
 		"picture_location": "con_sys_l8.webp"
 	  }
@@ -1112,7 +1112,7 @@
 		"description": "Combination of light-cured composites and compilers with dentin and enamel. Application with Total-Etch technique",
 		"price": "18",
 		"manufacturer": "28",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "16",
 		"picture_location": "con_sys_l9.webp"
 	  }
@@ -1125,7 +1125,7 @@
 		"description": "When using Syntac, Heliobond also provides bonding to the dentine, For tinning (as a transparent lacquer) and for restorations, For repairing damaged porcelain and composite veneer",
 		"price": "37",
 		"manufacturer": "35",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "13",
 		"picture_location": "con_sys_l10.webp"
 	  }
@@ -1138,7 +1138,7 @@
 		"description": "Clinically proven efficacy, reduced postoperative sensitivity, very good marginal tightness",
 		"price": "57",
 		"manufacturer": "35",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "16",
 		"picture_location": "con_sys_l11.webp"
 	  }
@@ -1151,7 +1151,7 @@
 		"description": "Connecting material for direct fill of light-cured composite, compomer and ceromatic materials.",
 		"price": "48",
 		"manufacturer": "35",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "19",
 		"picture_location": "con_sys_l12.webp"
 	  }
@@ -1164,7 +1164,7 @@
 		"description": "Fast and effective - due to the various bonding techniques, optimal application properties - thanks to the homogeneous material layer, durable and reliable composite restorations of all classes,",
 		"price": "27",
 		"manufacturer": "35",
-		"subcategory_id": "7",
+		"subcategory": "7",
 		"in_stock": "14",
 		"picture_location": "con_sys_l13.webp"
 	  }
@@ -1177,7 +1177,7 @@
 		"description": "Phosphate free cement. Used as a backing for every kind of filling, and also as a temporary filler for milk teeth.",
 		"price": "600",
 		"manufacturer": "8",
-		"subcategory_id": "8",
+		"subcategory": "8",
 		"in_stock": "15",
 		"picture_location": "con_sys_s1.webp"
 	  }
@@ -1190,7 +1190,7 @@
 		"description": "Used as a backing under every kind of fill and also as a temporary filling material for dental teeth. After binding, it exhibits high compressive strength and resistance to water erosion, saliva and compounds in food.",
 		"price": "11",
 		"manufacturer": "8",
-		"subcategory_id": "8",
+		"subcategory": "8",
 		"in_stock": "20",
 		"picture_location": "con_sys_s2.webp"
 	  }
@@ -1203,7 +1203,7 @@
 		"description": "Phosphate cement with hydroxyapatite, similar in use to Agatos S, can also be used to fill cavities in milk teeth in case of Blacke class I and III deficiency.",
 		"price": "9",
 		"manufacturer": "8",
-		"subcategory_id": "8",
+		"subcategory": "8",
 		"in_stock": "13",
 		"picture_location": "con_sys_s3.webp"
 	  }
@@ -1216,7 +1216,7 @@
 		"description": "Primer material based on calcium hydroxide.Dycal is a classical calcium hydroxide-based chemical curable material that does not interfere with the polymerization of composite materials and acryl.",
 		"price": "19",
 		"manufacturer": "10",
-		"subcategory_id": "8",
+		"subcategory": "8",
 		"in_stock": "23",
 		"picture_location": "con_sys_s4.webp"
 	  }
@@ -1229,7 +1229,7 @@
 		"description": "Light-curing self-adhesive nano-seal sealant. Uniform distribution of filler nano particles greatly increases the resistance to abrasion.",
 		"price": "47",
 		"manufacturer": "15",
-		"subcategory_id": "8",
+		"subcategory": "8",
 		"in_stock": "13",
 		"picture_location": "con_sys_s5.webp"
 	  }
@@ -1242,7 +1242,7 @@
 		"description": "1 x 12g base tube, 1x 12g catalyst tube, mixing pad",
 		"price": "13",
 		"manufacturer": "18",
-		"subcategory_id": "8",
+		"subcategory": "8",
 		"in_stock": "20",
 		"picture_location": "con_sys_s6.webp"
 	  }
@@ -1255,7 +1255,7 @@
 		"description": "The most effective calcium hydroxide - thanks to its high concentration and optimum consistency. Over 41% of calcium hydroxide results in a strong and long lasting effect. The calcium hydroxide results in optimal release of ions.",
 		"price": "27",
 		"manufacturer": "43",
-		"subcategory_id": "8",
+		"subcategory": "8",
 		"in_stock": "14",
 		"picture_location": "con_sys_s7.webp"
 	  }
@@ -1268,7 +1268,7 @@
 		"description": "Temporary, Temporary and Final Settlement of Restorative Restorations, Liner to fill with Amalgam and Composite Materials.",
 		"price": "6",
 		"manufacturer": "28",
-		"subcategory_id": "8",
+		"subcategory": "8",
 		"in_stock": "15",
 		"picture_location": "con_sys_s8.webp"
 	  }
@@ -1281,7 +1281,7 @@
 		"description": "Ultrablend is a universal light-cured primer. Contains calcium hydroxide and calcium hydroxyapatite dissolved in urethane dimethacrylate.",
 		"price": "500",
 		"manufacturer": "33",
-		"subcategory_id": "8",
+		"subcategory": "8",
 		"in_stock": "9",
 		"picture_location": "con_sys_s9.webp"
 	  }
@@ -1294,7 +1294,7 @@
 		"description": "Gel for pickling enamel and dentine. Contains 36% orthophosphoric acid.",
 		"price": "5",
 		"manufacturer": "4",
-		"subcategory_id": "9",
+		"subcategory": "9",
 		"in_stock": "4",
 		"picture_location": "con_sys_e1.webp"
 	  }
@@ -1307,7 +1307,7 @@
 		"description": "Dental etching for enamel etching. Active substance: 36% o-phosphoric acid",
 		"price": "14",
 		"manufacturer": "7",
-		"subcategory_id": "9",
+		"subcategory": "9",
 		"in_stock": "8",
 		"picture_location": "con_sys_e2.webp"
 	  }
@@ -1320,7 +1320,7 @@
 		"description": "Kerr Gel Etchant - 37.5% phosphoric acid for pickling enamel and dentine. The bright, purple color of the pickle makes it easy to apply a precise application. Thanks to the dense consistency, the Etchant Gel does not drain from the surface of the preparation and is easily flushed out of the cavity.",
 		"price": "3",
 		"manufacturer": "18",
-		"subcategory_id": "9",
+		"subcategory": "9",
 		"in_stock": "6",
 		"picture_location": "con_sys_e3.webp"
 	  }
@@ -1333,7 +1333,7 @@
 		"description": "Lightweight and easy-to-powder granules powder, easy to obtain the right proportion of powder and liquid, no dusting",
 		"price": "57",
 		"manufacturer": "1",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "13",
 		"picture_location": "pros_c1.webp"
 	  }
@@ -1346,7 +1346,7 @@
 		"description": "Core-X  Flow Light Polymerization. Apply the material directly by doing 2-3mm layer thickness and irradiate for 20 seconds. Chemical Polymerization Core-X  Flow.",
 		"price": "25",
 		"manufacturer": "10",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "14",
 		"picture_location": "pros_c2.webp"
 	  }
@@ -1359,7 +1359,7 @@
 		"description": "Glaucomastomer cement for permanent crown restoration, prosthetic bridges and orthodontic locks.AquaCem is glass ionomer cement. It consists of a mixture of aluminum-silica glass and polyacrylic acid.",
 		"price": "47",
 		"manufacturer": "10",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "13",
 		"picture_location": "pros_c3.webp"
 	  }
@@ -1372,7 +1372,7 @@
 		"description": "Compatible with pulp and other tissues of the tooth, reduced risk of postoperative abnormalities, excellent adhesion for long lasting birch tightness, extended working time, easy to mix, convenient to use",
 		"price": "78",
 		"manufacturer": "15",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "14",
 		"picture_location": "pros_c4.webp"
 	  }
@@ -1385,7 +1385,7 @@
 		"description": "Ease of deposition, fast cure, excellent contrast in x-ray images, long-term fluoride release",
 		"price": "48",
 		"manufacturer": "15",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "16",
 		"picture_location": "pros_c5.webp"
 	  }
@@ -1398,7 +1398,7 @@
 		"description": "Resin-reinforced glass ionomer material for deposition of prosthetic work. It is versatile in cementing metal works, ceramic inserts, metal-fired porcelain",
 		"price": "89",
 		"manufacturer": "15",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "12",
 		"picture_location": "pros_c6.webp"
 	  }
@@ -1411,7 +1411,7 @@
 		"description": "It is versatile in cementing metal works, ceramic inserts, metal-fired porcelain (crowns and bridges) and all kinds of crowns, inserts and bridges made of plastic / composite.",
 		"price": "38",
 		"manufacturer": "15",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "15",
 		"picture_location": "pros_c7.webp"
 	  }
@@ -1424,7 +1424,7 @@
 		"description": "Using the GC Fuji PLUS Conditioner, designed for GC Fuji Plus, a significantly better connection with the tissue substrate and prosthetic restoration material is achieved.",
 		"price": "35",
 		"manufacturer": "15",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "8",
 		"picture_location": "pros_c8.webp"
 	  }
@@ -1437,7 +1437,7 @@
 		"description": "G-CEM is a double-walled, self-adhesive, universal composite cemented composite cement for bonding intermediate, full ceramic, metal or composite substrates.",
 		"price": "111",
 		"manufacturer": "15",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "8",
 		"picture_location": "pros_c9.webp"
 	  }
@@ -1450,7 +1450,7 @@
 		"description": "Maxcem Elite is a self-adhesive, self-adhering composite cement with improved simplicity for prosthetic restorations. The material combines without compromise proven technology with greater binding force and excellent performance.",
 		"price": "23",
 		"manufacturer": "18",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "9",
 		"picture_location": "pros_c10.webp"
 	  }
@@ -1463,7 +1463,7 @@
 		"description": "Cement is easy to clean. The material does not require manual mixing and storage in the fridge, and the convenience of the application is provided by intraoral and intrathecal tips, which allow the application of cement in difficult areas.",
 		"price": "123",
 		"manufacturer": "18",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "9",
 		"picture_location": "pros_c11.webp"
 	  }
@@ -1476,7 +1476,7 @@
 		"description": "Temp-Bond NE is a classic oxide-zinc oxide without eugenol. The material does not adversely affect the bonding of cements based on composite resins or acrylic temporary materials. It is especially recommended for use in patients allergic to eugenol.",
 		"price": "35",
 		"manufacturer": "18",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "9",
 		"picture_location": "pros_c12.webp"
 	  }
@@ -1489,7 +1489,7 @@
 		"description": "Maxcem Elite Chroma is the first self-drilling / self-adhesive composite cement having a chromatic index, the moment of removing excess, making it one of the \"smartest\" cements available on the market today.",
 		"price": "111",
 		"manufacturer": "18",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "8",
 		"picture_location": "pros_c13.webp"
 	  }
@@ -1502,7 +1502,7 @@
 		"description": "Maxcem Elite Chroma is the first self-drilling / self-adhesive composite cement having a chromatic index, the moment of removing excess, making it one of the \"smartest\" cements available on the market today. The pink color disappears in the gel phase, informing you of the optimal time for removing excess cement.",
 		"price": "35",
 		"manufacturer": "18",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "8",
 		"picture_location": "pros_c14.webp"
 	  }
@@ -1515,7 +1515,7 @@
 		"description": "Zinc-phosphate cement with very fine ground zinc, giving a thickness of only 25 microns. Used for cementing inserts, inputs, crowns and bridges and as a temporary fill.",
 		"price": "8",
 		"manufacturer": "28",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "3",
 		"picture_location": "pros_c15.webp"
 	  }
@@ -1528,7 +1528,7 @@
 		"description": "This conventional chemotherapeutic material is characterized by natural adhesion to hard tissues and no negative effect on pulp. Adhesor Carbofine provides excellent results when depositing crowns and bridges, and when used for temporary fillings.",
 		"price": "7",
 		"manufacturer": "28",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "9",
 		"picture_location": "pros_c16.webp"
 	  }
@@ -1541,7 +1541,7 @@
 		"description": "An anesthetic cement that provides good sealing of the cavity, without irritating adjacent tissues. With its eugenol content, Caryosan has an anesthetic and disinfectant properties.",
 		"price": "16",
 		"manufacturer": "28",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "13",
 		"picture_location": "pros_c17.webp"
 	  }
@@ -1554,7 +1554,7 @@
 		"description": "The exceptional consistency of the gel and the extraordinary adhesion to the hard tissues make Kavitan CEM the choice material for prosthetic restorations. Cement is suitable for depositing crowns, bridges, inserts and outlays.",
 		"price": "28",
 		"manufacturer": "28",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "17",
 		"picture_location": "pros_c18.webp"
 	  }
@@ -1567,7 +1567,7 @@
 		"description": "The Kavitan LC is a light-curing, resin-based ionomer glass that provides speed and durable aesthetics of reconstruction. It is perfect for frontal fillings, for example in Class III and Class V cavities, as well as for all pedodontic indications.",
 		"price": "38",
 		"manufacturer": "28",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "15",
 		"picture_location": "pros_c19.webp"
 	  }
@@ -1580,7 +1580,7 @@
 		"description": "Mojo™ is the latest aesthetic system from Pentron Clinical for cementing veneers, both composite and porcelain. It ensures the highest aesthetics of the restoration, maintaining its appearance even after prolonged use by the patient.",
 		"price": "245",
 		"manufacturer": "28",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "7",
 		"picture_location": "pros_c20.webp"
 	  }
@@ -1593,7 +1593,7 @@
 		"description": "SpeedCEM is a self-adhesive composite cement with a dual polymerisation mechanism. This makes cementing easier and faster. The use of etching and bonding systems was eliminated.",
 		"price": "67",
 		"manufacturer": "35",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "8",
 		"picture_location": "pros_c21.webp"
 	  }
@@ -1606,7 +1606,7 @@
 		"description": "Professional set of materials for repairing broken crowns and bridges, made of ceramic and composite materials, as well as prosthetic restorations made of ceromatic materials (eg Targis / Vectris) and uniformly porcelain (eg IPS Empress 2).",
 		"price": "254",
 		"manufacturer": "35",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "8",
 		"picture_location": "pros_c22.webp"
 	  }
@@ -1619,7 +1619,7 @@
 		"description": "Material for crown root restoration, chemically polymerizable, with option of light polymerization. It provides many opportunities for reconstruction of living teeth and after endodontic treatment, partially or wholly damaged crown.",
 		"price": "55",
 		"manufacturer": "35",
-		"subcategory_id": "4",
+		"subcategory": "4",
 		"in_stock": "8",
 		"picture_location": "pros_c23.webp"
 	  }
@@ -1632,7 +1632,7 @@
 		"description": "As a second layer in double layer technology, impressions for crowns and bridges, impressions for inserts and expenditures.",
 		"price": "37",
 		"manufacturer": "1",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "8",
 		"picture_location": "pros_d1.webp"
 	  }
@@ -1645,7 +1645,7 @@
 		"description": "Hand-mixed, putty mass, designed for use as a layer for precise double-layer impressions. It is particularly useful in the double-sided technique.",
 		"price": "46",
 		"manufacturer": "1",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "9",
 		"picture_location": "pros_d2.webp"
 	  }
@@ -1658,7 +1658,7 @@
 		"description": "Polyvinyl siloxane quick-release mass 1 x base 250ml, 1 x 250ml catalyst",
 		"price": "47",
 		"manufacturer": "1",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "7",
 		"picture_location": "pros_d3.webp"
 	  }
@@ -1671,7 +1671,7 @@
 		"description": "First layer weights are available in the Penta system for automatic mixing in Pentamix™ or manual mixing. All second-layer materials are designed for automatic mixing in the Garant™ system.",
 		"price": "46",
 		"manufacturer": "1",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "9",
 		"picture_location": "pros_d4.webp"
 	  }
@@ -1684,7 +1684,7 @@
 		"description": "This class A alginate with chromatic phase indicator. Color toning automatically shows the different phases of work (mixing, implantation, insertion into the mouth) and shows the exact moment of complete mixing as well as insertion into the mouth.",
 		"price": "5",
 		"manufacturer": "44",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "19",
 		"picture_location": "pros_d5.webp"
 	  }
@@ -1697,7 +1697,7 @@
 		"description": "Alginate elastic impression material with extended dimensional stability - up to 5 days. It has a scent of mangosteen fruit. Does not contain heavy metals, does not melt in the mouth.",
 		"price": "11",
 		"manufacturer": "44",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "34",
 		"picture_location": "pros_d6.webp"
 	  }
@@ -1710,7 +1710,7 @@
 		"description": "Alginate elastic impression material. It has a consistency of powder. Does not contain heavy metals, does not melt in the mouth. It guarantees exceptional accuracy of the impression.",
 		"price": "7",
 		"manufacturer": "44",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "21",
 		"picture_location": "pros_d7.webp"
 	  }
@@ -1723,7 +1723,7 @@
 		"description": "Material for precision impressions in extreme situations. Precise elastomeric impression material with an admixture based on Vinylpolysiloxane with exceptionally high initial hydrophilicity. Panasil initial contact X-light very smooth impression material",
 		"price": "14",
 		"manufacturer": "20",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "12",
 		"picture_location": "pros_d8.webp"
 	  }
@@ -1736,7 +1736,7 @@
 		"description": "Panasil initial contact regular is a dense impression material. Ideal as a second coat of Panasil binetics or Panasil putty.",
 		"price": "45",
 		"manufacturer": "20",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "12",
 		"picture_location": "pros_d9.webp"
 	  }
@@ -1749,7 +1749,7 @@
 		"description": "Material for kneading, elastomeric precision impression material with additive binding based on vinylpolysiloxane.Panasil putty soft is a modern classic of the company. This material guarantees high precision and optimum comfort when working in the mouth for 2 minutes.",
 		"price": "35",
 		"manufacturer": "20",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "12",
 		"picture_location": "pros_d10.webp"
 	  }
@@ -1762,7 +1762,7 @@
 		"description": "Quick, safe and clean. In the comfortable Plug & Press system, Panasil binetics putty soft meets the standard quality standard of Kettenbach - it is taste and neutral neutral.",
 		"price": "45",
 		"manufacturer": "20",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "19",
 		"picture_location": "pros_d11.webp"
 	  }
@@ -1775,7 +1775,7 @@
 		"description": "Easy to use, patient-bound material, High Tyotropy, Low tear resistance, Can be disinfected, Plaster cast immediately,",
 		"price": "24",
 		"manufacturer": "20",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "10",
 		"picture_location": "pros_d12.webp"
 	  }
@@ -1788,7 +1788,7 @@
 		"description": "Silosept is an agent for disinfecting solution. It is recommended for disinfection of silicone, polyurethane and alginate impressions and laboratory instruments.",
 		"price": "34",
 		"manufacturer": "20",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "10",
 		"picture_location": "pros_d13.webp"
 	  }
@@ -1801,7 +1801,7 @@
 		"description": "Universal activator for all types of silicone masses.",
 		"price": "11",
 		"manufacturer": "20",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "10",
 		"picture_location": "pros_d14.webp"
 	  }
@@ -1814,7 +1814,7 @@
 		"description": "Contains a set of high-tech and economical impression materials. Impression type of condensation. Used for situational and functional imaging.",
 		"price": "22",
 		"manufacturer": "20",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "12",
 		"picture_location": "pros_d15.webp"
 	  }
@@ -1827,7 +1827,7 @@
 		"description": "Easy to use (2 min. Application time, 4 min while in the patients mouth), - good flow due to rare consistency, accurate reproduction of the preparation",
 		"price": "34",
 		"manufacturer": "20",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "10",
 		"picture_location": "pros_d16.webp"
 	  }
@@ -1840,7 +1840,7 @@
 		"description": "Low-density poly(vinylsiloxane) mass - Light Body mass. Rare ImpressFlex® VPS Putty masses with excellent flow for single or dual use.",
 		"price": "21",
 		"manufacturer": "45",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "12",
 		"picture_location": "pros_d17.webp"
 	  }
@@ -1853,7 +1853,7 @@
 		"description": "ImpressFlex® VPS Putty Normal Correct Plus provides enough time to mix, apply on a spoon, and take an impression with one- or two-step techniques.",
 		"price": "34",
 		"manufacturer": "45",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "12",
 		"picture_location": "pros_d18.webp"
 	  }
@@ -1866,7 +1866,7 @@
 		"description": "Catalyst gel for C-silicone impression masses Stomaflex Putty and Stomaflex Light.",
 		"price": "6",
 		"manufacturer": "45",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "13",
 		"picture_location": "pros_d19.webp"
 	  }
@@ -1879,7 +1879,7 @@
 		"description": "Shaping of individual impression pads at the mucodynamic impressions, Shaping of the medial bridging of the prostheses, Determination of the neutral zone of the prostheses.",
 		"price": "4",
 		"manufacturer": "45",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "12",
 		"picture_location": "pros_d20.webp"
 	  }
@@ -1892,7 +1892,7 @@
 		"description": "Material for the first layer of two-layer impression. Mass with increased hardness and resistance to deformation. It is C-silicone produced on the basis of special spheroidal fillers, which facilitates the flow of mass to the inaccessible areas of the prosthetic field.",
 		"price": "13",
 		"manufacturer": "38",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "12",
 		"picture_location": "pros_d21.webp"
 	  }
@@ -1905,7 +1905,7 @@
 		"description": "High end hardness is a unique advantage in double-layer double-impression technique. In the double-layered impression technology, the material adapts to the consistency of a lower viscosity correction layer.",
 		"price": "34",
 		"manufacturer": "38",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "7",
 		"picture_location": "pros_d22.webp"
 	  }
@@ -1918,7 +1918,7 @@
 		"description": "C-silicone (condensation) liquid consistency, thixotropic and hydro-compatible. Thanks to its unique properties, it does not drain during impression taking",
 		"price": "10",
 		"manufacturer": "38",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "15",
 		"picture_location": "pros_d23.webp"
 	  }
@@ -1931,7 +1931,7 @@
 		"description": "Universal catalyst for base and correction mass type C. Indurent can be used for almost all condensed silicones manufactured by Zhermack (except Zetaflow impression molds).",
 		"price": "10",
 		"manufacturer": "38",
-		"subcategory_id": "5",
+		"subcategory": "5",
 		"in_stock": "14",
 		"picture_location": "pros_d24.webp"
 	  }
@@ -1944,7 +1944,7 @@
 		"description": "Composite for temporary crowns and bridges, designed for manual mixing.",
 		"price": "45",
 		"manufacturer": "1",
-		"subcategory_id": "6",
+		"subcategory": "6",
 		"in_stock": "12",
 		"picture_location": "prost_t1.webp"
 	  }
@@ -1957,7 +1957,7 @@
 		"description": "Protemp 4, a new temporary work material 3M ESPE, is characterized by high durability and fracture resistance and aesthetics - smooth, glossy surface, natural fluorescence and better color stability.",
 		"price": "78",
 		"manufacturer": "1",
-		"subcategory_id": "6",
+		"subcategory": "6",
 		"in_stock": "12",
 		"picture_location": "pros_t2.webp"
 	  }
@@ -1970,7 +1970,7 @@
 		"description": "Material for making temporary crowns and bridges on the basis of methacrylate esters.Integrity is intended for use both during the preparation of temporary and short-term temporary restorations.",
 		"price": "35",
 		"manufacturer": "10",
-		"subcategory_id": "6",
+		"subcategory": "6",
 		"in_stock": "11",
 		"picture_location": "pros_t3.webp"
 	  }
@@ -1983,7 +1983,7 @@
 		"description": "Integrity material is compatible with DENTSPLY light-cured composite materials for edge repair and aesthetic correction of temporary crowns.",
 		"price": "78",
 		"manufacturer": "10",
-		"subcategory_id": "6",
+		"subcategory": "6",
 		"in_stock": "15",
 		"picture_location": "pros_t4.webp"
 	  }
@@ -1996,7 +1996,7 @@
 		"description": "Material for temporary crowns and bridges, inlay and onlay crowns, veneers and temporary restorations",
 		"price": "23",
 		"manufacturer": "11",
-		"subcategory_id": "6",
+		"subcategory": "6",
 		"in_stock": "12",
 		"picture_location": "pros_t5.webp"
 	  }
@@ -2009,7 +2009,7 @@
 		"description": "Natural fluorescence in six colors, Low polymerization shrinkage, High abrasion and crack resistance",
 		"price": "56",
 		"manufacturer": "11",
-		"subcategory_id": "6",
+		"subcategory": "6",
 		"in_stock": "12",
 		"picture_location": "pros_t6.webp"
 	  }
@@ -2022,7 +2022,7 @@
 		"description": "Smooth surface - it can not be polished, easy removal of the make-up from the impression and mouth of the patient, suitable for milling - very little dust",
 		"price": "45",
 		"manufacturer": "20",
-		"subcategory_id": "6",
+		"subcategory": "6",
 		"in_stock": "6",
 		"picture_location": "pros_t7.webp"
 	  }
@@ -2035,7 +2035,7 @@
 		"description": "Perform temporary aesthetic crowns, bridges, Inlay and Onlay fillings",
 		"price": "67",
 		"manufacturer": "36",
-		"subcategory_id": "6",
+		"subcategory": "6",
 		"in_stock": "10",
 		"picture_location": "pros_t8.webp"
 	  }
@@ -2048,7 +2048,7 @@
 		"description": "H-Files - a hedstroem file resembles a pyramid of ever-smaller metal cones. The cross section of the file h forms a straight angle to the root canal wall, giving a very high cutting force",
 		"price": "9",
 		"manufacturer": "22",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "10",
 		"picture_location": "endo_l1.webp"
 	  }
@@ -2061,7 +2061,7 @@
 		"description": "Spreader - strut is used for lateral condensation of gutta percha in root canal. Length: 25mm",
 		"price": "7",
 		"manufacturer": "22",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "7",
 		"picture_location": "endo_l2.webp"
 	  }
@@ -2074,7 +2074,7 @@
 		"description": "Gates Drills - drills for channel clearing. Length: 32mm",
 		"price": "14",
 		"manufacturer": "22",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "10",
 		"picture_location": "endo_l3.webp"
 	  }
@@ -2087,7 +2087,7 @@
 		"description": "Peeso Reamers - crown-root cartridge extensions such as EG POST",
 		"price": "17",
 		"manufacturer": "22",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "14",
 		"picture_location": "endo_l4.webp"
 	  }
@@ -2100,7 +2100,7 @@
 		"description": "ProTaper nickel-titanium machine tools have been designed to develop difficult, calcified and highly curved root canals.",
 		"price": "46",
 		"manufacturer": "46",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "14",
 		"picture_location": "endo_l5.webp"
 	  }
@@ -2113,7 +2113,7 @@
 		"description": "PROTAPER NEXT is the successor of the PROTAPER UNIVERSAL system, which has long remained the gold standard in endodontics. It is an effective solution for endodontists in need of a versatile and flexible system that can be used for the vast majority of canal treatment cases.",
 		"price": "38",
 		"manufacturer": "46",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "17",
 		"picture_location": "endo_l6.webp"
 	  }
@@ -2126,7 +2126,7 @@
 		"description": "File Ks are dense spiral files designed according to the shape described by dr. Kerr. They primarily serve to find channels and develop thin channels.",
 		"price": "8",
 		"manufacturer": "29",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "17",
 		"picture_location": "endo_l7.webp"
 	  }
@@ -2139,7 +2139,7 @@
 		"description": "Stainless steel dental steel is an alloy containing 73 percent iron, 9 percent nickel and 18 percent chromium",
 		"price": "8",
 		"manufacturer": "29",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "14",
 		"picture_location": "endo_l8.webp"
 	  }
@@ -2152,7 +2152,7 @@
 		"description": "Their flexibility greatly depends on size, they are quite resistant and have good cutting ability, they can be flexed into the shape of the duct",
 		"price": "8",
 		"manufacturer": "29",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "17",
 		"picture_location": "endo_l9.webp"
 	  }
@@ -2165,7 +2165,7 @@
 		"description": "Stainless steel, CC handle, high bending strength thanks to special thermal curing process",
 		"price": "16",
 		"manufacturer": "34",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "13",
 		"picture_location": "endo_l10.webp"
 	  }
@@ -2178,7 +2178,7 @@
 		"description": "Mouthguns are tools designed to remove pulp from the root canal. They are constructed of about 40 spirally protruding elastic teeth on a conical core",
 		"price": "9",
 		"manufacturer": "34",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "13",
 		"picture_location": "endo_l11.webp"
 	  }
@@ -2191,7 +2191,7 @@
 		"description": "Rectangular cross section reduces the risk of fracture, triangular cross section improves cutting efficiency, made of special, elastic best quality steel, whose structure significantly increases fracture resistance",
 		"price": "20",
 		"manufacturer": "34",
-		"subcategory_id": "1",
+		"subcategory": "1",
 		"in_stock": "19",
 		"picture_location": "endo_l12.webp"
 	  }
@@ -2204,7 +2204,7 @@
 		"description": "Commonly used in the preparation of crown teeth, for scoring guide grooves to control depth of preparation, preparation of short-circuits, cavities.Commonly used in the preparation of crown teeth, for scoring guide grooves to control depth of preparation, preparation of short-circuits, cavities.",
 		"price": "3",
 		"manufacturer": "17",
-		"subcategory_id": "2",
+		"subcategory": "2",
 		"in_stock": "17",
 		"picture_location": "endo_d1.webp"
 	  }
@@ -2217,7 +2217,7 @@
 		"description": "Highest cutting efficiency, no need for a strong push, comfort for the dentist and patient, significantly lower risk of pulp damage due to overheating",
 		"price": "3",
 		"manufacturer": "17",
-		"subcategory_id": "2",
+		"subcategory": "2",
 		"in_stock": "18",
 		"picture_location": "endo_d2.webp"
 	  }
@@ -2230,7 +2230,7 @@
 		"description": "Usually caused by the use of blunt, low-grade tools, fast work, which allows for more teeth per day and greater profitability,",
 		"price": "3",
 		"manufacturer": "17",
-		"subcategory_id": "2",
+		"subcategory": "2",
 		"in_stock": "16",
 		"picture_location": "endo_d3.webp"
 	  }
@@ -2243,7 +2243,7 @@
 		"description": "The anatomically-designed short-circuited surface provides sufficient bite space and even thickness of the restorations. The diamond-shaped flame-shaped drill allows for the formation of a concave lingual surface during tooth preparation under the crown.",
 		"price": "3",
 		"manufacturer": "17",
-		"subcategory_id": "2",
+		"subcategory": "2",
 		"in_stock": "22",
 		"picture_location": "endo_d4.webp"
 	  }
@@ -2256,7 +2256,7 @@
 		"description": "Cylindrical or cylindrical diamonds provide a degree of 90 degrees.",
 		"price": "3",
 		"manufacturer": "17",
-		"subcategory_id": "2",
+		"subcategory": "2",
 		"in_stock": "23",
 		"picture_location": "endo_d5.webp"
 	  }
@@ -2269,7 +2269,7 @@
 		"description": "Drill bit for JOTA C1 FG XL turbine (25mm). Removal of caries or old fillings.",
 		"price": "3",
 		"manufacturer": "17",
-		"subcategory_id": "2",
+		"subcategory": "2",
 		"in_stock": "17",
 		"picture_location": "endo_d6.webp"
 	  }
@@ -2282,7 +2282,7 @@
 		"description": "Commonly used in the preparation of crown teeth, for scoring guide grooves to control depth of preparation, preparation of short-circuits, cavities.",
 		"price": "3",
 		"manufacturer": "17",
-		"subcategory_id": "2",
+		"subcategory": "2",
 		"in_stock": "16",
 		"picture_location": "endo_d7.webp"
 	  }
@@ -2295,7 +2295,7 @@
 		"description": "Rosette drill for JOTA C1S RAL (26mm) micromotor.",
 		"price": "3",
 		"manufacturer": "17",
-		"subcategory_id": "2",
+		"subcategory": "2",
 		"in_stock": "16",
 		"picture_location": "endo_d8.webp"
 	  }
@@ -2308,7 +2308,7 @@
 		"description": "Thermoplastic gutta-percha for channel filling, regular gutta percha, 100 sticks, soft gutta percha",
 		"price": "38",
 		"manufacturer": "6",
-		"subcategory_id": "3",
+		"subcategory": "3",
 		"in_stock": "10",
 		"picture_location": "endo_g1.webp"
 	  }
@@ -2321,7 +2321,7 @@
 		"description": "They are designed for safe and quick drying channels. To ensure patient safety, paper filters are delivered in a sterile state.",
 		"price": "20",
 		"manufacturer": "10",
-		"subcategory_id": "3",
+		"subcategory": "3",
 		"in_stock": "10",
 		"picture_location": "endo_g2.webp"
 	  }
@@ -2334,7 +2334,7 @@
 		"description": "Protaper Next GuttaTracker, calibrated in the shape of a finishing tool, for fast and precise filling of the main root.",
 		"price": "25",
 		"manufacturer": "10",
-		"subcategory_id": "3",
+		"subcategory": "3",
 		"in_stock": "10",
 		"picture_location": "endo_g3.webp"
 	  }
@@ -2347,7 +2347,7 @@
 		"description": "Papercuts made of cellulose. Used for drainage of the canal. They show high absorption capacity. Pre-sterilized.",
 		"price": "3",
 		"manufacturer": "24",
-		"subcategory_id": "3",
+		"subcategory": "3",
 		"in_stock": "1",
 		"picture_location": "endo_g4.webp"
 	  }
@@ -2360,7 +2360,7 @@
 		"description": "Gutta percha, made of gutta-percha, used to fill the duct. 100p",
 		"price": "3",
 		"manufacturer": "24",
-		"subcategory_id": "3",
+		"subcategory": "3",
 		"in_stock": "30",
 		"picture_location": "endo_g5.webp"
 	  }
@@ -2373,7 +2373,7 @@
 		"description": "Excellent absorption, in practical, sterile packaging, completely soaked, maintain their stiffness, color coded ends according to ISO",
 		"price": "10",
 		"manufacturer": "34",
-		"subcategory_id": "3",
+		"subcategory": "3",
 		"in_stock": "25",
 		"picture_location": "endo_g6.webp"
 	  }
@@ -2386,7 +2386,7 @@
 		"description": "Visible in the X-ray, high dimensional precision, in practical pouches. They do not fall out of the open packaging",
 		"price": "19",
 		"manufacturer": "34",
-		"subcategory_id": "3",
+		"subcategory": "3",
 		"in_stock": "19",
 		"picture_location": "endo_g7.webp"
 	  }
@@ -2399,7 +2399,7 @@
 		"description": "All components of the water circuit (tank, interior of the head, coil, filter housing, jug cap) are made of SU304 steel to meet the needs of the most demanding customers.",
 		"price": "161",
 		"manufacturer": "12",
-		"subcategory_id": "20",
+		"subcategory": "20",
 		"in_stock": "11",
 		"picture_location": "app_d1.webp"
 	  }
@@ -2412,7 +2412,7 @@
 		"description": "GENDEX GXC-300 is a new intra-oral camera designed to improve patient communication, case documentation and treatment progress and increase mutual trust.",
 		"price": "1000",
 		"manufacturer": "48",
-		"subcategory_id": "19",
+		"subcategory": "19",
 		"in_stock": "3",
 		"picture_location": "app_ic1.webp"
 	  }
@@ -2425,7 +2425,7 @@
 		"description": "Sony 1/4 \"CCD sensor, 1.3 Mega Pixels, automatic light control with 6 ultra bright LEDs, autofocus for images in the range of 5 - 30 mm, very light weight, only 40 g",
 		"price": "489",
 		"manufacturer": "47",
-		"subcategory_id": "19",
+		"subcategory": "19",
 		"in_stock": "4",
 		"picture_location": "app_ic2.webp"
 	  }
@@ -2438,7 +2438,7 @@
 		"description": "NY dental lasers have been on the market for 15 years now. They have a well-set lens system, which translates into a sharp and clean image",
 		"price": "268",
 		"manufacturer": "49",
-		"subcategory_id": "18",
+		"subcategory": "18",
 		"in_stock": "3",
 		"picture_location": "app_mg1.webp"
 	  }
@@ -2451,7 +2451,7 @@
 		"description": "Wide angle viewer (FLIP-UP), Wide field of view - Improved comfort when learning to work in magnifying glasses, Simple and accessible controls - Beginner friendly",
 		"price": "399",
 		"manufacturer": "49",
-		"subcategory_id": "18",
+		"subcategory": "18",
 		"in_stock": "2",
 		"picture_location": "app_mg2.webp"
 	  }
@@ -2464,7 +2464,7 @@
 		"description": "The Selips Loupes are the cheapest surgical magnifiers on the market. While maintaining very good technical parameters. One of the noticeable advantages of Seligs surgical lug is that it naturally reflects the colors",
 		"price": "158",
 		"manufacturer": "50",
-		"subcategory_id": "18",
+		"subcategory": "18",
 		"in_stock": "0",
 		"picture_location": "app_mg3.webp"
 	  }
@@ -2477,7 +2477,7 @@
 		"description": "The distinctive feature of the loupe is its large field of view, elegant sporty design and light weight. Asynchronous adjustment of the eyepieces for each eye makes it possible to use one copy of a magnifying glass by several doctors.",
 		"price": "400",
 		"manufacturer": "50",
-		"subcategory_id": "18",
+		"subcategory": "18",
 		"in_stock": "2",
 		"picture_location": "app_mg4.webp"
 	  }
@@ -2490,7 +2490,7 @@
 		"description": "High quality at affordable prices make this model of medical magnifier, is chosen by doctors of many specialties such as dentistry, surgery, gynecology, veterinary, ophthalmology and many others.",
 		"price": "700",
 		"manufacturer": "50",
-		"subcategory_id": "18",
+		"subcategory": "18",
 		"in_stock": "3",
 		"picture_location": "app_mg5.webp"
 	  }
@@ -2503,7 +2503,7 @@
 		"description": "High quality at affordable prices make this model of medical magnifier, is chosen by doctors of many specialties such as dentistry, surgery, gynecology, veterinary, ophthalmology and many others.",
 		"price": "500",
 		"manufacturer": "50",
-		"subcategory_id": "18",
+		"subcategory": "18",
 		"in_stock": "3",
 		"picture_location": "app_mg6.webp"
 	  }
@@ -2516,7 +2516,7 @@
 		"description": "Original design, four trendy color combinations, glamorous, translucent scratch-resistant and deformable material",
 		"price": "658",
 		"manufacturer": "50",
-		"subcategory_id": "18",
+		"subcategory": "18",
 		"in_stock": "4",
 		"picture_location": "app_mg7.webp"
 	  }
@@ -2529,7 +2529,7 @@
 		"description": "Battery type: lithium polymer, weight: 150g, battery life: 1-2 years",
 		"price": "400",
 		"manufacturer": "50",
-		"subcategory_id": "18",
+		"subcategory": "18",
 		"in_stock": "1",
 		"picture_location": "app_mg8.webp"
 	  }
