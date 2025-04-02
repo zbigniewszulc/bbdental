@@ -23,8 +23,7 @@ class Subcategory(models.Model):
     subcategory_name = models.CharField(max_length=30, unique=True)
     category = models.ForeignKey(
         'Category',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         related_name='subcategories'
     )
 
@@ -41,15 +40,17 @@ class Manufacturer(models.Model):
 
 class Product(models.Model):
     subcategory = models.ForeignKey(
-        'Subcategory', null=True, blank=True, on_delete=models.SET_NULL,
+        'Subcategory',
+        on_delete=models.PROTECT,
         related_name='subcategory_products'
     )
     manufacturer = models.ForeignKey(
-        'Manufacturer', null=True, blank=True, on_delete=models.SET_NULL,
+        'Manufacturer',
+        on_delete=models.PROTECT,
         related_name='manufacturer_products'
     )
     product_name = models.CharField(max_length=50)
-    description = models.TextField(max_length=1000, null=True)
+    description = models.TextField(max_length=1000)
     price = models.DecimalField(
         max_digits=6,
         decimal_places=2,
