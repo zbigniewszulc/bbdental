@@ -21,7 +21,7 @@ class Subcategory(models.Model):
         verbose_name_plural = 'Subcategories'
 
     subcategory_name = models.CharField(max_length=30, unique=True)
-    category_id = models.ForeignKey(
+    category = models.ForeignKey(
         'Category',
         null=True, blank=True,
         on_delete=models.SET_NULL,
