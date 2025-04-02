@@ -14,7 +14,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class SubcategoryAdmin(admin.ModelAdmin):
     list_display = (
         'subcategory_name',
-        'category_id',
+        'category',
     )
     ordering = ('subcategory_name',)
 

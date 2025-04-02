@@ -207,7 +207,7 @@ def products_by_category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     products = (
         Product.objects
-        .filter(subcategory__category_id=category.id)
+        .filter(subcategory__category=category.id)
         .annotate(
             lower_product_name=Lower('product_name'),
             lower_manufacturer_name=Lower('manufacturer__manufacturer_name')
@@ -262,7 +262,7 @@ def products_by_subcategory(request, category_id, subcategory_id):
     # select_related used to solve databse query performacne issue
     category = get_object_or_404(Category, id=category_id)
     subcategory = get_object_or_404(
-        Subcategory, id=subcategory_id, category_id=category)
+        Subcategory, id=subcategory_id, category=category)
     products = (
         Product.objects
         .filter(subcategory=subcategory)
