@@ -4,6 +4,7 @@ The BB Dental website was designed to facilitate the online sale of dental produ
 To purchase the products, the customer will be prompted to log in or register first. Upon registration, the customer will be able to add products to the chart, update products in the chart, save contact details and complete the payment. Furthermore, a listing of previous orders and their details will be available to view on the Profile page. The personal details provided during the registration can also be amended there. 
 The administrator profile has CRUD functionality, i.e. the administrator has the option to create, view, amend, and delete products. This is particularly useful for updating the number of products in the stock. Additionally, the stock quantity will be updated automatically every time an order is completed. 
 
+![mockup](static/documentation/mockup.png)
 
 Linkt to the live application can be found [here](https://bbdental-4f6c524824c2.herokuapp.com/)
 
