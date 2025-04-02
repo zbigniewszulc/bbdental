@@ -10,7 +10,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
-    category_name = models.CharField(max_length=30)
+    category_name = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
         return self.category_name
@@ -20,7 +20,7 @@ class Subcategory(models.Model):
     class Meta:
         verbose_name_plural = 'Subcategories'
 
-    subcategory_name = models.CharField(max_length=30)
+    subcategory_name = models.CharField(max_length=30, unique=True)
     category_id = models.ForeignKey(
         'Category',
         null=True, blank=True,
