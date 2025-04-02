@@ -4,7 +4,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Lentulo spiral",
-			"category_id": "1"
+			"category": "1"
 		}
 	},
 	{
@@ -12,7 +12,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Drills",
-			"category_id": "1"
+			"category": "1"
 		}
 	},
 	{
@@ -20,7 +20,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Gutta-percha",
-			"category_id": "1"
+			"category": "1"
 		}
 	},
 	{
@@ -28,7 +28,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Cements",
-			"category_id": "2"
+			"category": "2"
 		}
 	},
 	{
@@ -36,7 +36,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Dental impressions",
-			"category_id": "2"
+			"category": "2"
 		}
 	},
 	{
@@ -44,7 +44,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Temporary restaurators",
-			"category_id": "2"
+			"category": "2"
 		}
 	},
 	{
@@ -52,7 +52,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Connecting systems",
-			"category_id": "3"
+			"category": "3"
 		}
 	},
 	{
@@ -60,7 +60,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Sleepers",
-			"category_id": "3"
+			"category": "3"
 		}
 	},
 	{
@@ -68,7 +68,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Etches",
-			"category_id": "3"
+			"category": "3"
 		}
 	},
 	{
@@ -76,7 +76,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Composites",
-			"category_id": "4"
+			"category": "4"
 		}
 	},
 	{
@@ -84,7 +84,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Compomors",
-			"category_id": "4"
+			"category": "4"
 		}
 	},
 	{
@@ -92,7 +92,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Amalgams",
-			"category_id": "4"
+			"category": "4"
 		}
 	},
 	{
@@ -100,7 +100,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Corner Plates",
-			"category_id": "5"
+			"category": "5"
 		}
 	},
 	{
@@ -108,7 +108,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "S-Max M Series",
-			"category_id": "5"
+			"category": "5"
 		}
 	},
 	{
@@ -116,7 +116,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Ti-Max X series",
-			"category_id": "5"
+			"category": "5"
 		}
 	},
 	{
@@ -124,7 +124,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "FX series",
-			"category_id": "5"
+			"category": "5"
 		}
 	},
 	{
@@ -132,7 +132,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Sandblasting Machines",
-			"category_id": "5"
+			"category": "5"
 		}
 	},
 	{
@@ -140,7 +140,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Magnifying glass",
-			"category_id": "6"
+			"category": "6"
 		}
 	},
 	{
@@ -148,7 +148,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Intraoral cameras",
-			"category_id": "6"
+			"category": "6"
 		}
 	},
 	{
@@ -156,7 +156,7 @@
 		"model": "products.Subcategory",
 		"fields": {
 			"subcategory_name": "Distillers",
-			"category_id": "6"
+			"category": "6"
 		}
 	}
 ]
