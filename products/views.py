@@ -351,9 +351,10 @@ def add_product(request):
             messages.success(request, 'Product added successfully!')
             return redirect('manage_products')
         else:
-            messages.success(
+            messages.error(
                 request,
-                'Unknown error occurred while adding the product'
+                'Error occurred while adding the product. '
+                'Please check the entered details are valid'
             )
     else:
         form = ProductForm()
@@ -404,7 +405,7 @@ def edit_product(request, product_id):
             messages.error(
                 request,
                 f'Error updating product: {product.product_name}. '
-                'Please check the entered details'
+                'Please check that the entered details are valid'
             )
     else:
         form = ProductForm(instance=product)
