@@ -464,8 +464,118 @@ Entering an **invalid URL** correctly triggers a **404 error message**, ensuring
 ## **Summary**  
 All tested functionalities work as expected, ensuring a **smooth user experience** for both regular users and store employees. Minor **UI/UX improvements** could be considered, but **no critical issues** were found.  
 
+## Deployment
 
+### Forking the GitHub Repository
 
+Forking a repository on GitHub lets you create your own copy of someone else’s project. This is useful when you want to experiment with changes or contribute without affecting the original codebase. Here is how you can fork a repository:
+
+1. Go to [GitHub](https://github.com/) and make sure you are signed in.
+2. Navigate to the repository you want to fork.
+3. Click the “Fork” button at the top right of the page
+4. Select owner and name your forked repository as you like and click ‘Create Fork’
+
+![Github Create Fork](static/documentation/github-create-fork.png)
+
+5. GitHub will create a copy of the repository under your account.
+6. You can now clone it to your local machine and start working on it.
+
+If you are looking for more information on forking, you can refer to GitHub's official documentation [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+
+### Making a Local Clone
+
+After forking a repository on GitHub, the next step is to create a local copy on your machine. This allows you to work with the code, make changes, and run the project locally.
+
+1. On your forked GitHub repository page, click the "Code" button
+2. Copy the HTTPS
+3. Open your terminal or command prompt.
+4. Navigate to the directory where you want to place the project.
+5. Run the following command to clone the repo: `git clone`, and then paste the URL you copied in Step 2.
+
+```
+$ git clone https://github.com/your-username/repo-name.git
+```
+
+6. Once cloning is done, navigate into the project folder:
+
+```
+cd repo-name
+```
+
+You now have the full project on your machine and can begin editing, testing, or building it as needed. To make changes to the project files, you will need a code editor or an IDE (Integrated Development Environment). I have used Visual Studio Code - it is easiest to get started with. You can download it using this link https://code.visualstudio.com
+
+If you are looking for more information on cloning, you can refer to GitHub's official documentation [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+
+### Heroku
+
+Heroku is a cloud service that simplifies the process of hosting and managing apps. It handles the infrastructure for you, so you can focus on building and deploying your application.
+To deploy the project to Heroku, the following steps were taken:
+
+1. Log in to Heroku at [Heroku Login Page](https://id.heroku.com/login)
+2. Go to [Dashboard](https://dashboard.heroku.com/apps)
+3. Click 'New' followed by 'Create New App'. Give it meaningful name (I called it *bbdental*), choose appropriate runtime region and press 'Create App'.
+
+![Heroku Dashboard](static/documentation/heroku-dashboard.png)
+
+4. Once the app is created, go to settings and find 'Config vars' section. Press 'Reveal config vars' button and set the following environment variables:
+   - SECRET_KEY (your random string, you can use [secret key generator](https://djecrety.ir))
+   - CLOUDINARY_URL (refer to [Setting Up a Cloudinary Account](#setting-up-a-cloudinary-account))
+   - DATABASE_URL (refer to [Setting up a PostreSQL from Code Institute](#setting-up-a-postresql-from-code-institute))
+   - DEFAULT_FROM_EMAIL (default email address from which the app sends emails, e.g. my-email@gmail.com)
+   - SENDGRID_API_KEY (refer to [Setting up a SendGrid Account](#setting-up-a-sendgrid-account))
+   - STRIPE_PUBLIC_KEY (refer to [Setting Up a Stripe Account](#setting-up-a-stripe-account))
+   - STRIPE_SECRET_KEY (refer to [Setting Up a Stripe Account](#setting-up-a-stripe-account))
+   - STRIPE_WH_SECRET (refer to [Setting Up a Stripe Account](#setting-up-a-stripe-account))
+   - DISABLE_COLLECTSTATIC=1
+
+![Collectstatic](static/documentation/heroku-collectstatic.png)
+
+1. Deploy by going to the 'Deploy' section and connecting to the project's repository on GitHub. Press 'Connect' once everything is set up. Finally, press 'Deploy Branch' main and wait for the process to complete. Youe should see 'Your app was successfully deployed'
+
+![Heroku Deployment](static/documentation/heroku-deployment.png)
+
+### Setting Up a Cloudinary Account
+
+This project uses Cloudinary to manage images. If you plan to use it, you will need to create an account first. The process is straightforward:
+
+1. Head over to [cloudinary.com](https://cloudinary.com) in your browser.
+2. Click “Sign Up” in the top right corner.
+3. You can register using your email and a password, or simply sign up using a GitHub or Google account if that is easier.
+4. Once you are in, you will be taken to your dashboard. This is where you will find your API environment variable - this corresponds to your environment variable CLOUDINARY_URL.
+
+### Setting Up a Stripe Account
+
+Stripe is used to serve payments. To get Stripe working in your project, you will first need an account:
+
+1. Head over to [stripe.com](https://stripe.com/) and hit “Start now” or “Sign in”.
+2. You will need an email, and password to create your account. You can use Google login if that is easier.
+3. Once you are signed in, you will land on your dashboard.
+4. Within the 'dashboard', go to 'Developers' section (bottom left), click on 'API Keys' and note down your API keys: Secret Key and Publishable Key. These correspond to your environment variables: STRIPE_SECRET_KEY and STRIPE_PUBLIC_KEY, respectively.
+5. For the Webhook secret, go to 'Developers' > 'Webhooks'. Make sure you are in the 'Webhooks' tab and click 'Test with a local listener' and follow the instructions on screen. 
+
+![Stripe Webhooks Listener](static/documentation/stripe-webhooks-listener.png)
+
+6. After you execute command `stripe listen` you should get in response `Your webhook signing secret is ..`. Use this secret as your environment variable STRIPE_WH_SECRET
+   
+![Stripe secret](static/documentation/stripe-webhooks-secret.png)
+
+### Setting up a SendGrid Account 
+
+To send emails SendGrid was used. SendGrid is a great service for handling email delivery. Here is how you can set up an account and get your API key:
+
+1. Go to [SendGrid](https://sendgrid.com/) website.
+2. Click “Start For Free” or “Sign In” at the top-right corner.
+3. Sign up by entering your email, setting a password, and completing any necessary verification (you can also use Google to sign up if that is easier).
+4. After signing up, check your email for a verification link, then you will be directed to your SendGrid Dashboard.
+5. From the dashboard, go to 'Settings' in the left-hand sidebar and click 'API Keys'
+6. Hit the 'Create API Key' button. You will be prompted to give it a name (e.g., “My App Email Key”) and choose the access level (full access is fine for most projects).
+7. Once the key is created, make sure to copy it immediately because you will not be able to view it again. This will be the value you use for SENDGRID_API_KEY as environment variable.
+
+### Setting up a PostreSQL from Code Institute
+
+You can use any database you prefer which supports ORM (Object-Relational Mapping) with Python objects. For this project, I have opted for [PostgreSQL from Code Institute](https://dbs.ci-dbs.net). The process is pretty straightforward - just provide your email address and click ‘Submit’ to receive the database details via email. Once you have those, set the DATABASE_URL using an environment variable. Note that you will need to be a registered student at Code Institute to access this database.
+
+⚠️ **Important:** Make sure to keep your secret keys secure — it's best to store them in a `.env` file at the root of your local project or as environment variables — and never push them to GitHub. For instructions on setting environment variables in Heroku, refer to [this section](#heroku)
 
 # Credits
 1. https://docs.djangoproject.com/en/5.1/ref/contrib/messages/
