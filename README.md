@@ -575,7 +575,52 @@ To send emails SendGrid was used. SendGrid is a great service for handling email
 
 You can use any database you prefer which supports ORM (Object-Relational Mapping) with Python objects. For this project, I have opted for [PostgreSQL from Code Institute](https://dbs.ci-dbs.net). The process is pretty straightforward - just provide your email address and click ‘Submit’ to receive the database details via email. Once you have those, set the DATABASE_URL using an environment variable. Note that you will need to be a registered student at Code Institute to access this database.
 
-⚠️ **Important:** Make sure to keep your secret keys secure — it's best to store them in a `.env` file at the root of your local project or as environment variables — and never push them to GitHub. For instructions on setting environment variables in Heroku, refer to [this section](#heroku)
+⚠️ **Important:** Make sure to keep your secret keys secure — it's best to store them in a `.env.py` file at the root of your local project or as environment variables — and never push them to GitHub. For instructions on setting environment variables in Heroku, refer to [this section](#heroku)
+
+### List of Python packages the project depends on: 
+
+* asgiref==3.8.1
+* certifi==2024.12.14
+* cffi==1.17.1
+* charset-normalizer==3.4.1
+* cloudinary==1.36.0
+* crispy-bootstrap5==0.7
+* cryptography==44.0.0
+* defusedxml==0.7.1
+* dj-database-url==0.5.0
+* dj3-cloudinary-storage==0.0.6
+* Django==5.1.5
+* django-allauth==65.4.0
+* django-countries==7.6.1
+* django-crispy-forms==2.3
+* gunicorn==20.1.0
+* idna==3.10
+* oauthlib==3.2.2
+* pillow==11.0.0
+* psycopg2-binary==2.9.10
+* pycparser==2.22
+* PyJWT==2.9.0
+* python3-openid==3.2.0
+* pytz==2024.1
+* requests==2.32.3
+* requests-oauthlib==2.0.0
+* setuptools==75.8.0
+* six==1.17.0
+* sqlparse==0.5.1
+* stripe==11.5.0
+* typing_extensions==4.12.2
+* urllib3==1.26.20
+* whitenoise==6.5.0
+
+The details of the above dependecies are stores at the root of this project in the file named `requirements.txt`.
+To install everything in that list, all you need to do is to run this command:
+```
+pip3 install -r requirements.txt
+```
+More detailed information on installing packages you can find [here](https://packaging.python.org/en/latest/tutorials/installing-packages/)
+
+This project has been run and tested on Python 3.12.2.
+If you need to install Python you can find installation instructions at https://www.python.org. 
 
 # Credits
 1. https://docs.djangoproject.com/en/5.1/ref/contrib/messages/
