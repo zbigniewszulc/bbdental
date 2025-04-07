@@ -721,6 +721,43 @@ Only after adding at least one product does the user gain access to the **checko
 
 ![alt text](static/documentation/shoppingbag.png)
 
+| Manual test case - 37 | Shopping Bag Accessibility for Unauthenticated Users |
+|-----------------------|---------------------------------------------------------|
+| **Expected**          | When the user is not logged in, attempting to access the shopping bag should redirect to the login page. The user should be redirected to the login page with the appropriate URL path (e.g., https://bbdental-4f6c524824c2.herokuapp.com/accounts/login/?next=/bag/). |
+| **Testing**           | I opened the shopping bag page (https://bbdental-4f6c524824c2.herokuapp.com/bag/) without being logged in to verify that it correctly redirects to the login page. |
+| **Result**            | The page redirected to the login page as expected, with the correct URL: https://bbdental-4f6c524824c2.herokuapp.com/accounts/login/?next=/bag/. |
+| **Fix**               | No fix needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 38 | Shopping Bag Accessibility with Empty Cart and logged in user |
+|-----------------------|-----------------------------------------------|
+| **Expected**          | When the shopping bag is accessed without any items in the cart and user is logged in, the page should open with the content 'Your shopping bag is empty.' Even if the URL (https://bbdental-4f6c524824c2.herokuapp.com/bag/) is directly accessed, the user should be able to see this message. |
+| **Testing**           | I added no products to the shopping bag and opened the shopping bag page (https://bbdental-4f6c524824c2.herokuapp.com/bag/). I verified that the message 'Your shopping bag is empty.' was displayed on the page. |
+| **Result**            | The shopping bag page opened successfully with the message 'Your shopping bag is empty. Browse Products.' displayed correctly when no items were in the cart. |
+| **Fix**               | No fix needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 39 | Verify if product details, subtotal, delivery, grand total, and free delivery information are displayed correctly |
+|-----------------------|---------------------------------------------------------------------------------------------------------|
+| **Expected**          | All relevant figures should be displayed on the product details page, including:                                                                                             |
+|                       | - Product Details: Image, Item name, Quantity, Price, and Total for each product                                                                                                    |
+|                       | - Subtotal (correct total based on selected products)                                                                                                               |
+|                       | - Delivery (should display standard delivery cost, typically €15 - subject to Subtotal)                                                                                                                 |
+|                       | - Grand Total (subtotal + delivery)                                                                                                                                |
+|                       | - Additional Information: "Spend €X more to get free delivery!" should be shown when the total is less than €50.   |
+| **Testing**           | I navigated to the product details page, verified the correct display of product details (Image, Item, Quantity, Price, and Total), subtotal, delivery, grand total, and the free delivery message. |
+| **Result**            | All information was displayed correctly:                                                                                                                              |
+|                       | - Each product displayed correct image, item name, quantity, price, and total.                                                                                                            |
+|                       | - Subtotal matched the sum of the selected products.                                                                                                               |
+|                       | - Delivery cost was calculated and shown as expected.                                                                                                                               |
+|                       | - Grand total was the sum of the subtotal and delivery.                                                                                                           |
+|                       | - When bag total was less than €50, the message "Spend €X more to get free delivery!" was displayed. |
+| **Fix**               | No changes needed – correct details appear as they should.         
+
+<br>
+
 ## **Checkout**  
 If a **logged-in user** previously **saved their details**, the system attempts to pre-fill the checkout form. This works correctly—users who have stored their information in their profiles see the form **auto-filled with accurate data**.  
 
