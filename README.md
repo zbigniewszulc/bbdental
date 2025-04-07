@@ -667,6 +667,52 @@ All displayed information corresponds correctly to the selected product, and all
 
 Additionally, all navigation links at the top of the page, including **"Products," "My Profile," "Cart," and "Logout,"** work as intended.  
 
+<br>
+
+| Manual test case - 32 | Product Details Page – Default Image Display |
+|------------------------|-------------------------------------------------|
+| **Expected** | When no image is uploaded for a product, the product details page should display a default "No Image Available" placeholder. |
+| **Testing**  | I navigated to the product details page of a product that does not have an image uploaded and checked if the default placeholder image appeared in place of the missing product image. |
+| **Result**   | The product details page displayed the default "No Image Available" placeholder as expected for a product without an image. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 33 | Add to Bag Button |
+|---------------------------|----------------------------------------|
+| Expected | When the "Add to Bag" button is clicked, the selected product should be added to the shopping bag, and a confirmation message should be displayed. |
+| Testing | I clicked the "Add to Bag" button for a product ('Adaper Single Bond 2 6ml') to check if the product was successfully added to the shopping bag. I also verified if the confirmation message appeared. |
+| Result | The "Add to Bag" button added the product to the shopping bag, and the confirmation message ('Adaper Single Bond 2 6ml has been added to the shopping bag.') was displayed correctly. |
+| Fix | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 34 | Keep Shopping Button  |
+|---------------------------|----------------------------------------|
+| Expected | When the "Keep Shopping" button is clicked, the user should be taken back to the product list page without losing any added items in the shopping bag. |
+| Testing | I clicked on the "Keep Shopping" button after adding an item to the bag to confirm that the user was redirected back to the product list, and the items were still in the shopping bag. |
+| Result | The "Keep Shopping" button worked as expected. The user was returned to the product list, and the items remained in the shopping bag. |
+| Fix | No fix required – everything works as it should. |
+
+<br>
+
+| Manual test case - 35 | Shopping Bag Button
+|---------------------------|----------------------------------------|
+| Expected | When the "Shopping Bag" button is clicked, the user should be taken to the shopping bag page (`https://bbdental-4f6c524824c2.herokuapp.com/bag/`) where they can review the products added to the bag. |
+| Testing | I clicked the "Shopping Bag" button to ensure that it redirected to the shopping bag page with the correct products. |
+| Result | The "Shopping Bag" button worked correctly, redirecting to the shopping bag page, displaying all the items added to the bag. |
+| Fix | No fix required – everything works as it should. |
+
+<br>
+
+| Manual test case - 36 | Go to Checkout Button |
+|---------------------------|----------------------------------------|
+| Expected | When the "Go to Checkout" button is clicked, the user should be redirected to the checkout page where they can review their order and proceed with payment. |
+| Testing | I clicked the "Go to Checkout" button to check if it redirected to the checkout page. I also verified that the items in the shopping bag were displayed on the checkout page. |
+| Result | The "Go to Checkout" button worked as expected, taking the user to the checkout page with the correct order details. |
+| Fix | No fix required – everything works as it should. |
+
+<br>
 
 ## **Shopping Bag**  
 The shopping bag should be **not accessible when a user is not logged in** and when there are **no items in the cart**—this condition is correctly met.  
