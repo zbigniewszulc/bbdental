@@ -887,7 +887,25 @@ The landing page is **almost identical** to that of regular users, with the diff
 - **"All Products"**  
 - **"Log Out"**  
 
+<br>
 
+| Manual test case - 50 | Menu Bar Options for Staff Account |
+|------------------------|----------------------------------------------------------|
+| **Expected** | When logged in with a staff account, the menu bar should display only three options: "Search Functionality", "All Products" link, and "Logout". |
+| **Testing**  | I logged in with a staff account and checked the menu bar to verify that only the "Search", "All Products", and "Logout" options were displayed. |
+| **Result**   | The menu bar correctly displayed only the three options: "Search", "All Products", and "Logout" as expected. |
+| **Fix**      | No changes needed – the menu bar worked correctly for the staff account. |
+
+<br>
+
+| Manual test case - 51 | Clicking the "All Products" link |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | When the "All Products" link is clicked, it should navigate to the "Manage Products" page at https://bbdental-4f6c524824c2.herokuapp.com/products/manage/. |
+| **Testing**  | I clicked on the "All Products" link in the menu bar and checked if it redirected to the correct page. |
+| **Result**   | The page correctly opened https://bbdental-4f6c524824c2.herokuapp.com/products/manage/ as expected. |
+| **Fix**      | No changes needed – everything worked as expected. |
+
+<br>
 
 ## **All Products**  
 All **CRUD (Create, Read, Update, Delete) operations** work flawlessly.  
