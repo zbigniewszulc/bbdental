@@ -113,7 +113,7 @@ As a staff member I can manage all products so that the store's inventory stays 
 
 User stories were managed via Kanban Board on github:
 
-![alt text](static/documentation/24-kanban-board.png)
+![kanban board](static/documentation/24-kanban-board.png)
 
 # Design 
 
@@ -294,68 +294,68 @@ The company started small but has grown fast, focusing on simple and effective w
   - "Dental floss wholesale supplier" - More relevant to supermarkets
   - "Local dentist supply store" - Most B2B dental buyers prefer wholesale suppliers
 
-![alt text](static/documentation/23-dental-keywords.png)
+![dental keywords](static/documentation/23-dental-keywords.png)
 ![google search](static/documentation/18-dental-kewords.png)
 ![google search text](static/documentation/19-dental-keywords.png)
-![alt text](static/documentation/20-dental-keywords.png)
+![keywords](static/documentation/20-dental-keywords.png)
 
 
 # Testing & debugging
 
 ### Python code: issues found
 
-![alt text](static/documentation/25-flake8-issues.png)
+![flake issues](static/documentation/25-flake8-issues.png)
 
 The issue above has been resolved.
 
-![alt text](static/documentation/26-flake8.png)
+![flake](static/documentation/26-flake8.png)
 
 ### stripe_element.js - no issues found 
 
-![alt text](static/documentation/27-javacript-test.png)
+![stripe issues](static/documentation/27-javacript-test.png)
 
 
 ### script.js in products app - issues found 
 
-![alt text](static/documentation/28-script.js-issue.png)
+![script issues](static/documentation/28-script.js-issue.png)
 
 Issue resolved:
-![alt text](static/documentation/29-sacript-error.png)
+![script error](static/documentation/29-sacript-error.png)
 
 
 ### script.js in static - issues found 
 
-![alt text](static/documentation/javascrip-error.png)
+![script issues found](static/documentation/javascrip-error.png)
 
 Issue resolved:
-![alt text](static/documentation/javascript-issueresolved.png)
+![javascript issues resolved](static/documentation/javascript-issueresolved.png)
 
 ### checkout.css in checkout folder - no issues found
-![alt text](static/documentation/checkout-css.png)
+![checkout folder](static/documentation/checkout-css.png)
 
 
 ### management.css in products app - no issues found 
 
-![alt text](static/images/management.css.png)
+![managemenet stylesheet](static/images/management.css.png)
 
 ### base.css main stylesheet - no issues found
 
-![alt text](static/documentation/base.css.png)
+![base stylesheet](static/documentation/base.css.png)
 
 ### html - landing page - issue found
 
-![alt text](static/documentation/html-issue.png)
+![landing page](static/documentation/html-issue.png)
 
 Issue has been fixed
 
-![alt text](static/documentation/html-fixed.png)
+![fixed html issues](static/documentation/html-fixed.png)
 
 # **Testing Summary – Automatic & Manual Checks**  
 
 ## **Landing Page**  
 The **Jumbotron** contains two buttons: one navigates to the content below the screen, while the other directs to the product page. Both buttons function correctly, and the entire page renders well on both large and small screens.  
 
-![alt text](static/documentation/landing.png)
+![landing page](static/documentation/landing.png)
 
 | Manual test case - 1 | Start Shopping button on Jumbotron |
 |----------------------|------------------------------------|
@@ -510,7 +510,7 @@ At the top of the page, there are buttons for **Products, My Profile, Shopping B
 ## **Products Page**  
 The page displays correctly on both large and small screens. **Pagination** at the bottom works as expected, ensuring smooth navigation. No visible or obvious errors were found. 
 
-![alt text](static/documentation/pagination.png)
+![pagination](static/documentation/pagination.png)
 
 | Manual test case - 17 | Pagination at the bottom of product results |
 |------------------------|---------------------------------------------------------------|
@@ -552,7 +552,7 @@ The **left-side menu expands and collapses** when clicking the header.
 - **Filtering by Manufacturer** functions as expected.  
 - Clicking **"View Details"** correctly redirects to the detailed product page.  
 
-![alt text](static/documentation/menu.png)
+![menu](static/documentation/menu.png)
 
 | Manual test case - 21 | Left-side menu expands and collapses when clicking the header |
 |------------------------|-------------------------------------------------------------------|
@@ -662,7 +662,7 @@ All displayed information corresponds correctly to the selected product, and all
 - **"Shopping Bag"**  
 - **"Go to Checkout"**  
 
-![alt text](<static/documentation/product details.png>)
+![product details](<static/documentation/product details.png>)
 
 
 Additionally, all navigation links at the top of the page, including **"Products," "My Profile," "Cart," and "Logout,"** work as intended.  
@@ -719,7 +719,7 @@ The shopping bag should be **not accessible when a user is not logged in** and w
 
 Only after adding at least one product does the user gain access to the **checkout process**, ensuring correct functionality.  
 
-![alt text](static/documentation/shoppingbag.png)
+![shopping bag](static/documentation/shoppingbag.png)
 
 | Manual test case - 37 | Shopping Bag Accessibility for Unauthenticated Users |
 |-----------------------|---------------------------------------------------------|
@@ -763,7 +763,7 @@ If a **logged-in user** previously **saved their details**, the system attempts 
 
 The **payment system functions properly**, and after a successful transaction, a **confirmation message** is displayed as per the project’s design. All links on this page work correctly.  
 
-![alt text](static/documentation/check.png)
+![checkout page](static/documentation/check.png)
 
 <br>
 
@@ -817,7 +817,7 @@ After payment, an **order summary** is displayed, and the order details correctl
 
 All buttons on this page function properly, and clicking **"Order History"** correctly redirects the user to their profile page.  
 
-![alt text](static/documentation/success.png)
+![order confirmation](static/documentation/success.png)
 
 <br>
 
@@ -846,7 +846,7 @@ If a user updates their information and clicks **"Update Profile,"** the new det
 
 Clicking **"View Order Details"** displays the **correct order details** as expected.  
 
-![alt text](static/documentation/profile.png)
+![user profile page](static/documentation/profile.png)
 
 | Manual test case - 47 | Order History Lists All Placed Orders |
 |------------------------|---------------------------------------------------------------------------------------------|
@@ -887,6 +887,8 @@ The landing page is **almost identical** to that of regular users, with the diff
 - **"All Products"**  
 - **"Log Out"**  
 
+![Landing page for staff users](static/documentation/staff-landing-page.png)
+
 <br>
 
 | Manual test case - 50 | Menu Bar Options for Staff Account |
@@ -914,28 +916,236 @@ Employees can:
 - **Edit product information**  
 - **Delete products from the database**  
 
-
+![all products page](static/documentation/staff-all-products-page.png)
 
 ## **Add New Product**  
 - The **form renders correctly** and **validation works as expected**.  
 - After entering all required details and submitting the form, the new product is **saved in the database in the correct format**.  
 - A **confirmation message** is displayed upon successful product entry.  
 
+<br>
 
+| Manual test case - 52 | Add New Product Button Functionality |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | When the "Add new product" button is clicked on the All Products management page, it should open the product creation form at `/products/add/`. |
+| **Testing**  | I clicked the "Add new product" button while on the All Products page. It redirected me to the correct URL: `https://bbdental-4f6c524824c2.herokuapp.com/products/add/`. The form for adding a new product was displayed, including all required input fields and options. |
+| **Result**   | The redirection and form display worked as expected. The page loaded the new product form correctly. |
+| **Fix**      | No fix required – everything works as it should. |
+
+<br>
+
+| Manual test case - 53 | Submitting Empty Add Product Form |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | If the Add Product form is submitted without filling in any required fields, it should not be processed. Instead, an error message should appear at the top saying: "Error occurred while adding the product. Please check the entered details are valid." Additionally, each required field should display a validation message saying: "This field is required." |
+| **Testing**  | I opened the Add Product form (https://bbdental-4f6c524824c2.herokuapp.com/products/add/) and clicked the "Add product" button without filling in any fields. The page stayed on the same form, displayed a red error message at the top, and each required input was marked with "This field is required." |
+| **Result**   | The form handled empty submission correctly, showed the general and field-specific error messages, and nothing was saved. |
+| **Fix**      | No fix needed – validation is working as it should. |
+
+<br>
+
+| Manual test case - 54 | Submitting Add Product Form with Spaces |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | If the Add Product form is submitted with spaces (entered by pressing the spacebar) in any required fields, the form should not be processed. It should display an error message at the top saying: "Error occurred while adding the product. Please check the entered details are valid." Additionally, the required fields with only spaces should show the validation message: "This field is required." |
+| **Testing**  | I opened the Add Product form from the All Products page, inserted spaces into the required fields 'Product name', 'Description', 'Price', 'In stock', selected 'manufacturer' (3M) from the dropdown, selected 'Subcategory' (Amalgams), and clicked the "Add product" button. The page remained on the same form, displayed a red error message at the top, and each required field with only spaces showed the message "This field is required." |
+| **Result**   | The form handled spaces correctly, showing the general error message and marking the required fields with "This field is required." No data was saved. |
+| **Fix**      | No fix needed – validation is working as expected. |
+
+<br>
+
+| Manual test case - 55 | Submitting Add Product Form with Invalid 'Price' Value |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | If the 'Price' field is submitted with an invalid value (e.g., negative number, zero, or non-numeric), the form should not be processed. It should display an error message at the top saying: "Error occurred while adding the product. Please check the entered details are valid." Additionally, the 'Price' field should show the validation message: "Ensure this value is greater than or equal to 0.01." |
+| **Testing**  | I opened the Add Product form from the All Products page and entered a negative number (-10) in the 'Price' field, inserted valid data for other required fields, and clicked the "Add product" button. The page remained on the same form, displayed a red error message at the top, and the 'Price' field showed the message "Ensure this value is greater than or equal to 0.01.". I have repeat same steps for zero and non-numeric value |
+| **Result**   | The form correctly handled the invalid 'Price' value, displaying the appropriate error message and not saving any data. |
+| **Fix**      | No fix needed – validation for 'Price' is working as expected. |
+
+<br>
+
+| Manual test case - 56 | Submitting Add Product Form with Invalid 'In Stock' Value |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | If the 'In Stock' field is submitted with an invalid value (e.g., a negative number or a non-numeric value), the form should not be processed. It should display an error message at the top saying: "Error occurred while adding the product. Please check the entered details are valid." Additionally, the 'In Stock' field should show the validation message: "Ensure this value is greater than or equal to 0." |
+| **Testing**  | I opened the Add Product form from the All Products page and entered a negative number (-5) in the 'In Stock' field, entered valid data for other required fields, and clicked the "Add product" button. The page remained on the same form, displayed a red error message at the top, and the 'In Stock' field showed the message "Ensure this value is greater than or equal to 0." I repear same steps for non-numeric value |
+| **Result**   | The form correctly handled the invalid 'In Stock' value, displaying the appropriate error messages and not saving any data. |
+| **Fix**      | No fix needed – validation for 'In Stock' is working as expected. |
+
+<br>
+
+| Manual test case - 57 | Submitting Add Product Form with Default 'Select Manufacturer' Option |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | If the 'Select Manufacturer' option is left as the default in the Manufacturer dropdown and the form is submitted, it should not be processed. Instead, an error message should appear at the top: "Error occurred while adding the product. Please check the entered details are valid." The 'Manufacturer' field should show a validation message: "This field is required." |
+| **Testing**  | I opened the Add Product form from the All Products page, left the 'Manufacturer' dropdown as "Select Manufacturer," filled in the other required fields with valid data, and clicked the "Add product" button. The page stayed on the form, showed a red error message at the top, and marked the 'Manufacturer' field with "This field is required." |
+| **Result**   | The form correctly showed the error message and did not allow submission when the default 'Select Manufacturer' option was left unchanged. No data was saved. |
+| **Fix**      | No changes needed – the validation for the 'Manufacturer' field works as expected. |
+
+<br>
+
+| Manual test case - 58 | Submitting Add Product Form with Default 'Select Subcategory' Option |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | If the 'Select Subcategory' option is left as the default in the Subcategory dropdown and the form is submitted, it should not be processed. Instead, an error message should appear at the top: "Error occurred while adding the product. Please check the entered details are valid." The 'Subcategory' field should show a validation message: "This field is required." |
+| **Testing**  | I opened the Add Product form from the All Products page, left the 'Subcategory' dropdown as "Select Subcategory," filled in the other required fields with valid data, and clicked the "Add product" button. The page stayed on the form, showed a red error message at the top, and marked the 'Subcategory' field with "This field is required." |
+| **Result**   | The form correctly showed the error message and did not allow submission when the default 'Select Subcategory' option was left unchanged. No data was saved. |
+| **Fix**      | No changes needed – the validation for the 'Subcategory' field works as expected. |
+
+<br>
+
+| Manual test case - 59 | Uploading Image in Add Product Form |
+|----------------------------|------------------------------------|
+| **Expected**               | The 'Image' field is optional. If an image is uploaded, it should be accepted successfully. After the product is added, the message "Product added successfully!" should appear, and the user should be redirected to the "All Products" page. If no image is uploaded, the product should still be added correctly. |
+| **Testing**                | I opened the Add Product form, chose an image file (.jpg) for the 'Image' field, filled in all required fields (Product Name, Description, Price, In Stock, Manufacturer, Subcategory), and clicked "Add product." After submission, I confirmed that the success message "Product added successfully!" was displayed and I was redirected to the All Products page. |
+| **Result**                 | The product was successfully added, the success message appeared, and I was redirected to the All Products page with the details of the new product. |
+| **Fix**                    | No fix needed – everything worked as expected. |
+
+<br>
+
+| Manual test case - 60 | Submitting Add Product Form with All Valid Values |
+|----------------------------|--------------------------------------------------|
+| **Expected**               | When all required fields (Product Name, Description, Price, In Stock, Manufacturer, Subcategory) are filled with valid data, and an optional image is uploaded, the product should be successfully added. After submission, the message "Product added successfully!" should appear, and the user should be redirected to the "All Products" page with the new product listed. |
+| **Testing**                | I opened the Add Product form, filled in all required fields with valid data (Product Name, Description, Price, In Stock, Manufacturer, Subcategory). I also uploaded a valid image (optional) and clicked the "Add product" button. After submitting the form, I confirmed that the success message "Product added successfully!" was displayed, and I was redirected to the All Products page where the new product was listed. |
+| **Result**                 | The product was successfully added, the success message appeared, and I was redirected to the All Products page where the new product was listed. |
+| **Fix**                    | No fix needed – everything worked as expected. |
+
+<br>
+
+| Manual test case - 61 |  'Back to All Products' Button |
+|----------------------------|----------------------------------------|
+| **Expected**               | Clicking the 'Back to All Products' button should take the user back to the All Products page (https://bbdental-4f6c524824c2.herokuapp.com/products/manage/). |
+| **Testing**                | I opened the Add Product form, filled in all required fields, and clicked the "Back to All Products" button. The page should navigate to the All Products page without any changes being made. |
+| **Result**                 | Clicking the 'Back to All Products' button successfully navigated me back to the All Products page. No changes were made, and the form was not submitted. |
+| **Fix**                    | No fix needed – the button works as expected. |
+
+<br>
 
 ## **Edit Product**  
 - The **edit page correctly displays** the product’s existing details within the form.  
 - Submitting changes **updates the database successfully**.  
 
+<br>
 
+| Manual test case - 62 | Edit Button Functionality  on All Products Page |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | When clicking the "Edit" button next to a product on the All Products page, the system should open the correct Edit Product page. The URL should reflect the ID of the selected product, like: `/products/edit/179/`. |
+| **Testing**  | From the All Products page, I clicked on the "Edit" button next to a product ‘Absorbend paper’. I checked that the page redirected to the correct URL and that the form was populated with the selected product's details. |
+| **Result**   | Clicking the button opened the correct Edit Product page. The URL contained the right product ID, and the form showed the expected product details. |
+| **Fix**      | No changes needed – it worked just fine. |
+
+<br>
+
+| Manual test case - 63 | Edit Product Page – Form and Clear Image Functionality |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | The Edit Product page should display a form pre-filled with the existing product details. This includes fields for Product Name, Description, Price, In Stock, Manufacturer, Subcategory, and a preview of the current image. There should be a "Clear" checkbox for removing the image. After making edits, clicking "Update Product" should save changes, refresh the page, display a success message, and return the user to the All Products page. |
+| **Testing**  | I opened the edit page for the product with ID 233. All fields were correctly pre-filled with current data. I updated the product name, description, price, in stock, Manufacturer, and Subcategory. I also tested the image handling—first by clearing the existing image using the "Clear" checkbox, and then by uploading a new one. After clicking "Update Product", the page refreshed, and a message appeared at the top: “Product: updated successfully!”. I also tested the "Back To All Products" button, and it returned to the product list without saving. I returned to the All Products page where the changes were visible |
+| **Result**   | The form worked as expected. All updates were applied correctly, and the confirmation message appeared after saving. Both image removal and replacement worked. Manufacturer and Subcategory were also saved properly. |
+| **Fix**      | No fix needed – everything is functioning as it should. |
+
+<br>
+
+| Manual test case - 64 | Edit Product – Submitting with Required Fields Left Blank |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | If any of the required fields (like Product Name, Description, Price, In Stock) are left blank and the user tries to save the changes, the form should not be submitted and details not saved to database. Instead, an error message should appear: “Error updating product. Please check that the entered details are valid.” |
+| **Testing**  | I opened the Edit Product page for product ID 233 and removed the values from the required fields—Product Name, Description, and Price. After clicking the "Update Product" button, the page stayed on the same form, and a message appeared at the top saying: “Error updating product. Please check that the entered details are valid.” I also checked the database and confirmed that no changes were saved. |
+| **Result**   | The form correctly prevented submission with missing required fields. No data was saved, and the appropriate error message was displayed. |
+| **Fix**      | No fix needed – the form validation is working properly. |
+
+<br>
+
+| Manual test case - 65 | Edit Product – Empty or Invalid Fields Validation |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | If any required fields (Product Name, Description) are left blank or contain only spaces, the form should not be submitted. An error message should be displayed: “Error updating product. Please check that the entered details are valid.” |
+| **Testing**  | I opened the Edit Product page for product ID 233. I left the Product Name and Description fields blank and clicked "Update Product". The form should not submit, and an error message should appear. |
+| **Result**   | The form was not submitted, and the error message appeared as expected: "Error updating product. Please check that the entered details are valid." |
+| **Fix**      | No fix needed – validation is working as intended. |
+
+<br>
+
+| Manual test case - 66 | Edit Product – Invalid In Stock Value (Negative or String) |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | The "In Stock" field must accept only **zero or positive** integers. If a tex or negative number is entered, the form should not submit, and an error message should be displayed: “Error updating product. Please check that the entered details are valid.” |
+| **Testing**  | I opened the Edit Product page for product ID 233. I entered a negative number for "In Stock", then clicked "Update Product". I also entered random text into the "In Stock" field later. The form should not submit, and the error message should appear. |
+| **Result**   | The form was not submitted, and the error message appeared as expected. |
+| **Fix**      | No fix needed – validation is working as intended. |
+
+<br>
+
+| Manual test case - 67 | Edit Product – Invalid Price Value (Zero or Negative) |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | The "Price" field must accept only **positive values greater than zero**. If a zero or negative value is entered, the form should not submit, and an error message should be displayed: “Error updating product. Please check that the entered details are valid.” |
+| **Testing**  | I opened the Edit Product page for product ID 233. I entered a zero value for "Price", then clicked "Update Product". The form should not submit, and the error message should appear. |
+| **Result**   | The form was not submitted, and the error message appeared as expected. |
+| **Fix**      | No fix needed – validation is working as intended. |
+
+<br>
+
+| Manual test case - 68 | Edit Product – Valid Values for "In Stock" and "Price" |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | The "In Stock" field must accept zero or positive integers, and the "Price" field must accept positive values greater than zero. If these fields are correctly filled with valid values, the form should submit, and the product details should be updated. |
+| **Testing**  | I opened the Edit Product page for product ID 233. I entered valid values: `0` for "In Stock" and a positive number for "Price", then clicked "Update Product". The form should submit, and page should refresh with updated details. |
+| **Result**   | The form was successfully submitted, and the product details were updated as expected. |
+| **Fix**      | No fix needed – validation and submission are working as expected. |
+
+<br>
+
+| Manual test case - 69 | Manufacturer dropdown on Edit Product page |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | The 'Manufacturer' dropdown should show a list of all available manufacturers. The currently assigned manufacturer should be selected by default. When a different manufacturer is chosen and the product is updated, the change should be saved, and a confirmation popup saying "Product: updated successfully!" should appear. The updated manufacturer should be reflected on the All Products page. |
+| **Testing**  | I opened the edit page for product ID 233. The 'Manufacturer' dropdown had the current manufacturer selected. I picked another manufacturer ('Aliganty') from the list and hit "Update Product". A message popped up saying "Product: updated successfully!". I checked the All Products page and confirmed the manufacturer was updated. |
+| **Result**   | The dropdown listed all options, showed the current selection, saved the new one, and displayed the confirmation popup. |
+| **Fix**      | No fix needed – everything worked as expected. |
+
+<br>
+
+| Manual test case - 70 | Subcategory dropdown on Edit Product page |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | The 'Subcategory' dropdown should show all available subcategories. The current one should be selected by default. When a new subcategory is selected and changes are saved, the confirmation popup "Product: updated successfully!" should appear, and the update should be reflected on the All Products page. |
+| **Testing**  | I went to the edit page for product ID 233. The 'Subcategory' dropdown was pre-selected with the correct value. I picked another subcategory ('Cements') and hit "Update Product". I saw the message "Product: updated successfully!" and verified the product's subcategory was updated on the All Products page. |
+| **Result**   | Everything worked as it should – from default selection, saving changes, to showing the confirmation message. |
+| **Fix**      | No fix needed – everything worked as expected. |
+
+<br>
+
+| Manual test case - 71 | Trying to update product with "Select Manufacturer" |
+|------------------------|----------------------------------------------------------------------------------------------------|
+| **Expected** | If the default option "Select Manufacturer" is selected from the Manufacturer dropdown when submitting the form, the product should not be updated. Instead, an error message should appear: "Error updating product. Please check that the entered details are valid." |
+| **Testing**  | I opened the edit product page for item ID 233. I made sure all required fields were filled in, but I left the Manufacturer dropdown on its default value: "Select Manufacturer". After clicking "Update Product", I checked to see whether the form submitted. |
+| **Result**   | The product was not updated. The expected error message appeared on the screen: "Error updating product. Please check that the entered details are valid." |
+| **Fix**      | No fix needed – the validation worked correctly. |
+
+<br>
+
+| Manual test case - 72 | Trying to update product with "Select Subcategory" |
+|------------------------|----------------------------------------------------------------------------------------------------|
+| **Expected** | If the default option "Select Subcategory" is selected from the Subcategory dropdown when submitting the form, the product should not be updated. Instead, an error message should appear: "Error updating product. Please check that the entered details are valid." |
+| **Testing**  | On the edit page for product ID 233, I filled out all required fields correctly but left the Subcategory dropdown on its default: "Select Subcategory". I clicked "Update Product" to test if the validation catches it. |
+| **Result**   | As expected, the form did not save, and the error message was shown: "Error updating product. Please check that the entered details are valid." |
+| **Fix**      | No fix required – the validation works as intended. |
+
+<br>
+
+## **Delete Product** 
+
+<br>
+
+| Manual test case - 73 | "Delete" Button and Confirmation Modal Functionality |
+|----------------------------|----------------------------------------------------------------------------------------------------|
+| **Expected**               | When the "Delete" button is clicked on a product entry on the All Products page (https://bbdental-4f6c524824c2.herokuapp.com/products/manage/), a confirmation modal should appear with the message "Are you sure you want to delete?" and two options: "Cancel" and "Yes, delete". Clicking "Cancel" should close the modal with no action taken. Clicking "Yes, delete" should permanently remove the product from the database, and it should no longer appear on the All Products page. After deletion, a pop-up message "Product: deleted successfully!" should be displayed. |
+| **Testing**                | I went to the All Products page and clicked the "Delete" button on one of the product entries (ID 233). A modal appeared with the correct confirmation message and options. First, I clicked "Cancel" to check if the product remained – the modal closed, and no changes occurred. Then, I repeated the process and clicked "Yes, delete". The product was removed, the page refreshed, and it was no longer listed. A pop-up message "Product: deleted successfully!" appeared after deletion. |
+| **Result**                 | Everything worked as expected. The modal appeared correctly, the cancel button dismissed it without deleting, and confirming the deletion removed the product from the list. The "Product: deleted successfully!" message appeared as expected. |
+| **Fix**                    | No changes needed – the delete functionality works correctly. |
+
+<br>
 
 ## **404 Error Page**  
 Entering an **invalid URL** correctly triggers a **404 error message**, ensuring proper error handling.  
 
+<br>
 
+| Manual test case - 74 | Handling of Invalid URLs |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | When a user enters an invalid or non-existent URL, the site should not crash or display a broken page. Instead, it should return a proper 404 error message letting the user know the page doesn't exist. |
+| **Testing**  | I manually typed a random, non-existent URL like `https://bbdental-4f6c524824c2.herokuapp.com/should-not-exist` into the browser while logged out and also while logged in. In both cases, the page displayed a clear 404 error message, confirming that the site is handling missing routes properly. |
+| **Result**   | The 404 error page appeared as expected, and there was no site breakage or confusing output. |
+| **Fix**      | No fix needed – error handling for invalid URLs is working as intended. |
 
-## **Summary**  
-All tested functionalities work as expected, ensuring a **smooth user experience** for both regular users and store employees. Minor **UI/UX improvements** could be considered, but **no critical issues** were found.  
+<br>
 
 ## Deployment
 
