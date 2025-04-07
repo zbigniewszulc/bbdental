@@ -507,11 +507,45 @@ At the top of the page, there are buttons for **Products, My Profile, Shopping B
 | **Result**             | The page didn't show the expected "No results found" message. Instead, it just displayed an empty results page. |
 | **Fix**                | The issue was fixed by updating the `all_products` method in the products app to display the correct "No results found" message. |
 
-
 ## **Products Page**  
 The page displays correctly on both large and small screens. **Pagination** at the bottom works as expected, ensuring smooth navigation. No visible or obvious errors were found. 
 
 ![alt text](static/documentation/pagination.png)
+
+| Manual test case - 17 | Pagination at the bottom of product results |
+|------------------------|---------------------------------------------------------------|
+| **Expected**           | When there are more than 20 products, pagination links should appear at the bottom of the page. Clicking on the next page link should show the next set of products, with each page displaying 20 products. |
+| **Testing**            | I navigated to the products page which display results for all 195 items. I confirmed that pagination links appeared, then clicked the "next" button to ensure the next set of 20 products loaded correctly. |
+| **Result**             | Pagination links appeared as expected, and clicking "next" successfully displayed the next set of 20 products. |
+| **Fix**                | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 18 | Clicking on pagination button number 5 |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | When the the pagination button for page number 5 is clicked while displaying all products, it should show the next set of 20 products, since pagination is set to 20 per page. |
+| **Testing**  | I clicked on the "5" button in the pagination at the bottom of the all product list to check if the system correctly navigates to page 5 and displays the appropriate products. |
+| **Result**   | The system successfully displayed the products for page 5, showing the next 20 items as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 19 | Clicking on the "Last Page" pagination button |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | When the "Last Page" button is clicked, it should navigate to the last page of the product list. The button should not be displayed if the user is already on the last page. |
+| **Testing**  | I clicked on the "Last Page" button to check if it navigated to the final page of the product list. I also checked that the "Last Page" button was hidden if I was already on the last page. |
+| **Result**   | The "Last Page" button worked as expected, navigating to the final page. When I was already on the last page, the button was hidden as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 20 | Clicking on the "First Page" pagination button |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | When the "First Page" button is clicked, it should navigate to the first page of the product list. The button should not be displayed if the user is already on the first page. |
+| **Testing**  | I clicked on the "First Page" button to check if it navigated to the first page of the product list. I also checked that the "First Page" button was hidden if I was already on the very first page. |
+| **Result**   | The "First Page" button worked as expected, navigating to the first page. When I was already on the first page, the button was hidden as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
 
 The **left-side menu expands and collapses** when clicking the header.  
 - **Sorting options** display all data from the database and sort correctly when a selection is made.  
@@ -519,6 +553,105 @@ The **left-side menu expands and collapses** when clicking the header.
 - Clicking **"View Details"** correctly redirects to the detailed product page.  
 
 ![alt text](static/documentation/menu.png)
+
+| Manual test case - 21 | Left-side menu expands and collapses when clicking the header |
+|------------------------|-------------------------------------------------------------------|
+| **Expected** | Clicking the header or menu toggle should either expand the left-side menu if it’s collapsed, or collapse it if it’s expanded. |
+| **Testing**  | I clicked the header/menu toggle to test the expand/collapse feature of the left-side menu. I verified that the menu expanded when collapsed and collapsed when expanded. |
+| **Result**   | The left-side menu expanded when I clicked it while collapsed, and collapsed when clicked again. The feature worked as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 22 | Left-side menu is not expanded by default on mobile devices |
+|------------------------|----------------------------------------------------------------|
+| **Expected** | On mobile devices, the left-side menu should be collapsed by default when the page loads. It should expand only when the menu toggle button is clicked. |
+| **Testing**  | I accessed the page on a mobile device and confirmed that the menu was collapsed by default. I clicked the toggle button to verify that the menu could expand and collapse as expected. |
+| **Result**   | The menu was collapsed by default on mobile devices, and it expanded/collapsed correctly when the toggle button was clicked. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 23 | Sorting products by Name (A-Z) |
+|------------------------|---------------------------------|
+| **Expected** | When the "Name (A-Z)" option is selected, the product list should be sorted alphabetically from A to Z by product name. |
+| **Testing**  | I selected "Name (A-Z)" from the sorting options and confirmed that the products are listed in alphabetical order from A to Z by product name. |
+| **Result**   | The products were sorted correctly in alphabetical order from A to Z by product name. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 24 | Sorting products by Name (Z-A) |
+|------------------------|---------------------------------|
+| **Expected** | When the "Name (Z-A)" option is selected, the product list should be sorted alphabetically from Z to A by product name. |
+| **Testing**  | I selected "Name (Z-A)" from the sorting options and confirmed that the products are listed in reverse alphabetical order from Z to A by product name. |
+| **Result**   | The products were sorted correctly in reverse alphabetical order from Z to A by product name. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 25 | Sorting products by Price (Low to High) |
+|------------------------|-------------------------------------------|
+| **Expected** | When the "Price (Low to High)" option is selected, the product list should be sorted from the lowest price to the highest price. |
+| **Testing**  | I selected "Price (Low to High)" from the sorting options and confirmed that the products were listed in order from the lowest price to the highest price. |
+| **Result**   | The products were sorted correctly from the lowest price to the highest price. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 26 | Sorting products by Price (High to Low) |
+|------------------------|--------------------------------------------|
+| **Expected** | When the "Price (High to Low)" option is selected, the product list should be sorted from the highest price to the lowest price. |
+| **Testing**  | I selected "Price (High to Low)" from the sorting options and confirmed that the products were listed in order from the highest price to the lowest price. |
+| **Result**   | The products were sorted correctly from the highest price to the lowest price. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 27 | Sorting products by Manufacturer (A-Z) |
+|------------------------|-------------------------------------------|
+| **Expected** | When the "Manufacturer (A-Z)" option is selected, the product list should be sorted alphabetically from A to Z by manufacturer name. |
+| **Testing**  | I selected "Manufacturer (A-Z)" from the sorting options and confirmed that the products were listed in alphabetical order from A to Z by manufacturer name. |
+| **Result**   | The products were sorted correctly in alphabetical order from A to Z by manufacturer name. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 28 | Sorting products by Manufacturer (Z-A) |
+|------------------------|-------------------------------------------|
+| **Expected** | When the "Manufacturer (Z-A)" option is selected, the product list should be sorted in reverse alphabetical order from Z to A by manufacturer name. |
+| **Testing**  | I selected "Manufacturer (Z-A)" from the sorting options and confirmed that the products were listed in reverse alphabetical order from Z to A by manufacturer name. |
+| **Result**   | The products were sorted correctly in reverse alphabetical order from Z to A by manufacturer name. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 29 | Filter products by '3M' manufacturer |
+|---------------------------|----------------------------------------------|
+| **Expected** | When the "3M" manufacturer is selected from the filter options, only the products made by "3M" should be displayed on the page. |
+| **Testing**  | I chose "3M" from the manufacturer filter and confirmed that the list only showed products from that manufacturer. |
+| **Result**   | After applying the "3M" filter, all listed products were from "3M." No products from other manufacturers appeared in the list. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 30 | Filter products by 'All Manufacturers' |
+|---------------------------|--------------------------------------------|
+| **Expected** | When the "All Manufacturers" option is selected, the product list should display products from all available manufacturers without any filtering applied. |
+| **Testing**  | I selected the "All Manufacturers" option from the filter menu to ensure the page displayed all available products, regardless of manufacturer. |
+| **Result**   | After selecting "All Manufacturers," the page showed a complete list of products from various manufacturers, as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 31 | Clicking "View Details" button on product card |
+|---------------------------|------------------------------------|
+| **Expected** | When the "View Details" button is clicked, the user should be redirected to the product's detailed page, displaying more information about the selected product. |
+| **Testing**  | I clicked on the "View Details" button for a specific product ('Adhesor') to check if it opened the correct product details page. |
+| **Result**   | Upon clicking the "View Details" button, the product detail page opened correctly with all relevant product information displayed. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
 
 ## **Product Details Page**  
 All displayed information corresponds correctly to the selected product, and all product data matches the database records. The **image on the left side renders correctly**, and in cases where a product has no image in the database, a **placeholder image is displayed** instead.  
