@@ -336,7 +336,7 @@ Issue resolved:
 
 ### management.css in products app - no issues found 
 
-![managemenet stylesheet](static/images/management.css.png)
+![managemenet stylesheet](static/documentation/management.css.png)
 
 ### base.css main stylesheet - no issues found
 
