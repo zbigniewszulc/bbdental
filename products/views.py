@@ -139,6 +139,13 @@ def all_products(request):
                 description__icontains=query)
             products = products.filter(queries)
 
+            # Check if no results were found
+            if not products.exists():
+                messages.info(
+                    request,
+                    'No results found for your search criteria.'
+                )
+
     products = get_sorted_filtered(request, products)
     page_obj = get_paginated(request, products)
 

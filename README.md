@@ -355,11 +355,158 @@ Issue has been fixed
 ## **Landing Page**  
 The **Jumbotron** contains two buttons: one navigates to the content below the screen, while the other directs to the product page. Both buttons function correctly, and the entire page renders well on both large and small screens.  
 
-At the footer of each page, there are links to **Terms of Service, Privacy Policy, Contact, and Facebook**. All links open their intended pages, and the Facebook button correctly opens a new window in the browser.  
-
-At the top of the page, there are buttons for **Products, Profile, Shopping Cart, Logout, "Shop Now," and Search**. Just like before, all links navigate to the correct pages, and the search button properly processes queries and renders search results accordingly.  
-
 ![alt text](static/documentation/landing.png)
+
+| Manual test case - 1 | Start Shopping button on Jumbotron |
+|----------------------|------------------------------------|
+| **Expected** | When the "Start Shopping" button is clicked on the Jumbotron, it should open the All Products page (`https://bbdental-4f6c524824c2.herokuapp.com/products/all/`) in the same tab. |
+| **Testing**  | Clicked the "Start Shopping" button to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct products page in the same browser's tab, just as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 2 | Angles Down button on Jumbotron |
+|----------------------|------------------------------------|
+| **Expected** | When the Angles Down button is clicked on the Jumbotron, it should scroll down to Shipping Destinations section on the bottom of the page|
+| **Testing**  | Clicked the Angles Down button to see if it takes me to the Shipping Destination section of the page |
+| **Result**   | The page scrolled down to the Shipping Destination section, just as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+At the footer of each page, there are links to **Terms of Service, Privacy Policy, Contact, and Follow us on Facebook**. All links open their intended pages, and the Facebook button correctly opens a new window in the browser.  
+
+<br>
+
+| Manual test case - 3 | 'Terms of Service' link in the footer |
+|----------------------|------------------------------------|
+| **Expected** | When the 'Terms of Service' link is clicked, it should open the 'Terms of Service' page (`https://bbdental-4f6c524824c2.herokuapp.com/terms-of-service/`) in the same tab.  |
+| **Testing**  | Clicked the 'Terms of Service' link to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct 'Terms of Service' page in the same browser's tab, just as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 4 | 'Privacy Policy' link in the footer |
+|----------------------|------------------------------------|
+| **Expected** | When the 'Privacy Policy' link is clicked, it should open the 'Privacy Policy' page (`https://bbdental-4f6c524824c2.herokuapp.com/privacy-policy/`) in the same tab.  |
+| **Testing**  | Clicked the 'Privacy Policy' link to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct 'Privacy Policy' page in the same browser's tab, just as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 5 | Contact link in the footer |
+|----------------------|------------------------------------|
+| **Expected** | When the Contact link is clicked, it should open the Contact page (`https://bbdental-4f6c524824c2.herokuapp.com/privacy-policy/`) in the same tab.  |
+| **Testing**  | Clicked the Contact link to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct Contact page in the same browser's tab, just as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 6 | 'Follow us on Facebook' link in the footer |
+|----------------------|------------------------------------|
+| **Expected** | When the 'Follow us on Facebook' link is clicked, it should open a Facebook page (`https://www.facebook.com/StomatologiaSpecjalistycznaPawelZimny`) in the new tab.  |
+| **Testing**  | Clicked the 'Follow us on Facebook' link to see if it takes me to the correct page and it opened in a new tab. |
+| **Result**   | The browser loaded the correct Facebook page in the new browser's tab, just as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+At the top of the page, there are buttons for **Products, My Profile, Shopping Bag, Logout, and Search**. Just like before, all links navigate to the correct pages, and the search button properly processes queries and renders search results accordingly.  
+
+<br>
+
+| Manual test case - 7 | 'Products' link in the navigation menu |
+|----------------------|------------------------------------|
+| **Expected** | When the 'Products' link is clicked, it should open the all Products page (`https://bbdental-4f6c524824c2.herokuapp.com/products/all/`) in the same tab.  |
+| **Testing**  | Clicked the 'Products' link to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct 'Products' page in the same browser's tab, just as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 8 | 'My Profile' link in the navigation menu |
+|----------------------|------------------------------------|
+| **Expected** | When the 'My Profile' link is clicked, it should open the 'My Profile' page (`https://bbdental-4f6c524824c2.herokuapp.com/profile/`) in the same tab.  |
+| **Testing**  | Clicked the 'My Profile' link to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct 'My Profile' page in the same browser's tab, just as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 9 | Shopping Cart link in the navigation menu |
+|----------------------|------------------------------------|
+| **Expected** | When the Shopping Cart link is clicked, it should open the Shopping Cart page (`https://bbdental-4f6c524824c2.herokuapp.com/bag/`) in the same tab.  |
+| **Testing**  | Clicked the Shopping Cart link to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct Shopping Cart page in the same browser's tab, just as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 10 | 'Logout' link in the navigation menu |
+|----------------------|------------------------------------|
+| **Expected** | When the 'Logout' link is clicked, it should load page (`https://bbdental-4f6c524824c2.herokuapp.com/accounts/logout/`) with the message 'Are you sure you want to sign out?'.  |
+| **Testing**  | Clicked the 'Logout' link to see if it takes me to the correct page and that it is displaying 'Are you sure you want to sign out?' message. |
+| **Result**   | The browser loaded the correct page in the same browser's tab with expected 'Are you sure you want to sign out?' message |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 11 | 'Logout' link in the navigation menu |
+|----------------------|------------------------------------|
+| **Expected** | When the 'Logout' link is clicked, it should load page (`https://bbdental-4f6c524824c2.herokuapp.com/accounts/logout/`) with the message 'Are you sure you want to sign out?'.  |
+| **Testing**  | Clicked the 'Logout' link to see if it takes me to the correct page and that it is displaying 'Are you sure you want to sign out?' message. |
+| **Result**   | The browser loaded the correct page in the same browser's tab with expected 'Are you sure you want to sign out?' message |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 12 | Sign out confirmation (as result of test case 11 above) |
+|----------------------|------------------------------------|
+| **Expected** | When the 'Sign Out' button is clicked, it should load landing page (`https://bbdental-4f6c524824c2.herokuapp.com`) and sign out the logged in user.  |
+| **Testing**  | Clicked the 'Sign Out' button to see if it takes me to the correct page and that the currently log in user has been sign out. |
+| **Result**   | The browser loaded the correct page in the same browser's tab with expected result |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 13 | Search all product feature |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | When the search criteria is entered and the search button is clicked, the page should load to show all matching products. The results should include products where the search phrase appears in either the title or description. |
+| **Testing**  | Entered the word “water” in the search bar and pressed the search button to check if it filters and displays only relevant products. |
+| **Result**   | The page updated correctly, showing a list of products that matched the search term either in their titles or descriptions. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 14 | Search all product feature |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | When the search criteria is entered and the search button is clicked, the page should load to show all matching products. The results should include products where the search phrase appears in either the title or description. |
+| **Testing**  | Entered the word “Gutta-percha” in the search bar and pressed the search button to check if it filters and displays only relevant products. |
+| **Result**   | The page updated correctly, showing a list of products that matched the search term either in their titles or descriptions. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 15 | Search all product feature |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | If the search field is left empty and the search button is clicked, the page should display all products. Additionally, a message should appear stating: 'Search field empty. Showing all products.' |
+| **Testing**  | I left the search bar empty and clicked the search button to verify that all products were displayed and the message appeared. |
+| **Result**   | The page loaded all available products, and the correct message ('Search field empty. Showing all products.') appeared as expected. |
+| **Fix**      | No changes needed – the feature works as intended. |
+
+<br>
+
+| Manual test case - 16 | Search for a non-existent product (using $ as search criteria) |
+|------------------------|---------------------------------------------------------------|
+| **Expected**           | When the search field contains a symbol like "$" that isn't found in any product details, the page should show a message saying no results were found. |
+| **Testing**            | I entered "$" in the search bar and pressed the search button to see if the system would display the "No results found" message. |
+| **Result**             | The page didn't show the expected "No results found" message. Instead, it just displayed an empty results page. |
+| **Fix**                | The issue was fixed by updating the `all_products` method in the products app to display the correct "No results found" message. |
+
 
 ## **Products Page**  
 The page displays correctly on both large and small screens. **Pagination** at the bottom works as expected, ensuring smooth navigation. No visible or obvious errors were found. 
