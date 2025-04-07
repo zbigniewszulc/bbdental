@@ -848,10 +848,37 @@ Clicking **"View Order Details"** displays the **correct order details** as expe
 
 ![alt text](static/documentation/profile.png)
 
+| Manual test case - 47 | Order History Lists All Placed Orders |
+|------------------------|---------------------------------------------------------------------------------------------|
+| **Expected** | The profile page at https://bbdental-4f6c524824c2.herokuapp.com/profile/ should list all previous orders made by the logged-in user. Each order should include basic info like order number, date, total amount, and a link to view order details. |
+| **Testing**  | I logged in to a user account that had multiple past orders. Then I visited the profile page and checked whether each order I placed previously was shown in the order history list. |
+| **Result**   | All previously placed orders appeared in the list with the correct details and links to their individual order confirmation pages. |
+| **Fix**      | No fix needed – the order history displays correctly. |
+
+<br>
+
+| Manual test case - 48 | Profile Details Match Last Saved Checkout Info |
+|------------------------|---------------------------------------------------------------------------------------------|
+| **Expected** | When the "Save these details above to my profile" checkbox is ticked during checkout, the provided information (full address, phone number details) should be saved and  visible in the profile section. On returning to the profile, these saved details should appear exactly as they were entered during the last checkout. |
+| **Testing**  | I placed an order and ticked the "Save these details above to my profile" checkbox on the checkout page, entering updated contact and address info. After completing the checkout, I navigated to the profile page to verify that the updated details were saved correctly. |
+| **Result**   | The profile section reflected the latest data I entered at checkout, confirming it was saved properly when the checkbox was ticked. |
+| **Fix**      | No fix needed – the profile updated as expected based on the most recent saved checkout data. |
+
+<br>
+
 ## **Logout**  
 The logout process functions correctly, requiring **confirmation** as per the project's intended design.  
 
+<br>
 
+| Manual test case - 49 | Logout Button Functionality |
+|------------------------|------------------------------------------------------------------|
+| **Expected** | Clicking the "Logout" button should log the user out of the session and redirect them to the [logout](https://bbdental-4f6c524824c2.herokuapp.com/accounts/logout/) page. The user should no longer have access to any authenticated pages such as the profile, bag or checkout. |
+| **Testing**  | I clicked the "Logout" button from the navigation menu while logged in. After that, I tried to access the profile, bag and checkout pages by entering the URLs directly. |
+| **Result**   | After logging out, I was redirected to the landing page, and any attempts to access authenticated pages also brought me back to the login screen. |
+| **Fix**      | No fix necessary – logout functionality works correctly. |
+
+<br>
 
 # **For Store Employees:**  
 
