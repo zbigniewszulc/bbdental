@@ -763,9 +763,54 @@ If a **logged-in user** previously **saved their details**, the system attempts 
 
 The **payment system functions properly**, and after a successful transaction, a **confirmation message** is displayed as per the project’s design. All links on this page work correctly.  
 
-
 ![alt text](static/documentation/check.png)
 
+<br>
+
+| Manual test case - 40 | Pre-filled Checkout Form for Logged-In Users |
+|------------------------|---------------------------------------------------------------|
+| **Expected** | If a user is logged in and has previously saved their details, the checkout form should be automatically pre-filled with accurate information (such as name, address, email, and phone number). Additionally, a popup should appear with the message “Profile details pre-filled for faster checkout.” |
+| **Testing**  | I logged in with an account that has saved details, then navigated to the checkout page to check if the system auto-filled the checkout form with the correct information stored in the user's profile. I also checked if the popup with the correct message appeared. |
+| **Result**   | The checkout form was correctly pre-filled with the user's saved details, including name, address, email, and phone number. The popup “Profile details pre-filled for faster checkout.” appeared as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 41 | Checkout Form for Users Without Saved Details |
+|------------------------|------------------------------------------------|
+| **Expected** | If a user is logged in but hasn’t saved their details to their profile, the checkout form should only have the email field pre-filled. All other fields like name, address, and phone number should be blank. Additionally, a popup should appear with the message “Profile details pre-filled for faster checkout.” |
+| **Testing**  | I logged in with a test account that doesn't have saved profile info. After going to the checkout page, I checked if only the email was auto-filled and the rest of the form was empty. |
+| **Result**   | The email field was pre-filled correctly, and all other fields were blank. The popup “Profile details pre-filled for faster checkout.” appeared as expected. |
+| **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 42 | Submitting Checkout Form with Blank Required Fields |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | If any of the required fields (like full name, address, phone number, etc.) are left blank, the form should not submit. Instead, it should show clear validation messages indicating which fields need to be filled in. |
+| **Testing**  | I left the payment details, full name, phone and address fields empty on the checkout form and tried to place the order to see how the form responds. |
+| **Result**   | The form didn’t submit and displayed message above the empty fields saying they are required. In case of payment details it displayed 'Your card number is incomplete.'|
+| **Fix**      | No changes needed – the form validation worked as intended. |
+
+<br>
+
+| Manual test case - 43 | Saving Checkout Details to User Profile |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | When the "Save these details above to my profile" checkbox is ticked while placing the order, the system should store the entered delivery details (like full name, address, phone number, email) to the logged-in user's profile. These details should be available and auto-filled next time the user visits the checkout page. |
+| **Testing**  | I filled out the checkout form with my shipping information, ticked the "Save these details above to my profile" checkbox, and completed the order. Then, I logged out and back in, added a new product to the bag, and went to the checkout page again to see if the form was auto-filled with the previously saved details. |
+| **Result**   | The checkout form was automatically filled with the exact same information I had submitted earlier, confirming that the details were correctly saved to my profile. |
+| **Fix**      | No changes needed – the feature worked like it should. |
+
+<br>
+
+| Manual test case - 44 | Payment Processing During Checkout |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | After completing the checkout form and clicking the "Complete Order" button, the payment should be processed securely. If the card details are valid, the order should be confirmed, and a success message should appear. If the details are invalid or incomplete, the payment should be declined with a clear error message. |
+| **Testing**  | I filled out all required fields on the checkout form with valid delivery details. Then I entered test card information (Stripe test card: 4242 4242 4242 4242 with a valid future expiry and CVC) and submitted the order. I also tested with invalid card details to see if an error would be returned. |
+| **Result**   | With valid card details, the payment went through, and I was redirected to a confirmation page showing the order summary and order placement success message. With invalid card details, the system showed an error without proceeding. |
+| **Fix**      | No changes needed – payment system is functioning as expected. |
+
+<br>
 
 ## **Order Confirmation**  
 After payment, an **order summary** is displayed, and the order details correctly match the actual purchase.  
@@ -773,6 +818,26 @@ After payment, an **order summary** is displayed, and the order details correctl
 All buttons on this page function properly, and clicking **"Order History"** correctly redirects the user to their profile page.  
 
 ![alt text](static/documentation/success.png)
+
+<br>
+
+| Manual test case - 45 | Order Confirmation Page Displays Accurate Details |
+|------------------------|-------------------------------------------------------------------------------------------|
+| **Expected** | After completing the checkout and payment, the confirmation page should display a unique order number. It should also show all delivery and contact details exactly as entered during checkout. The "Items Ordered" section should list the correct products, quantities, and prices. Additionally, the breakdown of Subtotal, Delivery Cost, and Grand Total should reflect what was shown on the checkout page. |
+| **Testing**  | I placed an order by filling out the checkout form with test data and proceeded with payment using valid test card info. Once redirected to the confirmation page, I reviewed all displayed information and compared it to what I entered during checkout. I also verified that an order number was generated and that all product details matched the order. |
+| **Result**   | Everything on the confirmation page matched the data entered during checkout. The correct order number was generated, delivery info was accurate, and all items, quantities, and prices were displayed properly. The totals were also correctly calculated and matched the checkout page. |
+| **Fix**      | No fixes needed – the confirmation page reflects the order correctly. |
+
+<br>
+
+| Manual test case - 46 | "Order History" Button on Order Confirmation Page |
+|------------------------|-------------------------------------------------------------------------------------------|
+| **Expected** | Clicking the "Order History" button on the Order Confirmation page should take the user to their profile page at: https://bbdental-4f6c524824c2.herokuapp.com/profile/ where they can view their past orders. |
+| **Testing**  | After completing a test order and landing on the Order Confirmation page, I clicked the "Order History" button to check if it redirected me to the profile page showing the full order history. |
+| **Result**   | The button worked correctly—it redirected to the profile page and displayed the full order history for the logged-in user. |
+| **Fix**      | No fixes needed – the button works as expected. |
+
+<br>
 
 ## **User Profile**  
 User profile information is displayed **accurately in the form**, matching the stored user details.  
