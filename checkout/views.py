@@ -39,8 +39,6 @@ def checkout(request):
     try:
         # Get the user's profile to pre-fill the order form
         profile = UserProfile.objects.get(user=request.user)
-        print('Profile :::')
-        print(profile)
         order_form = OrderForm(initial={
             'name': profile.user.first_name,
             'surname': profile.user.last_name,
