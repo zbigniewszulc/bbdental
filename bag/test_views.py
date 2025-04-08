@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
-from products.models import Product
+from products.models import Product, Manufacturer, Category, Subcategory
 
 
 class BagViewsTests(TestCase):
@@ -12,10 +12,22 @@ class BagViewsTests(TestCase):
             username="testuser", password="password123")
         self.client.login(username="testuser", password="password123")
 
+        # Create Manufacturer and Subcategory
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer")
+        category = Category.objects.create(
+            category_name="Test Category")
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory", category=category)
+
+        # Create Product 
         self.product = Product.objects.create(
             product_name="Test Product",
+            description="This is a test product",
             price=20.00,
-            in_stock=10
+            in_stock=10,
+            manufacturer=manufacturer,
+            subcategory=subcategory
         )
 
     def test_view_bag(self):
