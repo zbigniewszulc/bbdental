@@ -149,7 +149,7 @@ User stories were managed via Kanban Board on github:
 
 
 # Database Schema Diagram and Model
-![database](static/documentation/17-bbdebtal-database-schema.png)
+![database schema](static/documentation/db-schema.png)
 
 # Typography
 Font - https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap 
