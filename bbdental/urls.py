@@ -25,5 +25,6 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('products/', include('products.urls')),
     path('profile/', include('profiles.urls')),
+    path('contact_us/', include('contact_us.urls')),
 ]
 handler404 = 'bbdental.views.handler404'

@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'checkout',
     'django_countries',
     'profiles',
+    'contact_us',
 ]
 
 SITE_ID = 1
