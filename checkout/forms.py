@@ -1,8 +1,15 @@
 from django import forms
 from .models import Order
+from contact_us.validators import validate_phone_number
 
 
 class OrderForm(forms.ModelForm):
+    phone_number = forms.CharField(
+        max_length=20,
+        required=True,
+        validators=[validate_phone_number],  # apply validator
+    )
+
     class Meta:
         model = Order
         fields = (

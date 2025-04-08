@@ -867,6 +867,15 @@ The **payment system functions properly**, and after a successful transaction, a
 
 <br>
 
+| Manual test case - 42a | Submitting Checkout Form with Invalid Phone Number |
+|------------------------|--------------------------------------------------------------|
+| **Expected** | If the phone number entered in the checkout form is not valid (e.g. contains letters, too short, or uses an incorrect format), the form should not submit and a validation message should be shown next to the phone number field. |
+| **Testing**  | Entered an invalid phone number like “123-abc-456” in the checkout form and attempted to place the order to see if the form catches the error. |
+| **Result**   | The form did submit and displayed a succesful message. This was not expected” |
+| **Fix**      | Fix applied – phone number validation is now working correctly. |
+
+<br>
+
 | Manual test case - 43 | Saving Checkout Details to User Profile |
 |------------------------|--------------------------------------------------------------|
 | **Expected** | When the "Save these details above to my profile" checkbox is ticked while placing the order, the system should store the entered delivery details (like full name, address, phone number, email) to the logged-in user's profile. These details should be available and auto-filled next time the user visits the checkout page. |
