@@ -399,10 +399,83 @@ At the footer of each page, there are links to **Terms of Service, Privacy Polic
 
 | Manual test case - 5 | Contact link in the footer |
 |----------------------|------------------------------------|
-| **Expected** | When the Contact link is clicked, it should open the Contact page (`https://bbdental-4f6c524824c2.herokuapp.com/privacy-policy/`) in the same tab.  |
+| **Expected** | When the Contact link is clicked, it should open the Contact page (`https://bbdental-4f6c524824c2.herokuapp.com/contact/`) in the same tab.  |
 | **Testing**  | Clicked the Contact link to see if it takes me to the correct page without opening a new tab. |
 | **Result**   | The browser loaded the correct Contact page in the same browser's tab, just as expected. |
 | **Fix**      | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 5a | "Fill out our contact form" button |
+|----------------------|------------------------------------|
+| **Expected**         | When the "Fill out our contact form" button is clicked, it should open the Contact Us form page (`https://bbdental-4f6c524824c2.herokuapp.com/contact_us/`) in the same browser tab. |
+| **Testing**          | Clicked the "Fill out our contact form" button and checked whether the browser navigates to the correct Contact Us page without opening a new tab. |
+| **Result**           | The browser loaded the correct Contact Us form page in the same tab, just as expected. |
+| **Fix**              | No changes needed – everything works as it should. |
+
+<br>
+
+| Manual test case - 5b | Contact Us form submission |
+|----------------------|----------------------------|
+| **Expected**         | When the Contact Us form is filled with valid data (name, email, message), it should submit successfully, show a confirmation message ('Thank you for your message! A confirmation email has been sent.'), and store the data in the database. A confirmation email should also be sent to the user and to the default email address which is admin. |
+| **Testing**          | Filled in the form with a valid name, email, and message. Clicked the submit button. Checked for confirmation message on screen, checked inbox for confirmation email, and verified in the admin panel that the data was saved. |
+| **Result**           | The form submitted successfully, confirmation message appeared, both emails were received, and the form data appeared in the admin panel under Contact Form entries. |
+| **Fix**              | No issues found – everything functions as intended. |
+
+
+<br>
+
+| Manual test case - 5c | Contact Us form with blank fields |
+|----------------------|----------------------------------|
+| **Expected**         | If all fields are left blank, the form should display validation errors for each required field (name, email, and message). The form should not submit until all required fields are filled in. |
+| **Testing**          | Left all fields blank and attempted to submit the form. Checked for error messages next to each required field (name, email, message). |
+| **Result**           | Correct validation messages appeared for each blank required field. The form didn not submit, as expected. |
+| **Fix**              | No fixes needed. The form is correctly validating empty fields. |
+
+<br>
+
+| Manual test case - 5d | Invalid email format in Contact Us form |
+|----------------------|-----------------------------------------|
+| **Expected**         | If an invalid email is entered (e.g., missing '@' or domain), the form should display a validation error message indicating that the email format is incorrect. The form should not submit until a valid email is provided. |
+| **Testing**          | Entered an invalid email (e.g., "invalidemail.com") in the email field and tried submitting the form. Checked for error message next to the email field. |
+| **Result**           | The form displayed an error message: "Enter an email address." The form did not submit, as expected. |
+| **Fix**              | No fixes needed. The form is correctly validating the email format. |
+
+<br>
+
+| Manual test case - 5e | Invalid phone number format in Contact Us form |
+|-----------------------|-------------------------------------------------|
+| **Expected**          | If an invalid phone number is entered (e.g., incorrect format or non-numeric characters), the form should display a validation error message indicating that the phone number is not valid. The form should not submit until a valid phone number is provided. |
+| **Testing**           | Entered an invalid phone number (e.g., "123-abc-456") in the phone number field and tried submitting the form. Checked for error message next to the phone number field. |
+| **Result**            | The form did not display the error message expected: "Enter a valid phone number." The form was submitted, and succesful insert message displayed. |
+| **Fix**               | Fix applied - Additional phone number validation implement to solve the issue. |
+
+<br>
+
+| Manual test case - 5f | Valid phone number format in Contact Us form |
+|-----------------------|-------------------------------------------------|
+| **Expected**          | When a valid phone number is entered (e.g., correct format with numbers and proper delimiters), the form should accept it without showing any error message. It should submit successfully. |
+| **Testing**           | I entered a valid phone number (like "+355 86 267856") and tried to submit the form. I checked that no error appeared next to the phone number field, and the form was successfully submitted. |
+| **Result**            | The form accepted the phone number without any issues, no validation error was shown, and the submission went through as expected. |
+| **Fix**               | Everything worked correctly – no changes needed. |
+
+<br>
+
+| Manual test case - 5g | Valid message length in Contact Us form |
+|-----------------------|-------------------------------------------|
+| **Expected**          | The message field should accept and allow submission when the message is at least 10 characters long. |
+| **Testing**           | I entered a message with 10 characters or more (e.g., "Great service!") with required valid fields filled in and tried submitting the form. Checked that the form was successfully submitted without any validation errors. |
+| **Result**            | The form accepted the message, and the submission went through without any errors. The message length was validated correctly. |
+| **Fix**               | Everything worked as expected – no changes needed. |
+
+<br>
+
+| Manual test case - 5h | Invalid message length in Contact Us form |
+|-----------------------|---------------------------------------------|
+| **Expected**          | If the message is shorter than 10 characters, the form should display a validation error message indicating that the message is too short. The form should not submit until a valid message is provided. |
+| **Testing**           | I entered a message with less than 10 characters (e.g., "Hi!") and tried submitting the form. Checked for an error message next to the message field. |
+| **Result**            | The form displayed the expected error message: "Use at least 10 characters" The form was not submitted until a valid message was provided. |
+| **Fix**               | The validation worked correctly – no changes needed. |
 
 <br>
 
