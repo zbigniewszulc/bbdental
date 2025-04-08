@@ -20,7 +20,7 @@ class BagViewsTests(TestCase):
         subcategory = Subcategory.objects.create(
             subcategory_name="Test Subcategory", category=category)
 
-        # Create Product 
+        # Create Product
         self.product = Product.objects.create(
             product_name="Test Product",
             description="This is a test product",
@@ -49,3 +49,33 @@ class BagViewsTests(TestCase):
 
         session_bag = self.client.session["bag"]
         self.assertNotIn(str(self.product.id), session_bag)
+
+    def test_add_to_bag(self):
+        """Check if product can be added to the bag correctly"""
+        session = self.client.session
+        session["bag"] = {}
+        session.save()
+        # Simulate POST request
+        response = self.client.post(reverse("add_to_bag", args=[self.product.id]), {
+            "quantity": 3,
+            "redirect_url": reverse("view_bag")
+        })
+        # session is checked to see if the product was added correctly
+        session_bag = self.client.session["bag"]
+        self.assertEqual(session_bag[str(self.product.id)], 3)
+        self.assertRedirects(response, reverse("view_bag"))
+
+    def test_update_bag(self):
+        """Check if product quantity can be updated in the bag"""
+        session = self.client.session
+        session["bag"] = {str(self.product.id): 3}
+        session.save()
+        # Simulate POST request
+        response = self.client.post(reverse("update_bag"), {
+            "product_id": self.product.id,
+            "quantity": 5
+        })
+        # session is checked to see if the bag data has been updated correctly
+        session_bag = self.client.session["bag"]
+        self.assertEqual(session_bag[str(self.product.id)], 5)
+        self.assertRedirects(response, reverse("view_bag"))
