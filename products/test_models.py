@@ -179,7 +179,7 @@ class ProductModelTest(TestCase):
                 product_name="Gutta-percha",
                 description="A material used in root canal treatments.",
                 price=Decimal("29.99"),
-                in_stock=-10,  
+                in_stock=-10,
                 subcategory=self.subcategory,
                 manufacturer=self.manufacturer
             )
@@ -193,7 +193,7 @@ class ProductModelTest(TestCase):
             price=Decimal("29.99"),
             in_stock=150,
             subcategory=self.subcategory,
-            manufacturer=None  
+            manufacturer=None
         )
         with self.assertRaises(ValidationError):
             product.full_clean()

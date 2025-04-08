@@ -13,7 +13,7 @@ class ProductFormTest(TestCase):
             manufacturer_name="Test Manufacturer"
         )
         self.subcategory = Subcategory.objects.create(
-            subcategory_name="Test Subcategory", 
+            subcategory_name="Test Subcategory",
             category=self.category
         )
 
