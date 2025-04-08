@@ -56,10 +56,11 @@ class BagViewsTests(TestCase):
         session["bag"] = {}
         session.save()
         # Simulate POST request
-        response = self.client.post(reverse("add_to_bag", args=[self.product.id]), {
-            "quantity": 3,
-            "redirect_url": reverse("view_bag")
-        })
+        response = self.client.post(
+            reverse("add_to_bag", args=[self.product.id]), {
+                "quantity": 3,
+                "redirect_url": reverse("view_bag")
+            })
         # session is checked to see if the product was added correctly
         session_bag = self.client.session["bag"]
         self.assertEqual(session_bag[str(self.product.id)], 3)
