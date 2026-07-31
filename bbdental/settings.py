@@ -196,15 +196,15 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 
-# Sendgrid settings
-SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+# SMTP Gmail settings
+GMAIL_APP_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'bbdental.shop@gmail.com'
+EMAIL_HOST_PASSWORD = GMAIL_APP_PASSWORD
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Stripe
 FREE_DELIVERY_THRESHOLD = 50
