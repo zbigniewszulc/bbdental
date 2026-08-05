@@ -1452,5 +1452,8 @@ If you need to install Python you can find installation instructions at https://
 62. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
 63. https://docs.djangoproject.com/en/1.8/_modules/django/test/testcases/
 64. https://docs.python.org/3/library/sqlite3.html#sqlite3.IntegrityError
+65. https://www.w3schools.com/python/python_decorators.asp
+66. https://docs.python.org/3/library/functools.html#functools.wraps
+67. https://mofidtech.fr/articles/custom-decorators-in-django/
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
