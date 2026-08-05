@@ -1,70 +1,94 @@
 {% load static %}
 <header class="d-flex flex-column flex-md-row align-items-center justify-content-between p-4 bg-white border-bottom shadow {% if request.path == '/' %}mb-0{% else %}mb-3{% endif %}">
-    <a href="/" aria-label="Go to homepage order-0">
-      <img id="logo" class="my-0 mr-md-auto" src="{% static 'images/bbdental_logo.webp' %}" alt="BBdental Logo">
-    </a>
-
-    <form method="get" action="{% url 'all_products' %}" class="d-flex ms-auto me-auto me-md-5 mt-4 mt-md-0 order-2 order-md-1">
-      <input type="text" name="q" class="form-control form-control-sm"
-          placeholder="Search all products..." value="{{ query|default:'' }}">
-      <button type="submit" class="btn btn-outline-secondary btn-sm search-button">
-          <i class="fa fa-search"></i>
-      </button>
-    </form>
-
-    <nav class="my-2 my-md-0 mr-md-3 mt-4 order-1 order-md-2">
-      <ul class="list-unstyled d-flex flex-wrap justify-content-end gap-2 gap-lg-3 m-0 p-0">
-        {% if request.user.is_authenticated %}
+  <a href="/" aria-label="Go to homepage order-0">
+    <img id="logo"
+         class="my-0 mr-md-auto"
+         src="{% static 'images/bbdental_logo.webp' %}"
+         alt="BBdental Logo">
+  </a>
+  <form method="get"
+        action="{% url 'all_products' %}"
+        class="d-flex ms-auto me-auto me-md-5 mt-4 mt-md-0 order-2 order-md-1">
+    <input type="text"
+           name="q"
+           class="form-control form-control-sm"
+           placeholder="Search all products..."
+           value="{{ query|default:'' }}">
+    <button type="submit" class="btn btn-outline-secondary btn-sm search-button">
+      <i class="fa fa-search"></i>
+    </button>
+  </form>
+  <nav class="my-2 my-md-0 mr-md-3 mt-4 order-1 order-md-2">
+    <ul class="list-unstyled d-flex flex-wrap justify-content-end gap-2 gap-lg-3 m-0 p-0">
+      {% if request.user.is_authenticated %}
         {% if request.user.is_staff %}
-        <!-- Links visible only to staff type users -->
-        <li class="nav-item">
-          <a class="d-flex flex-column align-items-center text-center link {% if request.path == manage_products_url %}active{% endif %}" href="{% url 'manage_products' %}" aria-label="Link to Product Management page">
-            <i class="fa-solid fa-tooth mb-1"></i>Manage Products</a>
-        </li>
+          <!-- Links visible only to staff type users -->
+          <li class="nav-item">
+            <a class="d-flex flex-column align-items-center text-center link {% if request.path == products_url %}active{% endif %}"
+               href="{% url 'all_products' %}"
+               aria-label="Link to Products page">
+              <i class="fa-solid fa-tooth mb-1"></i> Products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="d-flex flex-column align-items-center text-center link {% if request.path == manage_products_url %}active{% endif %}"
+               href="{% url 'manage_products' %}"
+               aria-label="Link to Product Management page">
+              <i class="fa-solid fa-sliders mb-1"></i> Product Management
+            </a>
+          </li>
         {% else %}
-        <!-- Links visible only to non-staff users -->
-        <li class="nav-item">
-          <a class="d-flex flex-column align-items-center text-center link {% if request.path == products_url %}active{% endif %}" href="{% url 'all_products' %}" aria-label="Link to Products page">
-            <i class="fa-solid fa-tooth mb-1"></i>Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="d-flex flex-column align-items-center text-center link {% if request.path == profile_url %}active{% endif %}" href="{% url 'profile' %}" aria-label="Link to My Profile page">
-            <i class="fa-solid fa-clipboard-list mb-1"></i>My Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="d-flex flex-column align-items-center text-center link {% if request.path == bag_url %}active{% endif %}" href="{% url 'view_bag' %}" aria-label="Link to Basket">
-            <i class="fa-solid fa-bag-shopping mb-1 position-relative">
-              {% if product_count %}
-              <span class="position-absolute top-0 start-100 translate-middle-y p-2 bg-danger border border-light rounded-circle">
-                <span class="visually-hidden">Items in the bag</span>
-              </span>
-              {% endif %}
-            </i> 
-            €{% if total > 0 %}{{ total|floatformat:2 }}{% else %}0.00{% endif %}
-          </a>
-        </li>
+          <!-- Links visible only to non-staff users -->
+          <li class="nav-item">
+            <a class="d-flex flex-column align-items-center text-center link {% if request.path == products_url %}active{% endif %}"
+               href="{% url 'all_products' %}"
+               aria-label="Link to Products page">
+              <i class="fa-solid fa-tooth mb-1"></i>Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="d-flex flex-column align-items-center text-center link {% if request.path == profile_url %}active{% endif %}"
+               href="{% url 'profile' %}"
+               aria-label="Link to My Profile page">
+              <i class="fa-solid fa-clipboard-list mb-1"></i>My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="d-flex flex-column align-items-center text-center link {% if request.path == bag_url %}active{% endif %}"
+               href="{% url 'view_bag' %}"
+               aria-label="Link to Basket">
+              <i class="fa-solid fa-bag-shopping mb-1 position-relative">
+                {% if product_count %}
+                  <span class="position-absolute top-0 start-100 translate-middle-y p-2 bg-danger border border-light rounded-circle">
+                    <span class="visually-hidden">Items in the bag</span>
+                  </span>
+                {% endif %}
+              </i>
+              €{% if total > 0 %}{{ total|floatformat:2 }}{% else %}0.00{% endif %}
+            </a>
+          </li>
         {% endif %}
         <li class="nav-item">
           <a class="d-flex flex-column align-items-center text-center link {% if request.path == logout_url %}active{% endif %}"
-            href="{% url 'account_logout' %}" aria-label="Log off link">
+             href="{% url 'account_logout' %}"
+             aria-label="Log off link">
             <i class="fa-solid fa-right-from-bracket mb-1"></i> Logout</a>
         </li>
-        {% else %}
+      {% else %}
         <!-- Links for non-authenticated users -->
         <li class="nav-item">
           <a class="d-flex flex-column align-items-center text-center link {% if request.path == login_url %}active{% endif %}"
-            href="{% url 'account_login' %}" aria-label="Log in link">Login</a>
+             href="{% url 'account_login' %}"
+             aria-label="Log in link">Login</a>
         </li>
         <li class="nav-item">
           <a class="d-flex flex-column align-items-center text-center link {% if request.path == signup_url %}active{% endif %}"
-            href="{% url 'account_signup' %}" aria-label="Register link">Register</a>
-          </li>
-        {% endif %}
-      </ul>
-    </nav>
-
-    <!-- Message area -->
-    {% if messages %}
+             href="{% url 'account_signup' %}"
+             aria-label="Register link">Register</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+  <!-- Message area -->
+  {% if messages %}
     <div class="toast-container position-fixed end-0 p-4 messages-container">
       {% for message in messages %}
         {% with message.level as level %}
@@ -76,10 +100,9 @@
             {% include 'includes/toasts/toast_success.html' %}
           {% else %}
             {% include 'includes/toasts/toast_info.html' %}
-          {% endif %}  
-        {% endwith %} 
+          {% endif %}
+        {% endwith %}
       {% endfor %}
     </div>
-   {% endif %}
-
-  </header>
+  {% endif %}
+</header>
