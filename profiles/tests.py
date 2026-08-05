@@ -21,3 +21,13 @@ class ProfileViewsTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "John Murphy")
+
+    def test_profile_link_is_active(self):
+        """Check if the profile link is active on the profile page"""
+        response = self.client.get(reverse("profile"))
+
+        self.assertContains(
+            response,
+            'class="d-flex flex-column align-items-center text-center link '
+            'active"'
+        )
