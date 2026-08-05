@@ -80,3 +80,51 @@ class BagViewsTests(TestCase):
         session_bag = self.client.session["bag"]
         self.assertEqual(session_bag[str(self.product.id)], 5)
         self.assertRedirects(response, reverse("view_bag"))
+
+    def test_staff_user_cannot_add_product_to_bag(self):
+        """Check if staff user cannot add a product to the bag"""
+        self.user.is_staff = True
+        self.user.save()
+
+        response = self.client.post(
+            reverse("add_to_bag", args=[self.product.id]),
+            {
+                "quantity": 1,
+                "redirect_url": reverse("all_products"),
+            }
+        )
+
+        self.assertRedirects(response, reverse("all_products"))
+        self.assertNotIn("bag", self.client.session)
+
+    def test_staff_user_cannot_view_bag(self):
+        """Check if staff user cannot view the bag"""
+        self.user.is_staff = True
+        self.user.save()
+
+        response = self.client.get(reverse("view_bag"))
+
+        self.assertRedirects(response, reverse("all_products"))
+
+    def test_staff_user_cannot_update_bag(self):
+        """Check if staff user cannot update the bag"""
+        self.user.is_staff = True
+        self.user.save()
+
+        session = self.client.session
+        session["bag"] = {str(self.product.id): 1}
+        session.save()
+
+        response = self.client.post(
+            reverse("update_bag"),
+            {
+                "product_id": self.product.id,
+                "quantity": 2,
+            }
+        )
+
+        self.assertRedirects(response, reverse("all_products"))
+        self.assertEqual(
+            self.client.session["bag"][str(self.product.id)],
+            1
+        )

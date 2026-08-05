@@ -7,6 +7,7 @@ from products.models import Product
 from profiles.models import UserProfile
 from .models import OrderLineItem, Order
 from .forms import OrderForm
+from bbdental.decorators import customer_required
 
 import stripe
 
@@ -14,6 +15,7 @@ import stripe
 
 
 @login_required
+@customer_required
 def checkout(request):
     """
     Handle the checkout process.
@@ -173,6 +175,7 @@ def checkout(request):
 
 
 @login_required
+@customer_required
 def checkout_success(request, order_number):
     """
     Render checkout success view.
