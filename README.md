@@ -1455,5 +1455,7 @@ If you need to install Python you can find installation instructions at https://
 65. https://www.w3schools.com/python/python_decorators.asp
 66. https://docs.python.org/3/library/functools.html#functools.wraps
 67. https://mofidtech.fr/articles/custom-decorators-in-django/
+68. https://www.edureka.co/community/81432/how-can-i-unit-test-django-messages
+69. https://docs.djangoproject.com/en/6.0/topics/templates/
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!

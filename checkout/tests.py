@@ -25,6 +25,7 @@ class CheckoutViewsTests(TestCase):
 
         self.assertRedirects(response, reverse("all_products"))
 
+        # https://www.edureka.co/community/81432/how-can-i-unit-test-django-messages
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
             str(messages[0]),
