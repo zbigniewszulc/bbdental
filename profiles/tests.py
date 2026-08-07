@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
+from .forms import UserProfileForm
 
 
 class ProfileViewsTests(TestCase):
@@ -31,3 +32,11 @@ class ProfileViewsTests(TestCase):
             'class="d-flex flex-column align-items-center text-center link '
             'active"'
         )
+
+
+class UserProfileFormTests(TestCase):
+    def test_address_line_3_is_not_in_profile_form(self):
+        """Check if address_line_3 is not in UserProfileForm"""
+        form = UserProfileForm()
+
+        self.assertNotIn('default_address_line_3', form.fields)

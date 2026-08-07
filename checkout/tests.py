@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse
+from .forms import OrderForm
 
 
 class CheckoutViewsTests(TestCase):
@@ -36,3 +37,11 @@ class CheckoutViewsTests(TestCase):
         )
 
         self.assertRedirects(response, reverse("all_products"))
+
+
+class CheckoutFormTests(TestCase):
+    def test_address_line_3_is_not_in_order_form(self):
+        """Check if address_line_3 is not in OrderForm"""
+        form = OrderForm()
+
+        self.assertNotIn('address_line_3', form.fields)

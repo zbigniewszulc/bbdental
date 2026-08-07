@@ -28,9 +28,6 @@ class UserProfile(models.Model):
     default_address_line_2 = models.CharField(
         max_length=150, null=True, blank=True
     )
-    default_address_line_3 = models.CharField(
-        max_length=150, null=True, blank=True
-    )
     default_town = models.CharField(
         max_length=50, null=True, blank=True
     )

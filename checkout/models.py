@@ -31,7 +31,6 @@ class Order(models.Model):
     # Address section
     address_line_1 = models.CharField(max_length=150, null=False, blank=False)
     address_line_2 = models.CharField(max_length=150, null=True, blank=True)
-    address_line_3 = models.CharField(max_length=150, null=True, blank=True)
     town = models.CharField(max_length=50, null=False, blank=False)
     postcode = models.CharField(max_length=15, null=True, blank=True)
     # country uses django-countries package

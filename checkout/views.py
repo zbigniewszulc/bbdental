@@ -51,7 +51,6 @@ def checkout(request):
             'town': profile.default_town,
             'address_line_1': profile.default_address_line_1,
             'address_line_2': profile.default_address_line_2,
-            'address_line_3': profile.default_address_line_3,
             'county': profile.default_country,
         })
         if bag:
@@ -74,7 +73,6 @@ def checkout(request):
             'phone_number': request.POST.get('phone_number', '').strip(),
             'address_line_1': request.POST.get('address_line_1', '').strip(),
             'address_line_2': request.POST.get('address_line_2', '').strip(),
-            'address_line_3': request.POST.get('address_line_3', '').strip(),
             'town': request.POST.get('town', '').strip(),
             'postcode': request.POST.get('postcode', '').strip(),
             'country': request.POST.get('country', '').strip(),
@@ -95,8 +93,6 @@ def checkout(request):
                     'address_line_1']
                 profile.default_address_line_2 = order_form.cleaned_data[
                     'address_line_2']
-                profile.default_address_line_3 = order_form.cleaned_data[
-                    'address_line_3']
                 profile.default_town = order_form.cleaned_data['town']
                 profile.default_postcode = order_form.cleaned_data['postcode']
                 profile.default_country = order_form.cleaned_data['country']
