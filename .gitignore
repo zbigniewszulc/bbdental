@@ -13,3 +13,4 @@ cloudinary_python.txt
 .DS_Store
 bulk_upload.py
 /media/
+staticfiles/
