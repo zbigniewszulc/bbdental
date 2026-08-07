@@ -9,6 +9,10 @@ class OrderForm(forms.ModelForm):
         required=True,
         validators=[validate_phone_number],  # apply validator
     )
+    postcode = forms.CharField(
+        max_length=15,
+        required=True,
+    )
 
     class Meta:
         model = Order

@@ -22,7 +22,11 @@ var style = {
     }
 };
 
-var card = elements.create('card', { style: style });
+var card = elements.create('card', {
+    style: style,
+    hidePostalCode: true // use the postcode from the checkout form
+});
+
 card.mount('#card-element');
 
 // Validation errors handling 
@@ -38,8 +42,58 @@ card.addEventListener('change', function(event) {
 
 // Form submission handling
 var form = document.getElementById('checkout-form');
+
+// Show or hide billing address fields
+var sameBillingAddress = document.getElementById('sameBillingAddress');
+var billingAddressFields = document.getElementById(
+    'billing-address-fields'
+);
+var requiredBillingFields = billingAddressFields.querySelectorAll(
+    '[data-billing-required]'
+);
+
+function updateBillingAddressFields() {
+    var useDeliveryAddress = sameBillingAddress.checked;
+
+    billingAddressFields.classList.toggle(
+        'd-none',
+        useDeliveryAddress
+    );
+
+    requiredBillingFields.forEach(function(field) {
+        field.required = !useDeliveryAddress;
+    });
+}
+
+sameBillingAddress.addEventListener(
+    'change',
+    updateBillingAddressFields
+);
+
+updateBillingAddressFields();
+
+// a function that handles the form submission
 form.addEventListener('submit', function(event) {
     event.preventDefault();
+    var billingAddress;
+
+    if (sameBillingAddress.checked) {
+        billingAddress = {
+            line1: $.trim(form.address_line_1.value),
+            line2: $.trim(form.address_line_2.value),
+            city: $.trim(form.town.value),
+            postal_code: $.trim(form.postcode.value),
+            country: $.trim(form.country.value)
+        };
+    } else {
+        billingAddress = {
+            line1: $.trim(form.billing_address_line_1.value),
+            line2: $.trim(form.billing_address_line_2.value),
+            city: $.trim(form.billing_town.value),
+            postal_code: $.trim(form.billing_postcode.value),
+            country: $.trim(form.billing_country.value)
+        };
+    }
     card.update({'disabled': true});
     $('#submit_checkout').attr('disabled', true);
     $('#loading-overlay').removeClass('d-none');
@@ -47,20 +101,14 @@ form.addEventListener('submit', function(event) {
         payment_method: {
             card: card,
             billing_details: {
-                name: $.trim(form.name.value) + " + " + $.trim(form.surname.value),
+                name: $.trim(form.name.value) + " " + $.trim(form.surname.value),
                 email: $.trim(form.email.value),
                 phone: $.trim(form.phone_number.value),
-                address: {
-                    line1: $.trim(form.address_line_1.value),
-                    line2: $.trim(form.address_line_2.value),
-                    city: $.trim(form.town.value),
-                    postal_code: $.trim(form.postcode.value),
-                    country: $.trim(form.country.value)
-                }
+                address: billingAddress
             }
         },
         shipping: {
-            name: $.trim(form.name.value) + " + " + $.trim(form.surname.value),
+            name: $.trim(form.name.value) + " " + $.trim(form.surname.value),
             phone: $.trim(form.phone_number.value),
             address: {
                 line1: $.trim(form.address_line_1.value),

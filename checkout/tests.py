@@ -1,3 +1,4 @@
+from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from django.test import TestCase
@@ -45,3 +46,26 @@ class CheckoutFormTests(TestCase):
         form = OrderForm()
 
         self.assertNotIn('address_line_3', form.fields)
+
+    def test_postcode_is_required(self):
+        """Check if postcode field is mandatory on the OrderForm"""
+        form = OrderForm()
+
+        self.assertTrue(form.fields['postcode'].required)
+
+
+class CheckoutTemplateTests(TestCase):
+    def test_checkout_contains_billing_address_option(self):
+        """Check if checkout contains billing address fields.
+        Render_to_string used because the intention is to test the template"""
+        html = render_to_string(
+            "checkout/checkout.html",
+            {"order_form": OrderForm()}
+        )
+
+        self.assertIn('id="sameBillingAddress"', html)
+        self.assertIn('id="billing-address-fields"', html)
+        self.assertIn(
+            "Billing address is the same as delivery address",
+            html,
+        )

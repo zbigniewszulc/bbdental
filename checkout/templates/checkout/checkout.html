@@ -1,31 +1,79 @@
 {% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
-
 {% block content %}
     <div class="container my-5">
         <!-- Checkout section -->
         <div class="row">
             <div class="col-md-6 d-flex flex-column">
                 <h2 class="mb-4">Checkout</h2>
+                <!-- Delivery details -->
                 <form method="POST" action="{% url 'checkout' %}" id="checkout-form">
                     {% csrf_token %}
+                    <h3 class="h6 fw-bold">Delivery Details:</h3>
                     {{ order_form|crispy }}
                     <div class="form-check">
-                        <input type="checkbox" name="save_profile" class="form-check-input" id="saveProfile">
+                        <input type="checkbox"
+                               name="save_profile"
+                               class="form-check-input"
+                               id="saveProfile">
                         <label class="form-check-label" for="saveProfile">Save these details above to my profile</label>
-                    </div>                    
+                    </div>
+                    <div class="form-check mt-3">
+                        <input type="checkbox"
+                               name="same_billing_address"
+                               class="form-check-input"
+                               id="sameBillingAddress"
+                               checked>
+                        <label class="form-check-label" for="sameBillingAddress">Billing address is the same as delivery address</label>
+                    </div>
+                    <!-- Billing details -->
+                    <fieldset id="billing-address-fields" class="rounded p-3 mt-3 d-none">
+                        <legend class="h6 fw-bold">Billing Address:</legend>
+                        <input type="text"
+                               name="billing_address_line_1"
+                               class="form-control checkout mb-3"
+                               placeholder="Address line 1"
+                               data-billing-required>
+                        <input type="text"
+                               name="billing_address_line_2"
+                               class="form-control checkout mb-3"
+                               placeholder="Address line 2">
+                        <input type="text"
+                               name="billing_town"
+                               class="form-control checkout mb-3"
+                               placeholder="Town"
+                               data-billing-required>
+                        <input type="text"
+                               name="billing_postcode"
+                               class="form-control checkout mb-3"
+                               placeholder="Eircode / Postcode"
+                               data-billing-required>
+                        <select name="billing_country"
+                                class="form-select checkout"
+                                data-billing-required>
+                            <option value="">Select country</option>
+                            <option value="CZ">Czech Republic</option>
+                            <option value="FR">France</option>
+                            <option value="DE">Germany</option>
+                            <option value="IE">Ireland</option>
+                            <option value="PL">Poland</option>
+                            <option value="SK">Slovakia</option>
+                            <option value="GB">United Kingdom</option>
+                        </select>
+                    </fieldset>
                     <fieldset class="rounded p-3 mt-2">
-                        <legend class="h6">Payment Details</legend>
+                        <legend class="h6 fw-bold">Payment Details:</legend>
                         <div id="card-element" class="form-control"></div>
                         <div id="card-errors" class="text-danger mt-2" role="alert"></div>
                     </fieldset>
                     <div class="text-center">
-                        <button type="submit" id="submit_checkout" class="btn btn-success w-50 mt-3 mb-4 p-4 p-lg-3">
+                        <button type="submit"
+                                id="submit_checkout"
+                                class="btn btn-success w-50 mt-3 mb-4 p-4 p-lg-3">
                             Complete Order &nbsp; &nbsp;
                             <i class="fa-solid fa-hand-pointer"></i>
                         </button>
@@ -41,13 +89,18 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
                                     <a href="{% url 'product_details' item.product.id %}">
-                                    {% if item.product.picture_location %}
-                                        <img src="{{ item.product.picture_location.url }}" class="img-fluid d-none d-xl-block" alt="{{ item.product.product_name }}">
-                                    {% else %}
-                                        <img src="{% static 'images/noimage.webp' %}" class="img-fluid rounded d-none d-xl-block" alt="No image available">
-                                    {% endif %}
+                                        {% if item.product.picture_location %}
+                                            <img src="{{ item.product.picture_location.url }}"
+                                                 class="img-fluid d-none d-xl-block"
+                                                 alt="{{ item.product.product_name }}">
+                                        {% else %}
+                                            <img src="{% static 'images/noimage.webp' %}"
+                                                 class="img-fluid rounded d-none d-xl-block"
+                                                 alt="No image available">
+                                        {% endif %}
                                     </a>
-                                    <a href="{% url 'product_details' item.product.id %}" class="text-decoration-none text-dark">
+                                    <a href="{% url 'product_details' item.product.id %}"
+                                       class="text-decoration-none text-dark">
                                         {{ item.product.product_name }} (x{{ item.quantity }})
                                     </a>
                                 </div>
@@ -61,29 +114,27 @@
                     <p class="text-end"><strong>Delivery: €{{ delivery|floatformat:2 }}</strong></p>
                     <p class="text-end my-3"><span class="bg-dark text-white fs-4 py-1 px-4">Grand Total: €{{ grand_total|floatformat:2 }}</span></p>
                     {% if free_delivery_delta > 0 %}
-                    <div class="w-100 text-end mt-1">
-                        <a href="{% url 'all_products' %}" class="text-warning bg-dark d-inline-block h6 px-3 py-1 text-end text-decoration-none">
-                            <i class="fa-solid fa-arrow-right"></i> &nbsp;
-                            Spend €{{ free_delivery_delta|floatformat:2 }} more to get free delivery! &nbsp;
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </a>
-                    </div>
+                        <div class="w-100 text-end mt-1">
+                            <a href="{% url 'all_products' %}"
+                               class="text-warning bg-dark d-inline-block h6 px-3 py-1 text-end text-decoration-none">
+                                <i class="fa-solid fa-arrow-right"></i> &nbsp;
+                                Spend €{{ free_delivery_delta|floatformat:2 }} more to get free delivery! &nbsp;
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </a>
+                        </div>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
-
-
     <!-- Bootstrap Spinner -->
-    <div id="loading-overlay" class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex justify-content-center align-items-center">
+    <div id="loading-overlay"
+         class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex justify-content-center align-items-center">
         <div class="spinner-border text-light" role="status">
             <span class="visually-hidden">Processing Payment...</span>
         </div>
     </div>
-
 {% endblock %}
-
 {% block postload_js %}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
