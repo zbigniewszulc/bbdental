@@ -8,6 +8,7 @@ from profiles.models import UserProfile
 from .models import OrderLineItem, Order
 from .forms import OrderForm
 from bbdental.decorators import customer_required
+from .emails import send_order_confirmation
 
 import stripe
 
@@ -124,6 +125,11 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
+
+            # Refresh order data to get the final totals before sending email
+            order.refresh_from_db()
+            send_order_confirmation(order)
+
             return redirect(
                 reverse('checkout_success', args=[order.order_number])
             )

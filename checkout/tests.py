@@ -4,6 +4,11 @@ from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse
 from .forms import OrderForm
+from decimal import Decimal
+from django.core import mail
+from products.models import Category, Manufacturer, Product, Subcategory
+from .emails import send_order_confirmation
+from .models import Order, OrderLineItem
 
 
 class CheckoutViewsTests(TestCase):
@@ -70,3 +75,68 @@ class CheckoutTemplateTests(TestCase):
             "Billing address is the same as delivery address",
             html,
         )
+
+
+class CheckoutEmailTests(TestCase):
+    def setUp(self):
+        """Create an order with two products."""
+        category = Category.objects.create(
+            category_name="Test Category"
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer"
+        )
+
+        first_product = Product.objects.create(
+            product_name="First Test Product",
+            description="First test product description",
+            price=Decimal("15.00"),
+            in_stock=10,
+            manufacturer=manufacturer,
+            subcategory=subcategory,
+        )
+        second_product = Product.objects.create(
+            product_name="Second Test Product",
+            description="Second test product description",
+            price=Decimal("37.00"),
+            in_stock=10,
+            manufacturer=manufacturer,
+            subcategory=subcategory,
+        )
+
+        self.order = Order.objects.create(
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            address_line_2="Belgard Square",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        OrderLineItem.objects.create(
+            order=self.order,
+            product=first_product,
+            quantity=1,
+        )
+        OrderLineItem.objects.create(
+            order=self.order,
+            product=second_product,
+            quantity=1,
+        )
+
+    def test_order_confirmation_sends_one_email(self):
+        """Check if one email is sent for an order with two products."""
+        send_order_confirmation(self.order)
+
+        self.assertEqual(len(mail.outbox), 1)
+
+        email = mail.outbox[0]
+        self.assertIn("First Test Product", email.body)
+        self.assertIn("Second Test Product", email.body)
