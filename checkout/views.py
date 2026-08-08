@@ -39,31 +39,32 @@ def checkout(request):
     intent = None
     order_form = OrderForm()
 
-    try:
-        # Get the user's profile to pre-fill the order form
-        profile = UserProfile.objects.get(user=request.user)
-        order_form = OrderForm(initial={
-            'name': profile.user.first_name,
-            'surname': profile.user.last_name,
-            'email': profile.user.email,
-            'phone_number': profile.default_phone_number,
-            'country': profile.default_country,
-            'postcode': profile.default_postcode,
-            'town': profile.default_town,
-            'address_line_1': profile.default_address_line_1,
-            'address_line_2': profile.default_address_line_2,
-            'county': profile.default_country,
-        })
-        if bag:
-            messages.info(
-                request, 'Profile details pre-filled for faster checkout.')
-    except UserProfile.DoesNotExist:
-        order_form = OrderForm()
-        messages.warning(
-            request,
-            'Your profile details not found. '
-            'Please enter your details manually.'
-        )
+    if request.method == 'GET':
+        try:
+            # Get the user's profile to pre-fill the order form
+            profile = UserProfile.objects.get(user=request.user)
+            order_form = OrderForm(initial={
+                'name': profile.user.first_name,
+                'surname': profile.user.last_name,
+                'email': profile.user.email,
+                'phone_number': profile.default_phone_number,
+                'country': profile.default_country,
+                'postcode': profile.default_postcode,
+                'town': profile.default_town,
+                'address_line_1': profile.default_address_line_1,
+                'address_line_2': profile.default_address_line_2,
+                'county': profile.default_country,
+            })
+            if bag:
+                messages.info(
+                    request, 'Profile details pre-filled for faster checkout.')
+        except UserProfile.DoesNotExist:
+            order_form = OrderForm()
+            messages.warning(
+                request,
+                'Your profile details not found. '
+                'Please enter your details manually.'
+            )
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
