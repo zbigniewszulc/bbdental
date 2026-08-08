@@ -65,6 +65,10 @@ class Order(models.Model):
         Update grand total each time a line item is added
         along with delivery cost
         """
+        # aggregate() adds all line item totals and returns a dictionary
+        # The key gets the calculated sum
+        # "or 0" uses zero when the order has no line items
+        # Sum() defines the calculation, while aggregate() runs it on the data
         self.subtotal = self.line_items.aggregate(
             Sum('line_item_total'))['line_item_total__sum'] or 0
 
@@ -99,6 +103,7 @@ class OrderLineItem(models.Model):
         and update order the total
         """
         self.line_item_total = self.product.price * self.quantity
+        # Call the save method from the parent class
         super().save(*args, **kwargs)
         self.order.update_total()
 
