@@ -34,16 +34,23 @@ class Order(models.Model):
     town = models.CharField(max_length=50, null=False, blank=False)
     postcode = models.CharField(max_length=15, null=True, blank=True)
     # country uses django-countries package
-    country = CountryField(blank_label="Select country",
-                           countries=AllowedCountries)
+    country = CountryField(
+        blank_label="Select country", countries=AllowedCountries
+    )
     # Order details
     date_of_order = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, default=0.00)
+        max_digits=6, decimal_places=2, null=False, default=0.00
+    )
     subtotal = models.DecimalField(
-        max_digits=10, decimal_places=2, null=False, default=0.00)
+        max_digits=10, decimal_places=2, null=False, default=0.00
+    )
     grand_total = models.DecimalField(
-        max_digits=10, decimal_places=2, null=False, default=0.00)
+        max_digits=10, decimal_places=2, null=False, default=0.00
+    )
+    original_bag = models.TextField(null=True, blank=True)
+    stripe_pid = models.CharField(
+        max_length=254, null=True, blank=True, unique=True)
 
     def _generate_order_number(self):
         """

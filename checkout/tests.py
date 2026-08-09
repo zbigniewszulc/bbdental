@@ -158,3 +158,26 @@ class CheckoutWebhookTests(TestCase):
         )
 
         self.assertEqual(response.status_code, 400)
+
+
+class CheckoutOrderModelTests(TestCase):
+    def test_order_stores_stripe_details(self):
+        """Check if an order stores its bag and Stripe payment ID."""
+        order = Order.objects.create(
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            address_line_2="Belgard Square",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+            original_bag='{"1": 2}',
+            stripe_pid="pi_test_123",
+        )
+
+        order.refresh_from_db()
+
+        self.assertEqual(order.original_bag, '{"1": 2}')
+        self.assertEqual(order.stripe_pid, "pi_test_123")
