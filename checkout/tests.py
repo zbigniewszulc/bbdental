@@ -140,3 +140,21 @@ class CheckoutEmailTests(TestCase):
         email = mail.outbox[0]
         self.assertIn("First Test Product", email.body)
         self.assertIn("Second Test Product", email.body)
+
+
+class CheckoutWebhookTests(TestCase):
+    def test_webhook_rejects_get_request(self):
+        """Check if the webhook only accepts POST requests."""
+        response = self.client.get(reverse("wh"))
+
+        self.assertEqual(response.status_code, 405)
+
+    def test_webhook_rejects_missing_signature(self):
+        """Check if a request without a Stripe signature is rejected."""
+        response = self.client.post(
+            reverse("wh"),
+            data="{}",  # Send an empty JSON object
+            content_type="application/json",
+        )
+
+        self.assertEqual(response.status_code, 400)
