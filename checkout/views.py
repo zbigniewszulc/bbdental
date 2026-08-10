@@ -9,10 +9,40 @@ from .models import OrderLineItem, Order
 from .forms import OrderForm
 from bbdental.decorators import customer_required
 from .emails import send_order_confirmation
+from django.views.decorators.http import require_POST
+from django.http import HttpResponse
 
 import stripe
+import json
+
 
 # Create your views here.
+@login_required
+@customer_required
+@require_POST
+def cache_checkout_data(request):
+    """Save checkout data in the PaymentIntent metadata."""
+    client_secret = request.POST.get('client_secret')
+
+    if not client_secret:
+        return HttpResponse(status=400)
+
+    stripe_pid = client_secret.split('_secret_')[0]
+    save_profile = request.POST.get('save_profile') == 'true'
+
+    try:
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(
+            stripe_pid,
+            metadata={
+                'bag': json.dumps(request.session.get('bag', {})),
+                'user_id': str(request.user.id),
+                'save_profile': str(save_profile).lower(),
+            },
+        )
+        return HttpResponse(status=200)
+    except Exception as e:
+        return HttpResponse(content=str(e), status=400)
 
 
 @login_required

@@ -181,3 +181,22 @@ class CheckoutOrderModelTests(TestCase):
 
         self.assertEqual(order.original_bag, '{"1": 2}')
         self.assertEqual(order.stripe_pid, "pi_test_123")
+
+
+class CheckoutCacheDataTests(TestCase):
+    def setUp(self):
+        """Create and log in a customer."""
+        self.user = User.objects.create_user(
+            username="testcustomer",
+            password="password123",
+        )
+        self.client.login(
+            username="testcustomer",
+            password="password123",
+        )
+
+    def test_cache_checkout_data_requires_client_secret(self):
+        """Check if client secret is required."""
+        response = self.client.post(reverse("cache_checkout_data"))
+
+        self.assertEqual(response.status_code, 400)
