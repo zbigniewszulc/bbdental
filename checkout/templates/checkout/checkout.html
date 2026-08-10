@@ -11,7 +11,10 @@
             <div class="col-md-6 d-flex flex-column">
                 <h2 class="mb-4">Checkout</h2>
                 <!-- Delivery details -->
-                <form method="POST" action="{% url 'checkout' %}" id="checkout-form">
+                <form method="POST"
+                      action="{% url 'checkout' %}"
+                      id="checkout-form"
+                      data-cache-url="{% url 'cache_checkout_data' %}">
                     {% csrf_token %}
                     <h3 class="h6 fw-bold">Delivery Details:</h3>
                     {{ order_form|crispy }}

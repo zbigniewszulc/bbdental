@@ -97,37 +97,57 @@ form.addEventListener('submit', function(event) {
     card.update({'disabled': true});
     $('#submit_checkout').attr('disabled', true);
     $('#loading-overlay').removeClass('d-none');
-    stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-            card: card,
-            billing_details: {
-                name: $.trim(form.name.value) + " " + $.trim(form.surname.value),
-                email: $.trim(form.email.value),
-                phone: $.trim(form.phone_number.value),
-                address: billingAddress
-            }
-        },
-        shipping: {
-            name: $.trim(form.name.value) + " " + $.trim(form.surname.value),
-            phone: $.trim(form.phone_number.value),
-            address: {
-                line1: $.trim(form.address_line_1.value),
-                line2: $.trim(form.address_line_2.value),
-                city: $.trim(form.town.value),
-                postal_code: $.trim(form.postcode.value),
-                country: $.trim(form.country.value)
-            }
-        }
-    }).then(function(result) {
-        if (result.error) {
-            document.getElementById('card-errors').textContent = result.error.message;
+    // Save checkout data before confirming the payment
+    var postData = {
+        csrfmiddlewaretoken: form.querySelector(
+            '[name="csrfmiddlewaretoken"]'
+        ).value,
+        client_secret: clientSecret,
+        save_profile: document.getElementById(
+            'saveProfile'
+        ).checked.toString()
+    };
+    $.post(form.dataset.cacheUrl, postData)
+        .done(function() {
+            stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: $.trim(form.name.value) + " " + $.trim(form.surname.value),
+                        email: $.trim(form.email.value),
+                        phone: $.trim(form.phone_number.value),
+                        address: billingAddress
+                    }
+                },
+                shipping: {
+                    name: $.trim(form.name.value) + " " + $.trim(form.surname.value),
+                    phone: $.trim(form.phone_number.value),
+                    address: {
+                        line1: $.trim(form.address_line_1.value),
+                        line2: $.trim(form.address_line_2.value),
+                        city: $.trim(form.town.value),
+                        postal_code: $.trim(form.postcode.value),
+                        country: $.trim(form.country.value)
+                    }
+                }
+            }).then(function(result) {
+                if (result.error) {
+                    document.getElementById('card-errors').textContent = result.error.message;
+                    $('#loading-overlay').addClass('d-none');
+                    card.update({'disabled': false});
+                    $('#submit_checkout').attr('disabled', false);
+                } else {
+                    if (result.paymentIntent.status === 'succeeded') {
+                        form.submit();
+                    }
+                }
+            });
+        })
+        .fail(function() {
+            document.getElementById('card-errors').textContent =
+                'There was a problem preparing your payment. Please try again.';
             $('#loading-overlay').addClass('d-none');
             card.update({'disabled': false});
             $('#submit_checkout').attr('disabled', false);
-        } else {
-            if (result.paymentIntent.status === 'succeeded') {
-                form.submit();
-            }
-        }
-    });
+        });
 });
