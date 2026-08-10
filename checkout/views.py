@@ -40,6 +40,13 @@ def cache_checkout_data(request):
                 'save_profile': str(save_profile).lower(),
             },
         )
+
+        # Save the PaymentIntent ID in the session. If Stripe confirms the
+        # payment but the customer closes the page before the checkout
+        # form is submitted, Django can find the order created by the webhook
+        # when the customer returns
+        request.session['stripe_pid'] = stripe_pid
+
         return HttpResponse(status=200)
     except Exception as e:
         return HttpResponse(content=str(e), status=400)
@@ -68,6 +75,24 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     intent = None
     order_form = OrderForm()
+
+    # Check if the webhook completed an order for the PaymentIntent
+    # saved in this user's session
+    session_stripe_pid = request.session.get('stripe_pid')
+
+    if session_stripe_pid:
+        existing_order = Order.objects.filter(
+            stripe_pid=session_stripe_pid,
+            user_profile=request.user.userprofile,
+        ).first()
+
+        if existing_order:
+            return redirect(
+                reverse(
+                    'checkout_success',
+                    args=[existing_order.order_number],
+                )
+            )
 
     if request.method == 'GET':
         try:
@@ -252,6 +277,9 @@ def checkout_success(request, order_number):
 
     if 'bag' in request.session:
         del request.session['bag']
+
+    if 'stripe_pid' in request.session:
+        del request.session['stripe_pid']
 
     context = {
         'order': order

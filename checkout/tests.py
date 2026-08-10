@@ -439,3 +439,23 @@ class CheckoutExistingOrderTests(TestCase):
             Order.objects.filter(stripe_pid="pi_test_123").count(),
             1,
         )
+
+    def test_checkout_redirects_to_paid_order_saved_in_session(self):
+        """Check if returning to checkout opens the completed order."""
+        session = self.client.session
+        session['bag'] = {'1': 2}
+        session['stripe_pid'] = 'pi_test_123'
+        session.save()
+
+        response = self.client.get(reverse("checkout"))
+
+        self.assertRedirects(
+            response,
+            reverse(
+                "checkout_success",
+                args=[self.order.order_number],
+            ),
+        )
+
+        self.assertNotIn('bag', self.client.session)
+        self.assertNotIn('stripe_pid', self.client.session)
