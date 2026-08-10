@@ -138,6 +138,8 @@ form.addEventListener('submit', function(event) {
                     $('#submit_checkout').attr('disabled', false);
                 } else {
                     if (result.paymentIntent.status === 'succeeded') {
+                        document.getElementById('stripe-pid').value =
+                            result.paymentIntent.id;
                         form.submit();
                     }
                 }

@@ -76,6 +76,15 @@ class CheckoutTemplateTests(TestCase):
             html,
         )
 
+    def test_checkout_contains_stripe_pid_field(self):
+        """Check if checkout contains the Stripe payment ID field."""
+        html = render_to_string(
+            "checkout/checkout.html",
+            {"order_form": OrderForm()},
+        )
+
+        self.assertIn('name="stripe_pid"', html)
+
 
 class CheckoutEmailTests(TestCase):
     def setUp(self):

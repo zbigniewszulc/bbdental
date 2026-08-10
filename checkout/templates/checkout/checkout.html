@@ -16,6 +16,7 @@
                       id="checkout-form"
                       data-cache-url="{% url 'cache_checkout_data' %}">
                     {% csrf_token %}
+                    <input type="hidden" name="stripe_pid" id="stripe-pid">
                     <h3 class="h6 fw-bold">Delivery Details:</h3>
                     {{ order_form|crispy }}
                     <div class="form-check">

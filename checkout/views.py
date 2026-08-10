@@ -111,7 +111,10 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            order.original_bag = json.dumps(bag)
+            order.stripe_pid = request.POST.get('stripe_pid') or None
+            order.save()
 
             # Save data to profile if checkbox selected
             if 'save_profile' in request.POST:
