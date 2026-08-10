@@ -1,6 +1,12 @@
 # Ref: https://www.youtube.com/watch?v=lg8p1vD9-Bs&t=230s
+
+import json
+
 from django.http import HttpResponse
-from .models import Order
+from .models import Order, OrderLineItem
+from products.models import Product
+from profiles.models import UserProfile
+from .emails import send_order_confirmation
 
 
 class StripeWH_Handler:
@@ -37,6 +43,81 @@ class StripeWH_Handler:
                 ),
                 status=200,
             )
+
+        metadata = payment_intent['metadata']
+        shipping = payment_intent['shipping']
+        address = shipping['address']
+
+        profile = UserProfile.objects.get(
+            user_id=metadata['user_id']
+        )
+
+        # Stripe provides the customer's full name as one value
+        full_name = shipping['name'].strip()
+        name_parts = full_name.rsplit(' ', 1)
+        name = name_parts[0]
+        surname = name_parts[1] if len(name_parts) > 1 else ''
+
+        order = Order.objects.create(
+            user_profile=profile,
+            name=name,
+            surname=surname,
+            email=profile.user.email,
+            phone_number=shipping['phone'],
+            address_line_1=address['line1'],
+            address_line_2=address.get('line2', ''),
+            town=address['city'],
+            postcode=address.get('postal_code', ''),
+            country=address['country'],
+            original_bag=metadata['bag'],
+            stripe_pid=stripe_pid,
+        )
+
+        # Add the products saved in the Stripe metadata to the order
+        bag = json.loads(metadata['bag'])
+
+        try:
+            for product_id, quantity in bag.items():
+                product = Product.objects.get(id=product_id)
+
+                OrderLineItem.objects.create(
+                    order=order,
+                    product=product,
+                    quantity=quantity,
+                )
+        except Product.DoesNotExist:
+            # A product may have been removed from the database after the
+            # payment started but before the webhook was processed
+            order.delete()
+
+            return HttpResponse(
+                content=(
+                    f'Webhook received: {event["type"]}. '
+                    'Product not found.'
+                ),
+                status=500,
+            )
+
+        # Save the delivery details to the profile if the customer selected
+        # this option during checkout
+        if metadata.get('save_profile') == 'true':
+            profile.user.first_name = name
+            profile.user.last_name = surname
+            profile.user.save()
+
+            profile.default_phone_number = shipping['phone']
+            profile.default_address_line_1 = address['line1']
+            profile.default_address_line_2 = address.get('line2', '')
+            profile.default_town = address['city']
+            profile.default_postcode = address.get('postal_code', '')
+            profile.default_country = address['country']
+            profile.save()
+
+        # Refresh the order to get the final totals and send one confirmation
+        # email after all products have been added
+        order.refresh_from_db()
+        send_order_confirmation(order)
+
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200

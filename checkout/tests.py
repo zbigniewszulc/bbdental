@@ -1,3 +1,5 @@
+import json
+
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
@@ -248,6 +250,144 @@ class CheckoutWebhookHandlerTests(TestCase):
             Order.objects.filter(stripe_pid="pi_test_123").count(),
             1,
         )
+
+    def test_success_handler_creates_order_and_saves_profile(self):
+        """Check if the webhook creates an order and saves delivery details
+        for a new payment."""
+        user = User.objects.create_user(
+            username="testcustomer",
+            password="password123",
+            email="peter@example.com",
+        )
+        category = Category.objects.create(
+            category_name="Test Category"
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer"
+        )
+        product = Product.objects.create(
+            product_name="Test Product",
+            description="Test product description",
+            price=Decimal("15.00"),
+            in_stock=10,
+            manufacturer=manufacturer,
+            subcategory=subcategory,
+        )
+
+        event = {
+            "type": "payment_intent.succeeded",
+            "data": {
+                "object": {
+                    "id": "pi_test_new",
+                    "metadata": {
+                        "bag": json.dumps({str(product.id): 2}),
+                        "user_id": str(user.id),
+                        "save_profile": "true",
+                    },
+                    "shipping": {
+                        "name": "Peter Byrne",
+                        "phone": "+353 87 123 4567",
+                        "address": {
+                            "line1": "47 Virginia Hall",
+                            "line2": "Belgard Square",
+                            "city": "Tallaght",
+                            "postal_code": "D24 ABC1",
+                            "country": "IE",
+                        },
+                    },
+                },
+            },
+        }
+
+        handler = StripeWH_Handler(None)
+        response = handler.handle_payment_intent_succeeded(event)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(
+            Order.objects.filter(stripe_pid="pi_test_new").exists()
+        )
+
+        order = Order.objects.get(stripe_pid="pi_test_new")
+        line_item = OrderLineItem.objects.get(order=order)
+
+        self.assertEqual(line_item.product, product)
+        self.assertEqual(line_item.quantity, 2)
+
+        user.refresh_from_db()
+        profile = user.userprofile
+        profile.refresh_from_db()
+
+        self.assertEqual(user.first_name, "Peter")
+        self.assertEqual(user.last_name, "Byrne")
+        self.assertEqual(
+            profile.default_phone_number,
+            "+353 87 123 4567",
+        )
+        self.assertEqual(
+            profile.default_address_line_1,
+            "47 Virginia Hall",
+        )
+        self.assertEqual(
+            profile.default_address_line_2,
+            "Belgard Square",
+        )
+        self.assertEqual(profile.default_town, "Tallaght")
+        self.assertEqual(profile.default_postcode, "D24 ABC1")
+        self.assertEqual(profile.default_country.code, "IE")
+
+        # Check that one confirmation email is sent to the customer
+        # and includes the ordered product
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].to, ["peter@example.com"])
+        self.assertIn("Test Product", mail.outbox[0].body)
+
+    def test_success_handler_does_not_keep_incomplete_order(self):
+        """Check if an incomplete order is removed when a product is missing"""
+        user = User.objects.create_user(
+            username="testcustomer2",
+            password="password123",
+            email="peter@example.com",
+        )
+
+        event = {
+            "type": "payment_intent.succeeded",
+            "data": {
+                "object": {
+                    "id": "pi_missing_product",
+                    "metadata": {
+                        "bag": json.dumps({"999999": 1}),
+                        "user_id": str(user.id),
+                        "save_profile": "false",
+                    },
+                    "shipping": {
+                        "name": "Peter Byrne",
+                        "phone": "+353 87 123 4567",
+                        "address": {
+                            "line1": "47 Virginia Hall",
+                            "line2": "Belgard Square",
+                            "city": "Tallaght",
+                            "postal_code": "D24 ABC1",
+                            "country": "IE",
+                        },
+                    },
+                },
+            },
+        }
+
+        handler = StripeWH_Handler(None)
+        response = handler.handle_payment_intent_succeeded(event)
+
+        self.assertEqual(response.status_code, 500)
+        self.assertFalse(
+            Order.objects.filter(
+                stripe_pid="pi_missing_product"
+            ).exists()
+        )
+        self.assertEqual(len(mail.outbox), 0)
 
 
 class CheckoutExistingOrderTests(TestCase):
