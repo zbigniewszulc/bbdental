@@ -26,7 +26,9 @@ class StripeWH_Handler:
         payment_intent = event['data']['object']
         stripe_pid = payment_intent['id']
 
-        # Do not create another order for the same payment
+        # Do not create another order for the same payment.
+        # Stripe may send the same webhook more than once, so check if an order
+        # for this payment already exists to avoid creating a duplicate order
         if Order.objects.filter(stripe_pid=stripe_pid).exists():
             return HttpResponse(
                 content=(
