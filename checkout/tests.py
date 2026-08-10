@@ -248,3 +248,54 @@ class CheckoutWebhookHandlerTests(TestCase):
             Order.objects.filter(stripe_pid="pi_test_123").count(),
             1,
         )
+
+
+class CheckoutExistingOrderTests(TestCase):
+    def setUp(self):
+        """Create a customer and an existing order."""
+        self.user = User.objects.create_user(
+            username="testcustomer",
+            password="password123",
+        )
+        self.client.login(
+            username="testcustomer",
+            password="password123",
+        )
+
+        self.order = Order.objects.create(
+            user_profile=self.user.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            address_line_2="Belgard Square",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+            original_bag='{"1": 2}',
+            stripe_pid="pi_test_123",
+        )
+
+    def test_checkout_uses_order_created_by_webhook(self):
+        """Check if checkout uses an order created by the webhook."""
+        response = self.client.post(
+            reverse("checkout"),
+            # Data sent in the request. It corresponds to the form field
+            {"stripe_pid": "pi_test_123"},
+        )
+
+        self.assertRedirects(
+            response,
+            reverse(
+                "checkout_success",
+                args=[self.order.order_number],
+            ),
+            # Check the redirect URL without loading the destination
+            # page because only the redirect itself is tested
+            fetch_redirect_response=False,
+        )
+        self.assertEqual(
+            Order.objects.filter(stripe_pid="pi_test_123").count(),
+            1,
+        )

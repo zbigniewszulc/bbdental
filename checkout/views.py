@@ -98,6 +98,25 @@ def checkout(request):
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
+        stripe_pid = request.POST.get('stripe_pid')
+
+        # If the webhook created the order before the checkout form
+        # was submitted, use that order to avoid creating a duplicate
+        # for the same payment
+        if stripe_pid:
+            existing_order = Order.objects.filter(
+                stripe_pid=stripe_pid,
+                user_profile=request.user.userprofile,
+            ).first()  # Returns an object or None if nothing found
+
+            if existing_order:
+                return redirect(
+                    reverse(
+                        'checkout_success',
+                        args=[existing_order.order_number],
+                    )
+                )
+
         form_data = {
             'name': request.POST.get('name', '').strip(),
             'surname': request.POST.get('surname', '').strip(),
