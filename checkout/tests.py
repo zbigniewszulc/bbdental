@@ -9,6 +9,7 @@ from django.core import mail
 from products.models import Category, Manufacturer, Product, Subcategory
 from .emails import send_order_confirmation
 from .models import Order, OrderLineItem
+from .webhook_handler import StripeWH_Handler
 
 
 class CheckoutViewsTests(TestCase):
@@ -209,3 +210,41 @@ class CheckoutCacheDataTests(TestCase):
         response = self.client.post(reverse("cache_checkout_data"))
 
         self.assertEqual(response.status_code, 400)
+
+
+class CheckoutWebhookHandlerTests(TestCase):
+    def test_success_handler_finds_existing_order(self):
+        """Check if an existing order is not created again."""
+        Order.objects.create(
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            address_line_2="Belgard Square",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+            original_bag='{"1": 2}',
+            stripe_pid="pi_test_123",
+        )
+
+        event = {
+            "type": "payment_intent.succeeded",
+            "data": {
+                "object": {
+                    "id": "pi_test_123",
+                },
+            },
+        }
+
+        # This calls the handler directly without an HTTP request
+        handler = StripeWH_Handler(None)
+        response = handler.handle_payment_intent_succeeded(event)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Order already exists")
+        self.assertEqual(
+            Order.objects.filter(stripe_pid="pi_test_123").count(),
+            1,
+        )
