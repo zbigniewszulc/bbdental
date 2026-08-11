@@ -49,3 +49,11 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'checkout'
             self.fields[field].label = False
+
+
+class OrderStatusForm(forms.ModelForm):
+    """Form used by staff to update an order status"""
+
+    class Meta:
+        model = Order
+        fields = ('status',)

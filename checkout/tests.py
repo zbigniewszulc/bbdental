@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse
-from .forms import OrderForm
+from .forms import OrderForm, OrderStatusForm
 from decimal import Decimal
 from django.core import mail
 from products.models import Category, Manufacturer, Product, Subcategory
@@ -61,6 +61,12 @@ class CheckoutFormTests(TestCase):
         form = OrderForm()
 
         self.assertTrue(form.fields['postcode'].required)
+
+    def test_order_status_form_only_contains_status(self):
+        """Check if OrderStatusForm only contains the status field"""
+        form = OrderStatusForm()
+
+        self.assertEqual(list(form.fields), ['status'])
 
 
 class CheckoutTemplateTests(TestCase):
