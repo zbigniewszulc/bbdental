@@ -79,6 +79,27 @@ class ProfileViewsTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, order.order_number)
+        self.assertContains(response, "Status:")
+        self.assertContains(response, order.get_status_display())
+
+    def test_profile_displays_order_status(self):
+        """Check if the order status is displayed in the order history."""
+        Order.objects.create(
+            user_profile=self.user.userprofile,
+            name="John",
+            surname="Murphy",
+            email="john@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+            status="processing",
+        )
+
+        response = self.client.get(reverse("profile"))
+
+        self.assertContains(response, "Status: Processing")
 
 
 class UserProfileFormTests(TestCase):

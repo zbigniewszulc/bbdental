@@ -33,6 +33,7 @@
                         <li class="list-group-item">
                             Order Number: {{ order.order_number }} <br>
                             Order Date: {{ order.date_of_order }} <br>
+                            Status: {{ order.get_status_display }} <br>
                             Total: €{{ order.grand_total|floatformat:2 }} <br>
                             <a href="{% url 'order_history' order.order_number %}">View Order Details</a>
                         </li>

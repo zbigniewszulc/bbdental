@@ -16,6 +16,7 @@
                     <h2 class="h5">Order Details:</h2>
                     <p><strong>Order Number:</strong> {{ order.order_number }}</p>
                     <p><strong>Order Date:</strong> {{ order.date_of_order }}</p>
+                    <p><strong>Status:</strong> {{ order.get_status_display }}</p>
                     <p><strong>Name:</strong> {{ order.name }} {{ order.surname }}</p>
                     <p><strong>Phone:</strong> {{ order.phone_number }}</p>
                     <p><strong>Email:</strong> {{ order.email }}</p>
