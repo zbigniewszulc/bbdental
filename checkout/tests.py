@@ -194,6 +194,21 @@ class CheckoutOrderModelTests(TestCase):
         self.assertEqual(order.original_bag, '{"1": 2}')
         self.assertEqual(order.stripe_pid, "pi_test_123")
 
+    def test_new_order_has_new_status_by_default(self):
+        """Check if a new order has New status by default."""
+        order = Order.objects.create(
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        self.assertEqual(order.status, "new")
+
 
 class CheckoutCacheDataTests(TestCase):
     def setUp(self):

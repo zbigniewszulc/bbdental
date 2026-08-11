@@ -18,6 +18,13 @@ class AllowedCountries(Countries):
 
 
 class Order(models.Model):
+    # Order fulfilment statuses
+    STATUS_CHOICES = [
+        ('new', 'New'),
+        ('processing', 'Processing'),
+        ('dispatched', 'Dispatched'),
+        ('cancelled', 'Cancelled'),
+    ]
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(
         UserProfile, on_delete=models.SET_NULL, null=True, blank=True,
@@ -39,6 +46,11 @@ class Order(models.Model):
     )
     # Order details
     date_of_order = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='new',
+    )
     delivery_cost = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0.00
     )
