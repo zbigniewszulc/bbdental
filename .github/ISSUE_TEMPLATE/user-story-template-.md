@@ -2,7 +2,7 @@
 name: 'User Story template '
 about: Custom user story template for bbdental project
 title: ''
-labels: ''
+labels: 'bbdental-user-story'
 assignees: ''
 
 ---
