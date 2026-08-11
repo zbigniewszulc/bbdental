@@ -308,3 +308,19 @@ def manage_orders(request):
         'checkout/order_management.html',
         context,
     )
+
+
+@staff_member_required
+def order_management_details(request, order_number):
+    """Display order details for staff users"""
+    order = get_object_or_404(Order, order_number=order_number)
+
+    context = {
+        'order': order,
+    }
+
+    return render(
+        request,
+        'checkout/order_management_details.html',
+        context,
+    )

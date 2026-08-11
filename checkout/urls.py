@@ -15,5 +15,10 @@ urlpatterns = [
         views.cache_checkout_data,
         name='cache_checkout_data',
     ),
-    path('manage_orders/', views.manage_orders, name='manage_orders')
+    path('manage_orders/', views.manage_orders, name='manage_orders'),
+    path(
+        'manage_orders/<order_number>/',
+        views.order_management_details,
+        name='order_management_details',
+    ),
 ]

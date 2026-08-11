@@ -641,3 +641,102 @@ class ManageOrdersTests(TestCase):
             response,
             f'href="{reverse("manage_orders")}"',
         )
+
+    def test_staff_user_can_view_order_details(self):
+        """Check if a staff user can view order details"""
+        customer = User.objects.create_user(
+            username="detailcustomer",
+            password="password123",
+        )
+
+        order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        response = self.client.get(
+            reverse(
+                "order_management_details",
+                args=[order.order_number],
+            )
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, order.order_number)
+
+    def test_customer_cannot_view_order_management_details(self):
+        """Check if a customer cannot view staff order details"""
+        customer = User.objects.create_user(
+            username="customer",
+            password="password123",
+        )
+
+        order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        self.client.logout()
+        self.client.login(
+            username="customer",
+            password="password123",
+        )
+
+        response = self.client.get(
+            reverse(
+                "order_management_details",
+                args=[order.order_number],
+            )
+        )
+
+        self.assertRedirects(
+            response,
+            (
+                f'{reverse("admin:login")}?next='
+                f'{reverse("order_management_details",
+                           args=[order.order_number])}'
+            ),
+        )
+
+    def test_order_management_contains_details_link(self):
+        """Check if order management contains a details link"""
+        customer = User.objects.create_user(
+            username="linkcustomer",
+            password="password123",
+        )
+
+        order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        response = self.client.get(reverse("manage_orders"))
+
+        self.assertContains(
+            response,
+            reverse(
+                "order_management_details",
+                args=[order.order_number],
+            ),
+        )
