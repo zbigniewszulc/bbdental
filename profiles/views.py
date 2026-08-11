@@ -56,7 +56,11 @@ def order_history(request, order_number):
     **Template**
     :template:`checkout/checkout_success.html`
     """
-    order = get_object_or_404(Order, order_number=order_number)
+    order = get_object_or_404(
+        Order,
+        order_number=order_number,
+        user_profile__user=request.user,
+    )
 
     context = {
         'order': order,
