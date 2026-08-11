@@ -481,3 +481,32 @@ class CheckoutExistingOrderTests(TestCase):
 
         self.assertNotIn('bag', self.client.session)
         self.assertNotIn('stripe_pid', self.client.session)
+
+    def test_user_cannot_view_another_users_checkout_success(self):
+        """Check if a user cannot view another user's completed order."""
+        other_user = User.objects.create_user(
+            username="othercustomer",
+            password="password123",
+        )
+
+        other_order = Order.objects.create(
+            user_profile=other_user.userprofile,
+            name="Conor",
+            surname="Murphy",
+            email="conor@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+            stripe_pid="pi_test_other",
+        )
+
+        response = self.client.get(
+            reverse(
+                "checkout_success",
+                args=[other_order.order_number],
+            )
+        )
+
+        self.assertEqual(response.status_code, 404)

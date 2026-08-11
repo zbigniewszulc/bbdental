@@ -268,7 +268,12 @@ def checkout_success(request, order_number):
     **Template**
     :template:`checkout/checkout_success.html`.
     """
-    order = get_object_or_404(Order, order_number=order_number)
+    order = get_object_or_404(
+        Order,
+        order_number=order_number,
+        user_profile__user=request.user,
+    )
+
     messages.success(
         request,
         f'Order {order_number} processed! '
