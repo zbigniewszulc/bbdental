@@ -670,6 +670,12 @@ class ManageOrdersTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, order.order_number)
+        self.assertContains(response, "Peter Byrne")
+        self.assertContains(response, "peter@example.com")
+        self.assertContains(response, "+353 87 123 4567")
+        self.assertContains(response, "47 Virginia Hall")
+        self.assertContains(response, "Tallaght")
+        self.assertContains(response, "New")
 
     def test_customer_cannot_view_order_management_details(self):
         """Check if a customer cannot view staff order details"""
@@ -740,3 +746,64 @@ class ManageOrdersTests(TestCase):
                 args=[order.order_number],
             ),
         )
+
+    def test_order_details_display_items_and_summary(self):
+        """Check if order items and totals are displayed"""
+        customer = User.objects.create_user(
+            username="itemcustomer",
+            password="password123",
+        )
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        product = Product.objects.create(
+            product_name="Test Product",
+            description="Test product description",
+            price=Decimal("20.00"),
+            in_stock=10,
+            manufacturer=manufacturer,
+            subcategory=subcategory,
+        )
+        order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+        line_item = OrderLineItem.objects.create(
+            order=order,
+            product=product,
+            quantity=2,
+        )
+        # Reload the order because saving a line item updates its subtotal,
+        # delivery cost and grand total
+        order.refresh_from_db()
+
+        response = self.client.get(
+            reverse(
+                "order_management_details",
+                args=[order.order_number],
+            )
+        )
+
+        self.assertContains(response, "Test Product")
+        self.assertContains(response, "2")
+        self.assertContains(
+            response,
+            f'€{line_item.line_item_total:.2f}',
+        )
+        self.assertContains(response, f'€{order.subtotal:.2f}')
+        self.assertContains(response, f'€{order.delivery_cost:.2f}')
+        self.assertContains(response, f'€{order.grand_total:.2f}')
