@@ -389,6 +389,28 @@ class CheckoutWebhookHandlerTests(TestCase):
         )
         self.assertEqual(len(mail.outbox), 0)
 
+    def test_failed_handler_does_not_create_order(self):
+        """Check if a failed payment does not create an order."""
+        event = {
+            "type": "payment_intent.payment_failed",
+            "data": {
+                "object": {
+                    "id": "pi_test_failed",
+                },
+            },
+        }
+
+        handler = StripeWH_Handler(None)
+        response = handler.handle_payment_intent_payment_failed(event)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "payment_intent.payment_failed",
+        )
+        self.assertEqual(Order.objects.count(), 0)
+        self.assertEqual(len(mail.outbox), 0)
+
 
 class CheckoutExistingOrderTests(TestCase):
     def setUp(self):
