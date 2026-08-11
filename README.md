@@ -1460,5 +1460,27 @@ If you need to install Python you can find installation instructions at https://
 70. https://docs.djangoproject.com/en/5.1/ref/signals/
 71. https://medium.com/@anwar.basha7070/conditional-logic-made-simple-ternary-operator-in-python-list-comprehensions-45d98525cb55
 72. https://docs.djangoproject.com/en/5.1/topics/testing/tools/
+73. https://docs.djangoproject.com/en/5.1/topics/testing/tools/#django.test.SimpleTestCase.assertRedirects
+74. https://docs.python.org/3.12/library/uuid.html
+75. https://docs.stripe.com/api/payment_intents
+76. https://docs.stripe.com/payments/payment-intents
+77. https://docs.stripe.com/payments/payment-intents/verifying-status
+78. https://docs.stripe.com/payments/payment-intents/verifying-status#webhooks
+79. https://docs.stripe.com/webhooks/signature
+80. https://docs.stripe.com/webhooks
+81. https://docs.stripe.com/webhooks#handle-duplicate-events
+82. https://docs.stripe.com/metadata
+83. https://docs.stripe.com/api/payment_intents/update
+84. https://docs.stripe.com/js/payment_intents/confirm_card_payment
+85. https://github.com/stripe/stripe-cli/wiki
+86. https://docs.stripe.com/stripe-cli
+87. https://docs.python.org/3.12/library/json.html
+88. https://coddy.tech/learn/courses/python_json/jsondumps
+89. https://learn.jquery.com
+90. https://api.jquery.com/jQuery/
+91. https://api.jquery.com/jQuery.post/
+92. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+93. https://docs.djangoproject.com/en/5.1/ref/models/querysets/
+94. https://docs.djangoproject.com/en/5.1/ref/models/class/#django.db.models.Model.DoesNotExist
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
