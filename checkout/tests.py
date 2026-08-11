@@ -525,3 +525,119 @@ class CheckoutExistingOrderTests(TestCase):
         )
 
         self.assertEqual(response.status_code, 404)
+
+
+class ManageOrdersTests(TestCase):
+    def setUp(self):
+        """Create and log in a staff user"""
+        self.staff_user = User.objects.create_user(
+            username="staffuser",
+            password="password123",
+            is_staff=True,
+        )
+        self.client.login(
+            username="staffuser",
+            password="password123",
+        )
+
+    def test_staff_user_can_access_order_management(self):
+        """Check if a staff user can access order management"""
+        response = self.client.get(reverse("manage_orders"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Order Management")
+
+    def test_customer_cannot_access_order_management(self):
+        """Check if a customer cannot access order management"""
+        self.client.logout()
+
+        User.objects.create_user(
+            username="customer",
+            password="password123",
+        )
+        self.client.login(
+            username="customer",
+            password="password123",
+        )
+
+        response = self.client.get(reverse("manage_orders"))
+
+        self.assertRedirects(
+            response,
+            f'{reverse("admin:login")}?next={reverse("manage_orders")}',
+        )
+
+    def test_orders_are_listed_newest_first(self):
+        """Check if the newest orders are displayed first"""
+        customer = User.objects.create_user(
+            username="customer",
+            password="password123",
+        )
+
+        first_order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        second_order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Conor",
+            surname="Murphy",
+            email="conor@example.com",
+            phone_number="+353 87 765 4321",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC2",
+            country="IE",
+        )
+
+        response = self.client.get(reverse("manage_orders"))
+
+        self.assertEqual(
+            list(response.context["orders"]),
+            [second_order, first_order],
+        )
+
+    def test_order_management_displays_order_details(self):
+        """Check if order details are displayed for staff users"""
+        customer = User.objects.create_user(
+            username="ordercustomer",
+            password="password123",
+        )
+
+        order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+            grand_total=Decimal("50.00"),
+            status="processing",
+        )
+
+        response = self.client.get(reverse("manage_orders"))
+
+        self.assertContains(response, order.order_number)
+        self.assertContains(response, "Peter Byrne")
+        self.assertContains(response, "€50.00")
+        self.assertContains(response, "Processing")
+
+    def test_staff_user_sees_order_management_link(self):
+        """Check if staff users see the order management link"""
+        response = self.client.get(reverse("manage_orders"))
+
+        self.assertContains(
+            response,
+            f'href="{reverse("manage_orders")}"',
+        )

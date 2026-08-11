@@ -11,6 +11,7 @@ from bbdental.decorators import customer_required
 from .emails import send_order_confirmation
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse
+from django.contrib.admin.views.decorators import staff_member_required
 
 import stripe
 import json
@@ -291,3 +292,19 @@ def checkout_success(request, order_number):
     }
 
     return render(request, 'checkout/checkout_success.html', context)
+
+
+@staff_member_required
+def manage_orders(request):
+    """Display all customer orders for staff users"""
+    orders = Order.objects.all().order_by('-date_of_order')
+
+    context = {
+        'orders': orders,
+    }
+
+    return render(
+        request,
+        'checkout/order_management.html',
+        context,
+    )
