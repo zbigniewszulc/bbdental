@@ -981,3 +981,34 @@ class ManageOrdersTests(TestCase):
             list(response.context["page_obj"]),
             [matching_order],
         )
+
+    def test_order_search_is_kept_in_pagination_links(self):
+        """Check if order search stays active when changing pages"""
+        customer = User.objects.create_user(
+            username="searchpaginationcustomer",
+            password="password123",
+        )
+
+        for number in range(71):
+            Order.objects.create(
+                order_number=f"SEARCH{number}",
+                user_profile=customer.userprofile,
+                name="Peter",
+                surname="Byrne",
+                email="peter@example.com",
+                phone_number="+353 87 123 4567",
+                address_line_1=f"{number} Main Street",
+                town="Tallaght",
+                postcode="D24 ABC1",
+                country="IE",
+            )
+
+        response = self.client.get(
+            reverse("manage_orders"),
+            {"order_number": "SEARCH"},
+        )
+
+        self.assertContains(
+            response,
+            '?page=2&order_number=SEARCH',
+        )
