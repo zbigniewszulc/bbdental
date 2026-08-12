@@ -682,6 +682,8 @@ class ManageOrdersTests(TestCase):
         self.assertContains(response, "47 Virginia Hall")
         self.assertContains(response, "Tallaght")
         self.assertContains(response, "New")
+        self.assertContains(response, 'name="status"')
+        self.assertContains(response, "Back to Order Management")
 
     def test_customer_cannot_view_order_management_details(self):
         """Check if a customer cannot view staff order details"""
@@ -813,3 +815,95 @@ class ManageOrdersTests(TestCase):
         self.assertContains(response, f'€{order.subtotal:.2f}')
         self.assertContains(response, f'€{order.delivery_cost:.2f}')
         self.assertContains(response, f'€{order.grand_total:.2f}')
+
+    def test_staff_user_can_update_order_status(self):
+        """Check if a staff user can update an order status"""
+        customer = User.objects.create_user(
+            username="statuscustomer",
+            password="password123",
+        )
+        order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        response = self.client.post(
+            reverse(
+                "order_management_details",
+                args=[order.order_number],
+            ),
+            # Send the new order status in the form data
+            {'status': 'processing'},
+        )
+
+        self.assertRedirects(
+            response,
+            reverse(
+                "order_management_details",
+                args=[order.order_number],
+            ),
+        )
+
+        # Convert stored messages into a list
+        messages = list(get_messages(response.wsgi_request))
+
+        # Check the success message shown to the staff user
+        self.assertEqual(
+            str(messages[0]),
+            'Order status updated successfully',
+        )
+
+        order.refresh_from_db()
+
+        self.assertEqual(order.status, 'processing')
+
+    def test_updated_status_is_displayed_to_customer(self):
+        """Check if an updated status is displayed to the customer"""
+        customer = User.objects.create_user(
+            username="historycustomer",
+            password="password123",
+        )
+        order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        response = self.client.post(
+            reverse(
+                "order_management_details",
+                args=[order.order_number],
+            ),
+            {'status': 'processing'},
+        )
+
+        self.assertRedirects(
+            response,
+            reverse(
+                "order_management_details",
+                args=[order.order_number],
+            ),
+        )
+
+        self.client.logout()
+        self.client.login(
+            username="historycustomer",
+            password="password123",
+        )
+
+        response = self.client.get(reverse("profile"))
+
+        self.assertContains(response, "Status: Processing")

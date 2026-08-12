@@ -6,7 +6,7 @@ from django.conf import settings
 from products.models import Product
 from profiles.models import UserProfile
 from .models import OrderLineItem, Order
-from .forms import OrderForm
+from .forms import OrderForm, OrderStatusForm
 from bbdental.decorators import customer_required
 from .emails import send_order_confirmation
 from django.views.decorators.http import require_POST
@@ -315,8 +315,29 @@ def order_management_details(request, order_number):
     """Display order details for staff users"""
     order = get_object_or_404(Order, order_number=order_number)
 
+    if request.method == 'POST':
+        status_form = OrderStatusForm(
+            request.POST,
+            # Update this order instead of creating a new one
+            instance=order,
+        )
+
+        if status_form.is_valid():
+            status_form.save()
+            messages.success(
+                request,
+                'Order status updated successfully',
+            )
+            return redirect(
+                'order_management_details',
+                order_number=order.order_number,
+            )
+    else:
+        status_form = OrderStatusForm(instance=order)
+
     context = {
         'order': order,
+        'status_form': status_form,
     }
 
     return render(
