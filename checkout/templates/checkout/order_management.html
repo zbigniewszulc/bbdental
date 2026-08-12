@@ -16,7 +16,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for order in orders %}
+                        {% for order in page_obj %}
                             <tr>
                                 <td>{{ order.order_number }}</td>
                                 <td>{{ order.date_of_order|date:"d M Y, H:i" }}</td>
@@ -38,6 +38,41 @@
                     </tbody>
                 </table>
             </div>
+            {% if page_obj.paginator.num_pages > 1 %}
+                <nav aria-label="Order pages">
+                    <ul class="pagination justify-content-center flex-wrap mt-4">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ page_obj.previous_page_number }}"
+                                   aria-label="Previous Page">
+                                    <i class="fa-solid fa-backward-step"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active" aria-current="page">
+                                    <span class="page-link">{{ num }}</span>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ page_obj.next_page_number }}"
+                                   aria-label="Next Page">
+                                    <i class="fa-solid fa-forward-step"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %} 
         </section>
     </main>
 {% endblock %}

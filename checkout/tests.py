@@ -607,7 +607,7 @@ class ManageOrdersTests(TestCase):
         response = self.client.get(reverse("manage_orders"))
 
         self.assertEqual(
-            list(response.context["orders"]),
+            list(response.context["page_obj"]),
             [second_order, first_order],
         )
 
@@ -907,3 +907,31 @@ class ManageOrdersTests(TestCase):
         response = self.client.get(reverse("profile"))
 
         self.assertContains(response, "Status: Processing")
+
+    def test_order_management_is_paginated(self):
+        """Check if order management shows 70 orders per page"""
+        customer = User.objects.create_user(
+            username="paginationcustomer",
+            password="password123",
+        )
+
+        for number in range(71):
+            Order.objects.create(
+                user_profile=customer.userprofile,
+                name="Peter",
+                surname="Byrne",
+                email="peter@example.com",
+                phone_number="+353 87 123 4567",
+                address_line_1=f"{number} Main Street",
+                town="Tallaght",
+                postcode="D24 ABC1",
+                country="IE",
+            )
+
+        response = self.client.get(
+            reverse("manage_orders"),
+            {"page": 2},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context["page_obj"]), 1)

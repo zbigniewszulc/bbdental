@@ -12,6 +12,7 @@ from .emails import send_order_confirmation
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse
 from django.contrib.admin.views.decorators import staff_member_required
+from django.core.paginator import Paginator
 
 import stripe
 import json
@@ -299,8 +300,12 @@ def manage_orders(request):
     """Display all customer orders for staff users"""
     orders = Order.objects.all().order_by('-date_of_order')
 
+    paginator = Paginator(orders, 70)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'orders': orders,
+        'page_obj': page_obj,
     }
 
     return render(
