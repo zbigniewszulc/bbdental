@@ -935,3 +935,49 @@ class ManageOrdersTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context["page_obj"]), 1)
+
+    def test_staff_user_can_search_orders_by_order_number(self):
+        """Check if staff users can search by a partial order number"""
+        customer = User.objects.create_user(
+            username="searchcustomer",
+            password="password123",
+        )
+
+        matching_order = Order.objects.create(
+            order_number="SEARCH123ABC",
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        # Add another order so the test can confirm that non-matching
+        # order numbers are not included in the search results
+        Order.objects.create(
+            order_number="OTHER456DEF",
+            user_profile=customer.userprofile,
+            name="Conor",
+            surname="Murphy",
+            email="conor@example.com",
+            phone_number="+353 87 765 4321",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC2",
+            country="IE",
+        )
+
+        response = self.client.get(
+            reverse("manage_orders"),
+            {"order_number": "SEARCH123"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            list(response.context["page_obj"]),
+            [matching_order],
+        )

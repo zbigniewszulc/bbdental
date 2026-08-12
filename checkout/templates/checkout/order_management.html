@@ -3,6 +3,20 @@
     <main class="container mt-2 mt-md-5">
         <section>
             <h2 class="mb-4">Order Management</h2>
+            <form method="GET" class="mb-4">
+                <label for="order_number" class="form-label">Search by order number</label>
+                <div class="input-group">
+                    <input type="search"
+                           id="order_number"
+                           name="order_number"
+                           class="form-control"
+                           value="{{ order_number }}"
+                           placeholder="Enter an order number">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-magnifying-glass"></i> Search
+                    </button>
+                </div>
+            </form>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -72,7 +86,7 @@
                         {% endif %}
                     </ul>
                 </nav>
-            {% endif %} 
+            {% endif %}
         </section>
     </main>
 {% endblock %}

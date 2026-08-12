@@ -299,6 +299,10 @@ def checkout_success(request, order_number):
 def manage_orders(request):
     """Display all customer orders for staff users"""
     orders = Order.objects.all().order_by('-date_of_order')
+    order_number = request.GET.get('order_number', '')
+
+    if order_number:
+        orders = orders.filter(order_number__icontains=order_number)
 
     paginator = Paginator(orders, 70)
     page_number = request.GET.get('page')
@@ -306,6 +310,7 @@ def manage_orders(request):
 
     context = {
         'page_obj': page_obj,
+        'order_number': order_number,
     }
 
     return render(
