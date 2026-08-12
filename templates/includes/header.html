@@ -33,15 +33,15 @@
           <li class="nav-item">
             <a class="d-flex flex-column align-items-center text-center link {% if request.path == manage_products_url %}active{% endif %}"
                href="{% url 'manage_products' %}"
-               aria-label="Link to Product Management page">
-              <i class="fa-solid fa-sliders mb-1"></i> Product Management
+               aria-label="Link to Manage Products page">
+              <i class="fa-solid fa-sliders mb-1"></i> Manage Products
             </a>
           </li>
           <li class="nav-item">
             <a class="d-flex flex-column align-items-center text-center link {% if request.path == manage_orders_url %}active{% endif %}"
                href="{% url 'manage_orders' %}"
-               aria-label="Link to Order Management page">
-              <i class="fa-solid fa-box-open mb-1"></i> Order Management
+               aria-label="Link to Orders page">
+              <i class="fa-solid fa-box-open mb-1"></i> Orders
             </a>
           </li>
         {% else %}
