@@ -10,7 +10,7 @@ from .forms import ProductForm
 # Create your views here.
 
 
-def get_sorted_filtered(request, queryset):
+def get_sorted_filtered(request, queryset, name_only=False):
     """
     Utility function to sort products based on provided queryset
     """
@@ -33,9 +33,15 @@ def get_sorted_filtered(request, queryset):
 
     # If query exists apply this filter
     if query:
-        queryset = queryset.filter(
-            Q(product_name__icontains=query) | Q(description__icontains=query)
-        )
+        if name_only:
+            queryset = queryset.filter(
+                product_name__icontains=query,
+            )
+        else:
+            queryset = queryset.filter(
+                Q(product_name__icontains=query)
+                | Q(description__icontains=query)
+            )
 
     # Apply manufacturer filter (if selected)
     # iexact -> case-insensitive match
@@ -323,16 +329,23 @@ def manage_products(request):
         lower_manufacturer_name=Lower('manufacturer__manufacturer_name')
     ).select_related('subcategory', 'manufacturer')
 
-    products = get_sorted_filtered(request, products)
+    products = get_sorted_filtered(
+        request,
+        products,
+        name_only=True,
+    )
 
     page_obj = get_paginated(request, products)
+
+    query = request.GET.get('q', '')
 
     context = {
         'manufacturers': get_manufacturers(products),
         'selected_manufacturer': request.GET.get('manufacturer', ''),
         'sort': request.GET.get('sort', 'name'),
         'direction': request.GET.get('direction', 'asc'),
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'query': query,
     }
     return render(request, 'products/product_management.html', context)
 

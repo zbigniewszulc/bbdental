@@ -13,7 +13,25 @@
             <a href="{% url 'add_product' %}" class="btn btn-success mb-2">
                 <i class="fa-solid fa-plus-circle"></i>&nbsp;Add New Product
             </a>
-            <div class="d-flex flex-wrap align-items-center gap-3 ms-auto mb-1 justify-content-end">
+            <div class="d-flex flex-wrap align-items-center gap-3 ms-auto mt-3 mb-1 justify-content-end">
+                <!-- Search products by name and keep the selected filter and sorting options -->
+                <form method="GET"
+                      class="d-flex align-items-center ms-auto me-0 ms-lg-0 me-lg-auto">
+                    <label for="product_name" class="me-2 text-nowrap">Name:</label>
+                    <input type="search"
+                           id="product_name"
+                           name="q"
+                           class="form-control form-control-sm product-name-search me-2"
+                           value="{{ query }}"
+                           placeholder="Enter a product name">
+                    <input type="hidden" name="manufacturer" value="{{ selected_manufacturer }}">
+                    <input type="hidden" name="sort" value="{{ sort }}">
+                    <input type="hidden" name="direction" value="{{ direction }}">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Search
+                    </button>
+                </form>
                 <!-- Filter Dropdown -->
                 <div class="d-flex align-items-center">
                     <label for="manufacturer_filter" class="me-2">Manufacturer:</label>

@@ -6,6 +6,11 @@
     max-width: 800px;
 }
 
+.product-name-search {
+    width: 240px;
+    max-width: 100%;
+}
+
 .products-table img {
     max-height: 60px;
     max-width: 60px;
