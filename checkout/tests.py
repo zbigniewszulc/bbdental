@@ -1012,3 +1012,156 @@ class ManageOrdersTests(TestCase):
             response,
             '?page=2&order_number=SEARCH',
         )
+
+    def test_staff_user_can_filter_orders_by_status(self):
+        """Check if staff users can filter orders by status"""
+        customer = User.objects.create_user(
+            username="filtercustomer",
+            password="password123",
+        )
+
+        matching_order = Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+            status="processing",
+        )
+
+        # Add another order to confirm that a different status is excluded
+        Order.objects.create(
+            user_profile=customer.userprofile,
+            name="Conor",
+            surname="Murphy",
+            email="conor@example.com",
+            phone_number="+353 87 765 4321",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC2",
+            country="IE",
+            status="new",
+        )
+
+        response = self.client.get(
+            reverse("manage_orders"),
+            {"status": "processing"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            list(response.context["page_obj"]),
+            [matching_order],
+        )
+
+    def test_order_status_filter_is_kept_in_pagination_links(self):
+        """Check if status filter stays active when changing pages"""
+        customer = User.objects.create_user(
+            username="statuspaginationcustomer",
+            password="password123",
+        )
+
+        for number in range(71):
+            Order.objects.create(
+                order_number=f"PROCESSING{number}",
+                user_profile=customer.userprofile,
+                name="Peter",
+                surname="Byrne",
+                email="peter@example.com",
+                phone_number="+353 87 123 4567",
+                address_line_1=f"{number} Main Street",
+                town="Tallaght",
+                postcode="D24 ABC1",
+                country="IE",
+                status="processing",
+            )
+
+        response = self.client.get(
+            reverse("manage_orders"),
+            {"status": "processing"},
+        )
+
+        self.assertContains(
+            response,
+            "?page=2&order_number=&status=processing",
+        )
+
+    def test_search_and_status_filter_can_be_used_together(self):
+        """Check if order search and status filter work together"""
+        customer = User.objects.create_user(
+            username="combinedfiltercustomer",
+            password="password123",
+        )
+
+        matching_order = Order.objects.create(
+            order_number="SEARCHPROCESSING",
+            user_profile=customer.userprofile,
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+            status="processing",
+        )
+
+        # This order matches the search but has a different status
+        Order.objects.create(
+            order_number="SEARCHNEW",
+            user_profile=customer.userprofile,
+            name="Conor",
+            surname="Murphy",
+            email="conor@example.com",
+            phone_number="+353 87 765 4321",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC2",
+            country="IE",
+            status="new",
+        )
+
+        # This order has the correct status but does not match the search
+        Order.objects.create(
+            order_number="OTHERPROCESSING",
+            user_profile=customer.userprofile,
+            name="Anna",
+            surname="Kelly",
+            email="anna@example.com",
+            phone_number="+353 87 111 2233",
+            address_line_1="2 Main Street",
+            town="Dublin",
+            postcode="D24 ABC3",
+            country="IE",
+            status="processing",
+        )
+
+        response = self.client.get(
+            reverse("manage_orders"),
+            {
+                "order_number": "SEARCH",
+                "status": "processing",
+            },
+        )
+
+        self.assertEqual(
+            list(response.context["page_obj"]),
+            [matching_order],
+        )
+
+    def test_no_orders_message_is_displayed_for_empty_results(self):
+        """Check if the no orders message appears when no orders match"""
+        response = self.client.get(
+            reverse("manage_orders"),
+            {
+                "order_number": "NOTFOUND",
+                "status": "processing",
+            },
+        )
+
+        self.assertContains(response, "No orders found.")

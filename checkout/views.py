@@ -300,9 +300,15 @@ def manage_orders(request):
     """Display all customer orders for staff users"""
     orders = Order.objects.all().order_by('-date_of_order')
     order_number = request.GET.get('order_number', '')
+    status = request.GET.get('status', '')
 
+    # Filter orders before pagination so page numbers include
+    # only matching orders
     if order_number:
         orders = orders.filter(order_number__icontains=order_number)
+
+    if status:
+        orders = orders.filter(status=status)
 
     paginator = Paginator(orders, 70)
     page_number = request.GET.get('page')
@@ -311,6 +317,8 @@ def manage_orders(request):
     context = {
         'page_obj': page_obj,
         'order_number': order_number,
+        'status': status,
+        'status_choices': Order.STATUS_CHOICES,
     }
 
     return render(

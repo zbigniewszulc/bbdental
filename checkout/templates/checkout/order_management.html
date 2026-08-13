@@ -3,17 +3,32 @@
     <main class="container mt-2 mt-md-5">
         <section>
             <h2 class="mb-4">Order Management</h2>
-            <form method="GET" class="mb-4">
-                <label for="order_number" class="form-label">Search by order number</label>
-                <div class="input-group">
+            <form method="GET"
+                  class="row g-2 align-items-center justify-content-end mb-4">
+                <div class="col-12 col-lg-4 d-flex align-items-center">
+                    <label for="order_number" class="me-2 text-nowrap">Order number:</label>
                     <input type="search"
                            id="order_number"
                            name="order_number"
-                           class="form-control"
+                           class="form-control form-control-sm flex-grow-1"
                            value="{{ order_number }}"
                            placeholder="Enter an order number">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa-solid fa-magnifying-glass"></i> Search
+                </div>
+                <div class="col-8 col-lg-3 d-flex align-items-center">
+                    <label for="status" class="me-2 text-nowrap">Status:</label>
+                    <select id="status"
+                            name="status"
+                            class="form-select form-select-sm flex-grow-1">
+                        <option value="">All statuses</option>
+                        {% for value, label in status_choices %}
+                            <option value="{{ value }}" {% if status == value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-4 col-lg-auto">
+                    <button type="submit" class="btn btn-primary btn-sm w-100">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Apply
                     </button>
                 </div>
             </form>
@@ -58,7 +73,7 @@
                         {% if page_obj.has_previous %}
                             <li class="page-item">
                                 <a class="page-link"
-                                   href="?page={{ page_obj.previous_page_number }}&order_number={{ order_number }}"
+                                   href="?page={{ page_obj.previous_page_number }}&order_number={{ order_number }}&status={{ status }}"
                                    aria-label="Previous Page">
                                     <i class="fa-solid fa-backward-step"></i>
                                 </a>
@@ -72,14 +87,14 @@
                             {% else %}
                                 <li class="page-item">
                                     <a class="page-link"
-                                       href="?page={{ num }}&order_number={{ order_number }}">{{ num }}</a>
+                                       href="?page={{ num }}&order_number={{ order_number }}&status={{ status }}">{{ num }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
                         {% if page_obj.has_next %}
                             <li class="page-item">
                                 <a class="page-link"
-                                   href="?page={{ page_obj.next_page_number }}&order_number={{ order_number }}"
+                                   href="?page={{ page_obj.next_page_number }}&order_number={{ order_number }}&status={{ status }}"
                                    aria-label="Next Page">
                                     <i class="fa-solid fa-forward-step"></i>
                                 </a>
