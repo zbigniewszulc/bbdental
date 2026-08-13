@@ -131,3 +131,70 @@ class ProductManagementViewsTests(TestCase):
             response,
             "?page=2&sort=name&direction=asc&manufacturer=&q=Bond",
         )
+
+    def test_staff_user_can_sort_products_by_stock_low_to_high(self):
+        """Check if staff users can sort products by stock from low to high"""
+        low_stock_product = Product.objects.create(
+            product_name="Low Stock Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=5,
+            manufacturer=self.manufacturer,
+            subcategory=self.subcategory,
+        )
+
+        high_stock_product = Product.objects.create(
+            product_name="High Stock Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=20,
+            manufacturer=self.manufacturer,
+            subcategory=self.subcategory,
+        )
+
+        response = self.client.get(
+            reverse("manage_products"),
+            {
+                "sort": "stock",
+                "direction": "asc",
+            },
+        )
+
+        # Check that products are ordered from the lowest to the highest stock
+        self.assertEqual(
+            list(response.context["page_obj"]),
+            [low_stock_product, high_stock_product],
+        )
+
+    def test_staff_user_can_sort_products_by_stock_high_to_low(self):
+        """Check if staff users can sort products by stock from high to low"""
+        low_stock_product = Product.objects.create(
+            product_name="Low Stock Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=5,
+            manufacturer=self.manufacturer,
+            subcategory=self.subcategory,
+        )
+
+        high_stock_product = Product.objects.create(
+            product_name="High Stock Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=20,
+            manufacturer=self.manufacturer,
+            subcategory=self.subcategory,
+        )
+
+        response = self.client.get(
+            reverse("manage_products"),
+            {
+                "sort": "stock",
+                "direction": "desc",
+            },
+        )
+
+        self.assertEqual(
+            list(response.context["page_obj"]),
+            [high_stock_product, low_stock_product],
+        )

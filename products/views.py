@@ -23,7 +23,8 @@ def get_sorted_filtered(request, queryset, name_only=False):
     sort_mapping = {
         'name': 'lower_product_name',
         'manufacturer': 'lower_manufacturer_name',
-        'price': 'price'
+        'price': 'price',
+        'stock': 'in_stock',
     }
     # Default sorting - lower_product_name
     sortkey = sort_mapping.get(sort, 'lower_product_name')

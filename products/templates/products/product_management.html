@@ -62,6 +62,10 @@
                                 {% if sort == "price" and direction == "asc" %}selected{% endif %}>Price (Low to High)</option>
                         <option value="?sort=price&direction=desc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}"
                                 {% if sort == "price" and direction == "desc" %}selected{% endif %}>Price (High to Low)</option>
+                        <option value="?sort=stock&direction=asc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}"
+                                {% if sort == "stock" and direction == "asc" %}selected{% endif %}>Stock (Low to High)</option>
+                        <option value="?sort=stock&direction=desc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}"
+                                {% if sort == "stock" and direction == "desc" %}selected{% endif %}>Stock (High to Low)</option>
                         <option value="?sort=manufacturer&direction=asc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}"
                                 {% if sort == "manufacturer" and direction == "asc" %}selected{% endif %}>Manufacturer (A-Z)</option>
                         <option value="?sort=manufacturer&direction=desc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}"
