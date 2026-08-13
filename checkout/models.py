@@ -13,7 +13,7 @@ from profiles.models import UserProfile
 
 class AllowedCountries(Countries):
     only = [
-        "IE", "GB", "FR", "DE", "PL", "CZ", "SK"
+        "IE", "IT", "FR", "DE", "PL", "CZ", "SK"
     ]
 
 

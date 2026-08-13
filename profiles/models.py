@@ -9,7 +9,7 @@ from django.db.models.signals import post_save
 
 class AllowedCountries(Countries):
     only = [
-        "IE", "GB", "FR", "DE", "PL", "CZ", "SK"
+        "IE", "IT", "FR", "DE", "PL", "CZ", "SK"
     ]
 
 
