@@ -257,14 +257,6 @@ Key features of this model include:
 - Customer Support -  dedicated support is ready to  answer any queries or to provide technical assistance and product recommendations. Contact details are accessible through the link in the footer. 
 - Shipping - the business engaged fast and reliable logistic partner. Additionally, a free standard shipping is available for customers who place orders with a net value over €50.
 
-# Newsletter Subscription
-The company started small but has grown fast, focusing on simple and effective ways to reach customers. That’s why a business page was launched on Facebook, along with a newsletter – to share updates, offers, and important news more easily.
-## Mailchimp
-- Banner installed:
-  ![mailchimp-banner](static/documentation/15-mailchimp-banner.png)
-- Subscription overview:
-- ![mailchimp-overview](static/documentation/16-mailchimp-overview.png)
-
 ## Facebook Business Page
 ![facebook business page](<static/documentation/Facebook bbdental.png>)
 
@@ -1395,17 +1387,17 @@ If you need to install Python you can find installation instructions at https://
 5. https://www.twilio.com/docs/sendgrid/for-developers/sending-email/django
 6. https://medium.com/@verdyevantyo/authentication-system-using-django-allauth-121f47a6641e
 7. https://getbootstrap.com/docs/5.3/components/card/#images
-8. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/
-9. https://docs.djangoproject.com/en/5.1/ref/models/fields/#imagefield
-10. https://medium.com/@iamalisaleh/how-to-get-the-current-url-within-a-django-template-8270b977f280
-11. https://simpleisbetterthancomplex.com/tips/2016/07/20/django-tip-7-how-to-get-the-current-url-within-a-django-template.html
-12. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/
-13. https://docs.djangoproject.com/en/5.1/topics/db/queries/
-14. https://docs.djangoproject.com/en/5.1/topics/db/optimization/
-15. https://docs.djangoproject.com/en/5.1/topics/db/optimization/#use-queryset-select-related-and-prefetch-related
-16. https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/
-17. https://docs.djangoproject.com/en/5.1/topics/pagination/
-18. https://docs.djangoproject.com/en/5.1/ref/paginator/#django.core.paginator.Paginator
+8. https://docs.djangoproject.com/en/5.1/ref/models/fields/#imagefield
+9.  https://medium.com/@iamalisaleh/how-to-get-the-current-url-within-a-django-template-8270b977f280
+10. https://simpleisbetterthancomplex.com/tips/2016/07/20/django-tip-7-how-to-get-the-current-url-within-a-django-template.html
+11. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/
+12. https://docs.djangoproject.com/en/5.1/topics/db/queries/
+13. https://docs.djangoproject.com/en/5.1/topics/db/optimization/
+14. https://docs.djangoproject.com/en/5.1/topics/db/optimization/#use-queryset-select-related-and-prefetch-related
+15. https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/
+16. https://docs.djangoproject.com/en/5.1/topics/pagination/
+17. https://docs.djangoproject.com/en/5.1/ref/paginator/#django.core.paginator.Paginator
+18. https://getbootstrap.com/docs/5.3/components/pagination/
 19. https://www.w3schools.com/bootstrap5/bootstrap_tooltip.php
 20. https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
 21. https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
@@ -1415,72 +1407,74 @@ If you need to install Python you can find installation instructions at https://
 25. https://docs.djangoproject.com/en/5.1/ref/models/database-functions/
 26. https://docs.djangoproject.com/en/5.1/topics/db/queries/
 27. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#urlencode
-28. https://www.youtube.com/watch?v=65RVPDOhRIc&t=73s
-29. https://www.w3schools.com/django/ref_filters_default.php
-30. https://www.youtube.com/watch?v=rqYXCuXbs2s&t=3s
-31. https://www.youtube.com/watch?v=2G9j34jz42Q&t=5s
-32. https://docs.djangoproject.com/en/5.1/topics/http/sessions/
-33. https://docs.djangoproject.com/en/5.1/ref/validators/#:~:text=MinValueValidator
-34. https://docs.djangoproject.com/en/5.1/ref/models/fields/#:~:text=MinValueValidator%20and
-35. https://studygyaan.com/django/how-to-implement-validators-in-django-models
-36. https://www.w3schools.com/jsref/obj_inputevent.asp
-37. https://www.w3schools.com/tags/att_inputmode.asp
-38. https://sklep.andan.com.pl/
-39. https://molarr.pl/
-40. https://pypi.org/project/django-countries/
-41. https://www.youtube.com/watch?v=0cGRqIHvSf8&t=109s
-42. https://www.youtube.com/watch?v=l1Z9Aau0V08&t=296s
-43. https://www.youtube.com/watch?v=eAja_pKhiCM&t=376s
-44. https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-45. https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
-46. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-47. https://www.youtube.com/watch?v=eUcMh5s_27I&t=327s
-48. https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
-49. https://www.w3schools.com/python/ref_func_round.asp
-50. https://www.youtube.com/watch?v=AU0F2wnrbEs&t=2s
-51. https://www.youtube.com/watch?v=lg8p1vD9-Bs
-52. https://www.youtube.com/watch?v=j9mLOyjd_KY
-53. https://www.twilio.com/docs/sendgrid/for-developers/sending-email/django
-54. https://www.pythontutorial.net/django-tutorial/django-exists/
-55. https://www.programiz.com/python-programming/datetime/strftime
-56. https://docs.djangoproject.com/en/5.1/ref/forms/fields/
-57. https://docs.djangoproject.com/en/5.1/ref/forms/fields/#django.forms.ModelChoiceField
-58. [ChatGPT](https://openai.com/index/chatgpt/) - used for transtranslation mainly but great companion in explaing errors
-59. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
-60. https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/
-61. https://www.geeksforgeeks.org/how-to-set-the-timezone-in-django/
-62. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
-63. https://docs.djangoproject.com/en/1.8/_modules/django/test/testcases/
-64. https://docs.python.org/3/library/sqlite3.html#sqlite3.IntegrityError
-65. https://www.w3schools.com/python/python_decorators.asp
-66. https://docs.python.org/3/library/functools.html#functools.wraps
-67. https://mofidtech.fr/articles/custom-decorators-in-django/
-68. https://www.edureka.co/community/81432/how-can-i-unit-test-django-messages
-69. https://docs.djangoproject.com/en/5.1/topics/templates/
-70. https://docs.djangoproject.com/en/5.1/ref/signals/
-71. https://medium.com/@anwar.basha7070/conditional-logic-made-simple-ternary-operator-in-python-list-comprehensions-45d98525cb55
-72. https://docs.djangoproject.com/en/5.1/topics/testing/tools/
-73. https://docs.djangoproject.com/en/5.1/topics/testing/tools/#django.test.SimpleTestCase.assertRedirects
-74. https://docs.python.org/3.12/library/uuid.html
-75. https://docs.stripe.com/api/payment_intents
-76. https://docs.stripe.com/payments/payment-intents
-77. https://docs.stripe.com/payments/payment-intents/verifying-status
-78. https://docs.stripe.com/payments/payment-intents/verifying-status#webhooks
-79. https://docs.stripe.com/webhooks/signature
-80. https://docs.stripe.com/webhooks
-81. https://docs.stripe.com/webhooks#handle-duplicate-events
-82. https://docs.stripe.com/metadata
-83. https://docs.stripe.com/api/payment_intents/update
-84. https://docs.stripe.com/js/payment_intents/confirm_card_payment
-85. https://github.com/stripe/stripe-cli/wiki
-86. https://docs.stripe.com/stripe-cli
-87. https://docs.python.org/3.12/library/json.html
-88. https://coddy.tech/learn/courses/python_json/jsondumps
-89. https://learn.jquery.com
-90. https://api.jquery.com/jQuery/
-91. https://api.jquery.com/jQuery.post/
-92. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
-93. https://docs.djangoproject.com/en/5.1/ref/models/querysets/
-94. https://docs.djangoproject.com/en/5.1/ref/models/class/#django.db.models.Model.DoesNotExist
-
+28. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#floatformat
+29. https://www.youtube.com/watch?v=65RVPDOhRIc&t=73s
+30. https://www.w3schools.com/django/ref_filters_default.php
+31. https://www.youtube.com/watch?v=rqYXCuXbs2s&t=3s
+32. https://www.youtube.com/watch?v=2G9j34jz42Q&t=5s
+33. https://docs.djangoproject.com/en/5.1/topics/http/sessions/
+34. https://docs.djangoproject.com/en/5.1/ref/validators/#:~:text=MinValueValidator
+35. https://docs.djangoproject.com/en/5.1/ref/models/fields/#:~:text=MinValueValidator%20and
+36. https://studygyaan.com/django/how-to-implement-validators-in-django-models
+37. https://www.w3schools.com/jsref/obj_inputevent.asp
+38. https://www.w3schools.com/tags/att_inputmode.asp
+39. https://sklep.andan.com.pl/
+40. https://molarr.pl/
+41. https://pypi.org/project/django-countries/
+42. https://www.youtube.com/watch?v=0cGRqIHvSf8&t=109s
+43. https://www.youtube.com/watch?v=l1Z9Aau0V08&t=296s
+44. https://www.youtube.com/watch?v=eAja_pKhiCM&t=376s
+45. https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+46. https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
+47. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+48. https://www.youtube.com/watch?v=eUcMh5s_27I&t=327s
+49. https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+50. https://www.w3schools.com/python/ref_func_round.asp
+51. https://www.youtube.com/watch?v=AU0F2wnrbEs&t=2s
+52. https://www.youtube.com/watch?v=lg8p1vD9-Bs
+53. https://www.youtube.com/watch?v=j9mLOyjd_KY
+54. https://www.twilio.com/docs/sendgrid/for-developers/sending-email/django
+55. https://www.pythontutorial.net/django-tutorial/django-exists/
+56. https://www.programiz.com/python-programming/datetime/strftime
+57. https://docs.djangoproject.com/en/5.1/ref/forms/fields/
+58. https://docs.djangoproject.com/en/5.1/ref/forms/fields/#django.forms.ModelChoiceField
+59. [ChatGPT](https://openai.com/index/chatgpt/) - used for transtranslation mainly but great companion in explaing errors
+60. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+61. https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/
+62. https://www.geeksforgeeks.org/how-to-set-the-timezone-in-django/
+63. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
+64. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/#django.contrib.admin.views.decorators.staff_member_required
+65. https://docs.djangoproject.com/en/1.8/_modules/django/test/testcases/
+66. https://docs.python.org/3/library/sqlite3.html#sqlite3.IntegrityError
+67. https://www.w3schools.com/python/python_decorators.asp
+68. https://docs.python.org/3/library/functools.html#functools.wraps
+69. https://mofidtech.fr/articles/custom-decorators-in-django/
+70. https://www.edureka.co/community/81432/how-can-i-unit-test-django-messages
+71. https://docs.djangoproject.com/en/5.1/topics/templates/
+72. https://docs.djangoproject.com/en/5.1/ref/signals/
+73. https://medium.com/@anwar.basha7070/conditional-logic-made-simple-ternary-operator-in-python-list-comprehensions-45d98525cb55
+74. https://docs.djangoproject.com/en/5.1/topics/testing/tools/
+75. https://docs.djangoproject.com/en/5.1/topics/testing/tools/#django.test.SimpleTestCase.assertRedirects
+76. https://docs.python.org/3.12/library/uuid.html
+77. https://docs.stripe.com/api/payment_intents
+78. https://docs.stripe.com/payments/payment-intents
+79. https://docs.stripe.com/payments/payment-intents/verifying-status
+80. https://docs.stripe.com/payments/payment-intents/verifying-status#webhooks
+81. https://docs.stripe.com/webhooks/signature
+82. https://docs.stripe.com/webhooks
+83. https://docs.stripe.com/webhooks#handle-duplicate-events
+84. https://docs.stripe.com/metadata
+85. https://docs.stripe.com/api/payment_intents/update
+86. https://docs.stripe.com/js/payment_intents/confirm_card_payment
+87. https://github.com/stripe/stripe-cli/wiki
+88. https://docs.stripe.com/stripe-cli
+89. https://docs.python.org/3.12/library/json.html
+90. https://coddy.tech/learn/courses/python_json/jsondumps
+91. https://learn.jquery.com
+92. https://api.jquery.com/jQuery/
+93. https://api.jquery.com/jQuery.post/
+94. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+95. https://docs.djangoproject.com/en/5.1/ref/models/querysets/
+96. https://docs.djangoproject.com/en/5.1/ref/models/class/#django.db.models.Model.DoesNotExist
+    
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
