@@ -68,3 +68,13 @@ class HomeTemplateTests(TestCase):
             response,
             'aria-label="Open Terms and Conditions PDF"',
         )
+
+    def test_contact_page_displays_current_contact_details(self):
+        """Check if the contact page displays the current contact details"""
+        response = self.client.get(reverse("contact_page"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "bbdental.shop@gmail.com")
+        self.assertNotContains(response, "info@bbdental.shop")
+        self.assertNotContains(response, "tel:")
+        self.assertNotContains(response, "+01 234 567 89")
