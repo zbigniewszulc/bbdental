@@ -35,7 +35,7 @@ def contact_page(request):
 
 def privacy_policy(request):
     """
-    A view to render the Privacy Policy page with pdf's
+    A view to render the Privacy and Cookies Policy page with a PDF
 
     **Context**
 
@@ -50,11 +50,7 @@ def privacy_policy(request):
     privacy_pdfs = [
         {
             "name": "Privacy and Cookies Policy",
-            "file": "privacy-and-cookies-policy.pdf"
-        },
-        {
-            "name": "Processing of Personal Data",
-            "file": "processing-of-personal-data.pdf"
+            "file": "bbdental-privacy-and-cookies-policy.pdf"
         }
     ]
 
@@ -67,7 +63,7 @@ def privacy_policy(request):
 
 def terms_of_service(request):
     """
-    A view to render the T&S page with pdf's
+    A view to render the Terms and Conditions page with a PDF
 
     **Context**
 
@@ -81,11 +77,8 @@ def terms_of_service(request):
     """
     terms_pdfs = [
         {
-            "name": "Online Store Regulations",
-            "file": "online-storage-regulations.pdf"},
-        {
-            "name": "Right to Withdraw",
-            "file": "right-to-withdraw.pdf"
+            "name": "Terms and Conditions",
+            "file": "bbdental-terms-and-conditions.pdf"
         }
     ]
 

@@ -1,36 +1,38 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-<main>
-    <section class="container mt-2 mt-md-5 documents">
-        <div class="row align-items-center">
-            <!-- Left: Image  -->
-            <div class="col-md-5 text-center mb-4 mb-md-0">
-                <img src="{% static 'images/terms-of-service.webp' %}" class="img-fluid rounded shadow"
-                     alt="Terms of Service">
+    <main>
+        <section class="container mt-2 mt-md-5 documents">
+            <div class="row align-items-center">
+                <!-- Left: Image  -->
+                <div class="col-md-5 text-center mb-4 mb-md-0">
+                    <img src="{% static 'images/terms-of-service.webp' %}"
+                         class="img-fluid rounded shadow"
+                         alt="Terms and Conditions">
+                </div>
+                <!-- Right: Terms and Conditions Document -->
+                <div class="col-md-7">
+                    <h1 class="fw-bold">Terms and Conditions</h1>
+                    <p>
+                        Read the terms that apply when using BBdental
+                        and placing test orders.
+                    </p>
+                    <ul class="list-unstyled">
+                        {% for doc in documents %}
+                            <li class="mb-2">
+                                <a href="{% static 'documents/' %}{{ doc.file }}"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="btn btn-outline-primary"
+                                   aria-label="Open {{ doc.name }} PDF">
+                                    <i class="fa-solid fa-file-pdf text-danger me-2"></i>
+                                    Open document (PDF)
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-
-            <!-- Right: Terms of Service Documents -->
-            <div class="col-md-7">
-                <h1 class="fw-bold">Terms of Service</h1>
-                <p>Below you can find our Terms of Service documents:</p>
-
-                <ul class="list-unstyled">
-                    {% for doc in documents %}
-                    <li class="mb-2">
-                        <span class="lead">
-                            <i class="fa-solid fa-file-pdf text-danger me-2"></i>
-                            <a href="{% static 'documents/' %}{{ doc.file }}" target="_blank"
-                               class="text-decoration-none">
-                                {{ doc.name }}
-                            </a>
-                        </span>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 {% endblock %}

@@ -10,3 +10,61 @@ class HomeTemplateTests(TestCase):
         response = self.client.get(reverse("home"))
 
         self.assertNotContains(response, "chimpstatic.com")
+
+    def test_privacy_policy_uses_current_document(self):
+        """Check if the current privacy policy document is displayed"""
+        response = self.client.get(reverse("privacy_policy"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.context["documents"],
+            [
+                {
+                    "name": "Privacy and Cookies Policy",
+                    "file": "bbdental-privacy-and-cookies-policy.pdf",
+                }
+            ],
+        )
+        self.assertContains(
+            response,
+            "documents/bbdental-privacy-and-cookies-policy.pdf",
+        )
+        self.assertContains(
+            response,
+            '<h1 class="fw-bold">Privacy and Cookies Policy</h1>',
+            html=True,
+        )
+        self.assertContains(response, "Open document (PDF)")
+        self.assertContains(
+            response,
+            'aria-label="Open Privacy and Cookies Policy PDF"',
+        )
+
+    def test_terms_of_service_uses_current_document(self):
+        """Check if the current terms and conditions document is displayed"""
+        response = self.client.get(reverse("terms_of_service"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.context["documents"],
+            [
+                {
+                    "name": "Terms and Conditions",
+                    "file": "bbdental-terms-and-conditions.pdf",
+                }
+            ],
+        )
+        self.assertContains(
+            response,
+            "documents/bbdental-terms-and-conditions.pdf",
+        )
+        self.assertContains(
+            response,
+            '<h1 class="fw-bold">Terms and Conditions</h1>',
+            html=True,
+        )
+        self.assertContains(response, "Open document (PDF)")
+        self.assertContains(
+            response,
+            'aria-label="Open Terms and Conditions PDF"',
+        )

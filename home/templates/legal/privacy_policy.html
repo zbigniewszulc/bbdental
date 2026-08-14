@@ -1,36 +1,38 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-<main>
-    <section class="container mt-2 mt-md-5 documents">
-        <div class="row align-items-center">
-            <!-- Left: Image -->
-            <div class="col-md-5 text-center mb-4 mb-md-0">
-                <img src="{% static 'images/privacy-policy.webp' %}" class="img-fluid rounded shadow"
-                     alt="Privacy Policy">
+    <main>
+        <section class="container mt-2 mt-md-5 documents">
+            <div class="row align-items-center">
+                <!-- Left: Image -->
+                <div class="col-md-5 text-center mb-4 mb-md-0">
+                    <img src="{% static 'images/privacy-policy.webp' %}"
+                         class="img-fluid rounded shadow"
+                         alt="Privacy and Cookies Policy">
+                </div>
+                <!-- Right: Privacy and Cookies Policy Document -->
+                <div class="col-md-7">
+                    <h1 class="fw-bold">Privacy and Cookies Policy</h1>
+                    <p>
+                        Read how BBdental collects, uses and protects your information
+                        and how the website uses cookies.
+                    </p>
+                    <ul class="list-unstyled">
+                        {% for doc in documents %}
+                            <li class="mb-2">
+                                <a href="{% static 'documents/' %}{{ doc.file }}"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="btn btn-outline-primary"
+                                   aria-label="Open {{ doc.name }} PDF">
+                                    <i class="fa-solid fa-file-pdf text-danger me-2"></i>
+                                    Open document (PDF)
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-
-            <!-- Right: Privacy Policy Documents -->
-            <div class="col-md-7">
-                <h1 class="fw-bold">Privacy Policy</h1>
-                <p>Below you can find our Privacy Policy documents:</p>
-
-                <ul class="list-unstyled">
-                    {% for doc in documents %}
-                    <li class="mb-2">
-                        <span class="lead">
-                            <i class="fa-solid fa-file-pdf text-danger me-2"></i>
-                            <a href="{% static 'documents/' %}{{ doc.file }}" target="_blank"
-                               class="text-decoration-none">
-                                {{ doc.name }}
-                            </a>
-                        </span>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 {% endblock %}
