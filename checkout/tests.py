@@ -713,6 +713,7 @@ class ManageOrdersTests(TestCase):
 
         order = Order.objects.create(
             user_profile=customer.userprofile,
+            business_name="Dublin Dental Practice",
             name="Peter",
             surname="Byrne",
             email="peter@example.com",
@@ -728,6 +729,7 @@ class ManageOrdersTests(TestCase):
         response = self.client.get(reverse("manage_orders"))
 
         self.assertContains(response, order.order_number)
+        self.assertContains(response, "Dublin Dental Practice")
         self.assertContains(response, "Peter Byrne")
         self.assertContains(response, "€50.00")
         self.assertContains(response, "Processing")
@@ -750,6 +752,7 @@ class ManageOrdersTests(TestCase):
 
         order = Order.objects.create(
             user_profile=customer.userprofile,
+            business_name="Dublin Dental Practice",
             name="Peter",
             surname="Byrne",
             email="peter@example.com",
@@ -770,6 +773,7 @@ class ManageOrdersTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, order.order_number)
         self.assertContains(response, "Peter Byrne")
+        self.assertContains(response, "Dublin Dental Practice")
         self.assertContains(response, "peter@example.com")
         self.assertContains(response, "+353 87 123 4567")
         self.assertContains(response, "47 Virginia Hall")

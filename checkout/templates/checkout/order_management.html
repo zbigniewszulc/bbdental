@@ -38,6 +38,7 @@
                         <tr>
                             <th>Order Number</th>
                             <th>Date</th>
+                            <th>Business</th>
                             <th>Customer</th>
                             <th>Total</th>
                             <th>Status</th>
@@ -49,6 +50,7 @@
                             <tr>
                                 <td>{{ order.order_number }}</td>
                                 <td>{{ order.date_of_order|date:"d M Y, H:i" }}</td>
+                                <td>{{ order.business_name }}</td>
                                 <td>{{ order.name }} {{ order.surname }}</td>
                                 <td>€{{ order.grand_total|floatformat:2 }}</td>
                                 <td>{{ order.get_status_display }}</td>
@@ -61,7 +63,7 @@
                             </tr>
                         {% empty %}
                             <tr>
-                                <td colspan="6">No orders found.</td>
+                                <td colspan="7">No orders found.</td>
                             </tr>
                         {% endfor %}
                     </tbody>
