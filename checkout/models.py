@@ -31,6 +31,7 @@ class Order(models.Model):
         related_name='orders'
     )
     # Customer details
+    business_name = models.CharField(max_length=150)
     name = models.CharField(max_length=30, null=False, blank=False)
     surname = models.CharField(max_length=30, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)

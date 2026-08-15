@@ -60,6 +60,7 @@ class StripeWH_Handler:
 
         order = Order.objects.create(
             user_profile=profile,
+            business_name=profile.business_name,
             name=name,
             surname=surname,
             email=profile.user.email,

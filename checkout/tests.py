@@ -178,6 +178,73 @@ class CheckoutWebhookTests(TestCase):
         self.assertEqual(response.status_code, 400)
 
 
+class CheckoutBusinessNameTests(TestCase):
+    def setUp(self):
+        """Create a customer, profile and product for checkout tests"""
+        self.user = User.objects.create_user(
+            username="businesscustomer",
+            password="password123",
+            email="peter@example.com",
+        )
+        self.user.userprofile.business_name = "Dublin Dental Practice"
+        self.user.userprofile.save()
+
+        category = Category.objects.create(
+            category_name="Test Category"
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer"
+        )
+        self.product = Product.objects.create(
+            product_name="Test Product",
+            description="Test product description",
+            price=Decimal("15.00"),
+            in_stock=10,
+            manufacturer=manufacturer,
+            subcategory=subcategory,
+        )
+
+        self.client.login(
+            username="businesscustomer",
+            password="password123",
+        )
+
+        session = self.client.session
+        session["bag"] = {str(self.product.id): 1}
+        session.save()
+
+    def test_checkout_saves_business_name_from_profile(self):
+        """Check if checkout saves the business name from the profile"""
+        response = self.client.post(
+            reverse("checkout"),
+            {
+                "name": "Peter",
+                "surname": "Byrne",
+                "email": "peter@example.com",
+                "phone_number": "+353 86 123 4567",
+                "address_line_1": "47 Virginia Hall",
+                "address_line_2": "Belgard Square",
+                "town": "Tallaght",
+                "postcode": "D24 ABC1",
+                "country": "IE",
+            },
+        )
+
+        order = Order.objects.get(
+            user_profile=self.user.userprofile
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            order.business_name,
+            "Dublin Dental Practice",
+        )
+
+
 class CheckoutOrderModelTests(TestCase):
     def test_order_stores_stripe_details(self):
         """Check if an order stores its bag and Stripe payment ID."""
@@ -214,6 +281,25 @@ class CheckoutOrderModelTests(TestCase):
         )
 
         self.assertEqual(order.status, "new")
+
+    def test_order_can_store_business_name(self):
+        """Check if an order can store a business name"""
+        order = Order.objects.create(
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 86 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+            business_name="Dublin Dental Practice",
+        )
+
+        self.assertEqual(
+            order.business_name,
+            "Dublin Dental Practice"
+        )
 
 
 class CheckoutCacheDataTests(TestCase):
@@ -299,6 +385,9 @@ class CheckoutWebhookHandlerTests(TestCase):
             subcategory=subcategory,
         )
 
+        user.userprofile.business_name = "Dublin Dental Practice"
+        user.userprofile.save()
+
         event = {
             "type": "payment_intent.succeeded",
             "data": {
@@ -335,6 +424,7 @@ class CheckoutWebhookHandlerTests(TestCase):
         order = Order.objects.get(stripe_pid="pi_test_new")
         line_item = OrderLineItem.objects.get(order=order)
 
+        self.assertEqual(order.business_name, "Dublin Dental Practice")
         self.assertEqual(line_item.product, product)
         self.assertEqual(line_item.quantity, 2)
 
@@ -373,6 +463,9 @@ class CheckoutWebhookHandlerTests(TestCase):
             password="password123",
             email="peter@example.com",
         )
+
+        user.userprofile.business_name = "Dublin Dental Practice"
+        user.userprofile.save()
 
         event = {
             "type": "payment_intent.succeeded",

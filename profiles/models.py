@@ -19,6 +19,9 @@ class UserProfile(models.Model):
     and order history
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    business_name = models.CharField(
+        max_length=150, null=True, blank=True
+    )
     default_phone_number = models.CharField(
         max_length=20, null=True, blank=True
     )

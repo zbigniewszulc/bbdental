@@ -158,7 +158,14 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
+            profile = UserProfile.objects.get(user=request.user)
+
+            # Copy the business name to the order so it stays with this order
+            # if the customer changes it later in their profile
+            order.business_name = profile.business_name
+            order.user_profile = profile
             order.original_bag = json.dumps(bag)
+
             order.stripe_pid = request.POST.get('stripe_pid') or None
             order.save()
 
@@ -182,12 +189,6 @@ def checkout(request):
                     request,
                     "Your profile has been updated with these details."
                 )
-
-            # Assign the order to the user profile if logged in
-            if request.user.is_authenticated:
-                profile = UserProfile.objects.get(user=request.user)
-                order.user_profile = profile
-                order.save()
 
             for product_id, quantity in bag.items():
                 try:

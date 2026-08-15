@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
 from .forms import UserProfileForm
+from .models import UserProfile
 from checkout.models import Order
 
 
@@ -101,6 +102,25 @@ class ProfileViewsTests(TestCase):
 
         self.assertContains(response, "Status: Processing")
 
+    def test_profile_cannot_remove_business_name(self):
+        """Check if a user cannot remove their business name"""
+        profile = self.user.userprofile
+        profile.business_name = "Dublin Dental Practice"
+        profile.save()
+
+        response = self.client.post(
+            reverse("profile"),
+            {"business_name": ""},
+        )
+
+        profile.refresh_from_db()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            profile.business_name,
+            "Dublin Dental Practice"
+        )
+
 
 class UserProfileFormTests(TestCase):
     def test_address_line_3_is_not_in_profile_form(self):
@@ -108,3 +128,86 @@ class UserProfileFormTests(TestCase):
         form = UserProfileForm()
 
         self.assertNotIn('default_address_line_3', form.fields)
+
+    def test_business_name_is_required_in_profile_form(self):
+        """Check if a business name is required in the profile form"""
+        form = UserProfileForm(data={})
+
+        self.assertFalse(form.is_valid())
+        self.assertIn("business_name", form.errors)
+
+
+class UserProfileModelTests(TestCase):
+    def test_profile_can_store_business_name(self):
+        """Check if a profile can store a business name"""
+        user = User.objects.create_user(
+            username="businessuser",
+            password="password123"
+        )
+
+        profile = user.userprofile
+        profile.business_name = "Dublin Dental Practice"
+        profile.save()
+        # Get a new profile instance from the database to confirm that
+        # business_name was saved as a model field, rather than only added
+        # temporarily to the profile object used in this test.
+        saved_profile = UserProfile.objects.get(pk=profile.pk)
+
+        self.assertEqual(
+            saved_profile.business_name,
+            "Dublin Dental Practice"
+        )
+
+
+class BusinessSignupTests(TestCase):
+    def test_signup_page_shows_business_name_field(self):
+        """Check if the signup page shows a business name field"""
+        # Open the signup page to check if it includes the business name field
+        response = self.client.get(reverse("account_signup"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Business name")
+
+    def test_signup_saves_business_name_to_profile(self):
+        """Check if signup saves the business name to the user profile"""
+        response = self.client.post(
+            reverse("account_signup"),
+            {
+                "username": "newbusinessuser",
+                "email": "newbusiness@example.com",
+                "email2": "newbusiness@example.com",
+                "password1": "VeryStrongPassword123!",
+                "password2": "VeryStrongPassword123!",
+                "business_name": "Dublin Dental Practice",
+            },
+        )
+
+        user = User.objects.get(username="newbusinessuser")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            user.userprofile.business_name,
+            "Dublin Dental Practice"
+        )
+
+    def test_signup_requires_business_name(self):
+        """Check if signup requires a business name"""
+        response = self.client.post(
+            reverse("account_signup"),
+            {
+                "username": "missingbusinessname",
+                "email": "missing@example.com",
+                "email2": "missing@example.com",
+                "password1": "VeryStrongPassword123!",
+                "password2": "VeryStrongPassword123!",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(
+            "business_name",
+            response.context["form"].errors,
+        )
+        self.assertFalse(
+            User.objects.filter(username="missingbusinessname").exists()
+        )
