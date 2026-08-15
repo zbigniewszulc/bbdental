@@ -9,6 +9,17 @@
     {% element h1 %}
         {% trans "Sign Up" %}
     {% endelement %}
+    <p class="mt-3 mb-2">
+        BBdental is an educational B2B project for dental practices,
+        dental laboratories and other dental businesses. Accounts are
+        for professional use only.
+    </p>
+    <p class="mb-3">
+        Please read our
+        <a href="{% url 'terms_of_service' %}">Terms and Conditions</a>
+        and
+        <a href="{% url 'privacy_policy' %}">Privacy and Cookies Policy</a>.
+    </p>
     {% setvar link %}
         <a href="{{ login_url }}">
         {% endsetvar %}
