@@ -11,6 +11,17 @@ class HomeTemplateTests(TestCase):
 
         self.assertNotContains(response, "chimpstatic.com")
 
+    def test_home_page_displays_b2b_information(self):
+        """Check if the home page explains who the shop is for"""
+        response = self.client.get(reverse("home"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "Created for demonstration purposes, intended for dental "
+            "practices, dental laboratories and other dental businesses",
+        )
+
     def test_privacy_policy_uses_current_document(self):
         """Check if the current privacy policy document is displayed"""
         response = self.client.get(reverse("privacy_policy"))
