@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django_countries',
     'profiles',
     'contact_us',
+    'dashboard',
 ]
 
 SITE_ID = 1
