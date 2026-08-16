@@ -1,15 +1,19 @@
 # Overview
 
-The BB Dental website was designed to facilitate the online sale of dental products for B2B traders. As a digital platform, it allows customers to browse and purchase products directly over the internet. The website displays a comprehensive listing of items available for purchase, organized into categories and subcategories for easy navigation. Each product subpage includes a detailed description, product image, price and stock count. 
-To purchase the products, the customer will be prompted to log in or register first. Upon registration, the customer will be able to add products to the chart, update products in the chart, save contact details and complete the payment. Furthermore, a listing of previous orders and their details will be available to view on the Profile page. The personal details provided during the registration can also be amended there. 
-The administrator profile has CRUD functionality, i.e. the administrator has the option to create, view, amend, and delete products. This is particularly useful for updating the number of products in the stock. Additionally, the stock quantity will be updated automatically every time an order is completed. 
+BBdental is an educational B2B e-commerce project created to show how an online shop for dental businesses could work. It is intended for dental practices, dental laboratories and other businesses that use professional dental products. The project brings together the main parts of an online shop, including product browsing, user accounts, a shopping bag, checkout and order management.
+
+Users can browse products organised into categories and subcategories. They can also search for products and filter or sort the results. Each product page includes a description, image, price, manufacturer and current stock level, helping users find the product information they need.
+
+After creating an account, users can add products to their bag, change quantities and continue to checkout. They can enter delivery and billing details, save selected information to their profile and place a test order using Stripe. Users can also view their previous orders and check their current status. Stripe runs in test mode, so no real payments are taken and no physical products are delivered.
+
+Staff members have access to separate product and order management pages. They can add, edit and delete products, manage stock levels, view customer orders and update their status. Product stock is reduced automatically when a test order is completed. The project is designed for learning and demonstration purposes and does not operate as a real dental supplier.
 
 ![mockup](static/documentation/mockup.png)
 
-Linkt to the live application can be found [here](https://bbdental-4f6c524824c2.herokuapp.com/)
+A link to the live application can be found [here](https://bbdental-4f6c524824c2.herokuapp.com/)
 
 # User stories 
-### User register and login
+### User registration and login
 As a user I can log in securely so that it will allow me to do shopping
 
 **Acceptance criteria**
@@ -40,7 +44,7 @@ As a user I can view indivudual product details so that I can make purchasing de
 
 - If the product has an image, it needs to be displayed
 
-- There is "Add to Bag" button that allows me to add the selected quantity to my cart. I cannot add more than the available stock. Also, "Add to Bag" should be available for logged in users only.
+- There is "Add to Bag" button that allows me to add the selected quantity to my bag. I cannot add more than the available stock. Also, "Add to Bag" should be available for logged in users only.
 
 - There are three additional buttons: "Keep Shopping" to return to the product list, "Shopping Bag" and "Go to Checkout" to proceed with the purchase. Same as above, this should be available for logged in users only.
 
@@ -66,7 +70,7 @@ As a logged-in user I can view my shopping bag so that I can easily review my se
 
 - The order summary should clearly display item details, prices, and the total cost
 
-- If the user’s order qualifies for free delivery, a message should be displayed encouraging them to take advantage of the offer
+- If the order total is below the free delivery threshold, a message should show how much more the user needs to spend to qualify for free delivery
 
 - There should be an easy way to continue shopping and add more products to the order
 
@@ -126,8 +130,8 @@ User stories were managed via Kanban Board on github:
 ![reset](/static/documentation/3-forgot-password.png "regipassword resetster page")
 ### Landing Page
 ![landing](/static/documentation/4-landing-page.png "landing page")
-### Display Page of the All Products
-![allproducts](/static/documentation/5-all-producs-display-page.png "all products page")
+### Display Page of the all Products
+![products](/static/documentation/5-all-producs-display-page.png "products page")
 ### Product Details Page
 ![details](/static/documentation/6-product-details.png "products details page")
 ### Shopping bag page
@@ -148,8 +152,10 @@ User stories were managed via Kanban Board on github:
 ![deletion](/static/documentation/14-staff-access-product-deletion.png "product deletion")
 
 
-# Database Schema Diagram and Model
+# Database Schema Diagram
 ![database schema](static/documentation/db-schema.png)
+
+The diagram uses Crow's Foot notation. A single line represents one record, while the crow's foot symbol represents multiple related records.
 
 # Typography
 Font - https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap 
@@ -160,19 +166,19 @@ Font Awesome, used on many pages accross the whole website.
 
 Photo used for purpose creation of Facebook Business Page https://www.istockphoto.com/photos/dental-equipment
 
-[](https://www.pngaaa.com/detail/1887013) - image pleaceholder used across all web page, will show as deafault when there was no image uploaded in first place
+[](https://www.pngaaa.com/detail/1887013) - placeholder image displayed when a product does not have an uploaded image
 
-https://unsplash.com/photos/text-TtJ0CLjLi6w - used on page 'terms of service'
+https://unsplash.com/photos/text-TtJ0CLjLi6w - used on page 'Terms and Conditions'
 
-https://www.pexels.com/photo/close-up-photo-of-a-paper-on-a-vintage-typewriter-4152513/ - used on page 'privacy policy'
+https://www.pexels.com/photo/close-up-photo-of-a-paper-on-a-vintage-typewriter-4152513/ - used on page 'Privacy and Cookies Policy'
 
 [Fotor](https://www.fotor.com/) - to enhance bad image quality
 
-[Cloudinary mage-to-web](https://cloudinary.com/tools/image-to-webp) - for image conversion to web
+[Cloudinary Image to WebP](https://cloudinary.com/tools/image-to-webp) - for image conversion to web
 
 [Emojipedia](https://emojipedia.org/) - used to populate number of flags which are present on the website.
 
-There are 198 images used across the product section, but I don’t remember where they came from. I downloaded them a long time ago with the idea of using them for a project like this, but only now got the chance to put everything together. Since it’s just a college project, I don’t think using them is an issue, especially since the original shop doesn’t seem to exist anymore. The images weren’t great quality, but Fotor was a lifesaver for fixing them up.
+**I collected the product images before starting this project and can no longer confirm where all of them came from. They are only used to show how the product pages work and are not intended for commercial use. If the website is ever used outside this college project, the images should be replaced with ones that have clear licences!**
 
 # Features 
 
@@ -180,23 +186,23 @@ There are 198 images used across the product section, but I don’t remember whe
 The navigation bar appears on all pages, with different links displayed depending on the page and the user. It allows the user to easily navigate between pages across all devices without the need to use the "back" button to return to the previous page.
 The navigation bar includes various links depending on the page and user:
 To the Home Page, Login, and Register for users who have not signed in.
-To the Home Page, Products, My Profile, Shopping Chart and Logout for signed-in customers.
-To the Home Page, All Products and Logout for signed-in administrator.
+To the Home Page, Products, My Profile, the shopping bag total and Logout for signed-in customers.
+To the Home Page, Products, Manage Products, Orders and Logout for signed-in staff members.
 
 ### The Footer
-The footer bar appears on all pages, allowing the user to easily access the company's Terms of Services, Privacy Policy and Contact Details. The relevant documents are available to view and download in a PDF format. The Contact Details Page includes interactive phone and email address links. 
+The footer bar appears on all pages, allowing the user to easily access the company's Terms and Conditions, Privacy and Cookies Policy and Contact Details. The relevant documents are available to view and download in a PDF format. The Contact page displays the business email address, address, working hours and a link to the contact form. 
 
 ### The Landing Page - Welcome Page
 The landing page displays the navigation bar, the footer, the advertising materials and a listing of shipping destinations. The link to the listing of products is positioned in multiple locations to encourage customers to click the link. 
 
 ### Product Listing Page
-The product listing page includes a navigation bar at the top of the page and search functions. The search menu is very advanced, offering various search and sorting options, including:
+The product listing page includes a navigation bar at the top of the page and search functions. The product listing page includes several options for finding and organising products:
 - sort by name (A to Z) and (Z to A),
 - sort by price (Low to High) and (High to Low)
 - sort by manufacturer name (A to Z) and (Z to A)
 - search by manufacturer.
 The page also includes a side menu which displays the main groups of products and subgroups, giving the customer a clear listing of the main product categories. Upon clicking on a main category bar, the subcategory listing is displayed. Then, upon clicking on the subcategory line, the relevant products within that subcategory are displayed on the page. The side menu is responsive and will adjust to various displays. For example, the subcategories listing will be scaled down for easier browsing. 
-If the client wants to return to the main page showing all products, he can click on the Home button or the Products button. Furthermore, if the client wants to go back to the previous group of products, he/she can click on the desired group in the heading breadcrumb trail.  
+Users can return to the full product list by clicking Products in the navigation bar or the house icon in the breadcrumbs. The other breadcrumb links can be used to go back to the selected category. 
 The products are displayed in separate boxes and a photo and a brief description of the product is given. The customer can view further details by clicking the "View Details" button.
 There is a standard footer at the bottom of the page. When the products are displayed on more than one page, a listing of pages with links to particular page numbers is displayed above the footer (pagination function).
 
@@ -205,31 +211,34 @@ Each product displayed in the shop has a link to its own page. Upon clicking the
 There is a standard navigation bar and a standard footer. 
 
 ### Login Page
-Upon opening, the sign-in form is displayed. The customer or administrator is required to provide their username and password to sign in. An error message will be displayed if an incorrect username or password is entered. Upon signing in, a small green confirmation box will appear in the top right corner, confirming the successful sign-in. Additionally, there is an option to click the "Remember Me" box for future sign-ins and a link to open the Registration page.
-The navigation bar includes links to the Home Page, Log In and Register.  The footer includes links to the company's Terms of Services, Privacy Policy and Contact Details.
+Upon opening, the sign-in form is displayed. Customers and staff members are required to provide their username or email address and password to sign in. An error message will be displayed if an incorrect username or password is entered. Upon signing in, a small green confirmation box will appear in the top right corner, confirming the successful sign-in. Additionally, there is an option to click the "Remember Me" box for future sign-ins and a link to open the Registration page.
+The navigation bar includes links to the Home Page, Log In and Register.  The footer includes links to the company's Terms and Conditions, Privacy and Cookies Policy and Contact Details.
 
 ### Registration Page
-The sign-up form is displayed. A reminder to sign in for clients who are already registered is shown at the top of the form. Fields highlighted with an asterisk are mandatory, and a warning will appear if they are left blank. There is additional information regarding password requirements at the bottom of the form. Once all fields are completed correctly and the "Sign Up" box is ticked, the system will send an account verification email to the address provided by the customer. To access the account, the customer must first confirm the email address.
-The navigation bar includes links to the Home Page, Login, and Register. The footer includes links to the company's Terms of Services, Privacy Policy and Contact Details.
+The sign-up form is displayed together with information that BBdental is an educational B2B project intended for dental practices, dental laboratories and other dental businesses. Users are informed that accounts are for professional use only and are provided with links to the Terms and Conditions and Privacy and Cookies Policy.
+A reminder to sign in for clients who are already registered is shown above the form. The form requires an email address, username, business name and password, including the relevant confirmation fields. Fields highlighted with an asterisk are mandatory, and a warning will appear if they are left blank. There is additional information regarding password requirements at the bottom of the form. Once all fields are completed correctly and the "Sign Up" button is clicked, the system sends a verification email to the address provided by the user. To access the account, the user must first confirm the email address.
+The navigation bar includes links to the Home Page, Login and Register. The footer includes links to the company's Terms and Conditions, Privacy and Cookies Policy and Contact Details.
 
-### Customer Login 
-Landing Page – a listing of all products is displayed. Customers can navigate through the products using the search and sort functions at the top of the page and the side menu is on the left side of the page.
-Upon clicking on a desired product, a product page will be displayed, giving the customer an option to add the product to the shopping basket. The customer can amend the quantity before adding the product to the basket. The system will limit the amount available to add to the basket to the number of products in stock. An orange warning box will appear on the screen if the client tries to add an excessive amount of products (i.e. more than is available in the stock) or enter a negative amount in the quantity box. A green box will appear confirming that the desired quantity was added to the basket. 
+### Customer Account 
+After signing in, customers can open the Products page and browse the catalogue using the search, sorting and category options.
+Upon clicking on a desired product, a product page will be displayed, giving the customer an option to add the product to the shopping bag. The customer can amend the quantity before adding the product to the basket. The system will limit the amount available to add to the basket to the number of products in stock. An orange warning box will appear on the screen if the client tries to add an excessive amount of products (i.e. more than is available in the stock) or enter a negative amount in the quantity box. A green box will appear confirming that the desired quantity was added to the basket. 
 Three additional links are displayed on the bottom part of the product page, allowing the client to easily navigate through the website:
 - Keep Shopping - will take the user one step back,
 - Shopping Bag - will open the Shopping Bag Page and 
 - Go to Checkout - will open the Checkout Page
-The navigation bar includes links to the Home Page, Products, Shopping Bag and Logout. The Footer is standard.  
+The navigation bar includes links to the Home Page, Products, My Profile, the shopping bag total and Logout. The Footer is standard.  
 The Shopping Bag Page - the listing of products in the basket is displayed. A photo, name, quantity and price are displayed for each product in the basket. The customer has an option to update the quantity and remove the entire product. Subtotal and the delivery cost is displayed under the products listing. If the subtotal is below the "Free delivery" threshold, a message is displayed encouraging the client to add some products to be eligible for a free delivery. There is a link to add more items or proceed to Checkout. 
-The Checkout Page - The order form is displayed. Fields highlighted with an asterisk are mandatory, and a warning will appear if they are left blank. Once all fields are completed correctly and the "Complete Order" box is ticked, the Order Confirmation Page will be displayed. There is an option to save the client details, so those are pre-filled automatically the next time an order is completed. 
+The Checkout Page - The page displays the delivery form, payment details and an order summary. Required fields are marked with an asterisk and must be completed before the order can be submitted. Users can confirm that their billing address is the same as their delivery address or enter a separate billing address. They can also choose to save their delivery details to their profile for future orders. After a successful test payment, the user is redirected to the Order Confirmation Page.
 If the Shopping Bag is empty, the system will prevent the user from accessing the Checkout Page. There will be a small red dot and amount displayed next to the Shopping Bag icon once an item is placed in the Shopping Bag.
 The Order Confirmation Page - the order confirmation summary will display the order details, the delivery address, the items purchased and the total cost.  Additionally, a small green confirmation box will be displayed in the top right corner of the page. 
 Logout Page - Upon clicking the "Logout" link, a sign-out window will appear, and the client will be prompted to confirm if they wish to log out
 
-### Administrator Login 
-All Products Page – a listing of all products is displayed in a working table. The administrator can create, update and delete products in the table. Upon clicking on the Home Page button, a listing of products is displayed in the same way as the one visible to the client. 
-Add New Product - the new product form is displayed. Fields highlighted with an asterisk are mandatory, and a warning will appear if they are left blank. There is an option to add a photo of a product, but it's not mandatory. If a photo was not added, a default "No Image Available" image will be displayed. Once all fields are completed correctly and the "Add Product" box is ticked, the new product will be added to the database. A green confirmation box will appear in the top right corner. 
-The navigation bar includes links to the Home Page, All Products working table and Logout. There is a standard footer and the pagination functionality at the bottom of the All Products Page. 
+### Staff Account
+
+Staff members can browse the product catalogue using the Products page, but they cannot add products to a bag or place orders.
+The Manage Products page displays products in a table. Staff members can search, sort and filter products, as well as add, edit or delete them.
+The Orders page displays customer orders. Staff members can open an order to view its details and update its status.
+The navigation bar includes links to the Home Page, Products, Manage Products, Orders and Logout. The Manage Products and Orders pages use pagination when there are many records.
 
 ## Technologies Used
 
@@ -244,21 +253,27 @@ The navigation bar includes links to the Home Page, All Products working table a
 - **GitHub** - A platform for version control and collaborative coding.  
 - **PostgreSQL from Code Institute** - A cloud-hosted relational database system.  
 - **Heroku** - A cloud platform for deploying and managing applications. 
-- **SendGrid** - A cloud-based email service used for sending transactional and marketing emails.  
-- **Cloudinary** - A cloud-based service for managing and optimizing images and videos.  
+- **Gmail SMTP** - Used to send account, contact form and order confirmation emails.
+- **Cloudinary** - A cloud-based service used to store and manage product images.
+- **Django Allauth** - Used for user registration, login and account management.
+- **Stripe** - Used in test mode to demonstrate secure online payments.  
 
 ## E-commerce business model 
-The business will operate on a Business to Business model (B2B).  
-The online shop will sale dental products (such as tools, equipment, consumables, and other related items) directly to other businesses, typically dental practices, clinics and hospitals. It is not foreseen that any Business to Customer (B2C) sale will occur. The company will focus on building strong, long-term relationships with clients, providing competitive pricing, consistent product quality, and reliable customer service.
-Key features of this model include:
-- Product Catalog - the online shop provides a comprehensive range of dental products that can be browsed and promptly ordered online.
-- Account Management - in order to place orders, the customers are required to  create an accounts by registering on the shop website. The personalized features such as order history is available on the website. 
-- Payment methods - currently the shop offers payment by card at the time of placing the order. Going forward, the business will introduce an option to buy on credit for registered and verified clients. 
-- Customer Support -  dedicated support is ready to  answer any queries or to provide technical assistance and product recommendations. Contact details are accessible through the link in the footer. 
-- Shipping - the business engaged fast and reliable logistic partner. Additionally, a free standard shipping is available for customers who place orders with a net value over €50.
+
+BBdental represents a Business-to-Business (B2B) online shop intended for dental practices, dental laboratories and other dental businesses. It is not intended for consumer or personal purchases. 
+
+The project demonstrates the following parts of a B2B e-commerce website:
+
+- **Product Catalogue** - users can browse professional dental products organised by category, subcategory and manufacturer.
+- **Business Accounts** - users must create an account before placing a test order. Their profile can store delivery details and provide access to their order history.
+- **Test Payments** - Stripe operates in test mode, so no real money is taken.
+- **Contact** - users can send questions through the contact form or use the project email address.
+- **Simulated Delivery** - a €15 delivery charge is added to orders below €50, while orders of €50 or more qualify for free delivery. No products are physically dispatched.
+
+BBdental is an educational project and does not operate as a real dental supplier.
 
 ## Facebook Business Page
-![facebook business page](<static/documentation/Facebook bbdental.png>)
+![facebook business page](<static/documentation/facebook-bbdental.png>)
 
 ## Optimized Keyword List for B2B Dental Supply Website
 ### Mix of short-tail and long-tail keywords optimized for search volume, relevance, and purchasing intent
@@ -272,7 +287,7 @@ Key features of this model include:
 
 #### Long-Tail Keywords (Higher Intent, More Targeted):
 1. Wholesale dental supplies
-2. Buy dental equpment
+2. Buy dental equipment
 3. Professional dental products supplier
 4. Best dental practice supplies
 5. Top-rated dental suppliers for clinics
@@ -293,6 +308,18 @@ Key features of this model include:
 
 
 # Testing & debugging
+
+## Django Automated Tests
+
+Django's built-in testing tools were used throughout development. The tests cover product models and forms, shopping bag operations, profiles, checkout, Stripe webhooks, order emails, customer order access and staff order management.
+
+To run the complete test suite, use:
+
+```bash
+python manage.py test
+```
+
+The latest complete test run included 93 tests, and all tests passed successfully.
 
 ### Python code: issues found
 
@@ -345,13 +372,15 @@ Issue has been fixed
 # **Testing Summary – Automatic & Manual Checks**  
 
 ## **Landing Page**  
-The **Jumbotron** contains two buttons: one navigates to the content below the screen, while the other directs to the product page. Both buttons function correctly, and the entire page renders well on both large and small screens.  
+The **Jumbotron** contains two buttons: one navigates to the content below the screen, while the other directs to the product page. All buttons and links on this page function correctly, and the entire page renders well on both large and small screens. At the bottom of the page, there is a list of Shipping Destinations and the footer.
 
 ![landing page](static/documentation/landing.png)
 
+![landing page footer](static/documentation/landing-footer.png)
+
 | Manual test case - 1 | Start Shopping button on Jumbotron |
 |----------------------|------------------------------------|
-| **Expected** | When the "Start Shopping" button is clicked on the Jumbotron, it should open the All Products page (`https://bbdental-4f6c524824c2.herokuapp.com/products/all/`) in the same tab. |
+| **Expected** | When the "Start Shopping" button is clicked on the Jumbotron, it should open the Products page (`https://bbdental-4f6c524824c2.herokuapp.com/products/all/`) in the same tab. |
 | **Testing**  | Clicked the "Start Shopping" button to see if it takes me to the correct page without opening a new tab. |
 | **Result**   | The browser loaded the correct products page in the same browser's tab, just as expected. |
 | **Fix**      | No changes needed – everything works as it should. |
@@ -367,24 +396,20 @@ The **Jumbotron** contains two buttons: one navigates to the content below the s
 
 <br>
 
-At the footer of each page, there are links to **Terms of Service, Privacy Policy, Contact, and Follow us on Facebook**. All links open their intended pages, and the Facebook button correctly opens a new window in the browser.  
-
-<br>
-
-| Manual test case - 3 | 'Terms of Service' link in the footer |
+| Manual test case - 3 | 'Terms and Conditions' link in the footer |
 |----------------------|------------------------------------|
-| **Expected** | When the 'Terms of Service' link is clicked, it should open the 'Terms of Service' page (`https://bbdental-4f6c524824c2.herokuapp.com/terms-of-service/`) in the same tab.  |
-| **Testing**  | Clicked the 'Terms of Service' link to see if it takes me to the correct page without opening a new tab. |
-| **Result**   | The browser loaded the correct 'Terms of Service' page in the same browser's tab, just as expected. |
+| **Expected** | When the 'Terms and Conditions' link is clicked, it should open the 'Terms and Conditions' page (`https://bbdental-4f6c524824c2.herokuapp.com/terms-of-service/`) in the same tab.  |
+| **Testing**  | Clicked the 'Terms and Conditions' link to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct 'Terms and Conditions' page in the same browser's tab, just as expected. |
 | **Fix**      | No changes needed – everything works as it should. |
 
 <br>
 
-| Manual test case - 4 | 'Privacy Policy' link in the footer |
+| Manual test case - 4 | 'Privacy and Cookies Policy' link in the footer |
 |----------------------|------------------------------------|
-| **Expected** | When the 'Privacy Policy' link is clicked, it should open the 'Privacy Policy' page (`https://bbdental-4f6c524824c2.herokuapp.com/privacy-policy/`) in the same tab.  |
-| **Testing**  | Clicked the 'Privacy Policy' link to see if it takes me to the correct page without opening a new tab. |
-| **Result**   | The browser loaded the correct 'Privacy Policy' page in the same browser's tab, just as expected. |
+| **Expected** | When the 'Privacy and Cookies Policy' link is clicked, it should open the 'Privacy and Cookies Policy' page (`https://bbdental-4f6c524824c2.herokuapp.com/privacy-policy/`) in the same tab.  |
+| **Testing**  | Clicked the 'Privacy and Cookies Policy' link to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct 'Privacy and Cookies Policy' page in the same browser's tab, just as expected. |
 | **Fix**      | No changes needed – everything works as it should. |
 
 <br>
@@ -480,13 +505,9 @@ At the footer of each page, there are links to **Terms of Service, Privacy Polic
 
 <br>
 
-At the top of the page, there are buttons for **Products, My Profile, Shopping Bag, Logout, and Search**. Just like before, all links navigate to the correct pages, and the search button properly processes queries and renders search results accordingly.  
-
-<br>
-
 | Manual test case - 7 | 'Products' link in the navigation menu |
 |----------------------|------------------------------------|
-| **Expected** | When the 'Products' link is clicked, it should open the all Products page (`https://bbdental-4f6c524824c2.herokuapp.com/products/all/`) in the same tab.  |
+| **Expected** | When the 'Products' link is clicked, it should open the Products page (`https://bbdental-4f6c524824c2.herokuapp.com/products/all/`) in the same tab.  |
 | **Testing**  | Clicked the 'Products' link to see if it takes me to the correct page without opening a new tab. |
 | **Result**   | The browser loaded the correct 'Products' page in the same browser's tab, just as expected. |
 | **Fix**      | No changes needed – everything works as it should. |
@@ -502,11 +523,11 @@ At the top of the page, there are buttons for **Products, My Profile, Shopping B
 
 <br>
 
-| Manual test case - 9 | Shopping Cart link in the navigation menu |
+| Manual test case - 9 | Shopping Bag link in the navigation menu |
 |----------------------|------------------------------------|
-| **Expected** | When the Shopping Cart link is clicked, it should open the Shopping Cart page (`https://bbdental-4f6c524824c2.herokuapp.com/bag/`) in the same tab.  |
-| **Testing**  | Clicked the Shopping Cart link to see if it takes me to the correct page without opening a new tab. |
-| **Result**   | The browser loaded the correct Shopping Cart page in the same browser's tab, just as expected. |
+| **Expected** | When the Shopping Bag link is clicked, it should open the Shopping Bag page (`https://bbdental-4f6c524824c2.herokuapp.com/bag/`) in the same tab.  |
+| **Testing**  | Clicked the Shopping Bag link to see if it takes me to the correct page without opening a new tab. |
+| **Result**   | The browser loaded the correct Shopping Bag page in the same browser's tab, just as expected. |
 | **Fix**      | No changes needed – everything works as it should. |
 
 <br>
@@ -730,7 +751,7 @@ All displayed information corresponds correctly to the selected product, and all
 ![product details](<static/documentation/product details.png>)
 
 
-Additionally, all navigation links at the top of the page, including **"Products," "My Profile," "Cart," and "Logout,"** work as intended.  
+Additionally, all navigation links at the top of the page, including **"Products," "My Profile," "Shopping Bag," and "Logout"** work as intended.  
 
 <br>
 
@@ -806,13 +827,13 @@ Only after adding at least one product does the user gain access to the **checko
 
 | Manual test case - 39 | Verify if product details, subtotal, delivery, grand total, and free delivery information are displayed correctly |
 |-----------------------|---------------------------------------------------------------------------------------------------------|
-| **Expected**          | All relevant figures should be displayed on the product details page, including:                                                                                             |
+| **Expected**          | All relevant figures should be displayed on the shopping bag page, including:                                                                                             |
 |                       | - Product Details: Image, Item name, Quantity, Price, and Total for each product                                                                                                    |
 |                       | - Subtotal (correct total based on selected products)                                                                                                               |
 |                       | - Delivery (should display standard delivery cost, typically €15 - subject to Subtotal)                                                                                                                 |
 |                       | - Grand Total (subtotal + delivery)                                                                                                                                |
 |                       | - Additional Information: "Spend €X more to get free delivery!" should be shown when the total is less than €50.   |
-| **Testing**           | I navigated to the product details page, verified the correct display of product details (Image, Item, Quantity, Price, and Total), subtotal, delivery, grand total, and the free delivery message. |
+| **Testing**           | I navigated to the shopping bag page, verified the correct display of product details (Image, Item, Quantity, Price, and Total), subtotal, delivery, grand total, and the free delivery message. |
 | **Result**            | All information was displayed correctly:                                                                                                                              |
 |                       | - Each product displayed correct image, item name, quantity, price, and total.                                                                                                            |
 |                       | - Subtotal matched the sum of the selected products.                                                                                                               |
@@ -826,7 +847,7 @@ Only after adding at least one product does the user gain access to the **checko
 ## **Checkout**  
 If a **logged-in user** previously **saved their details**, the system attempts to pre-fill the checkout form. This works correctly—users who have stored their information in their profiles see the form **auto-filled with accurate data**.  
 
-The **payment system functions properly**, and after a successful transaction, a **confirmation message** is displayed as per the project’s design. All links on this page work correctly.  
+The **payment system functions properly**, and after a successful test payment, a **confirmation message** is displayed as per the project’s design. All links on this page work correctly.  
 
 ![checkout page](static/documentation/check.png)
 
@@ -881,8 +902,8 @@ The **payment system functions properly**, and after a successful transaction, a
 |------------------------|--------------------------------------------------------------|
 | **Expected** | After completing the checkout form and clicking the "Complete Order" button, the payment should be processed securely. If the card details are valid, the order should be confirmed, and a success message should appear. If the details are invalid or incomplete, the payment should be declined with a clear error message. |
 | **Testing**  | I filled out all required fields on the checkout form with valid delivery details. Then I entered test card information (Stripe test card: 4242 4242 4242 4242 with a valid future expiry and CVC) and submitted the order. I also tested with invalid card details to see if an error would be returned. |
-| **Result**   | With valid card details, the payment went through, and I was redirected to a confirmation page showing the order summary and order placement success message. With invalid card details, the system showed an error without proceeding. |
-| **Fix**      | No changes needed – payment system is functioning as expected. |
+| **Result**   | With valid Stripe test card details, the payment went through, and I was redirected to a confirmation page showing the order summary and order placement success message. With invalid card details, the system showed an error without proceeding. |
+| **Fix**      | No changes needed – the test payment system is functioning as expected. |
 
 <br>
 
@@ -956,10 +977,14 @@ The logout process functions correctly, requiring **confirmation** as per the pr
 
 # **For Store Employees:**  
 
-## **Landing Page**  
-The landing page is **almost identical** to that of regular users, with the difference that **employees** see additional menu options:  
-- **"All Products"**  
-- **"Log Out"**  
+## **Landing Page**
+The landing page is **almost identical** to the customer view, but **staff members** have different navigation options:
+- **Products**
+- **Manage Products**
+- **Orders**
+- **Logout**
+
+The navigation bar also includes the product search field.
 
 ![Landing page for staff users](static/documentation/staff-landing-page.png)
 
@@ -967,30 +992,31 @@ The landing page is **almost identical** to that of regular users, with the diff
 
 | Manual test case - 50 | Menu Bar Options for Staff Account |
 |------------------------|----------------------------------------------------------|
-| **Expected** | When logged in with a staff account, the menu bar should display only three options: "Search Functionality", "All Products" link, and "Logout". |
-| **Testing**  | I logged in with a staff account and checked the menu bar to verify that only the "Search", "All Products", and "Logout" options were displayed. |
-| **Result**   | The menu bar correctly displayed only the three options: "Search", "All Products", and "Logout" as expected. |
+| **Expected** | When logged in with a staff account, the menu bar should display only these options: "Products", "Manage Products", "Orders" and "Logout". |
+| **Testing**  | I logged in with a staff account and checked the links displayed in the navigation bar. |
+| **Result**   | The menu bar correctly displayed only the four options: "Products", "Manage Products", "Orders" and "Logout" as expected. |
 | **Fix**      | No changes needed – the menu bar worked correctly for the staff account. |
 
 <br>
 
-| Manual test case - 51 | Clicking the "All Products" link |
+| Manual test case - 51 | Clicking the "Manage Products" link |
 |------------------------|---------------------------------------------------------------|
-| **Expected** | When the "All Products" link is clicked, it should navigate to the "Manage Products" page at https://bbdental-4f6c524824c2.herokuapp.com/products/manage/. |
-| **Testing**  | I clicked on the "All Products" link in the menu bar and checked if it redirected to the correct page. |
+| **Expected** | When the "Manage Products" link is clicked, it should open the product management page at https://bbdental-4f6c524824c2.herokuapp.com/products/manage/. |
+| **Testing**  | I clicked on the "Manage Products" link in the menu bar and checked if it redirected to the correct page. |
 | **Result**   | The page correctly opened https://bbdental-4f6c524824c2.herokuapp.com/products/manage/ as expected. |
 | **Fix**      | No changes needed – everything worked as expected. |
 
 <br>
 
-## **All Products**  
+## **Manage Products**
 All **CRUD (Create, Read, Update, Delete) operations** work flawlessly.  
 Employees can:  
-- **View product data**  
-- **Edit product information**  
-- **Delete products from the database**  
+- **View product data**
+- **Add new products**
+- **Edit product information**
+- **Delete products from the database**
 
-![all products page](static/documentation/staff-all-products-page.png)
+![products page](static/documentation/staff-manage-products-page.png)
 
 ## **Add New Product**  
 - The **form renders correctly** and **validation works as expected**.  
@@ -1001,8 +1027,8 @@ Employees can:
 
 | Manual test case - 52 | Add New Product Button Functionality |
 |------------------------|---------------------------------------------------------------|
-| **Expected** | When the "Add new product" button is clicked on the All Products management page, it should open the product creation form at `/products/add/`. |
-| **Testing**  | I clicked the "Add new product" button while on the All Products page. It redirected me to the correct URL: `https://bbdental-4f6c524824c2.herokuapp.com/products/add/`. The form for adding a new product was displayed, including all required input fields and options. |
+| **Expected** | When the "Add new product" button is clicked on the Manage Products page, it should open the product creation form at `/products/add/`. |
+| **Testing**  | I clicked the "Add new product" button while on the Manage Products page. It redirected me to the correct URL: `https://bbdental-4f6c524824c2.herokuapp.com/products/add/`. The form for adding a new product was displayed, including all required input fields and options. |
 | **Result**   | The redirection and form display worked as expected. The page loaded the new product form correctly. |
 | **Fix**      | No fix required – everything works as it should. |
 
@@ -1020,7 +1046,7 @@ Employees can:
 | Manual test case - 54 | Submitting Add Product Form with Spaces |
 |------------------------|---------------------------------------------------------------|
 | **Expected** | If the Add Product form is submitted with spaces (entered by pressing the spacebar) in any required fields, the form should not be processed. It should display an error message at the top saying: "Error occurred while adding the product. Please check the entered details are valid." Additionally, the required fields with only spaces should show the validation message: "This field is required." |
-| **Testing**  | I opened the Add Product form from the All Products page, inserted spaces into the required fields 'Product name', 'Description', 'Price', 'In stock', selected 'manufacturer' (3M) from the dropdown, selected 'Subcategory' (Amalgams), and clicked the "Add product" button. The page remained on the same form, displayed a red error message at the top, and each required field with only spaces showed the message "This field is required." |
+| **Testing**  | I opened the Add Product form from the Manage Products page, inserted spaces into the required fields 'Product name', 'Description', 'Price', 'In stock', selected 'manufacturer' (3M) from the dropdown, selected 'Subcategory' (Amalgams), and clicked the "Add product" button. The page remained on the same form, displayed a red error message at the top, and each required field with only spaces showed the message "This field is required." |
 | **Result**   | The form handled spaces correctly, showing the general error message and marking the required fields with "This field is required." No data was saved. |
 | **Fix**      | No fix needed – validation is working as expected. |
 
@@ -1029,7 +1055,7 @@ Employees can:
 | Manual test case - 55 | Submitting Add Product Form with Invalid 'Price' Value |
 |------------------------|---------------------------------------------------------------|
 | **Expected** | If the 'Price' field is submitted with an invalid value (e.g., negative number, zero, or non-numeric), the form should not be processed. It should display an error message at the top saying: "Error occurred while adding the product. Please check the entered details are valid." Additionally, the 'Price' field should show the validation message: "Ensure this value is greater than or equal to 0.01." |
-| **Testing**  | I opened the Add Product form from the All Products page and entered a negative number (-10) in the 'Price' field, inserted valid data for other required fields, and clicked the "Add product" button. The page remained on the same form, displayed a red error message at the top, and the 'Price' field showed the message "Ensure this value is greater than or equal to 0.01.". I have repeat same steps for zero and non-numeric value |
+| **Testing**  | I opened the Add Product form from the Manage Products page and entered a negative number (-10) in the 'Price' field, inserted valid data for other required fields, and clicked the "Add product" button. The page remained on the same form, displayed a red error message at the top, and the 'Price' field showed the message "Ensure this value is greater than or equal to 0.01.". I have repeat same steps for zero and non-numeric value |
 | **Result**   | The form correctly handled the invalid 'Price' value, displaying the appropriate error message and not saving any data. |
 | **Fix**      | No fix needed – validation for 'Price' is working as expected. |
 
@@ -1038,7 +1064,7 @@ Employees can:
 | Manual test case - 56 | Submitting Add Product Form with Invalid 'In Stock' Value |
 |------------------------|---------------------------------------------------------------|
 | **Expected** | If the 'In Stock' field is submitted with an invalid value (e.g., a negative number or a non-numeric value), the form should not be processed. It should display an error message at the top saying: "Error occurred while adding the product. Please check the entered details are valid." Additionally, the 'In Stock' field should show the validation message: "Ensure this value is greater than or equal to 0." |
-| **Testing**  | I opened the Add Product form from the All Products page and entered a negative number (-5) in the 'In Stock' field, entered valid data for other required fields, and clicked the "Add product" button. The page remained on the same form, displayed a red error message at the top, and the 'In Stock' field showed the message "Ensure this value is greater than or equal to 0." I repear same steps for non-numeric value |
+| **Testing**  | I opened the Add Product form from the Manage Products page and entered a negative number (-5) in the 'In Stock' field, entered valid data for other required fields, and clicked the "Add product" button. The page remained on the same form, displayed a red error message at the top, and the 'In Stock' field showed the message "Ensure this value is greater than or equal to 0." I repear same steps for non-numeric value |
 | **Result**   | The form correctly handled the invalid 'In Stock' value, displaying the appropriate error messages and not saving any data. |
 | **Fix**      | No fix needed – validation for 'In Stock' is working as expected. |
 
@@ -1047,7 +1073,7 @@ Employees can:
 | Manual test case - 57 | Submitting Add Product Form with Default 'Select Manufacturer' Option |
 |------------------------|---------------------------------------------------------------|
 | **Expected** | If the 'Select Manufacturer' option is left as the default in the Manufacturer dropdown and the form is submitted, it should not be processed. Instead, an error message should appear at the top: "Error occurred while adding the product. Please check the entered details are valid." The 'Manufacturer' field should show a validation message: "This field is required." |
-| **Testing**  | I opened the Add Product form from the All Products page, left the 'Manufacturer' dropdown as "Select Manufacturer," filled in the other required fields with valid data, and clicked the "Add product" button. The page stayed on the form, showed a red error message at the top, and marked the 'Manufacturer' field with "This field is required." |
+| **Testing**  | I opened the Add Product form from the Manage Products page, left the 'Manufacturer' dropdown as "Select Manufacturer," filled in the other required fields with valid data, and clicked the "Add product" button. The page stayed on the form, showed a red error message at the top, and marked the 'Manufacturer' field with "This field is required." |
 | **Result**   | The form correctly showed the error message and did not allow submission when the default 'Select Manufacturer' option was left unchanged. No data was saved. |
 | **Fix**      | No changes needed – the validation for the 'Manufacturer' field works as expected. |
 
@@ -1056,7 +1082,7 @@ Employees can:
 | Manual test case - 58 | Submitting Add Product Form with Default 'Select Subcategory' Option |
 |------------------------|---------------------------------------------------------------|
 | **Expected** | If the 'Select Subcategory' option is left as the default in the Subcategory dropdown and the form is submitted, it should not be processed. Instead, an error message should appear at the top: "Error occurred while adding the product. Please check the entered details are valid." The 'Subcategory' field should show a validation message: "This field is required." |
-| **Testing**  | I opened the Add Product form from the All Products page, left the 'Subcategory' dropdown as "Select Subcategory," filled in the other required fields with valid data, and clicked the "Add product" button. The page stayed on the form, showed a red error message at the top, and marked the 'Subcategory' field with "This field is required." |
+| **Testing**  | I opened the Add Product form from the Manage Products page, left the 'Subcategory' dropdown as "Select Subcategory," filled in the other required fields with valid data, and clicked the "Add product" button. The page stayed on the form, showed a red error message at the top, and marked the 'Subcategory' field with "This field is required." |
 | **Result**   | The form correctly showed the error message and did not allow submission when the default 'Select Subcategory' option was left unchanged. No data was saved. |
 | **Fix**      | No changes needed – the validation for the 'Subcategory' field works as expected. |
 
@@ -1064,27 +1090,27 @@ Employees can:
 
 | Manual test case - 59 | Uploading Image in Add Product Form |
 |----------------------------|------------------------------------|
-| **Expected**               | The 'Image' field is optional. If an image is uploaded, it should be accepted successfully. After the product is added, the message "Product added successfully!" should appear, and the user should be redirected to the "All Products" page. If no image is uploaded, the product should still be added correctly. |
-| **Testing**                | I opened the Add Product form, chose an image file (.jpg) for the 'Image' field, filled in all required fields (Product Name, Description, Price, In Stock, Manufacturer, Subcategory), and clicked "Add product." After submission, I confirmed that the success message "Product added successfully!" was displayed and I was redirected to the All Products page. |
-| **Result**                 | The product was successfully added, the success message appeared, and I was redirected to the All Products page with the details of the new product. |
+| **Expected**               | The 'Image' field is optional. If an image is uploaded, it should be accepted successfully. After the product is added, the message "Product added successfully!" should appear, and the user should be redirected to the Manage Products page. If no image is uploaded, the product should still be added correctly. |
+| **Testing**                | I opened the Add Product form, chose an image file (.jpg) for the 'Image' field, filled in all required fields (Product Name, Description, Price, In Stock, Manufacturer, Subcategory), and clicked "Add product." After submission, I confirmed that the success message "Product added successfully!" was displayed and I was redirected to the Manage Products page. |
+| **Result**                 | The product was successfully added, the success message appeared, and I was redirected to the Manage Products page with the details of the new product. |
 | **Fix**                    | No fix needed – everything worked as expected. |
 
 <br>
 
 | Manual test case - 60 | Submitting Add Product Form with All Valid Values |
 |----------------------------|--------------------------------------------------|
-| **Expected**               | When all required fields (Product Name, Description, Price, In Stock, Manufacturer, Subcategory) are filled with valid data, and an optional image is uploaded, the product should be successfully added. After submission, the message "Product added successfully!" should appear, and the user should be redirected to the "All Products" page with the new product listed. |
-| **Testing**                | I opened the Add Product form, filled in all required fields with valid data (Product Name, Description, Price, In Stock, Manufacturer, Subcategory). I also uploaded a valid image (optional) and clicked the "Add product" button. After submitting the form, I confirmed that the success message "Product added successfully!" was displayed, and I was redirected to the All Products page where the new product was listed. |
-| **Result**                 | The product was successfully added, the success message appeared, and I was redirected to the All Products page where the new product was listed. |
+| **Expected**               | When all required fields (Product Name, Description, Price, In Stock, Manufacturer, Subcategory) are filled with valid data, and an optional image is uploaded, the product should be successfully added. After submission, the message "Product added successfully!" should appear, and the user should be redirected to the Manage Products page with the new product listed. |
+| **Testing**                | I opened the Add Product form, filled in all required fields with valid data (Product Name, Description, Price, In Stock, Manufacturer, Subcategory). I also uploaded a valid image (optional) and clicked the "Add product" button. After submitting the form, I confirmed that the success message "Product added successfully!" was displayed, and I was redirected to the Manage Products page where the new product was listed. |
+| **Result**                 | The product was successfully added, the success message appeared, and I was redirected to the Manage Products page where the new product was listed. |
 | **Fix**                    | No fix needed – everything worked as expected. |
 
 <br>
 
 | Manual test case - 61 |  'Back to All Products' Button |
 |----------------------------|----------------------------------------|
-| **Expected**               | Clicking the 'Back to All Products' button should take the user back to the All Products page (https://bbdental-4f6c524824c2.herokuapp.com/products/manage/). |
-| **Testing**                | I opened the Add Product form, filled in all required fields, and clicked the "Back to All Products" button. The page should navigate to the All Products page without any changes being made. |
-| **Result**                 | Clicking the 'Back to All Products' button successfully navigated me back to the All Products page. No changes were made, and the form was not submitted. |
+| **Expected**               | Clicking the 'Back to All Products' button should take the user back to the Manage Products page (https://bbdental-4f6c524824c2.herokuapp.com/products/manage/). |
+| **Testing**                | I opened the Add Product form, filled in all required fields, and clicked the "Back to All Products" button. The page should navigate to the Manage Products page without any changes being made. |
+| **Result**                 | Clicking the 'Back to All Products' button successfully navigated me back to the Manage Products page. No changes were made, and the form was not submitted. |
 | **Fix**                    | No fix needed – the button works as expected. |
 
 <br>
@@ -1095,10 +1121,10 @@ Employees can:
 
 <br>
 
-| Manual test case - 62 | Edit Button Functionality  on All Products Page |
+| Manual test case - 62 | Edit Button Functionality  on Manage Products Page |
 |------------------------|--------------------------------------------------------------|
-| **Expected** | When clicking the "Edit" button next to a product on the All Products page, the system should open the correct Edit Product page. The URL should reflect the ID of the selected product, like: `/products/edit/179/`. |
-| **Testing**  | From the All Products page, I clicked on the "Edit" button next to a product ‘Absorbend paper’. I checked that the page redirected to the correct URL and that the form was populated with the selected product's details. |
+| **Expected** | When clicking the "Edit" button next to a product on the Manage Products page, the system should open the correct Edit Product page. The URL should reflect the ID of the selected product, like: `/products/edit/179/`. |
+| **Testing**  | From the Manage Products page, I clicked on the "Edit" button next to a product ‘Absorbend paper’. I checked that the page redirected to the correct URL and that the form was populated with the selected product's details. |
 | **Result**   | Clicking the button opened the correct Edit Product page. The URL contained the right product ID, and the form showed the expected product details. |
 | **Fix**      | No changes needed – it worked just fine. |
 
@@ -1106,8 +1132,8 @@ Employees can:
 
 | Manual test case - 63 | Edit Product Page – Form and Clear Image Functionality |
 |------------------------|--------------------------------------------------------------|
-| **Expected** | The Edit Product page should display a form pre-filled with the existing product details. This includes fields for Product Name, Description, Price, In Stock, Manufacturer, Subcategory, and a preview of the current image. There should be a "Clear" checkbox for removing the image. After making edits, clicking "Update Product" should save changes, refresh the page, display a success message, and return the user to the All Products page. |
-| **Testing**  | I opened the edit page for the product with ID 233. All fields were correctly pre-filled with current data. I updated the product name, description, price, in stock, Manufacturer, and Subcategory. I also tested the image handling—first by clearing the existing image using the "Clear" checkbox, and then by uploading a new one. After clicking "Update Product", the page refreshed, and a message appeared at the top: “Product: updated successfully!”. I also tested the "Back To All Products" button, and it returned to the product list without saving. I returned to the All Products page where the changes were visible |
+| **Expected** | The Edit Product page should display a form pre-filled with the existing product details. This includes fields for Product Name, Description, Price, In Stock, Manufacturer, Subcategory, and a preview of the current image. There should be a "Clear" checkbox for removing the image. After making edits, clicking "Update Product" should save changes, refresh the page, display a success message, and return the user to the Manage Products page. |
+| **Testing**  | I opened the edit page for the product with ID 233. All fields were correctly pre-filled with current data. I updated the product name, description, price, in stock, Manufacturer, and Subcategory. I also tested the image handling—first by clearing the existing image using the "Clear" checkbox, and then by uploading a new one. After clicking "Update Product", the page refreshed, and a message appeared at the top: “Product: updated successfully!”. I also tested the "Back To All Products" button, and it returned to the product list without saving. I returned to the Manage Products page where the changes were visible |
 | **Result**   | The form worked as expected. All updates were applied correctly, and the confirmation message appeared after saving. Both image removal and replacement worked. Manufacturer and Subcategory were also saved properly. |
 | **Fix**      | No fix needed – everything is functioning as it should. |
 
@@ -1160,8 +1186,8 @@ Employees can:
 
 | Manual test case - 69 | Manufacturer dropdown on Edit Product page |
 |------------------------|---------------------------------------------------------------|
-| **Expected** | The 'Manufacturer' dropdown should show a list of all available manufacturers. The currently assigned manufacturer should be selected by default. When a different manufacturer is chosen and the product is updated, the change should be saved, and a confirmation popup saying "Product: updated successfully!" should appear. The updated manufacturer should be reflected on the All Products page. |
-| **Testing**  | I opened the edit page for product ID 233. The 'Manufacturer' dropdown had the current manufacturer selected. I picked another manufacturer ('Aliganty') from the list and hit "Update Product". A message popped up saying "Product: updated successfully!". I checked the All Products page and confirmed the manufacturer was updated. |
+| **Expected** | The 'Manufacturer' dropdown should show a list of all available manufacturers. The currently assigned manufacturer should be selected by default. When a different manufacturer is chosen and the product is updated, the change should be saved, and a confirmation popup saying "Product: updated successfully!" should appear. The updated manufacturer should be reflected on the Manage Products page. |
+| **Testing**  | I opened the edit page for product ID 233. The 'Manufacturer' dropdown had the current manufacturer selected. I picked another manufacturer ('Aliganty') from the list and hit "Update Product". A message popped up saying "Product: updated successfully!". I checked the Manage Products page and confirmed the manufacturer was updated. |
 | **Result**   | The dropdown listed all options, showed the current selection, saved the new one, and displayed the confirmation popup. |
 | **Fix**      | No fix needed – everything worked as expected. |
 
@@ -1169,8 +1195,8 @@ Employees can:
 
 | Manual test case - 70 | Subcategory dropdown on Edit Product page |
 |------------------------|---------------------------------------------------------------|
-| **Expected** | The 'Subcategory' dropdown should show all available subcategories. The current one should be selected by default. When a new subcategory is selected and changes are saved, the confirmation popup "Product: updated successfully!" should appear, and the update should be reflected on the All Products page. |
-| **Testing**  | I went to the edit page for product ID 233. The 'Subcategory' dropdown was pre-selected with the correct value. I picked another subcategory ('Cements') and hit "Update Product". I saw the message "Product: updated successfully!" and verified the product's subcategory was updated on the All Products page. |
+| **Expected** | The 'Subcategory' dropdown should show all available subcategories. The current one should be selected by default. When a new subcategory is selected and changes are saved, the confirmation popup "Product: updated successfully!" should appear, and the update should be reflected on the Manage Products page. |
+| **Testing**  | I went to the edit page for product ID 233. The 'Subcategory' dropdown was pre-selected with the correct value. I picked another subcategory ('Cements') and hit "Update Product". I saw the message "Product: updated successfully!" and verified the product's subcategory was updated on the Manage Products page. |
 | **Result**   | Everything worked as it should – from default selection, saving changes, to showing the confirmation message. |
 | **Fix**      | No fix needed – everything worked as expected. |
 
@@ -1200,8 +1226,8 @@ Employees can:
 
 | Manual test case - 73 | "Delete" Button and Confirmation Modal Functionality |
 |----------------------------|----------------------------------------------------------------------------------------------------|
-| **Expected**               | When the "Delete" button is clicked on a product entry on the All Products page (https://bbdental-4f6c524824c2.herokuapp.com/products/manage/), a confirmation modal should appear with the message "Are you sure you want to delete?" and two options: "Cancel" and "Yes, delete". Clicking "Cancel" should close the modal with no action taken. Clicking "Yes, delete" should permanently remove the product from the database, and it should no longer appear on the All Products page. After deletion, a pop-up message "Product: deleted successfully!" should be displayed. |
-| **Testing**                | I went to the All Products page and clicked the "Delete" button on one of the product entries (ID 233). A modal appeared with the correct confirmation message and options. First, I clicked "Cancel" to check if the product remained – the modal closed, and no changes occurred. Then, I repeated the process and clicked "Yes, delete". The product was removed, the page refreshed, and it was no longer listed. A pop-up message "Product: deleted successfully!" appeared after deletion. |
+| **Expected**               | When the "Delete" button is clicked on a product entry on the Manage Products page (https://bbdental-4f6c524824c2.herokuapp.com/products/manage/), a confirmation modal should appear with the message "Are you sure you want to delete?" and two options: "Cancel" and "Yes, delete". Clicking "Cancel" should close the modal with no action taken. Clicking "Yes, delete" should permanently remove the product from the database, and it should no longer appear on the Manage Products page. After deletion, a pop-up message "Product: deleted successfully!" should be displayed. |
+| **Testing**                | I went to the Manage Products page and clicked the "Delete" button on one of the product entries (ID 233). A modal appeared with the correct confirmation message and options. First, I clicked "Cancel" to check if the product remained – the modal closed, and no changes occurred. Then, I repeated the process and clicked "Yes, delete". The product was removed, the page refreshed, and it was no longer listed. A pop-up message "Product: deleted successfully!" appeared after deletion. |
 | **Result**                 | Everything worked as expected. The modal appeared correctly, the cancel button dismissed it without deleting, and confirming the deletion removed the product from the list. The "Product: deleted successfully!" message appeared as expected. |
 | **Fix**                    | No changes needed – the delete functionality works correctly. |
 
@@ -1263,6 +1289,56 @@ You now have the full project on your machine and can begin editing, testing, or
 
 If you are looking for more information on cloning, you can refer to GitHub's official documentation [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
+### Running the Project Locally
+
+Create and activate a virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install the required packages:
+
+```bash
+pip3 install -r requirements.txt
+```
+
+Set the required environment variables using your own values:
+
+```bash
+export SECRET_KEY="your-secret-key"
+export DEBUG="True"
+export DATABASE_URL="your-database-url"
+export CLOUDINARY_URL="your-cloudinary-url"
+export EMAIL_HOST_USER="your-email-address"
+export GMAIL_APP_PASSWORD="your-gmail-app-password"
+export DEFAULT_FROM_EMAIL="your-email-address"
+export STRIPE_PUBLIC_KEY="your-stripe-public-key"
+export STRIPE_SECRET_KEY="your-stripe-secret-key"
+export STRIPE_WH_SECRET="your-local-webhook-secret"
+```
+
+More information about obtaining these values is provided in the setup sections below. Secrets and passwords should never be committed to GitHub.
+
+Apply the database migrations:
+
+```bash
+python manage.py migrate
+```
+
+Start the development server:
+
+```bash
+python manage.py runserver
+```
+
+The website should then be available at:
+
+```text
+http://127.0.0.1:8000/
+```
+
 ### Heroku
 
 Heroku is a cloud service that simplifies the process of hosting and managing apps. It handles the infrastructure for you, so you can focus on building and deploying your application.
@@ -1279,15 +1355,14 @@ To deploy the project to Heroku, the following steps were taken:
    - CLOUDINARY_URL (refer to [Setting Up a Cloudinary Account](#setting-up-a-cloudinary-account))
    - DATABASE_URL (refer to [Setting up a PostreSQL from Code Institute](#setting-up-a-postresql-from-code-institute))
    - DEFAULT_FROM_EMAIL (default email address from which the app sends emails, e.g. my-email@gmail.com)
-   - SENDGRID_API_KEY (refer to [Setting up a SendGrid Account](#setting-up-a-sendgrid-account))
+   - GMAIL_APP_PASSWORD (refer to [Setting Up Gmail SMTP](#setting-up-gmail-smtp))
    - STRIPE_PUBLIC_KEY (refer to [Setting Up a Stripe Account](#setting-up-a-stripe-account))
    - STRIPE_SECRET_KEY (refer to [Setting Up a Stripe Account](#setting-up-a-stripe-account))
    - STRIPE_WH_SECRET (refer to [Setting Up a Stripe Account](#setting-up-a-stripe-account))
-   - DISABLE_COLLECTSTATIC=1
+   - EMAIL_HOST_USER (the Gmail address used to send project emails)
+   - DEBUG (set to False)
 
-![Collectstatic](static/documentation/heroku-collectstatic.png)
-
-1. Deploy by going to the 'Deploy' section and connecting to the project's repository on GitHub. Press 'Connect' once everything is set up. Finally, press 'Deploy Branch' main and wait for the process to complete. Youe should see 'Your app was successfully deployed'
+5. Deploy by going to the 'Deploy' section and connecting to the project's repository on GitHub. Press 'Connect' once everything is set up. Finally, press 'Deploy Branch' main and wait for the process to complete. Youe should see 'Your app was successfully deployed'
 
 ![Heroku Deployment](static/documentation/heroku-deployment.png)
 
@@ -1302,31 +1377,79 @@ This project uses Cloudinary to manage images. If you plan to use it, you will n
 
 ### Setting Up a Stripe Account
 
-Stripe is used to serve payments. To get Stripe working in your project, you will first need an account:
+Stripe is used in test mode to process test payments. No real money is taken.
+To get Stripe working in your project, you will first need an account:
 
 1. Head over to [stripe.com](https://stripe.com/) and hit “Start now” or “Sign in”.
 2. You will need an email, and password to create your account. You can use Google login if that is easier.
 3. Once you are signed in, you will land on your dashboard.
 4. Within the 'dashboard', go to 'Developers' section (bottom left), click on 'API Keys' and note down your API keys: Secret Key and Publishable Key. These correspond to your environment variables: STRIPE_SECRET_KEY and STRIPE_PUBLIC_KEY, respectively.
-5. For the Webhook secret, go to 'Developers' > 'Webhooks'. Make sure you are in the 'Webhooks' tab and click 'Test with a local listener' and follow the instructions on screen. 
+
+#### Testing Webhooks Locally
+
+Stripe CLI is used to forward test webhook events to the local Django server.
+
+1. Install Stripe CLI and log in using:
+
+   `stripe login`
+
+2. Start the local Django server.
+3. In a separate terminal, run:
+
+   `stripe listen --events payment_intent.succeeded,payment_intent.payment_failed --forward-to http://127.0.0.1:8000/checkout/wh/`
+
+4. Stripe CLI will display a webhook signing secret beginning with `whsec_`.
+
+![Stripe secret](static/documentation/stripe-webhooks-secret.png)
+
+5. Save this value as `STRIPE_WH_SECRET` in the local environment used by Django.
+
+<br>
+<em>If you wish to listen to all events you can run these commands instead:</em>
+<br>
+<br>
 
 ![Stripe Webhooks Listener](static/documentation/stripe-webhooks-listener.png)
 
-6. After you execute command `stripe listen` you should get in response `Your webhook signing secret is ..`. Use this secret as your environment variable STRIPE_WH_SECRET
-   
-![Stripe secret](static/documentation/stripe-webhooks-secret.png)
+#### Setting Up the Heroku Webhook
 
-### Setting up a SendGrid Account 
+The deployed website uses a separate Stripe webhook destination.
 
-To send emails SendGrid was used. SendGrid is a great service for handling email delivery. Here is how you can set up an account and get your API key:
+1. In Stripe Workbench, open Webhooks and create a new event destination.
 
-1. Go to [SendGrid](https://sendgrid.com/) website.
-2. Click “Start For Free” or “Sign In” at the top-right corner.
-3. Sign up by entering your email, setting a password, and completing any necessary verification (you can also use Google to sign up if that is easier).
-4. After signing up, check your email for a verification link, then you will be directed to your SendGrid Dashboard.
-5. From the dashboard, go to 'Settings' in the left-hand sidebar and click 'API Keys'
-6. Hit the 'Create API Key' button. You will be prompted to give it a name (e.g., “My App Email Key”) and choose the access level (full access is fine for most projects).
-7. Once the key is created, make sure to copy it immediately because you will not be able to view it again. This will be the value you use for SENDGRID_API_KEY as environment variable.
+<img src="static/documentation/webhook-add-destination.png" alt="Stripe Webhooks New Destination" height="50" style="margin-left:120px">
+
+<img src="static/documentation/stripe-endpoints.png" alt="Stripe Endpoints" height="70" style="margin-left:120px">
+
+2. Select the `payment_intent.succeeded` and `payment_intent.payment_failed` events.
+
+<img src="static/documentation/stripe-events.png" alt="Stripe Events" height="300" style="margin-left:120px">
+
+3. Use the following endpoint URL:
+
+   `https://bbdental-4f6c524824c2.herokuapp.com/checkout/wh/`
+
+4. After creating the destination, open its signing secret.
+5. Save this secret as the `STRIPE_WH_SECRET` Config Var in Heroku.
+
+<img src="static/documentation/heroku-config-var.png" alt="Stripe Events" height="120" style="margin-left:120px">
+
+<br>
+
+The local Stripe CLI listener and the Heroku webhook destination use different signing secrets. Each environment must use the secret created for its own webhook.
+
+### Setting Up Gmail SMTP
+
+Gmail SMTP is used to send account, contact form and order confirmation emails.
+
+1. Sign in to the [Google Account](https://myaccount.google.com/) used for sending project emails.
+2. Enable 2-Step Verification for the account at https://myaccount.google.com/security.
+3. Open the [App Passwords section](https://myaccount.google.com/apppasswords) and create an app password for the project.
+4. Save the Gmail address as the `EMAIL_HOST_USER` environment variable.
+5. Save the generated password as the `GMAIL_APP_PASSWORD` environment variable.
+6. Set `DEFAULT_FROM_EMAIL` to the same email address.
+
+The app password must belong to the Gmail account set as `EMAIL_HOST_USER`. App passwords and other email credentials must not be added to GitHub.
 
 ### Setting up a PostreSQL from Code Institute
 
@@ -1433,48 +1556,74 @@ If you need to install Python you can find installation instructions at https://
 51. https://www.youtube.com/watch?v=AU0F2wnrbEs&t=2s
 52. https://www.youtube.com/watch?v=lg8p1vD9-Bs
 53. https://www.youtube.com/watch?v=j9mLOyjd_KY
-54. https://www.twilio.com/docs/sendgrid/for-developers/sending-email/django
-55. https://www.pythontutorial.net/django-tutorial/django-exists/
-56. https://www.programiz.com/python-programming/datetime/strftime
-57. https://docs.djangoproject.com/en/5.1/ref/forms/fields/
-58. https://docs.djangoproject.com/en/5.1/ref/forms/fields/#django.forms.ModelChoiceField
-59. [ChatGPT](https://openai.com/index/chatgpt/) - used for transtranslation mainly but great companion in explaing errors
-60. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
-61. https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/
-62. https://www.geeksforgeeks.org/how-to-set-the-timezone-in-django/
-63. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
-64. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/#django.contrib.admin.views.decorators.staff_member_required
-65. https://docs.djangoproject.com/en/1.8/_modules/django/test/testcases/
-66. https://docs.python.org/3/library/sqlite3.html#sqlite3.IntegrityError
-67. https://www.w3schools.com/python/python_decorators.asp
-68. https://docs.python.org/3/library/functools.html#functools.wraps
-69. https://mofidtech.fr/articles/custom-decorators-in-django/
-70. https://www.edureka.co/community/81432/how-can-i-unit-test-django-messages
-71. https://docs.djangoproject.com/en/5.1/topics/templates/
-72. https://docs.djangoproject.com/en/5.1/ref/signals/
-73. https://medium.com/@anwar.basha7070/conditional-logic-made-simple-ternary-operator-in-python-list-comprehensions-45d98525cb55
-74. https://docs.djangoproject.com/en/5.1/topics/testing/tools/
-75. https://docs.djangoproject.com/en/5.1/topics/testing/tools/#django.test.SimpleTestCase.assertRedirects
-76. https://docs.python.org/3.12/library/uuid.html
-77. https://docs.stripe.com/api/payment_intents
-78. https://docs.stripe.com/payments/payment-intents
-79. https://docs.stripe.com/payments/payment-intents/verifying-status
-80. https://docs.stripe.com/payments/payment-intents/verifying-status#webhooks
-81. https://docs.stripe.com/webhooks/signature
-82. https://docs.stripe.com/webhooks
-83. https://docs.stripe.com/webhooks#handle-duplicate-events
-84. https://docs.stripe.com/metadata
-85. https://docs.stripe.com/api/payment_intents/update
-86. https://docs.stripe.com/js/payment_intents/confirm_card_payment
-87. https://github.com/stripe/stripe-cli/wiki
-88. https://docs.stripe.com/stripe-cli
-89. https://docs.python.org/3.12/library/json.html
-90. https://coddy.tech/learn/courses/python_json/jsondumps
-91. https://learn.jquery.com
-92. https://api.jquery.com/jQuery/
-93. https://api.jquery.com/jQuery.post/
-94. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
-95. https://docs.djangoproject.com/en/5.1/ref/models/querysets/
-96. https://docs.djangoproject.com/en/5.1/ref/models/class/#django.db.models.Model.DoesNotExist
-    
+54. https://www.pythontutorial.net/django-tutorial/django-exists/
+55. https://www.programiz.com/python-programming/datetime/strftime
+56. https://docs.djangoproject.com/en/5.1/ref/forms/fields/
+57. https://docs.djangoproject.com/en/5.1/ref/forms/fields/#django.forms.ModelChoiceField
+58. [ChatGPT](https://openai.com/index/chatgpt/) - used mainly for translation and for explaining errors during development
+59. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+60. https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/
+61. https://www.geeksforgeeks.org/how-to-set-the-timezone-in-django/
+62. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
+63. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/#django.contrib.admin.views.decorators.staff_member_required
+64. https://docs.djangoproject.com/en/1.8/_modules/django/test/testcases/
+65. https://docs.python.org/3/library/sqlite3.html#sqlite3.IntegrityError
+66. https://www.w3schools.com/python/python_decorators.asp
+67. https://docs.python.org/3/library/functools.html#functools.wraps
+68. https://mofidtech.fr/articles/custom-decorators-in-django/
+69. https://www.edureka.co/community/81432/how-can-i-unit-test-django-messages
+70. https://docs.djangoproject.com/en/5.1/topics/templates/
+71. https://docs.djangoproject.com/en/5.1/ref/signals/
+72. https://medium.com/@anwar.basha7070/conditional-logic-made-simple-ternary-operator-in-python-list-comprehensions-45d98525cb55
+73. https://docs.djangoproject.com/en/5.1/topics/testing/tools/
+74. https://docs.djangoproject.com/en/5.1/topics/testing/tools/#django.test.SimpleTestCase.assertRedirects
+75. https://docs.python.org/3.12/library/uuid.html
+76. https://docs.stripe.com/api/payment_intents
+77. https://docs.stripe.com/payments/payment-intents
+78. https://docs.stripe.com/payments/payment-intents/verifying-status
+79. https://docs.stripe.com/payments/payment-intents/verifying-status#webhooks
+80. https://docs.stripe.com/webhooks/signature
+81. https://docs.stripe.com/webhooks
+82. https://docs.stripe.com/webhooks#handle-duplicate-events
+83. https://docs.stripe.com/metadata
+84. https://docs.stripe.com/api/payment_intents/update
+85. https://docs.stripe.com/js/payment_intents/confirm_card_payment
+86. https://github.com/stripe/stripe-cli/wiki
+87. https://docs.stripe.com/stripe-cli
+88. https://docs.python.org/3.12/library/json.html
+89. https://coddy.tech/learn/courses/python_json/jsondumps
+90. https://learn.jquery.com
+91. https://api.jquery.com/jQuery/
+92. https://api.jquery.com/jQuery.post/
+93. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+94. https://docs.djangoproject.com/en/5.1/ref/models/querysets/
+95. https://docs.djangoproject.com/en/5.1/ref/models/class/#django.db.models.Model.DoesNotExist
+96. https://docs.djangoproject.com/en/5.1/ref/models/instances/#django.db.models.Model.get_FOO_display
+97. https://docs.djangoproject.com/en/5.1/ref/urlresolvers/
+98. https://docs.python.org/3.12/tutorial/inputoutput.html#formatted-string-literals
+99.  https://docs.djangoproject.com/en/5.1/topics/http
+100. https://docs.allauth.org
+101. Your Europe - [Setting up a business website](https://europa.eu/youreurope/business/growing/digitalising/setting-up-business-website/index_en.htm) - used to check what business, contact and legal information should be displayed on an online shop
+102. EUR-Lex - [Directive 2000/31/EC on electronic commerce](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02000L0031-20240217) - used to understand what information an online shop should provide and how online orders and terms should be presented
+103. EUR-Lex - [Directive 2011/83/EU on consumer rights](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02011L0083-20220528) - Article 2 was used to understand who is considered a consumer and to distinguish consumers from people acting for business or professional purposes
+104. [Stripe Documentation](https://docs.stripe.com/testing) - Testing - used to confirm that test transactions simulate payments without moving real money
+105. EUR-Lex - [GDPR Article 13](https://eur-lex.europa.eu/eli/reg/2016/679/art_13/oj/eng) - used to understand what information should be included in a privacy policy, including contact details, reasons for using personal data, data sharing, retention and user rights
+106. [Data Protection Commission - Right to be informed](https://www.dataprotection.ie/en/individuals/know-your-rights/right-be-informed-transparency-article-13-14-gdpr) - used as practical guidance for organising the privacy policy and presenting the information in clear and simple language
+107. [Data Protection Commission - Cookies guidance](https://www.dataprotection.ie/en/dpc-guidance/guidance-cookies-and-other-tracking-technologies) - used to understand what information should be provided about cookies and when cookie consent may be required
+108. [Data Protection Commission - GDPR rights](https://www.dataprotection.ie/en/individuals/rights-individuals-under-general-data-protection-regulation) - used as a reference for the personal data rights described in the policy
+109. [Data Protection Commission - International data transfers](https://www.dataprotection.ie/en/organisations/international-transfers/transfers-personal-data-third-countries-or-international-organisations) - used to understand how personal information may be protected when it is processed outside the European Economic Area
+110. [Stripe Privacy Policy](https://stripe.com/ie/privacy) - used to understand what personal and payment information Stripe may handle
+111. [Stripe Cookie Policy](https://stripe.com/ie/legal/cookies-policy) - used as a reference for cookies connected with Stripe payment features
+112. [Stripe Integration Security Guide](https://docs.stripe.com/security/guide) - used to confirm that card details can be sent directly to Stripe without passing through the website server
+113. [Google Privacy Policy](https://policies.google.com/privacy?hl=en-IE) - used as a reference for how Google handles information when Gmail is used to send project emails
+114. [Heroku Security Policy](https://www.heroku.com/policy/security/) - used as a reference for how Heroku hosts and protects deployed applications
+115. [Django Documentation - Password management](https://docs.djangoproject.com/en/5.1/topics/auth/passwords/) - used to confirm that Django stores password hashes instead of readable passwords
+116. [Django Documentation - CSRF protection](https://docs.djangoproject.com/en/5.1/ref/csrf/) - used to understand how Django uses a CSRF cookie to protect submitted forms
+117. Django Documentation - [SESSION_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-age) and [CSRF_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-age) - used to confirm the default lifetime of the session and CSRF cookies
+118. [Google Account Help - Sign in with app passwords](https://support.google.com/accounts/answer/185833) - used to set up an app password for sending project emails through Gmail SMTP
+119. [DBeaver Documentation - ER Diagrams](https://dbeaver.com/docs/dbeaver/ER-Diagrams/) - used to create and export the database schema diagram 
+120. [Microsoft Support - Crow's Foot database notation](https://support.microsoft.com/en-us/visio/create-a-diagram-with-crow-s-foot-database-notation) - used to understand the relationship and cardinality symbols shown in the database diagram
+121. https://www.freecodecamp.org/news/crows-foot-notation-relationship-symbols-and-how-to-read-diagrams/
+122. [Django Allauth Documentation - Custom Signup Forms](https://docs.allauth.org/en/dev/account/configuration.html#account-signup-form-class) - used to add the Business name field to the signup form and save it to the user's profile
+
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
