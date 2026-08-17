@@ -1,21 +1,23 @@
-from django.shortcuts import get_object_or_404, render, redirect, reverse
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from bag.contexts import bag_contents
-from django.conf import settings
-from products.models import Product
-from profiles.models import UserProfile
-from .models import OrderLineItem, Order
-from .forms import OrderForm, OrderStatusForm
-from bbdental.decorators import customer_required
-from .emails import send_order_confirmation
-from django.views.decorators.http import require_POST
-from django.http import HttpResponse
-from django.contrib.admin.views.decorators import staff_member_required
-from django.core.paginator import Paginator
+import json
 
 import stripe
-import json
+from django.conf import settings
+from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.views.decorators.http import require_POST
+
+from bag.contexts import bag_contents
+from bbdental.decorators import customer_required
+from products.models import Product
+from profiles.models import UserProfile
+
+from .emails import send_order_confirmation
+from .forms import OrderForm, OrderStatusForm
+from .models import Order, OrderLineItem
 
 
 # Create your views here.

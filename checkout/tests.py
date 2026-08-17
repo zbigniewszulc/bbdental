@@ -1,15 +1,17 @@
 import json
+from decimal import Decimal
 
-from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
+from django.core import mail
+from django.template.loader import render_to_string
 from django.test import TestCase
 from django.urls import reverse
-from .forms import OrderForm, OrderStatusForm
-from decimal import Decimal
-from django.core import mail
+
 from products.models import Category, Manufacturer, Product, Subcategory
+
 from .emails import send_order_confirmation
+from .forms import OrderForm, OrderStatusForm
 from .models import Order, OrderLineItem
 from .webhook_handler import StripeWH_Handler
 

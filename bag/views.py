@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from products.models import Product
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
+
 from bbdental.decorators import customer_required
+from products.models import Product
 
 # Create your views here.
 

@@ -1,5 +1,6 @@
 from django import forms
-from .models import Product, Subcategory, Manufacturer
+
+from .models import Manufacturer, Product, Subcategory
 
 
 class ProductForm(forms.ModelForm):

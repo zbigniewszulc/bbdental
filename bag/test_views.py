@@ -1,7 +1,8 @@
-from django.test import TestCase, Client
-from django.urls import reverse
 from django.contrib.auth.models import User
-from products.models import Product, Manufacturer, Category, Subcategory
+from django.test import Client, TestCase
+from django.urls import reverse
+
+from products.models import Category, Manufacturer, Product, Subcategory
 
 
 class BagViewsTests(TestCase):

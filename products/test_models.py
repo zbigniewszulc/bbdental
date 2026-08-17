@@ -1,7 +1,9 @@
-from django.test import TestCase
-from .models import Category, Subcategory, Manufacturer, Product
-from django.core.exceptions import ValidationError
 from decimal import Decimal
+
+from django.core.exceptions import ValidationError
+from django.test import TestCase
+
+from .models import Category, Manufacturer, Product, Subcategory
 
 
 class CategoryModelTest(TestCase):

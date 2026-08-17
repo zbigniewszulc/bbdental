@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Category, Subcategory, Manufacturer, Product
+
+from .models import Category, Manufacturer, Product, Subcategory
 
 # Register your models here.
 

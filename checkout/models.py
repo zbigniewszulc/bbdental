@@ -1,10 +1,12 @@
 import uuid
+
+from django.conf import settings
 from django.db import models
+from django.db.models import Sum
+from django_countries import Countries
 # https://pypi.org/project/django-countries/#custom-forms
 from django_countries.fields import CountryField
-from django_countries import Countries
-from django.db.models import Sum
-from django.conf import settings
+
 from products.models import Product
 from profiles.models import UserProfile
 

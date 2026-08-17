@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator
-from django.db.models.functions import Lower
-from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category, Subcategory, Manufacturer
+from django.db.models.functions import Lower
+from django.shortcuts import get_object_or_404, redirect, render, reverse
+
 from .forms import ProductForm
+from .models import Category, Manufacturer, Product, Subcategory
 
 # Create your views here.
 

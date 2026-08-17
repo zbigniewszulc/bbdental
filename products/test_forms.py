@@ -1,6 +1,7 @@
 from django.test import TestCase
+
 from products.forms import ProductForm
-from products.models import Manufacturer, Subcategory, Category
+from products.models import Category, Manufacturer, Subcategory
 
 
 class ProductFormTest(TestCase):

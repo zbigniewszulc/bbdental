@@ -1,9 +1,11 @@
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
+
+from checkout.models import Order
+
 from .forms import UserProfileForm
 from .models import UserProfile
-from checkout.models import Order
 
 
 class ProfileViewsTests(TestCase):

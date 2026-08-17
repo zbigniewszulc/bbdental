@@ -1,7 +1,7 @@
-from django.db import models
 from cloudinary.models import CloudinaryField
 # https://studygyaan.com/django/how-to-implement-validators-in-django-models
 from django.core.validators import MinValueValidator
+from django.db import models
 
 # Create your models here.
 
