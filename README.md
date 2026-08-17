@@ -1625,5 +1625,13 @@ If you need to install Python you can find installation instructions at https://
 120. [Microsoft Support - Crow's Foot database notation](https://support.microsoft.com/en-us/visio/create-a-diagram-with-crow-s-foot-database-notation) - used to understand the relationship and cardinality symbols shown in the database diagram
 121. https://www.freecodecamp.org/news/crows-foot-notation-relationship-symbols-and-how-to-read-diagrams/
 122. [Django Allauth Documentation - Custom Signup Forms](https://docs.allauth.org/en/dev/account/configuration.html#account-signup-form-class) - used to add the Business name field to the signup form and save it to the user's profile
+123. https://docs.djangoproject.com/en/5.1/ref/models/querysets/#count
+124. https://peps.python.org/pep-0008/#imports
+125. https://isort.readthedocs.io/en/latest/ - used to organise Python imports across the project
+126. https://docs.python.org/3/library/decimal.html
+127. https://docs.djangoproject.com/en/5.1/topics/db/aggregation/ - used to calculate total revenue from customer orders
+128. https://docs.python.org/3/reference/expressions.html#boolean-operations
+129. https://docs.python.org/3/reference/expressions.html#subscriptions - accessing a dictionary value from a method’s return value
+130. https://docs.python.org/3/library/stdtypes.html#truth-value-testing
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
