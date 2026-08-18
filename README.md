@@ -1631,7 +1631,7 @@ If you need to install Python you can find installation instructions at https://
 126. https://peps.python.org/pep-0008/#imports
 127. https://isort.readthedocs.io/en/latest/ - used to organise Python imports across the project
 128. https://docs.python.org/3/library/decimal.html
-129. https://docs.djangoproject.com/en/5.1/topics/db/aggregation/ - used to calculate total revenue from customer orders
+129. https://docs.djangoproject.com/en/5.1/topics/db/aggregation/ - used to calculate total revenue from customer orders and to calculate top selling products based on sold quantities
 130. https://docs.python.org/3/reference/expressions.html#boolean-operations
 131. https://docs.python.org/3/reference/expressions.html#subscriptions - accessing a dictionary value from a method’s return value
 132. https://docs.python.org/3/library/stdtypes.html#truth-value-testing

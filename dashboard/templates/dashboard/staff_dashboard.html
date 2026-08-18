@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-4">
+            <div class="row mt-4 g-3">
                 <div class="col-12 col-lg-8 col-xl-6">
                     <div class="card shadow-sm">
                         <div class="card-body">
@@ -31,10 +31,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 col-lg-8 col-xl-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">Top 5 Selling Products</h3>
+                            <canvas id="top-selling-products-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Monthly order data for the Chart.js -->
             {{ monthly_order_labels|json_script:"monthly-order-labels" }}
             {{ monthly_order_totals|json_script:"monthly-order-totals" }}
+            <!-- Top selling product data for Chart.js -->
+            {{ top_selling_product_labels|json_script:"top-selling-product-labels" }}
+            {{ top_selling_product_totals|json_script:"top-selling-product-totals" }}
         </section>
     </main>
 {% endblock %}

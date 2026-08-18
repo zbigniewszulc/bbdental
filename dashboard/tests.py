@@ -6,7 +6,8 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
 
-from checkout.models import Order
+from checkout.models import Order, OrderLineItem
+from products.models import Category, Manufacturer, Product, Subcategory
 
 
 # Create your tests here.
@@ -144,6 +145,104 @@ class StaffDashboardTests(TestCase):
         self.assertEqual(
             response.context["monthly_order_totals"],
             [1, 1],
+        )
+
+    def test_dashboard_prepares_top_selling_products_data(self):
+        """Check if products are ordered by the quantity sold"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        product_one = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Product One",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=20,
+        )
+        product_two = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Product Two",
+            description="Test product",
+            price=Decimal("20.00"),
+            in_stock=20,
+        )
+        order = Order.objects.create(
+            business_name="Dental Practice One",
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 86 111 1111",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        OrderLineItem.objects.create(
+            order=order,
+            product=product_one,
+            quantity=2,
+        )
+        OrderLineItem.objects.create(
+            order=order,
+            product=product_two,
+            quantity=5,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        self.assertEqual(
+            list(response.context["top_selling_products"]),
+            [
+                {
+                    "product__product_name": "Product Two",
+                    "total_quantity": 5,
+                },
+                {
+                    "product__product_name": "Product One",
+                    "total_quantity": 2,
+                },
+            ],
+        )
+        self.assertEqual(
+            response.context["top_selling_product_labels"],
+            ["Product Two", "Product One"],
+        )
+        self.assertEqual(
+            response.context["top_selling_product_totals"],
+            [5, 2],
+        )
+
+    def test_dashboard_displays_top_selling_products_chart(self):
+        """Check if the top selling products chart is displayed"""
+        response = self.client.get(reverse("staff_dashboard"))
+
+        self.assertContains(response, "Top 5 Selling Products")
+        self.assertContains(
+            response,
+            'id="top-selling-products-chart"',
+        )
+
+    def test_dashboard_includes_top_selling_product_data(self):
+        """Check if top selling product data is included for the chart"""
+        response = self.client.get(reverse("staff_dashboard"))
+
+        self.assertContains(
+            response,
+            'id="top-selling-product-labels"',
+        )
+        self.assertContains(
+            response,
+            'id="top-selling-product-totals"',
         )
 
     def test_dashboard_displays_monthly_orders_chart(self):
