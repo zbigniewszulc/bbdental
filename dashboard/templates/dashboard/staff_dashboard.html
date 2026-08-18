@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
     <main class="container mt-2 mt-md-5">
         <section>
@@ -21,6 +22,23 @@
                     </div>
                 </div>
             </div>
+            <div class="row mt-4">
+                <div class="col-12 col-lg-8 col-xl-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">Monthly Orders</h3>
+                            <canvas id="monthly-orders-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Monthly order data for the Chart.js -->
+            {{ monthly_order_labels|json_script:"monthly-order-labels" }}
+            {{ monthly_order_totals|json_script:"monthly-order-totals" }}
         </section>
     </main>
+{% endblock %}
+{% block postload_js %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'dashboard/js/dashboard.js' %}"></script>
 {% endblock %}

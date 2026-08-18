@@ -1514,124 +1514,129 @@ If you need to install Python you can find installation instructions at https://
 9.  https://medium.com/@iamalisaleh/how-to-get-the-current-url-within-a-django-template-8270b977f280
 10. https://simpleisbetterthancomplex.com/tips/2016/07/20/django-tip-7-how-to-get-the-current-url-within-a-django-template.html
 11. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/
-12. https://docs.djangoproject.com/en/5.1/topics/db/queries/
-13. https://docs.djangoproject.com/en/5.1/topics/db/optimization/
-14. https://docs.djangoproject.com/en/5.1/topics/db/optimization/#use-queryset-select-related-and-prefetch-related
-15. https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/
-16. https://docs.djangoproject.com/en/5.1/topics/pagination/
-17. https://docs.djangoproject.com/en/5.1/ref/paginator/#django.core.paginator.Paginator
-18. https://getbootstrap.com/docs/5.3/components/pagination/
-19. https://www.w3schools.com/bootstrap5/bootstrap_tooltip.php
-20. https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
-21. https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
-22. https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-23. https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
-24. https://stackoverflow.com/questions/5150363/onchange-open-url-via-select-jquery
-25. https://docs.djangoproject.com/en/5.1/ref/models/database-functions/
-26. https://docs.djangoproject.com/en/5.1/topics/db/queries/
-27. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#urlencode
-28. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#floatformat
-29. https://www.youtube.com/watch?v=65RVPDOhRIc&t=73s
-30. https://www.w3schools.com/django/ref_filters_default.php
-31. https://www.youtube.com/watch?v=rqYXCuXbs2s&t=3s
-32. https://www.youtube.com/watch?v=2G9j34jz42Q&t=5s
-33. https://docs.djangoproject.com/en/5.1/topics/http/sessions/
-34. https://docs.djangoproject.com/en/5.1/ref/validators/#:~:text=MinValueValidator
-35. https://docs.djangoproject.com/en/5.1/ref/models/fields/#:~:text=MinValueValidator%20and
-36. https://studygyaan.com/django/how-to-implement-validators-in-django-models
-37. https://www.w3schools.com/jsref/obj_inputevent.asp
-38. https://www.w3schools.com/tags/att_inputmode.asp
-39. https://sklep.andan.com.pl/
-40. https://molarr.pl/
-41. https://pypi.org/project/django-countries/
-42. https://www.youtube.com/watch?v=0cGRqIHvSf8&t=109s
-43. https://www.youtube.com/watch?v=l1Z9Aau0V08&t=296s
-44. https://www.youtube.com/watch?v=eAja_pKhiCM&t=376s
-45. https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-46. https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
-47. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-48. https://www.youtube.com/watch?v=eUcMh5s_27I&t=327s
-49. https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
-50. https://www.w3schools.com/python/ref_func_round.asp
-51. https://www.youtube.com/watch?v=AU0F2wnrbEs&t=2s
-52. https://www.youtube.com/watch?v=lg8p1vD9-Bs
-53. https://www.youtube.com/watch?v=j9mLOyjd_KY
-54. https://www.pythontutorial.net/django-tutorial/django-exists/
-55. https://www.programiz.com/python-programming/datetime/strftime
-56. https://docs.djangoproject.com/en/5.1/ref/forms/fields/
-57. https://docs.djangoproject.com/en/5.1/ref/forms/fields/#django.forms.ModelChoiceField
-58. [ChatGPT](https://openai.com/index/chatgpt/) - used mainly for translation and for explaining errors during development
-59. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
-60. https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/
-61. https://www.geeksforgeeks.org/how-to-set-the-timezone-in-django/
-62. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
-63. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/#django.contrib.admin.views.decorators.staff_member_required
-64. https://docs.djangoproject.com/en/1.8/_modules/django/test/testcases/
-65. https://docs.python.org/3/library/sqlite3.html#sqlite3.IntegrityError
-66. https://www.w3schools.com/python/python_decorators.asp
-67. https://docs.python.org/3/library/functools.html#functools.wraps
-68. https://mofidtech.fr/articles/custom-decorators-in-django/
-69. https://www.edureka.co/community/81432/how-can-i-unit-test-django-messages
-70. https://docs.djangoproject.com/en/5.1/topics/templates/
-71. https://docs.djangoproject.com/en/5.1/ref/signals/
-72. https://medium.com/@anwar.basha7070/conditional-logic-made-simple-ternary-operator-in-python-list-comprehensions-45d98525cb55
-73. https://docs.djangoproject.com/en/5.1/topics/testing/tools/
-74. https://docs.djangoproject.com/en/5.1/topics/testing/tools/#django.test.SimpleTestCase.assertRedirects
-75. https://docs.python.org/3.12/library/uuid.html
-76. https://docs.stripe.com/api/payment_intents
-77. https://docs.stripe.com/payments/payment-intents
-78. https://docs.stripe.com/payments/payment-intents/verifying-status
-79. https://docs.stripe.com/payments/payment-intents/verifying-status#webhooks
-80. https://docs.stripe.com/webhooks/signature
-81. https://docs.stripe.com/webhooks
-82. https://docs.stripe.com/webhooks#handle-duplicate-events
-83. https://docs.stripe.com/metadata
-84. https://docs.stripe.com/api/payment_intents/update
-85. https://docs.stripe.com/js/payment_intents/confirm_card_payment
-86. https://github.com/stripe/stripe-cli/wiki
-87. https://docs.stripe.com/stripe-cli
-88. https://docs.python.org/3.12/library/json.html
-89. https://coddy.tech/learn/courses/python_json/jsondumps
-90. https://learn.jquery.com
-91. https://api.jquery.com/jQuery/
-92. https://api.jquery.com/jQuery.post/
-93. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
-94. https://docs.djangoproject.com/en/5.1/ref/models/querysets/
-95. https://docs.djangoproject.com/en/5.1/ref/models/class/#django.db.models.Model.DoesNotExist
-96. https://docs.djangoproject.com/en/5.1/ref/models/instances/#django.db.models.Model.get_FOO_display
-97. https://docs.djangoproject.com/en/5.1/ref/urlresolvers/
-98. https://docs.python.org/3.12/tutorial/inputoutput.html#formatted-string-literals
-99.  https://docs.djangoproject.com/en/5.1/topics/http
-100. https://docs.allauth.org
-101. Your Europe - [Setting up a business website](https://europa.eu/youreurope/business/growing/digitalising/setting-up-business-website/index_en.htm) - used to check what business, contact and legal information should be displayed on an online shop
-102. EUR-Lex - [Directive 2000/31/EC on electronic commerce](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02000L0031-20240217) - used to understand what information an online shop should provide and how online orders and terms should be presented
-103. EUR-Lex - [Directive 2011/83/EU on consumer rights](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02011L0083-20220528) - Article 2 was used to understand who is considered a consumer and to distinguish consumers from people acting for business or professional purposes
-104. [Stripe Documentation](https://docs.stripe.com/testing) - Testing - used to confirm that test transactions simulate payments without moving real money
-105. EUR-Lex - [GDPR Article 13](https://eur-lex.europa.eu/eli/reg/2016/679/art_13/oj/eng) - used to understand what information should be included in a privacy policy, including contact details, reasons for using personal data, data sharing, retention and user rights
-106. [Data Protection Commission - Right to be informed](https://www.dataprotection.ie/en/individuals/know-your-rights/right-be-informed-transparency-article-13-14-gdpr) - used as practical guidance for organising the privacy policy and presenting the information in clear and simple language
-107. [Data Protection Commission - Cookies guidance](https://www.dataprotection.ie/en/dpc-guidance/guidance-cookies-and-other-tracking-technologies) - used to understand what information should be provided about cookies and when cookie consent may be required
-108. [Data Protection Commission - GDPR rights](https://www.dataprotection.ie/en/individuals/rights-individuals-under-general-data-protection-regulation) - used as a reference for the personal data rights described in the policy
-109. [Data Protection Commission - International data transfers](https://www.dataprotection.ie/en/organisations/international-transfers/transfers-personal-data-third-countries-or-international-organisations) - used to understand how personal information may be protected when it is processed outside the European Economic Area
-110. [Stripe Privacy Policy](https://stripe.com/ie/privacy) - used to understand what personal and payment information Stripe may handle
-111. [Stripe Cookie Policy](https://stripe.com/ie/legal/cookies-policy) - used as a reference for cookies connected with Stripe payment features
-112. [Stripe Integration Security Guide](https://docs.stripe.com/security/guide) - used to confirm that card details can be sent directly to Stripe without passing through the website server
-113. [Google Privacy Policy](https://policies.google.com/privacy?hl=en-IE) - used as a reference for how Google handles information when Gmail is used to send project emails
-114. [Heroku Security Policy](https://www.heroku.com/policy/security/) - used as a reference for how Heroku hosts and protects deployed applications
-115. [Django Documentation - Password management](https://docs.djangoproject.com/en/5.1/topics/auth/passwords/) - used to confirm that Django stores password hashes instead of readable passwords
-116. [Django Documentation - CSRF protection](https://docs.djangoproject.com/en/5.1/ref/csrf/) - used to understand how Django uses a CSRF cookie to protect submitted forms
-117. Django Documentation - [SESSION_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-age) and [CSRF_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-age) - used to confirm the default lifetime of the session and CSRF cookies
-118. [Google Account Help - Sign in with app passwords](https://support.google.com/accounts/answer/185833) - used to set up an app password for sending project emails through Gmail SMTP
-119. [DBeaver Documentation - ER Diagrams](https://dbeaver.com/docs/dbeaver/ER-Diagrams/) - used to create and export the database schema diagram 
-120. [Microsoft Support - Crow's Foot database notation](https://support.microsoft.com/en-us/visio/create-a-diagram-with-crow-s-foot-database-notation) - used to understand the relationship and cardinality symbols shown in the database diagram
-121. https://www.freecodecamp.org/news/crows-foot-notation-relationship-symbols-and-how-to-read-diagrams/
-122. [Django Allauth Documentation - Custom Signup Forms](https://docs.allauth.org/en/dev/account/configuration.html#account-signup-form-class) - used to add the Business name field to the signup form and save it to the user's profile
-123. https://docs.djangoproject.com/en/5.1/ref/models/querysets/#count
-124. https://peps.python.org/pep-0008/#imports
-125. https://isort.readthedocs.io/en/latest/ - used to organise Python imports across the project
-126. https://docs.python.org/3/library/decimal.html
-127. https://docs.djangoproject.com/en/5.1/topics/db/aggregation/ - used to calculate total revenue from customer orders
-128. https://docs.python.org/3/reference/expressions.html#boolean-operations
-129. https://docs.python.org/3/reference/expressions.html#subscriptions - accessing a dictionary value from a method’s return value
-130. https://docs.python.org/3/library/stdtypes.html#truth-value-testing
+12. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#json-script
+13. https://docs.djangoproject.com/en/5.1/topics/db/queries/
+14. https://docs.djangoproject.com/en/5.1/topics/db/optimization/
+15. https://docs.djangoproject.com/en/5.1/topics/db/optimization/#use-queryset-select-related-and-prefetch-related
+16. https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/
+17. https://docs.djangoproject.com/en/5.1/topics/pagination/
+18. https://docs.djangoproject.com/en/5.1/ref/paginator/#django.core.paginator.Paginator
+19. https://getbootstrap.com/docs/5.3/components/pagination/
+20. https://www.w3schools.com/bootstrap5/bootstrap_tooltip.php
+21. https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
+22. https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
+23. https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+24. https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
+25. https://stackoverflow.com/questions/5150363/onchange-open-url-via-select-jquery
+26. https://docs.djangoproject.com/en/5.1/ref/models/database-functions/
+27. https://docs.djangoproject.com/en/5.1/ref/models/database-functions/#truncmonth - used to group orders by month for the sales dashboard
+28. https://docs.djangoproject.com/en/5.1/topics/db/queries/
+29. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#urlencode
+30. https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#floatformat
+31. https://www.youtube.com/watch?v=65RVPDOhRIc&t=73s
+32. https://www.w3schools.com/django/ref_filters_default.php
+33. https://www.youtube.com/watch?v=rqYXCuXbs2s&t=3s
+34. https://www.youtube.com/watch?v=2G9j34jz42Q&t=5s
+35. https://docs.djangoproject.com/en/5.1/topics/http/sessions/
+36. https://docs.djangoproject.com/en/5.1/ref/validators/#:~:text=MinValueValidator
+37. https://docs.djangoproject.com/en/5.1/ref/models/fields/#:~:text=MinValueValidator%20and
+38. https://studygyaan.com/django/how-to-implement-validators-in-django-models
+39. https://www.w3schools.com/jsref/obj_inputevent.asp
+40. https://www.w3schools.com/tags/att_inputmode.asp
+41. https://sklep.andan.com.pl/
+42. https://molarr.pl/
+43. https://pypi.org/project/django-countries/
+44. https://www.youtube.com/watch?v=0cGRqIHvSf8&t=109s
+45. https://www.youtube.com/watch?v=l1Z9Aau0V08&t=296s
+46. https://www.youtube.com/watch?v=eAja_pKhiCM&t=376s
+47. https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+48. https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
+49. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+50. https://www.youtube.com/watch?v=eUcMh5s_27I&t=327s
+51. https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+52. https://www.w3schools.com/python/ref_func_round.asp
+53. https://www.youtube.com/watch?v=AU0F2wnrbEs&t=2s
+54. https://www.youtube.com/watch?v=lg8p1vD9-Bs
+55. https://www.youtube.com/watch?v=j9mLOyjd_KY
+56. https://www.pythontutorial.net/django-tutorial/django-exists/
+57. https://www.programiz.com/python-programming/datetime/strftime
+58. https://docs.djangoproject.com/en/5.1/ref/forms/fields/
+59. https://docs.djangoproject.com/en/5.1/ref/forms/fields/#django.forms.ModelChoiceField
+60. [ChatGPT](https://openai.com/index/chatgpt/) - used mainly for translation and for explaining errors during development
+61. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+62. https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/
+63. https://www.geeksforgeeks.org/how-to-set-the-timezone-in-django/
+64. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/
+65. https://docs.djangoproject.com/en/5.1/ref/contrib/admin/#django.contrib.admin.views.decorators.staff_member_required
+66. https://docs.djangoproject.com/en/1.8/_modules/django/test/testcases/
+67. https://docs.python.org/3/library/sqlite3.html#sqlite3.IntegrityError
+68. https://www.w3schools.com/python/python_decorators.asp
+69. https://docs.python.org/3/library/functools.html#functools.wraps
+70. https://mofidtech.fr/articles/custom-decorators-in-django/
+71. https://www.edureka.co/community/81432/how-can-i-unit-test-django-messages
+72. https://docs.djangoproject.com/en/5.1/topics/templates/
+73. https://docs.djangoproject.com/en/5.1/ref/signals/
+74. https://medium.com/@anwar.basha7070/conditional-logic-made-simple-ternary-operator-in-python-list-comprehensions-45d98525cb55
+75. https://docs.djangoproject.com/en/5.1/topics/testing/tools/
+76. https://docs.djangoproject.com/en/5.1/topics/testing/tools/#django.test.SimpleTestCase.assertRedirects
+77. https://docs.python.org/3.12/library/uuid.html
+78. https://docs.stripe.com/api/payment_intents
+79. https://docs.stripe.com/payments/payment-intents
+80. https://docs.stripe.com/payments/payment-intents/verifying-status
+81. https://docs.stripe.com/payments/payment-intents/verifying-status#webhooks
+82. https://docs.stripe.com/webhooks/signature
+83. https://docs.stripe.com/webhooks
+84. https://docs.stripe.com/webhooks#handle-duplicate-events
+85. https://docs.stripe.com/metadata
+86. https://docs.stripe.com/api/payment_intents/update
+87. https://docs.stripe.com/js/payment_intents/confirm_card_payment
+88. https://github.com/stripe/stripe-cli/wiki
+89. https://docs.stripe.com/stripe-cli
+90. https://docs.python.org/3.12/library/json.html
+91. https://coddy.tech/learn/courses/python_json/jsondumps
+92. https://learn.jquery.com
+93. https://api.jquery.com/jQuery/
+94. https://api.jquery.com/jQuery.post/
+95. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+96. https://docs.djangoproject.com/en/5.1/ref/models/querysets/
+97. https://docs.djangoproject.com/en/5.1/ref/models/class/#django.db.models.Model.DoesNotExist
+98. https://docs.djangoproject.com/en/5.1/ref/models/instances/#django.db.models.Model.get_FOO_display
+99. https://docs.djangoproject.com/en/5.1/ref/urlresolvers/
+100. https://docs.python.org/3.12/tutorial/inputoutput.html#formatted-string-literals
+101. https://docs.djangoproject.com/en/5.1/topics/http
+102. https://docs.allauth.org
+103. Your Europe - [Setting up a business website](https://europa.eu/youreurope/business/growing/digitalising/setting-up-business-website/index_en.htm) - used to check what business, contact and legal information should be displayed on an online shop
+104. EUR-Lex - [Directive 2000/31/EC on electronic commerce](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02000L0031-20240217) - used to understand what information an online shop should provide and how online orders and terms should be presented
+105. EUR-Lex - [Directive 2011/83/EU on consumer rights](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02011L0083-20220528) - Article 2 was used to understand who is considered a consumer and to distinguish consumers from people acting for business or professional purposes
+106. [Stripe Documentation](https://docs.stripe.com/testing) - Testing - used to confirm that test transactions simulate payments without moving real money
+107. EUR-Lex - [GDPR Article 13](https://eur-lex.europa.eu/eli/reg/2016/679/art_13/oj/eng) - used to understand what information should be included in a privacy policy, including contact details, reasons for using personal data, data sharing, retention and user rights
+108. [Data Protection Commission - Right to be informed](https://www.dataprotection.ie/en/individuals/know-your-rights/right-be-informed-transparency-article-13-14-gdpr) - used as practical guidance for organising the privacy policy and presenting the information in clear and simple language
+109. [Data Protection Commission - Cookies guidance](https://www.dataprotection.ie/en/dpc-guidance/guidance-cookies-and-other-tracking-technologies) - used to understand what information should be provided about cookies and when cookie consent may be required
+110. [Data Protection Commission - GDPR rights](https://www.dataprotection.ie/en/individuals/rights-individuals-under-general-data-protection-regulation) - used as a reference for the personal data rights described in the policy
+111. [Data Protection Commission - International data transfers](https://www.dataprotection.ie/en/organisations/international-transfers/transfers-personal-data-third-countries-or-international-organisations) - used to understand how personal information may be protected when it is processed outside the European Economic Area
+112. [Stripe Privacy Policy](https://stripe.com/ie/privacy) - used to understand what personal and payment information Stripe may handle
+113. [Stripe Cookie Policy](https://stripe.com/ie/legal/cookies-policy) - used as a reference for cookies connected with Stripe payment features
+114. [Stripe Integration Security Guide](https://docs.stripe.com/security/guide) - used to confirm that card details can be sent directly to Stripe without passing through the website server
+115. [Google Privacy Policy](https://policies.google.com/privacy?hl=en-IE) - used as a reference for how Google handles information when Gmail is used to send project emails
+116. [Heroku Security Policy](https://www.heroku.com/policy/security/) - used as a reference for how Heroku hosts and protects deployed applications
+117. [Django Documentation - Password management](https://docs.djangoproject.com/en/5.1/topics/auth/passwords/) - used to confirm that Django stores password hashes instead of readable passwords
+118. [Django Documentation - CSRF protection](https://docs.djangoproject.com/en/5.1/ref/csrf/) - used to understand how Django uses a CSRF cookie to protect submitted forms
+119. Django Documentation - [SESSION_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-age) and [CSRF_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-age) - used to confirm the default lifetime of the session and CSRF cookies
+120. [Google Account Help - Sign in with app passwords](https://support.google.com/accounts/answer/185833) - used to set up an app password for sending project emails through Gmail SMTP
+121. [DBeaver Documentation - ER Diagrams](https://dbeaver.com/docs/dbeaver/ER-Diagrams/) - used to create and export the database schema diagram
+122. [Microsoft Support - Crow's Foot database notation](https://support.microsoft.com/en-us/visio/create-a-diagram-with-crow-s-foot-database-notation) - used to understand the relationship and cardinality symbols shown in the database diagram
+123. https://www.freecodecamp.org/news/crows-foot-notation-relationship-symbols-and-how-to-read-diagrams/
+124. [Django Allauth Documentation - Custom Signup Forms](https://docs.allauth.org/en/dev/account/configuration.html#account-signup-form-class) - used to add the Business name field to the signup form and save it to the user's profile
+125. https://docs.djangoproject.com/en/5.1/ref/models/querysets/#count
+126. https://peps.python.org/pep-0008/#imports
+127. https://isort.readthedocs.io/en/latest/ - used to organise Python imports across the project
+128. https://docs.python.org/3/library/decimal.html
+129. https://docs.djangoproject.com/en/5.1/topics/db/aggregation/ - used to calculate total revenue from customer orders
+130. https://docs.python.org/3/reference/expressions.html#boolean-operations
+131. https://docs.python.org/3/reference/expressions.html#subscriptions - accessing a dictionary value from a method’s return value
+132. https://docs.python.org/3/library/stdtypes.html#truth-value-testing
+133. https://docs.djangoproject.com/en/5.1/ref/utils/#django.utils.timezone
+134. https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
+135. [Chart.js Documentation](https://www.chartjs.org/docs/latest/) - used for creating charts on the sales dashboard
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
