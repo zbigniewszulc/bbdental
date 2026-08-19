@@ -222,6 +222,45 @@ class StaffDashboardTests(TestCase):
             [5, 2],
         )
 
+    def test_dashboard_includes_low_stock_products(self):
+        """Check if products below the stock limit are included"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        low_stock_product = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Low Stock Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=5,
+        )
+        Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Available Product",
+            description="Test product",
+            price=Decimal("20.00"),
+            in_stock=10,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        self.assertEqual(
+            list(response.context["low_stock_products"]),
+            [low_stock_product],
+        )
+        self.assertContains(response, "Low Stock Products")
+        self.assertContains(response, "Low Stock Product")
+        self.assertContains(response, "5 items left")
+
     def test_dashboard_displays_top_selling_products_chart(self):
         """Check if the top selling products chart is displayed"""
         response = self.client.get(reverse("staff_dashboard"))

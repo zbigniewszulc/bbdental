@@ -6,6 +6,9 @@ from django.db.models.functions import TruncMonth
 from django.shortcuts import render
 
 from checkout.models import Order, OrderLineItem
+from products.models import Product
+
+LOW_STOCK_THRESHOLD = 10
 
 
 # Create your views here
@@ -68,6 +71,11 @@ def staff_dashboard(request):
         for product in top_selling_products
     ]
 
+    # Find products with fewer than 10 items left in stock
+    low_stock_products = Product.objects.filter(
+        in_stock__lt=LOW_STOCK_THRESHOLD,
+    ).order_by("in_stock")
+
     context = {
         "total_orders": total_orders,
         "total_revenue": total_revenue,
@@ -76,6 +84,8 @@ def staff_dashboard(request):
         "top_selling_products": top_selling_products,
         "top_selling_product_labels": top_selling_product_labels,
         "top_selling_product_totals": top_selling_product_totals,
+        "low_stock_threshold": LOW_STOCK_THRESHOLD,
+        "low_stock_products": low_stock_products,
     }
 
     return render(

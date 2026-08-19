@@ -40,6 +40,50 @@
                     </div>
                 </div>
             </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card {% if low_stock_products %} border-danger {% else %} border-success {% endif %} shadow-sm">
+                        <div class="card-header {% if low_stock_products %} bg-danger {% else %} bg-success {% endif %} text-white">
+                            <h3 class="h5 mb-0">
+                                {% if low_stock_products %}
+                                    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                                {% else %}
+                                    <i class="fa-solid fa-circle-check me-2"></i>
+                                {% endif %}
+                                Low Stock Products
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Products with fewer than {{ low_stock_threshold }}
+                                items in stock are shown below:
+                            </p>
+                            {% if low_stock_products %}
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Stock</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for product in low_stock_products %}
+                                                <tr>
+                                                    <td>{{ product.product_name }}</td>
+                                                    <td>{{ product.in_stock }} items left</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <p class="mb-0">No products are currently low in stock.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Monthly order data for the Chart.js -->
             {{ monthly_order_labels|json_script:"monthly-order-labels" }}
             {{ monthly_order_totals|json_script:"monthly-order-totals" }}
