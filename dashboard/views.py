@@ -1,14 +1,33 @@
+from datetime import timedelta
 from decimal import Decimal
+from math import ceil
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Count, Sum
 from django.db.models.functions import TruncMonth
 from django.shortcuts import render
+from django.utils import timezone
 
 from checkout.models import Order, OrderLineItem
 from products.models import Product
 
 LOW_STOCK_THRESHOLD = 10
+SALES_PERIOD_DAYS = 30
+
+
+def get_stock_estimate_sort_value(product):
+    """
+    Sort available estimates by days left and place unavailable estimates last
+    estimate_group: 0 = estimation available, 1 = estimation unavailable
+    """
+    if product.days_until_out_of_stock is None:
+        estimate_group = 1
+        estimated_days = 0
+    else:
+        estimate_group = 0
+        estimated_days = product.days_until_out_of_stock
+
+    return (estimate_group, estimated_days)
 
 
 # Create your views here
@@ -76,6 +95,42 @@ def staff_dashboard(request):
         in_stock__lt=LOW_STOCK_THRESHOLD,
     ).order_by("in_stock")
 
+    # Define the beginning of the sales period
+    sales_start_date = timezone.now() - timedelta(
+        days=SALES_PERIOD_DAYS,
+    )
+
+    # Get all products for the stock estimation
+    stock_estimates = Product.objects.all()
+
+    # Calculate how many days the current stock may last
+    for product in stock_estimates:
+        total_sold = (
+            OrderLineItem.objects
+            .filter(
+                product=product,
+                order__date_of_order__gte=sales_start_date,
+            )
+            .exclude(order__status="cancelled")
+            .aggregate(total=Sum("quantity"))["total"] or 0
+        )
+
+        if product.in_stock == 0:
+            product.days_until_out_of_stock = 0
+        elif total_sold:
+            average_daily_sales = total_sold / SALES_PERIOD_DAYS
+            product.days_until_out_of_stock = ceil(
+                product.in_stock / average_daily_sales
+            )
+        else:
+            product.days_until_out_of_stock = None
+
+    # Display products expected to run out first at the top
+    stock_estimates = sorted(
+        stock_estimates,
+        key=get_stock_estimate_sort_value,
+    )
+
     context = {
         "total_orders": total_orders,
         "total_revenue": total_revenue,
@@ -86,6 +141,8 @@ def staff_dashboard(request):
         "top_selling_product_totals": top_selling_product_totals,
         "low_stock_threshold": LOW_STOCK_THRESHOLD,
         "low_stock_products": low_stock_products,
+        "sales_period_days": SALES_PERIOD_DAYS,
+        "stock_estimates": stock_estimates,
     }
 
     return render(

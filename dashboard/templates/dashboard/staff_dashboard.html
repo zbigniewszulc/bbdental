@@ -84,6 +84,55 @@
                     </div>
                 </div>
             </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="h5 mb-0">
+                                <i class="fa-solid fa-clock me-2"></i>
+                                Days Until Out of Stock
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Estimated number of days the current stock may last
+                                based on sales from the previous
+                                {{ sales_period_days }} days:
+                            </p>
+                            {% if stock_estimates %}
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Current Stock</th>
+                                                <th>Estimated Days Left</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for product in stock_estimates %}
+                                                <tr>
+                                                    <td>{{ product.product_name }}</td>
+                                                    <td>{{ product.in_stock }}</td>
+                                                    <td>
+                                                        {% if product.days_until_out_of_stock is not None %}
+                                                            {{ product.days_until_out_of_stock }} days
+                                                        {% else %}
+                                                            Cannot be calculated
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <p class="mb-0">No products are currently available.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Monthly order data for the Chart.js -->
             {{ monthly_order_labels|json_script:"monthly-order-labels" }}
             {{ monthly_order_totals|json_script:"monthly-order-totals" }}

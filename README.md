@@ -1638,5 +1638,8 @@ If you need to install Python you can find installation instructions at https://
 133. https://docs.djangoproject.com/en/5.1/ref/utils/#django.utils.timezone
 134. https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
 135. [Chart.js Documentation](https://www.chartjs.org/docs/latest/) - used for creating charts on the sales dashboard
+136. https://docs.python.org/3/library/datetime.html#datetime.timedelta - used to define the previous sales period for calculating when a product is expected to run out of stock 
+137. https://docs.python.org/3/library/math.html#math.ceil - used to round the estimated number of days until a product runs out of stock
+138. https://docs.python.org/3/howto/sorting.html#key-functions
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!

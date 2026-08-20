@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from decimal import Decimal
 
 from django.contrib.auth.models import User
@@ -338,4 +338,500 @@ class StaffDashboardTests(TestCase):
         self.assertContains(
             response,
             f'href="{reverse("staff_dashboard")}"',
+        )
+
+    def test_dashboard_calculates_days_until_out_of_stock(self):
+        """Check if days until out of stock are calculated"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        product = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Test Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=16,
+        )
+        order = Order.objects.create(
+            business_name="Dental Practice One",
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 86 111 1111",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        OrderLineItem.objects.create(
+            order=order,
+            product=product,
+            quantity=8,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        stock_estimates = response.context["stock_estimates"]
+        dashboard_product = stock_estimates[0]
+
+        # Selling 8 items in 30 days gives an estimated 30 days
+        # for the remaining stock of 8 items
+        self.assertEqual(
+            dashboard_product.days_until_out_of_stock,
+            30,
+        )
+
+    def test_cancelled_orders_are_excluded_from_stock_estimate(self):
+        """Check if cancelled orders are excluded from stock estimation"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        product = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Test Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=24,
+        )
+        active_order = Order.objects.create(
+            business_name="Dental Practice One",
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 86 111 1111",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+        cancelled_order = Order.objects.create(
+            business_name="Dental Practice Two",
+            name="Conor",
+            surname="Murphy",
+            email="conor@example.com",
+            phone_number="+353 86 222 2222",
+            address_line_1="2 Main Street",
+            town="Dublin",
+            postcode="D24 ABC2",
+            country="IE",
+            status="cancelled",
+        )
+
+        OrderLineItem.objects.create(
+            order=active_order,
+            product=product,
+            quantity=8,
+        )
+        OrderLineItem.objects.create(
+            order=cancelled_order,
+            product=product,
+            quantity=8,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        stock_estimates = response.context["stock_estimates"]
+        dashboard_product = stock_estimates[0]
+
+        # Both orders reduce the stock from 24 to 8 items
+        # Only 8 items from the active order are used in the estimation
+        # giving an estimated stock duration of 30 days
+        self.assertEqual(
+            dashboard_product.days_until_out_of_stock,
+            30,
+        )
+
+    def test_stock_estimate_is_none_for_product_without_sales(self):
+        """Check if stock estimation is unavailable without sales"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Product Without Sales",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=20,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        stock_estimates = response.context["stock_estimates"]
+        dashboard_product = stock_estimates[0]
+
+        self.assertIsNone(
+            dashboard_product.days_until_out_of_stock
+        )
+
+    def test_dashboard_displays_stock_estimates(self):
+        """Check if stock estimates are displayed on the dashboard"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Product Without Sales",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=20,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        self.assertContains(
+            response,
+            "Days Until Out of Stock",
+        )
+        self.assertContains(
+            response,
+            "Product Without Sales",
+        )
+        self.assertContains(
+            response,
+            "Cannot be calculated",
+        )
+
+    def test_products_are_ordered_by_days_until_out_of_stock(self):
+        """Check if products expected to run out first are displayed first"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        later_product = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Later Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=30,
+        )
+        sooner_product = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Sooner Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=16,
+        )
+        order = Order.objects.create(
+            business_name="Dental Practice One",
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 86 111 1111",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        OrderLineItem.objects.create(
+            order=order,
+            product=later_product,
+            quantity=6,
+        )
+        OrderLineItem.objects.create(
+            order=order,
+            product=sooner_product,
+            quantity=8,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        stock_estimates = response.context["stock_estimates"]
+        product_names = [
+            product.product_name
+            for product in stock_estimates
+        ]
+
+        self.assertEqual(
+            product_names,
+            ["Sooner Product", "Later Product"],
+        )
+
+    def test_product_without_sales_is_displayed_last(self):
+        """Check if a product without sales is displayed last"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Product Without Sales",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=20,
+        )
+        sold_product = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Sold Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=16,
+        )
+        order = Order.objects.create(
+            business_name="Dental Practice One",
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 86 111 1111",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        OrderLineItem.objects.create(
+            order=order,
+            product=sold_product,
+            quantity=8,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        stock_estimates = response.context["stock_estimates"]
+        product_names = [
+            product.product_name
+            for product in stock_estimates
+        ]
+
+        self.assertEqual(
+            product_names,
+            ["Sold Product", "Product Without Sales"],
+        )
+
+    def test_sales_older_than_sales_period_are_excluded(self):
+        """Check if sales older than 30 days are excluded"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        product = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Test Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=16,
+        )
+        order = Order.objects.create(
+            business_name="Dental Practice One",
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 86 111 1111",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        OrderLineItem.objects.create(
+            order=order,
+            product=product,
+            quantity=8,
+        )
+
+        # Change the order date to make it older than the sales period
+        Order.objects.filter(pk=order.pk).update(
+            date_of_order=timezone.now() - timedelta(days=31),
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        stock_estimates = response.context["stock_estimates"]
+        dashboard_product = stock_estimates[0]
+
+        self.assertIsNone(
+            dashboard_product.days_until_out_of_stock
+        )
+
+    def test_stock_estimate_is_rounded_up(self):
+        """Check if estimated days are rounded up"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        product = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Test Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=15,
+        )
+        order = Order.objects.create(
+            business_name="Dental Practice One",
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 86 111 1111",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        OrderLineItem.objects.create(
+            order=order,
+            product=product,
+            quantity=7,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        stock_estimates = response.context["stock_estimates"]
+        dashboard_product = stock_estimates[0]
+
+        # 8 items remain. 7 were sold in 30 days
+        # The result is 34.29 days, which is rounded up to 35
+        self.assertEqual(
+            dashboard_product.days_until_out_of_stock,
+            35,
+        )
+
+    def test_out_of_stock_product_displays_zero_days(self):
+        """Check if an out of stock product displays zero days"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        product = Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Out of Stock Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=8,
+        )
+        order = Order.objects.create(
+            business_name="Dental Practice One",
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 86 111 1111",
+            address_line_1="1 Main Street",
+            town="Dublin",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        OrderLineItem.objects.create(
+            order=order,
+            product=product,
+            quantity=8,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        stock_estimates = response.context["stock_estimates"]
+        dashboard_product = stock_estimates[0]
+
+        self.assertEqual(
+            dashboard_product.days_until_out_of_stock,
+            0,
+        )
+        self.assertContains(
+            response,
+            "0 days",
+        )
+
+    def test_out_of_stock_product_without_sales_displays_zero_days(self):
+        """Check if an out of stock product without sales displays zero days"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        Product.objects.create(
+            subcategory=subcategory,
+            manufacturer=manufacturer,
+            product_name="Out of Stock Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=0,
+        )
+
+        response = self.client.get(reverse("staff_dashboard"))
+
+        stock_estimates = response.context["stock_estimates"]
+        dashboard_product = stock_estimates[0]
+
+        self.assertEqual(
+            dashboard_product.days_until_out_of_stock,
+            0,
+        )
+        self.assertContains(
+            response,
+            "0 days",
         )
