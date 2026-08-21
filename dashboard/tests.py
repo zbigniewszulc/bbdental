@@ -835,3 +835,29 @@ class StaffDashboardTests(TestCase):
             response,
             "0 days",
         )
+
+    def test_dashboard_stock_sections_are_collapsible(self):
+        """Check if stock sections can be expanded and collapsed"""
+        response = self.client.get(reverse("staff_dashboard"))
+
+        self.assertContains(
+            response,
+            'data-bs-target="#low-stock-products-collapse"',
+        )
+        self.assertContains(
+            response,
+            'id="low-stock-products-collapse"',
+        )
+        self.assertContains(
+            response,
+            'data-bs-target="#stock-estimates-collapse"',
+        )
+        self.assertContains(
+            response,
+            'id="stock-estimates-collapse"',
+        )
+        self.assertContains(
+            response,
+            'aria-expanded="false"',
+            count=2,
+        )
