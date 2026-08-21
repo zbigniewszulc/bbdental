@@ -3,7 +3,7 @@ from decimal import Decimal
 from math import ceil
 
 from django.contrib.admin.views.decorators import staff_member_required
-from django.db.models import Count, Sum
+from django.db.models import Count, Prefetch, Sum
 from django.db.models.functions import TruncMonth
 from django.shortcuts import render
 from django.utils import timezone
@@ -100,19 +100,29 @@ def staff_dashboard(request):
         days=SALES_PERIOD_DAYS,
     )
 
-    # Get all products for the stock estimation
-    stock_estimates = Product.objects.all()
+    # Get recent sales used for the stock estimation
+    recent_sales = (
+        OrderLineItem.objects
+        .filter(
+            order__date_of_order__gte=sales_start_date,
+        )
+        .exclude(order__status="cancelled")
+    )
+
+    # Get all products together with their recent sales
+    stock_estimates = Product.objects.prefetch_related(
+        Prefetch(
+            "orderlineitem_set",
+            queryset=recent_sales,
+            to_attr="recent_sales",
+        )
+    )
 
     # Calculate how many days the current stock may last
     for product in stock_estimates:
-        total_sold = (
-            OrderLineItem.objects
-            .filter(
-                product=product,
-                order__date_of_order__gte=sales_start_date,
-            )
-            .exclude(order__status="cancelled")
-            .aggregate(total=Sum("quantity"))["total"] or 0
+        total_sold = sum(
+            line_item.quantity
+            for line_item in product.recent_sales
         )
 
         if product.in_stock == 0:
