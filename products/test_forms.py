@@ -124,3 +124,41 @@ class ProductFormTest(TestCase):
         data["picture_location"] = ""
         form = ProductForm(data=data)
         self.assertTrue(form.is_valid())
+
+    def test_product_form_includes_bulk_pricing_fields(self):
+        """Test that product form includes bulk pricing fields"""
+        form = ProductForm()
+
+        self.assertIn("bulk_quantity", form.fields)
+        self.assertIn("bulk_price", form.fields)
+
+    def test_product_form_saves_bulk_pricing(self):
+        """Test that valid bulk pricing can be saved"""
+        # Create a separate copy of the valid data for this test
+        data = self.valid_data.copy()
+        data["bulk_quantity"] = 10
+        data["bulk_price"] = 15.00
+
+        form = ProductForm(data=data)
+
+        self.assertTrue(form.is_valid())
+
+        product = form.save()
+
+        self.assertEqual(product.bulk_quantity, 10)
+        self.assertEqual(product.bulk_price, 15.00)
+
+    def test_product_form_rejects_higher_bulk_price(self):
+        """Test that form rejects bulk price if above regular price"""
+        data = self.valid_data.copy()
+        data["bulk_quantity"] = 10
+        data["bulk_price"] = 25.00
+
+        form = ProductForm(data=data)
+
+        self.assertFalse(form.is_valid())
+        self.assertIn("bulk_price", form.errors)
+        self.assertEqual(
+            form.errors["bulk_price"][0],
+            "Bulk price must be lower than regular price.",
+        )

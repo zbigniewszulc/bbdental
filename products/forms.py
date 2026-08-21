@@ -25,8 +25,9 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = [
-            "product_name", "description", "price", "in_stock",
-            "picture_location", "manufacturer", "subcategory"
+            "product_name", "description", "price", "bulk_quantity",
+            "bulk_price", "in_stock", "picture_location", "manufacturer",
+            "subcategory"
         ]
 
     def clean_price(self):

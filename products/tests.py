@@ -198,3 +198,30 @@ class ProductManagementViewsTests(TestCase):
             list(response.context["page_obj"]),
             [high_stock_product, low_stock_product],
         )
+
+    def test_add_product_page_displays_bulk_pricing_fields(self):
+        """Check if bulk pricing fields are displayed on add product page"""
+        response = self.client.get(reverse("add_product"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'name="bulk_quantity"')
+        self.assertContains(response, 'name="bulk_price"')
+
+    def test_edit_product_page_displays_bulk_pricing_fields(self):
+        """Check if bulk pricing fields are displayed on edit product page"""
+        product = Product.objects.create(
+            product_name="Bulk Product",
+            description="Test product",
+            price=Decimal("20.00"),
+            bulk_quantity=10,
+            bulk_price=Decimal("15.00"),
+            in_stock=100,
+            manufacturer=self.manufacturer,
+            subcategory=self.subcategory,
+        )
+
+        response = self.client.get(reverse("edit_product", args=[product.id]))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'name="bulk_quantity"')
+        self.assertContains(response, 'name="bulk_price"')
