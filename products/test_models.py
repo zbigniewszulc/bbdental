@@ -224,3 +224,114 @@ class ProductModelTest(TestCase):
             manufacturer=self.manufacturer
         )
         self.assertEqual(product.in_stock, 0)
+
+    def test_product_uses_regular_price_below_bulk_quantity(self):
+        """Test that regular price is used below the bulk quantity"""
+        product = Product.objects.create(
+            product_name="Bulk Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            bulk_quantity=10,
+            bulk_price=Decimal("8.00"),
+            in_stock=100,
+            subcategory=self.subcategory,
+            manufacturer=self.manufacturer,
+        )
+
+        product_price = product.get_price_for_quantity(9)
+
+        self.assertEqual(product_price, Decimal("10.00"))
+
+    def test_product_uses_bulk_price_at_bulk_quantity(self):
+        """Test that bulk price is used at the bulk quantity"""
+        product = Product.objects.create(
+            product_name="Bulk Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            bulk_quantity=10,
+            bulk_price=Decimal("8.00"),
+            in_stock=100,
+            subcategory=self.subcategory,
+            manufacturer=self.manufacturer,
+        )
+
+        product_price = product.get_price_for_quantity(10)
+
+        self.assertEqual(product_price, Decimal("8.00"))
+
+    def test_product_without_bulk_pricing_uses_regular_price(self):
+        """Test that product without bulk pricing uses regular price"""
+        product = Product.objects.create(
+            product_name="Regular Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            in_stock=100,
+            subcategory=self.subcategory,
+            manufacturer=self.manufacturer,
+        )
+
+        product_price = product.get_price_for_quantity(20)
+
+        self.assertEqual(product_price, Decimal("10.00"))
+
+    def test_bulk_price_must_be_lower_than_regular_price(self):
+        """Test that bulk price is lower than regular price"""
+        product = Product(
+            product_name="Bulk Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            bulk_quantity=10,
+            bulk_price=Decimal("12.00"),
+            in_stock=100,
+            subcategory=self.subcategory,
+            manufacturer=self.manufacturer,
+        )
+
+        with self.assertRaises(ValidationError):
+            product.full_clean()
+
+    def test_bulk_quantity_requires_bulk_price(self):
+        """Test that bulk quantity cannot be used without bulk price"""
+        product = Product(
+            product_name="Bulk Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            bulk_quantity=10,
+            in_stock=100,
+            subcategory=self.subcategory,
+            manufacturer=self.manufacturer,
+        )
+
+        with self.assertRaises(ValidationError):
+            product.full_clean()
+
+    def test_bulk_price_requires_bulk_quantity(self):
+        """Test that bulk price cannot be used without bulk quantity"""
+        product = Product(
+            product_name="Bulk Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            bulk_price=Decimal("8.00"),
+            in_stock=100,
+            subcategory=self.subcategory,
+            manufacturer=self.manufacturer,
+        )
+
+        with self.assertRaises(ValidationError):
+            product.full_clean()
+
+    def test_bulk_quantity_must_be_at_least_two(self):
+        """Test that bulk quantity must be at least two"""
+        product = Product(
+            product_name="Bulk Product",
+            description="Test product",
+            price=Decimal("10.00"),
+            bulk_quantity=1,
+            bulk_price=Decimal("8.00"),
+            in_stock=100,
+            subcategory=self.subcategory,
+            manufacturer=self.manufacturer,
+        )
+
+        with self.assertRaises(ValidationError):
+            product.full_clean()
