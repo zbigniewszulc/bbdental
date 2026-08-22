@@ -51,7 +51,7 @@
                                             <button type="submit" class="btn btn-link text-primary mt-2 p-0 border-0">Update</button>
                                         </form>
                                     </td>
-                                    <td class="text-center">€{{ item.product.price|floatformat:2 }}</td>
+                                    <td class="text-center">€{{ item.unit_price|floatformat:2 }}</td>
                                     <td class="text-center">€{{ item.total_price|floatformat:2 }}</td>
                                     <td class="text-center">
                                         <form method="POST" action="{% url 'update_bag' %}">

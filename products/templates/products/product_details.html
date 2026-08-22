@@ -20,6 +20,14 @@
                 <h1 class="fw-bold mt-4">{{ product.product_name }}</h1>
                 <p class="fs-5 text-muted">{{ product.description }}</p>
                 <p class="fs-5"><strong><i class="fa-solid fa-tag text-primary me-2"></i>&nbsp; Price:</strong> €{{ product.price }}</p>
+                {% if product.bulk_quantity and product.bulk_price %}
+                    <p class="fs-5">
+                        <strong>
+                            <i class="fa-solid fa-tag text-success me-2"></i>&nbsp; Bulk Price:
+                        </strong>
+                        €{{ product.bulk_price }} when buying {{ product.bulk_quantity }} or more
+                    </p>
+                {% endif %}
                 <p class="fs-6 "><strong><i class="fa-solid fa-cart-flatbed text-primary me-2"></i>&nbsp; In Stock:</strong> {{ product.in_stock }}</p>
                 <p class="fs-6">
                     <strong><i class="fa-solid fa-industry text-primary me-2"></i>&nbsp; Manufacturer:</strong>

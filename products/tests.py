@@ -53,6 +53,30 @@ class ProductDetailViewsTests(TestCase):
         )
         self.assertNotContains(response, 'action="/bag/add/')
 
+    def test_product_page_displays_bulk_pricing(self):
+        """Check if bulk pricing is displayed on the product page"""
+        self.product.bulk_quantity = 10
+        self.product.bulk_price = Decimal("15.00")
+        self.product.save()
+
+        response = self.client.get(
+            reverse("product_details", args=[self.product.id])
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Bulk Price:")
+        self.assertContains(response, "€15.00")
+        self.assertContains(response, "10 or more")
+
+    def test_product_page_hides_unavailable_bulk_pricing(self):
+        """Check if bulk pricing is hidden when it is not available"""
+        response = self.client.get(
+            reverse("product_details", args=[self.product.id])
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Bulk Price:")
+
 
 class ProductManagementViewsTests(TestCase):
     def setUp(self):

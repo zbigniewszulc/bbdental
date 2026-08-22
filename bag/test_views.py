@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
@@ -129,3 +131,50 @@ class BagViewsTests(TestCase):
             self.client.session["bag"][str(self.product.id)],
             1
         )
+
+    def test_bag_uses_bulk_price_at_bulk_quantity(self):
+        """Check if bag uses bulk price at the bulk quantity"""
+        self.product.price = Decimal("20.00")
+        self.product.bulk_quantity = 5
+        self.product.bulk_price = Decimal("15.00")
+        self.product.save()
+
+        session = self.client.session
+        session["bag"] = {str(self.product.id): 5}
+        session.save()
+
+        response = self.client.get(reverse("view_bag"))
+
+        self.assertEqual(response.context["total"], Decimal("75.00"))
+
+    def test_bag_displays_bulk_unit_price(self):
+        """Check if the bag displays the correct bulk unit price"""
+        self.product.price = Decimal("20.00")
+        self.product.bulk_quantity = 5
+        self.product.bulk_price = Decimal("15.00")
+        self.product.save()
+
+        session = self.client.session
+        session["bag"] = {str(self.product.id): 5}
+        session.save()
+
+        response = self.client.get(reverse("view_bag"))
+
+        self.assertContains(response, "€15.00")
+
+    def test_bag_uses_regular_price_below_bulk_quantity(self):
+        """Check if the bag uses the regular price when quantity is
+        below the bulk quantity"""
+        self.product.price = Decimal("20.00")
+        self.product.bulk_quantity = 5
+        self.product.bulk_price = Decimal("15.00")
+        self.product.save()
+
+        session = self.client.session
+        session["bag"] = {str(self.product.id): 4}
+        session.save()
+
+        response = self.client.get(reverse("view_bag"))
+
+        self.assertEqual(response.context["total"], Decimal("80.00"))
+        self.assertContains(response, "€20.00")
