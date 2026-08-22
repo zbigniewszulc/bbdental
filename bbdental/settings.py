@@ -75,9 +75,9 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/products/all/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGIN_METHODS = {'email', 'username'}
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'email2*', 'username*', 'password1*',
+                         'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_EMAIL_NOTIFICATIONS = True
 ACCOUNT_SIGNUP_FORM_CLASS = "profiles.forms.BusinessNameSignupForm"
