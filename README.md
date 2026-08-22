@@ -1650,5 +1650,12 @@ If you need to install Python you can find installation instructions at https://
 145. https://docs.python.org/3/library/math.html#math.ceil - used to round the estimated number of days until a product runs out of stock
 146. https://docs.python.org/3/howto/sorting.html#key-functions
 147. https://devcenter.heroku.com/articles/python-runtimes - used to specify the Python version for Heroku deployment using a .python-version file
+148. https://docs.djangoproject.com/en/5.1/topics/security/
+149. [Django Deployment Checklist](https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/) - used to check the project settings before deployment
+150. [Django SECURE_PROXY_SSL_HEADER](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-proxy-ssl-header) - used to allow Django to recognise secure requests behind the Heroku proxy
+151. [Django SECURE_SSL_REDIRECT](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-ssl-redirect) - used to redirect HTTP requests to HTTPS in production
+152. [Django SESSION_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-secure) - used to send session cookies only through HTTPS
+153. [Django CSRF_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-secure) - used to send CSRF cookies only through HTTPS
+154. [Heroku HTTP Routing](https://devcenter.heroku.com/articles/http-routing#heroku-headers) - used to confirm how Heroku provides the original request protocol through the X-Forwarded-Proto header
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
