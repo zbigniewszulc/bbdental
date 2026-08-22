@@ -1649,5 +1649,6 @@ If you need to install Python you can find installation instructions at https://
 144. https://docs.python.org/3/library/datetime.html#datetime.timedelta - used to define the previous sales period for calculating when a product is expected to run out of stock 
 145. https://docs.python.org/3/library/math.html#math.ceil - used to round the estimated number of days until a product runs out of stock
 146. https://docs.python.org/3/howto/sorting.html#key-functions
+147. https://devcenter.heroku.com/articles/python-runtimes - used to specify the Python version for Heroku deployment using a .python-version file
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
