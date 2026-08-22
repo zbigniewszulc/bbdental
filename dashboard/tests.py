@@ -846,7 +846,7 @@ class StaffDashboardTests(TestCase):
         )
         self.assertContains(
             response,
-            'id="low-stock-products-collapse"',
+            'id="low-stock-products-collapse" class="collapse"',
         )
         self.assertContains(
             response,
@@ -854,10 +854,5 @@ class StaffDashboardTests(TestCase):
         )
         self.assertContains(
             response,
-            'id="stock-estimates-collapse"',
-        )
-        self.assertContains(
-            response,
-            'aria-expanded="false"',
-            count=2,
+            'id="stock-estimates-collapse" class="collapse"',
         )
