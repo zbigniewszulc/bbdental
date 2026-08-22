@@ -1651,11 +1651,20 @@ If you need to install Python you can find installation instructions at https://
 146. https://docs.python.org/3/howto/sorting.html#key-functions
 147. https://devcenter.heroku.com/articles/python-runtimes - used to specify the Python version for Heroku deployment using a .python-version file
 148. https://docs.djangoproject.com/en/5.1/topics/security/
-149. [Django Deployment Checklist](https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/) - used to check the project settings before deployment
-150. [Django SECURE_PROXY_SSL_HEADER](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-proxy-ssl-header) - used to allow Django to recognise secure requests behind the Heroku proxy
-151. [Django SECURE_SSL_REDIRECT](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-ssl-redirect) - used to redirect HTTP requests to HTTPS in production
-152. [Django SESSION_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-secure) - used to send session cookies only through HTTPS
-153. [Django CSRF_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-secure) - used to send CSRF cookies only through HTTPS
-154. [Heroku HTTP Routing](https://devcenter.heroku.com/articles/http-routing#heroku-headers) - used to confirm how Heroku provides the original request protocol through the X-Forwarded-Proto header
+149. https://cloudinary.com/documentation/django_image_and_video_upload - used to upload and store product images using CloudinaryField
+150. [Django Deployment Checklist](https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/) - used to check the project settings before deployment
+151. [Django SECURE_PROXY_SSL_HEADER](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-proxy-ssl-header) - used to allow Django to recognise secure requests behind the Heroku proxy
+152. [Django SECURE_SSL_REDIRECT](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-ssl-redirect) - used to redirect HTTP requests to HTTPS in production
+153. [Django SESSION_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-secure) - used to send session cookies only through HTTPS
+154. [Django CSRF_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-secure) - used to send CSRF cookies only through HTTPS
+155. [Heroku HTTP Routing](https://devcenter.heroku.com/articles/http-routing#heroku-headers) - used to confirm how Heroku provides the original request protocol through the X-Forwarded-Proto header
+156. https://pypi.org/project/django-allauth/65.19.1/ - used to confirm django-allauth version and its compatibility with Django 5.2 and Python 3.12
+157. https://docs.allauth.org/en/latest/account/configuration.html#account-signup-fields - used to replace deprecated signup settings with ACCOUNT_SIGNUP_FIELDS
+158. https://docs.djangoproject.com/en/5.2/ref/django-admin/#check - used to check the project for any configuration problems after updating its dependencies
+159. [Django 5.1 Release Notes](https://docs.djangoproject.com/en/5.1/releases/5.1/#features-removed-in-5-1) - used to confirm that DEFAULT_FILE_STORAGE was removed in Django 5.1
+160. [Python Versions](https://devguide.python.org/versions/) - used to confirm that the Python version used in the project is still supported
+161. [How to upgrade Django to a newer version](https://docs.djangoproject.com/en/5.2/howto/upgrade-version/) - used as a guide when updating Django to a newer version and testing the project after the update
+162. [pip Requirements Files](https://pip.pypa.io/en/stable/user_guide/#requirements-files) - used to update the pinned Django version installed from requirements.txt
+163. [Django 5.2 Release Notes](https://docs.djangoproject.com/en/5.2/releases/5.2/) - used to check changes and backwards incompatible changes introduced in Django 5.2
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
