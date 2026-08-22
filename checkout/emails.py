@@ -15,7 +15,7 @@ def send_order_confirmation(order):
     # Build email content
     items = "\n".join(
         f"- {item.product.product_name} | Quantity: {item.quantity} | "
-        f"Price: €{item.line_item_total:.2f}"
+        f"Line Total: €{item.line_item_total:.2f}"
         for item in order_items
     )
 
