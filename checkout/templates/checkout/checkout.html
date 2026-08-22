@@ -109,7 +109,7 @@
                                     </a>
                                 </div>
                                 <div>
-                                    €{{ item.product.price|floatformat:2 }} x {{ item.quantity }} = <strong>€{{ item.total_price|floatformat:2 }}</strong>
+                                    €{{ item.unit_price|floatformat:2 }} x {{ item.quantity }} = <strong>€{{ item.total_price|floatformat:2 }}</strong>
                                 </div>
                             </li>
                         {% endfor %}

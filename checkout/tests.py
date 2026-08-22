@@ -96,6 +96,34 @@ class CheckoutTemplateTests(TestCase):
 
         self.assertIn('name="stripe_pid"', html)
 
+    def test_checkout_displays_bulk_unit_price(self):
+        """Check if checkout displays the bulk unit price"""
+        html = render_to_string(
+            "checkout/checkout.html",
+            {
+                "order_form": OrderForm(),
+                "bag_items": [
+                    {
+                        "product": {
+                            "id": 1,
+                            "product_name": "Bulk Product",
+                            "picture_location": None,
+                            "price": Decimal("20.00"),
+                        },
+                        "quantity": 5,
+                        "unit_price": Decimal("15.00"),
+                        "total_price": Decimal("75.00"),
+                    }
+                ],
+                "total": Decimal("75.00"),
+                "delivery": Decimal("0.00"),
+                "free_delivery_delta": Decimal("0.00"),
+                "grand_total": Decimal("75.00"),
+            },
+        )
+
+        self.assertIn("€15.00 x 5", html)
+
 
 class CheckoutEmailTests(TestCase):
     def setUp(self):
@@ -303,6 +331,47 @@ class CheckoutOrderModelTests(TestCase):
             "Dublin Dental Practice"
         )
 
+    def test_order_line_item_uses_bulk_price(self):
+        """Check if order line item uses bulk price"""
+        category = Category.objects.create(
+            category_name="Test Category",
+        )
+        subcategory = Subcategory.objects.create(
+            subcategory_name="Test Subcategory",
+            category=category,
+        )
+        manufacturer = Manufacturer.objects.create(
+            manufacturer_name="Test Manufacturer",
+        )
+        product = Product.objects.create(
+            product_name="Bulk Product",
+            description="Test product",
+            price=Decimal("20.00"),
+            bulk_quantity=5,
+            bulk_price=Decimal("15.00"),
+            in_stock=100,
+            manufacturer=manufacturer,
+            subcategory=subcategory,
+        )
+        order = Order.objects.create(
+            name="Peter",
+            surname="Byrne",
+            email="peter@example.com",
+            phone_number="+353 87 123 4567",
+            address_line_1="47 Virginia Hall",
+            town="Tallaght",
+            postcode="D24 ABC1",
+            country="IE",
+        )
+
+        line_item = OrderLineItem.objects.create(
+            order=order,
+            product=product,
+            quantity=5,
+        )
+
+        self.assertEqual(line_item.line_item_total, Decimal("75.00"))
+
 
 class CheckoutCacheDataTests(TestCase):
     def setUp(self):
@@ -382,6 +451,8 @@ class CheckoutWebhookHandlerTests(TestCase):
             product_name="Test Product",
             description="Test product description",
             price=Decimal("15.00"),
+            bulk_quantity=2,
+            bulk_price=Decimal("12.00"),
             in_stock=10,
             manufacturer=manufacturer,
             subcategory=subcategory,
@@ -429,6 +500,8 @@ class CheckoutWebhookHandlerTests(TestCase):
         self.assertEqual(order.business_name, "Dublin Dental Practice")
         self.assertEqual(line_item.product, product)
         self.assertEqual(line_item.quantity, 2)
+        self.assertEqual(line_item.line_item_total, Decimal("24.00"))
+        self.assertEqual(order.subtotal, Decimal("24.00"))
 
         user.refresh_from_db()
         profile = user.userprofile

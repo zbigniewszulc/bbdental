@@ -124,7 +124,9 @@ class OrderLineItem(models.Model):
         Override the original save method to set the line_item_total
         and update order the total
         """
-        self.line_item_total = self.product.price * self.quantity
+        unit_price = self.product.get_price_for_quantity(self.quantity)
+        self.line_item_total = unit_price * self.quantity
+
         # Call the save method from the parent class
         super().save(*args, **kwargs)
         self.order.update_total()
