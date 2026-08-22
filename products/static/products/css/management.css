@@ -6,9 +6,8 @@
     max-width: 800px;
 }
 
-.product-name-search {
-    width: 240px;
-    max-width: 100%;
+.products-table {
+    min-width: 750px;
 }
 
 .products-table img {

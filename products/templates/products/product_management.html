@@ -13,30 +13,33 @@
             <a href="{% url 'add_product' %}" class="btn btn-success mb-2">
                 <i class="fa-solid fa-plus-circle"></i>&nbsp;Add New Product
             </a>
-            <div class="d-flex flex-wrap align-items-center gap-3 ms-auto mt-3 mb-1 justify-content-end">
+            <div class="row g-3 align-items-end mt-3 mb-3">
                 <!-- Search products by name and keep the selected filter and sorting options -->
-                <form method="GET"
-                      class="d-flex align-items-center ms-auto me-0 ms-lg-0 me-lg-auto">
-                    <label for="product_name" class="me-2 text-nowrap">Name:</label>
-                    <input type="search"
-                           id="product_name"
-                           name="q"
-                           class="form-control form-control-sm product-name-search me-2"
-                           value="{{ query }}"
-                           placeholder="Enter a product name">
-                    <input type="hidden" name="manufacturer" value="{{ selected_manufacturer }}">
-                    <input type="hidden" name="sort" value="{{ sort }}">
-                    <input type="hidden" name="direction" value="{{ direction }}">
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        Search
-                    </button>
+                <form method="GET" class="col-12 col-xl-6">
+                    <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-end gap-2">
+                        <div class="flex-grow-1">
+                            <label for="product_name" class="form-label mb-1">Name:</label>
+                            <input type="search"
+                                   id="product_name"
+                                   name="q"
+                                   class="form-control form-control-sm"
+                                   value="{{ query }}"
+                                   placeholder="Enter a product name">
+                        </div>
+                        <input type="hidden" name="manufacturer" value="{{ selected_manufacturer }}">
+                        <input type="hidden" name="sort" value="{{ sort }}">
+                        <input type="hidden" name="direction" value="{{ direction }}">
+                        <button type="submit" class="btn btn-primary btn-sm flex-shrink-0">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            Search
+                        </button>
+                    </div>
                 </form>
                 <!-- Filter Dropdown -->
-                <div class="d-flex align-items-center">
-                    <label for="manufacturer_filter" class="me-2">Manufacturer:</label>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <label for="manufacturer_filter" class="form-label mb-1">Manufacturer:</label>
                     <select id="manufacturer_filter"
-                            class="form-select w-auto form-select-sm"
+                            class="form-select form-select-sm"
                             onchange="location = this.value;">
                         <option value="?sort={{ sort }}&direction={{ direction }}{% if query %}&q={{ query|urlencode }}{% endif %}"
                                 {% if not selected_manufacturer %}selected{% endif %}>All Manufacturers</option>
@@ -49,10 +52,10 @@
                     </select>
                 </div>
                 <!-- Sorting Dropdown -->
-                <div class="d-flex align-items-center">
-                    <label for="sort" class="me-2">Sort by:</label>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <label for="sort" class="form-label mb-1">Sort by:</label>
                     <select id="sort"
-                            class="form-select w-auto form-select-sm"
+                            class="form-select form-select-sm"
                             onchange="location = this.value;">
                         <option value="?sort=name&direction=asc&manufacturer={{ selected_manufacturer }}{% if query %}&q={{ query|urlencode }}{% endif %}"
                                 {% if sort == "name" and direction == "asc" %}selected{% endif %}>Name (A-Z)</option>
@@ -74,84 +77,86 @@
                 </div>
             </div>
             <!-- Products Table -->
-            <table class="table table-bordered products-table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Manufacturer</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for product in page_obj.object_list %}
+            <div class="table-responsive">
+                <table class="table table-bordered products-table">
+                    <thead class="thead-dark">
                         <tr>
-                            <td>
-                                {% if product.picture_location %}
-                                    <img src="{{ product.picture_location.url }}"
-                                         alt="{{ product.product_name }}"
-                                         class="img-fluid">
-                                {% else %}
-                                    <img src="{% static 'images/noimage.webp' %}"
-                                         class="card-img-top img-fluid p-2 rounded"
-                                         alt="No Image Available">
-                                {% endif %}
-                            </td>
-                            <td>{{ product.product_name }}</td>
-                            <td>€{{ product.price }}</td>
-                            <td>{{ product.in_stock }}</td>
-                            <td>{{ product.manufacturer.manufacturer_name }}</td>
-                            <td>
-                                <a href="{% url 'edit_product' product.id %}"
-                                   class="btn btn-warning btn-sm">
-                                    <i class="fa-solid fa-edit"></i> Edit
-                                </a>
-                                <!-- Trigger Modal for Deletion -->
-                                <button type="button"
-                                        class="btn btn-danger btn-sm"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal{{ product.id }}">
-                                    <i class="fa-solid fa-trash"></i> Delete
-                                </button>
-                                <!-- Modal for Deletion -->
-                                <div class="modal fade"
-                                     id="deleteModal{{ product.id }}"
-                                     tabindex="-1"
-                                     aria-labelledby="deleteModalLabel"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                                                <button type="button"
-                                                        class="btn-close"
-                                                        data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to delete <strong>{{ product.product_name }}</strong>?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <form method="POST" action="{% url 'delete_product' product.id %}">
-                                                    {% csrf_token %}
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                    <button type="submit" class="btn btn-danger">Yes, delete</button>
-                                                </form>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Manufacturer</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in page_obj.object_list %}
+                            <tr>
+                                <td>
+                                    {% if product.picture_location %}
+                                        <img src="{{ product.picture_location.url }}"
+                                             alt="{{ product.product_name }}"
+                                             class="img-fluid">
+                                    {% else %}
+                                        <img src="{% static 'images/noimage.webp' %}"
+                                             class="card-img-top img-fluid p-2 rounded"
+                                             alt="No Image Available">
+                                    {% endif %}
+                                </td>
+                                <td>{{ product.product_name }}</td>
+                                <td>€{{ product.price }}</td>
+                                <td>{{ product.in_stock }}</td>
+                                <td>{{ product.manufacturer.manufacturer_name }}</td>
+                                <td>
+                                    <a href="{% url 'edit_product' product.id %}"
+                                       class="btn btn-warning btn-sm">
+                                        <i class="fa-solid fa-edit"></i> Edit
+                                    </a>
+                                    <!-- Trigger Modal for Deletion -->
+                                    <button type="button"
+                                            class="btn btn-danger btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal{{ product.id }}">
+                                        <i class="fa-solid fa-trash"></i> Delete
+                                    </button>
+                                    <!-- Modal for Deletion -->
+                                    <div class="modal fade"
+                                         id="deleteModal{{ product.id }}"
+                                         tabindex="-1"
+                                         aria-labelledby="deleteModalLabel{{ product.id }}"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel{{ product.id }}">Confirm Deletion</h5>
+                                                    <button type="button"
+                                                            class="btn-close"
+                                                            data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete <strong>{{ product.product_name }}</strong>?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form method="POST" action="{% url 'delete_product' product.id %}">
+                                                        {% csrf_token %}
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-danger">Yes, delete</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    {% empty %}
-                        <tr>
-                            <td colspan="6">No products found.</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="6">No products found.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             <!-- Pagination -->
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center flex-wrap mt-5">
