@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 import json
 from decimal import Decimal
 
@@ -390,6 +392,37 @@ class CheckoutCacheDataTests(TestCase):
         response = self.client.post(reverse("cache_checkout_data"))
 
         self.assertEqual(response.status_code, 400)
+
+    @patch("checkout.views.stripe.PaymentIntent.modify")
+    def test_invalid_checkout_data_is_rejected_before_payment(
+        self,
+        mock_payment_intent_modify,
+    ):
+        """Check if invalid checkout data is rejected before payment."""
+        response = self.client.post(
+            reverse("cache_checkout_data"),
+            {
+                "client_secret": "pi_test_123_secret_test",
+                "save_profile": "false",
+                "name": "Gianluca",
+                "surname": "Yoris",
+                "email": "customer@example.com",
+                "phone_number": "23 O'Connell Street",
+                "address_line_1": "Dublin 1",
+                "address_line_2": "",
+                "town": "Dublin",
+                "postcode": "D01 X285",
+                "country": "IE",
+            },
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertContains(
+            response,
+            "Enter a valid phone number.",
+            status_code=400,
+        )
+        mock_payment_intent_modify.assert_not_called()
 
 
 class CheckoutWebhookHandlerTests(TestCase):

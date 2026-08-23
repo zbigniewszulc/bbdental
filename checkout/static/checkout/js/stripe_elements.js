@@ -105,7 +105,16 @@ form.addEventListener('submit', function(event) {
         client_secret: clientSecret,
         save_profile: document.getElementById(
             'saveProfile'
-        ).checked.toString()
+        ).checked.toString(),
+        name: $.trim(form.name.value),
+        surname: $.trim(form.surname.value),
+        email: $.trim(form.email.value),
+        phone_number: $.trim(form.phone_number.value),
+        address_line_1: $.trim(form.address_line_1.value),
+        address_line_2: $.trim(form.address_line_2.value),
+        town: $.trim(form.town.value),
+        postcode: $.trim(form.postcode.value),
+        country: $.trim(form.country.value)
     };
     $.post(form.dataset.cacheUrl, postData)
         .done(function() {
@@ -145,9 +154,15 @@ form.addEventListener('submit', function(event) {
                 }
             });
         })
-        .fail(function() {
-            document.getElementById('card-errors').textContent =
-                'There was a problem preparing your payment. Please try again.';
+        .fail(function(response) {
+            var errorMessage = response.responseText;
+
+            if (!errorMessage) {
+                errorMessage =
+                    'There was a problem preparing your payment. Please try again.';
+            }
+
+            document.getElementById('card-errors').textContent = errorMessage;
             $('#loading-overlay').addClass('d-none');
             card.update({'disabled': false});
             $('#submit_checkout').attr('disabled', false);

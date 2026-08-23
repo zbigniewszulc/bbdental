@@ -31,6 +31,12 @@ def cache_checkout_data(request):
     if not client_secret:
         return HttpResponse(status=400)
 
+    order_form = OrderForm(request.POST)
+
+    if not order_form.is_valid():
+        for field_errors in order_form.errors.values():
+            return HttpResponse(field_errors[0], status=400)
+
     stripe_pid = client_secret.split('_secret_')[0]
     save_profile = request.POST.get('save_profile') == 'true'
 

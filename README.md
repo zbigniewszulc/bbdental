@@ -1606,65 +1606,68 @@ If you need to install Python you can find installation instructions at https://
 101. https://docs.python.org/3/library/unittest.html
 102. https://docs.djangoproject.com/en/5.1/ref/validators/
 103. https://docs.djangoproject.com/en/5.1/ref/forms/validation/
-104. https://docs.djangoproject.com/en/5.1/ref/models/instances/#validating-objects
-105. https://docs.djangoproject.com/en/5.1/ref/models/instances/#django.db.models.Model.get_FOO_display
-106. https://docs.djangoproject.com/en/5.1/ref/urlresolvers/
-107. https://docs.python.org/3.12/tutorial/inputoutput.html#formatted-string-literals
-108. https://docs.djangoproject.com/en/5.1/topics/http
-109. https://docs.allauth.org
-110. https://django-crispy-forms.readthedocs.io/en/latest/
-111. Your Europe - [Setting up a business website](https://europa.eu/youreurope/business/growing/digitalising/setting-up-business-website/index_en.htm) - used to check what business, contact and legal information should be displayed on an online shop
-112. EUR-Lex - [Directive 2000/31/EC on electronic commerce](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02000L0031-20240217) - used to understand what information an online shop should provide and how online orders and terms should be presented
-113. EUR-Lex - [Directive 2011/83/EU on consumer rights](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02011L0083-20220528) - Article 2 was used to understand who is considered a consumer and to distinguish consumers from people acting for business or professional purposes
-114. [Stripe Documentation](https://docs.stripe.com/testing) - Testing - used to confirm that test transactions simulate payments without moving real money
-115. EUR-Lex - [GDPR Article 13](https://eur-lex.europa.eu/eli/reg/2016/679/art_13/oj/eng) - used to understand what information should be included in a privacy policy, including contact details, reasons for using personal data, data sharing, retention and user rights
-116. [Data Protection Commission - Right to be informed](https://www.dataprotection.ie/en/individuals/know-your-rights/right-be-informed-transparency-article-13-14-gdpr) - used as practical guidance for organising the privacy policy and presenting the information in clear and simple language
-117. [Data Protection Commission - Cookies guidance](https://www.dataprotection.ie/en/dpc-guidance/guidance-cookies-and-other-tracking-technologies) - used to understand what information should be provided about cookies and when cookie consent may be required
-118. [Data Protection Commission - GDPR rights](https://www.dataprotection.ie/en/individuals/rights-individuals-under-general-data-protection-regulation) - used as a reference for the personal data rights described in the policy
-119. [Data Protection Commission - International data transfers](https://www.dataprotection.ie/en/organisations/international-transfers/transfers-personal-data-third-countries-or-international-organisations) - used to understand how personal information may be protected when it is processed outside the European Economic Area
-120. [Stripe Privacy Policy](https://stripe.com/ie/privacy) - used to understand what personal and payment information Stripe may handle
-121. [Stripe Cookie Policy](https://stripe.com/ie/legal/cookies-policy) - used as a reference for cookies connected with Stripe payment features
-122. [Stripe Integration Security Guide](https://docs.stripe.com/security/guide) - used to confirm that card details can be sent directly to Stripe without passing through the website server
-123. [Google Privacy Policy](https://policies.google.com/privacy?hl=en-IE) - used as a reference for how Google handles information when Gmail is used to send project emails
-124. [Heroku Security Policy](https://www.heroku.com/policy/security/) - used as a reference for how Heroku hosts and protects deployed applications
-125. [Django Documentation - Password management](https://docs.djangoproject.com/en/5.1/topics/auth/passwords/) - used to confirm that Django stores password hashes instead of readable passwords
-126. [Django Documentation - CSRF protection](https://docs.djangoproject.com/en/5.1/ref/csrf/) - used to understand how Django uses a CSRF cookie to protect submitted forms
-127. Django Documentation - [SESSION_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-age) and [CSRF_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-age) - used to confirm the default lifetime of the session and CSRF cookies
-128. [Google Account Help - Sign in with app passwords](https://support.google.com/accounts/answer/185833) - used to set up an app password for sending project emails through Gmail SMTP
-129. [DBeaver Documentation - ER Diagrams](https://dbeaver.com/docs/dbeaver/ER-Diagrams/) - used to create and export the database schema diagram
-130. [Microsoft Support - Crow's Foot database notation](https://support.microsoft.com/en-us/visio/create-a-diagram-with-crow-s-foot-database-notation) - used to understand the relationship and cardinality symbols shown in the database diagram
-131. https://www.freecodecamp.org/news/crows-foot-notation-relationship-symbols-and-how-to-read-diagrams/
-132. [Django Allauth Documentation - Custom Signup Forms](https://docs.allauth.org/en/dev/account/configuration.html#account-signup-form-class) - used to add the Business name field to the signup form and save it to the user's profile
-133. https://docs.djangoproject.com/en/5.1/ref/models/querysets/#count
-134. https://peps.python.org/pep-0008/#imports
-135. https://isort.readthedocs.io/en/latest/ - used to organise Python imports across the project
-136. https://docs.python.org/3/library/decimal.html
-137. https://docs.djangoproject.com/en/5.1/topics/db/aggregation/ - used to calculate total revenue from customer orders and to calculate top selling products based on sold quantities
-138. https://docs.python.org/3/reference/expressions.html#boolean-operations
-139. https://docs.python.org/3/reference/expressions.html#subscriptions - accessing a dictionary value from a method’s return value
-140. https://docs.python.org/3/library/stdtypes.html#truth-value-testing
-141. https://docs.djangoproject.com/en/5.1/ref/utils/#django.utils.timezone
-142. https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
-143. [Chart.js Documentation](https://www.chartjs.org/docs/latest/) - used for creating charts on the sales dashboard
-144. https://docs.python.org/3/library/datetime.html#datetime.timedelta - used to define the previous sales period for calculating when a product is expected to run out of stock 
-145. https://docs.python.org/3/library/math.html#math.ceil - used to round the estimated number of days until a product runs out of stock
-146. https://docs.python.org/3/howto/sorting.html#key-functions
-147. https://devcenter.heroku.com/articles/python-runtimes - used to specify the Python version for Heroku deployment using a .python-version file
-148. https://docs.djangoproject.com/en/5.1/topics/security/
-149. https://cloudinary.com/documentation/django_image_and_video_upload - used to upload and store product images using CloudinaryField
-150. [Django Deployment Checklist](https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/) - used to check the project settings before deployment
-151. [Django SECURE_PROXY_SSL_HEADER](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-proxy-ssl-header) - used to allow Django to recognise secure requests behind the Heroku proxy
-152. [Django SECURE_SSL_REDIRECT](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-ssl-redirect) - used to redirect HTTP requests to HTTPS in production
-153. [Django SESSION_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-secure) - used to send session cookies only through HTTPS
-154. [Django CSRF_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-secure) - used to send CSRF cookies only through HTTPS
-155. [Heroku HTTP Routing](https://devcenter.heroku.com/articles/http-routing#heroku-headers) - used to confirm how Heroku provides the original request protocol through the X-Forwarded-Proto header
-156. https://pypi.org/project/django-allauth/65.19.1/ - used to confirm django-allauth version and its compatibility with Django 5.2 and Python 3.12
-157. https://docs.allauth.org/en/latest/account/configuration.html#account-signup-fields - used to replace deprecated signup settings with ACCOUNT_SIGNUP_FIELDS
-158. https://docs.djangoproject.com/en/5.2/ref/django-admin/#check - used to check the project for any configuration problems after updating its dependencies
-159. [Django 5.1 Release Notes](https://docs.djangoproject.com/en/5.1/releases/5.1/#features-removed-in-5-1) - used to confirm that DEFAULT_FILE_STORAGE was removed in Django 5.1
-160. [Python Versions](https://devguide.python.org/versions/) - used to confirm that the Python version used in the project is still supported
-161. [How to upgrade Django to a newer version](https://docs.djangoproject.com/en/5.2/howto/upgrade-version/) - used as a guide when updating Django to a newer version and testing the project after the update
-162. [pip Requirements Files](https://pip.pypa.io/en/stable/user_guide/#requirements-files) - used to update the pinned Django version installed from requirements.txt
-163. [Django 5.2 Release Notes](https://docs.djangoproject.com/en/5.2/releases/5.2/) - used to check changes and backwards incompatible changes introduced in Django 5.2
+104. https://docs.djangoproject.com/en/5.2/ref/forms/validation/
+105. https://docs.djangoproject.com/en/5.1/ref/models/instances/#validating-objects
+106. https://docs.djangoproject.com/en/5.1/ref/models/instances/#django.db.models.Model.get_FOO_display
+107. https://docs.djangoproject.com/en/5.1/ref/urlresolvers/
+108. https://docs.python.org/3.12/tutorial/inputoutput.html#formatted-string-literals
+109. https://docs.djangoproject.com/en/5.1/topics/http
+110. https://docs.allauth.org
+111. https://django-crispy-forms.readthedocs.io/en/latest/
+112. Your Europe - [Setting up a business website](https://europa.eu/youreurope/business/growing/digitalising/setting-up-business-website/index_en.htm) - used to check what business, contact and legal information should be displayed on an online shop
+113. EUR-Lex - [Directive 2000/31/EC on electronic commerce](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02000L0031-20240217) - used to understand what information an online shop should provide and how online orders and terms should be presented
+114. EUR-Lex - [Directive 2011/83/EU on consumer rights](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02011L0083-20220528) - Article 2 was used to understand who is considered a consumer and to distinguish consumers from people acting for business or professional purposes
+115. [Stripe Documentation](https://docs.stripe.com/testing) - Testing - used to confirm that test transactions simulate payments without moving real money
+116. EUR-Lex - [GDPR Article 13](https://eur-lex.europa.eu/eli/reg/2016/679/art_13/oj/eng) - used to understand what information should be included in a privacy policy, including contact details, reasons for using personal data, data sharing, retention and user rights
+117. [Data Protection Commission - Right to be informed](https://www.dataprotection.ie/en/individuals/know-your-rights/right-be-informed-transparency-article-13-14-gdpr) - used as practical guidance for organising the privacy policy and presenting the information in clear and simple language
+118. [Data Protection Commission - Cookies guidance](https://www.dataprotection.ie/en/dpc-guidance/guidance-cookies-and-other-tracking-technologies) - used to understand what information should be provided about cookies and when cookie consent may be required
+119. [Data Protection Commission - GDPR rights](https://www.dataprotection.ie/en/individuals/rights-individuals-under-general-data-protection-regulation) - used as a reference for the personal data rights described in the policy
+120. [Data Protection Commission - International data transfers](https://www.dataprotection.ie/en/organisations/international-transfers/transfers-personal-data-third-countries-or-international-organisations) - used to understand how personal information may be protected when it is processed outside the European Economic Area
+121. [Stripe Privacy Policy](https://stripe.com/ie/privacy) - used to understand what personal and payment information Stripe may handle
+122. [Stripe Cookie Policy](https://stripe.com/ie/legal/cookies-policy) - used as a reference for cookies connected with Stripe payment features
+123. [Stripe Integration Security Guide](https://docs.stripe.com/security/guide) - used to confirm that card details can be sent directly to Stripe without passing through the website server
+124. [Google Privacy Policy](https://policies.google.com/privacy?hl=en-IE) - used as a reference for how Google handles information when Gmail is used to send project emails
+125. [Heroku Security Policy](https://www.heroku.com/policy/security/) - used as a reference for how Heroku hosts and protects deployed applications
+126. [Django Documentation - Password management](https://docs.djangoproject.com/en/5.1/topics/auth/passwords/) - used to confirm that Django stores password hashes instead of readable passwords
+127. [Django Documentation - CSRF protection](https://docs.djangoproject.com/en/5.1/ref/csrf/) - used to understand how Django uses a CSRF cookie to protect submitted forms
+128. Django Documentation - [SESSION_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-age) and [CSRF_COOKIE_AGE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-age) - used to confirm the default lifetime of the session and CSRF cookies
+129. [Google Account Help - Sign in with app passwords](https://support.google.com/accounts/answer/185833) - used to set up an app password for sending project emails through Gmail SMTP
+130. [DBeaver Documentation - ER Diagrams](https://dbeaver.com/docs/dbeaver/ER-Diagrams/) - used to create and export the database schema diagram
+131. [Microsoft Support - Crow's Foot database notation](https://support.microsoft.com/en-us/visio/create-a-diagram-with-crow-s-foot-database-notation) - used to understand the relationship and cardinality symbols shown in the database diagram
+132. https://www.freecodecamp.org/news/crows-foot-notation-relationship-symbols-and-how-to-read-diagrams/
+133. [Django Allauth Documentation - Custom Signup Forms](https://docs.allauth.org/en/dev/account/configuration.html#account-signup-form-class) - used to add the Business name field to the signup form and save it to the user's profile
+134. https://docs.djangoproject.com/en/5.1/ref/models/querysets/#count
+135. https://peps.python.org/pep-0008/#imports
+136. https://isort.readthedocs.io/en/latest/ - used to organise Python imports across the project
+137. https://docs.python.org/3/library/decimal.html
+138. https://docs.djangoproject.com/en/5.1/topics/db/aggregation/ - used to calculate total revenue from customer orders and to calculate top selling products based on sold quantities
+139. https://docs.python.org/3/reference/expressions.html#boolean-operations
+140. https://docs.python.org/3/reference/expressions.html#subscriptions - accessing a dictionary value from a method’s return value
+141. https://docs.python.org/3/library/stdtypes.html#truth-value-testing
+142. https://docs.djangoproject.com/en/5.1/ref/utils/#django.utils.timezone
+143. https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
+144. [Chart.js Documentation](https://www.chartjs.org/docs/latest/) - used for creating charts on the sales dashboard
+145. https://docs.python.org/3/library/datetime.html#datetime.timedelta - used to define the previous sales period for calculating when a product is expected to run out of stock 
+146. https://docs.python.org/3/library/math.html#math.ceil - used to round the estimated number of days until a product runs out of stock
+147. https://docs.python.org/3/howto/sorting.html#key-functions
+148. https://devcenter.heroku.com/articles/python-runtimes - used to specify the Python version for Heroku deployment using a .python-version file
+149. https://docs.djangoproject.com/en/5.1/topics/security/
+150. https://cloudinary.com/documentation/django_image_and_video_upload - used to upload and store product images using CloudinaryField
+151. [Django Deployment Checklist](https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/) - used to check the project settings before deployment
+152. [Django SECURE_PROXY_SSL_HEADER](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-proxy-ssl-header) - used to allow Django to recognise secure requests behind the Heroku proxy
+153. [Django SECURE_SSL_REDIRECT](https://docs.djangoproject.com/en/5.1/ref/settings/#secure-ssl-redirect) - used to redirect HTTP requests to HTTPS in production
+154. [Django SESSION_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#session-cookie-secure) - used to send session cookies only through HTTPS
+155. [Django CSRF_COOKIE_SECURE](https://docs.djangoproject.com/en/5.1/ref/settings/#csrf-cookie-secure) - used to send CSRF cookies only through HTTPS
+156. [Heroku HTTP Routing](https://devcenter.heroku.com/articles/http-routing#heroku-headers) - used to confirm how Heroku provides the original request protocol through the X-Forwarded-Proto header
+157. https://pypi.org/project/django-allauth/65.19.1/ - used to confirm django-allauth version and its compatibility with Django 5.2 and Python 3.12
+158. https://docs.allauth.org/en/latest/account/configuration.html#account-signup-fields - used to replace deprecated signup settings with ACCOUNT_SIGNUP_FIELDS
+159. https://docs.djangoproject.com/en/5.2/ref/django-admin/#check - used to check the project for any configuration problems after updating its dependencies
+160. [Django 5.1 Release Notes](https://docs.djangoproject.com/en/5.1/releases/5.1/#features-removed-in-5-1) - used to confirm that DEFAULT_FILE_STORAGE was removed in Django 5.1
+161. [Python Versions](https://devguide.python.org/versions/) - used to confirm that the Python version used in the project is still supported
+162. [How to upgrade Django to a newer version](https://docs.djangoproject.com/en/5.2/howto/upgrade-version/) - used as a guide when updating Django to a newer version and testing the project after the update
+163. [pip Requirements Files](https://pip.pypa.io/en/stable/user_guide/#requirements-files) - used to update the pinned Django version installed from requirements.txt
+164. [Django 5.2 Release Notes](https://docs.djangoproject.com/en/5.2/releases/5.2/) - used to check changes and backwards incompatible changes introduced in Django 5.2
+165. https://medium.com/@reetesh043/understanding-unittest-mock-the-python-mock-object-library-aaaded4ddf98 - used to understand mock objects for testing
+166. https://docs.python.org/3.12/library/unittest.mock.html#unittest.mock.patch - used to replace Stripe methods with mock objects during checkout testing
 
 I came across many resources while working on this project, but the study materials from Code Institute played the biggest role. Huge thanks for the high-quality content and hands-on practical lessons – they made a real difference!
