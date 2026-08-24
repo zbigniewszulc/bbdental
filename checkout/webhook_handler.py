@@ -1,4 +1,8 @@
-# Ref: https://www.youtube.com/watch?v=lg8p1vD9-Bs&t=230s
+# Initial StripeWH_Handler class and generic event handler adapted from:
+# https://www.youtube.com/watch?v=AU0F2wnrbEs&t=2s
+#
+# PaymentIntent specific handler methods adapted from:
+# https://www.youtube.com/watch?v=lg8p1vD9-Bs&t=230s
 
 import json
 

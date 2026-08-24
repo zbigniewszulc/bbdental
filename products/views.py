@@ -134,6 +134,8 @@ def all_products(request):
         .select_related('subcategory', 'manufacturer')
     )
     # Get search query entered by user from URL
+    # Product search logic adapted from Code Institute Boutique Ado lesson:
+    # https://www.youtube.com/watch?v=65RVPDOhRIc&t=73s
     if request.GET:
         if 'q' in request.GET:
             query = request.GET['q']
@@ -170,6 +172,9 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
+# Initial product detail view adapted from
+# Code Institute Boutique Ado lesson:
+# https://www.youtube.com/watch?v=rqYXCuXbs2s&t=3s
 def product_details(request, product_id):
     """
     A view to show idyvidual product details.

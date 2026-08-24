@@ -62,6 +62,9 @@ def cache_checkout_data(request):
         return HttpResponse(content=str(e), status=400)
 
 
+# Initial checkout view structure adapted from
+# Code Institute Boutique Ado lesson:
+# https://www.youtube.com/watch?v=eAja_pKhiCM&t=376s
 @login_required
 @customer_required
 def checkout(request):

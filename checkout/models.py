@@ -19,6 +19,9 @@ class AllowedCountries(Countries):
     ]
 
 
+# Core Order and OrderLineItem model structures adapted from
+# Code Institute Boutique Ado lesson:
+# https://www.youtube.com/watch?v=l1Z9Aau0V08&t=296s
 class Order(models.Model):
     # Order fulfilment statuses
     STATUS_CHOICES = [
@@ -79,7 +82,7 @@ class Order(models.Model):
         if not already set
         """
         if not self.order_number:
-            self.order_number = self._generate_order_number()
+            self.order_number = self._generate_order_number()   
         super().save(*args, **kwargs)
 
     def update_total(self):

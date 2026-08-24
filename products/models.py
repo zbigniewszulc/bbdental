@@ -1,5 +1,5 @@
 from cloudinary.models import CloudinaryField
-# https://studygyaan.com/django/how-to-implement-validators-in-django-models
+
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
 from django.db import models

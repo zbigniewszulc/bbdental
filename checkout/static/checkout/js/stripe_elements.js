@@ -1,5 +1,10 @@
 /*
-    Ref https://docs.stripe.com/js
+    Initial Stripe Elements setup adapted from the Code Institute
+    Boutique Ado lesson:
+    https://www.youtube.com/watch?v=eUcMh5s_27I&t=327s
+
+    Official Stripe.js reference:
+    https://docs.stripe.com/js
 */
 
 var stripePublicKey = JSON.parse(document.getElementById("id_stripe_public_key").text);

@@ -23,6 +23,9 @@ class OrderForm(forms.ModelForm):
             'address_line_2', 'town', 'postcode', 'country'
         )
 
+    # Form field configuration adapted from
+    # Code Institute Boutique Ado lesson:
+    # https://www.youtube.com/watch?v=0cGRqIHvSf8&t=109s
     def __init__(self, *args, **kwargs):
         """
         Add placeholders and classes, remove auto generated labels

@@ -1,4 +1,9 @@
-# Ref: https://www.youtube.com/watch?v=j9mLOyjd_KY&t=125s
+# Initial webhook endpoint and Stripe signature verification adapted from:
+# https://www.youtube.com/watch?v=lg8p1vD9-Bs
+#
+# Event mapping and handler dispatch adapted from:
+# https://www.youtube.com/watch?v=j9mLOyjd_KY&t=125s
+
 import stripe
 from django.conf import settings
 from django.http import HttpResponse
@@ -23,6 +28,7 @@ def webhook(request):
     if not sig_header:
         return HttpResponse(status=400)
 
+    # Verify the signature
     try:
         event = stripe.Webhook.construct_event(
             payload, sig_header, wh_secret
