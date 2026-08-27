@@ -9,7 +9,7 @@ https://www.youtube.com/watch?v=eAja_pKhiCM&t=376s
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="container my-5">
+    <main class="container my-5">
         <!-- Checkout section -->
         <div class="row">
             <div class="col-md-6 d-flex flex-column">
@@ -101,12 +101,13 @@ https://www.youtube.com/watch?v=eAja_pKhiCM&t=376s
             <!-- Order Summary section -->
             <div class="col-md-6 d-flex align-items-start">
                 <div class="w-100">
-                    <h4 class="mt-4 mt-md-0">Order Summary</h4>
+                    <h4 class="mt-4 mt-md-0 text-dark">Order Summary</h4>
                     <ul class="list-group mb-3 order-summary">
                         {% for item in bag_items %}
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
-                                    <a href="{% url 'product_details' item.product.id %}">
+                                    <a href="{% url 'product_details' item.product.id %}"
+                                       aria-label="View {{ item.product.product_name }} details">
                                         {% if item.product.picture_location %}
                                             <img src="{{ item.product.picture_location.url }}"
                                                  class="img-fluid d-none d-xl-block"
@@ -144,7 +145,7 @@ https://www.youtube.com/watch?v=eAja_pKhiCM&t=376s
                 </div>
             </div>
         </div>
-    </div>
+    </main>
     <!-- Bootstrap Spinner -->
     <div id="loading-overlay"
          class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex justify-content-center align-items-center">

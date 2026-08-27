@@ -48,7 +48,7 @@ class HomeTemplateTests(TestCase):
         self.assertContains(response, "Open document (PDF)")
         self.assertContains(
             response,
-            'aria-label="Open Privacy and Cookies Policy PDF"',
+            'aria-label="Open document (PDF): Privacy and Cookies Policy"',
         )
 
     def test_terms_of_service_uses_current_document(self):
@@ -77,7 +77,7 @@ class HomeTemplateTests(TestCase):
         self.assertContains(response, "Open document (PDF)")
         self.assertContains(
             response,
-            'aria-label="Open Terms and Conditions PDF"',
+            'aria-label="Open document (PDF): Terms and Conditions"',
         )
 
     def test_contact_page_displays_current_contact_details(self):

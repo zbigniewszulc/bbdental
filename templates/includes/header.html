@@ -88,7 +88,7 @@
                   <li class="nav-item">
                     <a class="d-flex flex-column align-items-center text-center link {% if request.path == bag_url %}active{% endif %}"
                        href="{% url 'view_bag' %}"
-                       aria-label="Shopping bag{% if product_count %} with {{ product_count }} item{{ product_count|pluralize }}{% else %} is empty{% endif %}">
+                       aria-label="Shopping bag{% if product_count %} with {{ product_count }} item{{ product_count|pluralize }}{% else %} is empty{% endif %}. Total €{% if total > 0 %}{{ total|floatformat:2 }}{% else %}0.00{% endif %}">
                       <i class="fa-solid fa-bag-shopping mb-1 position-relative"
                          aria-hidden="true">
                         {% if product_count %}
@@ -103,7 +103,7 @@
                 <li class="nav-item">
                   <a class="d-flex flex-column align-items-center text-center link {% if request.path == logout_url %}active{% endif %}"
                      href="{% url 'account_logout' %}"
-                     aria-label="Log off link">
+                     aria-label="Logout link">
                     <i class="fa-solid fa-right-from-bracket mb-1"></i> Logout
                   </a>
                 </li>
@@ -112,7 +112,7 @@
                 <li class="nav-item">
                   <a class="d-flex flex-column align-items-center text-center link {% if request.path == login_url %}active{% endif %}"
                      href="{% url 'account_login' %}"
-                     aria-label="Log in link">Login</a>
+                     aria-label="Login link">Login</a>
                 </li>
                 <li class="nav-item">
                   <a class="d-flex flex-column align-items-center text-center link {% if request.path == signup_url %}active{% endif %}"
