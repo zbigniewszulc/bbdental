@@ -88,11 +88,11 @@
                   <li class="nav-item">
                     <a class="d-flex flex-column align-items-center text-center link {% if request.path == bag_url %}active{% endif %}"
                        href="{% url 'view_bag' %}"
-                       aria-label="Link to Basket">
-                      <i class="fa-solid fa-bag-shopping mb-1 position-relative">
+                       aria-label="Shopping bag{% if product_count %} with {{ product_count }} item{{ product_count|pluralize }}{% else %} is empty{% endif %}">
+                      <i class="fa-solid fa-bag-shopping mb-1 position-relative"
+                         aria-hidden="true">
                         {% if product_count %}
                           <span class="position-absolute top-0 start-100 translate-middle-y p-2 bg-danger border border-light rounded-circle">
-                            <span class="visually-hidden">Items in the bag</span>
                           </span>
                         {% endif %}
                       </i>

@@ -28,8 +28,7 @@ class OrderForm(forms.ModelForm):
     # https://www.youtube.com/watch?v=0cGRqIHvSf8&t=109s
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders and classes, remove auto generated labels
-        and set autofocus
+        Add placeholders and classes and set autofocus
         """
         super().__init__(*args, **kwargs)
         placeholders = {
@@ -53,7 +52,7 @@ class OrderForm(forms.ModelForm):
 
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'checkout'
-            self.fields[field].label = False
+            self.fields[field].label = placeholders[field]
 
 
 class OrderStatusForm(forms.ModelForm):

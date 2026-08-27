@@ -1,111 +1,126 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
-<main>
-    <section class="container mt-2 mt-md-5">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8 mx-auto"> 
-
-                <h2 class="my-4 text-center">Your Shopping Bag</h2>
-
-                {% if bag_items %}
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="d-none d-lg-block">Image</th>
-                                    <th>Item</th>
-                                    <th class="text-center">Quantity</th>
-                                    <th class="text-center">Price</th>
-                                    <th class="text-center">Total</th>
-                                    <th class="text-center">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for item in bag_items %}
-                                <tr>
-                                    <td class="product-thumbnail d-none d-lg-block align-middle">
-                                        <a href="{% url 'product_details' item.product.id %}">
-                                            {% if item.product.picture_location %}
-                                                <img src="{{ item.product.picture_location.url }}" alt="{{ item.product.product_name }}">
-                                            {% else %}
-                                                <img src="{% static 'images/noimage.webp' %}" alt="No image available">
-                                            {% endif %}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="{% url 'product_details' item.product.id %}" class="text-decoration-none">
-                                            {{ item.product.product_name }}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form method="POST" action="{% url 'update_bag' %}" class="d-flex flex-column align-items-center">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="product_id" value="{{ item.product.id }}">
-                                            <div class="d-flex align-items-center">
-                                                <button type="button" class="btn btn-outline-secondary" onclick="changeBagQuantity('{{ item.product.id }}', -1)" id="decrement-{{ item.product.id }}" {% if item.quantity == 1 %}disabled{% endif %}>-</button>
-                                                <input type="number" id="quantity-{{ item.product.id }}" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.in_stock }}" step="1" class="form-control text-center quantity" required>
-                                                <button type="button" class="btn btn-outline-secondary" onclick="changeBagQuantity('{{ item.product.id }}', 1)" id="increment-{{ item.product.id }}">+</button>
-                                            </div>
-                                            <button type="submit" class="btn btn-link text-primary mt-2 p-0 border-0">Update</button>
-                                        </form>
-                                    </td>
-                                    <td class="text-center">€{{ item.unit_price|floatformat:2 }}</td>
-                                    <td class="text-center">€{{ item.total_price|floatformat:2 }}</td>
-                                    <td class="text-center">
-                                        <form method="POST" action="{% url 'update_bag' %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="product_id" value="{{ item.product.id }}">
-                                            <input type="hidden" name="quantity" value="0">
-                                            <!-- Trash Button -->
-                                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="text-end mt-3">
-                        <p class="h6">Subtotal: €{{ total|floatformat:2 }}</p>
-                        <p class="h6">Delivery: €{{ delivery|floatformat:2 }}</p>
-                        <p class="h4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></p>
-
-                        {% if free_delivery_delta > 0 %}
-                            <p class="text-warning bg-dark d-inline-block px-4 py-1 mt-2 rounded-0">
-                                Spend €{{ free_delivery_delta|floatformat:2 }} more to get free delivery!
-                            </p>
-                        {% endif %}
-
-                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-end mt-3">
-                            <a href="{% url 'all_products' %}" class="btn btn-outline-primary px-4 py-2">
-                                <i class="fa-solid fa-plus"></i>&nbsp;
-                                Add More Items
-                            </a>
-                            <a href="{% url 'checkout' %}" class="btn btn-success px-4 py-2">
-                                Proceed to Checkout &nbsp;
-                                <i class="fa-solid fa-credit-card"></i>
-                            </a>
+    <main>
+        <section class="container mt-2 mt-md-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 mx-auto">
+                    <h2 class="my-4 text-center">Your Shopping Bag</h2>
+                    {% if bag_items %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="d-none d-lg-block">Image</th>
+                                        <th>Item</th>
+                                        <th class="text-center">Quantity</th>
+                                        <th class="text-center">Price</th>
+                                        <th class="text-center">Total</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in bag_items %}
+                                        <tr>
+                                            <td class="product-thumbnail d-none d-lg-block align-middle">
+                                                <a href="{% url 'product_details' item.product.id %}">
+                                                    {% if item.product.picture_location %}
+                                                        <img src="{{ item.product.picture_location.url }}"
+                                                             alt="{{ item.product.product_name }}">
+                                                    {% else %}
+                                                        <img src="{% static 'images/noimage.webp' %}" alt="No image available">
+                                                    {% endif %}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'product_details' item.product.id %}"
+                                                   class="text-decoration-none">{{ item.product.product_name }}</a>
+                                            </td>
+                                            <td>
+                                                <form method="POST"
+                                                      action="{% url 'update_bag' %}"
+                                                      class="d-flex flex-column align-items-center">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                                    <div class="d-flex align-items-center">
+                                                        <button type="button"
+                                                                class="btn btn-outline-secondary"
+                                                                onclick="changeBagQuantity('{{ item.product.id }}', -1)"
+                                                                id="decrement-{{ item.product.id }}"
+                                                                {% if item.quantity == 1 %}disabled{% endif %}>-</button>
+                                                        <input type="number"
+                                                               id="quantity-{{ item.product.id }}"
+                                                               name="quantity"
+                                                               value="{{ item.quantity }}"
+                                                               min="1"
+                                                               max="{{ item.product.in_stock }}"
+                                                               step="1"
+                                                               class="form-control text-center quantity"
+                                                               aria-label="Quantity for {{ item.product.product_name }}"
+                                                               required>
+                                                        <button type="button"
+                                                                class="btn btn-outline-secondary"
+                                                                onclick="changeBagQuantity('{{ item.product.id }}', 1)"
+                                                                id="increment-{{ item.product.id }}">+</button>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-link text-primary mt-2 p-0 border-0">Update</button>
+                                                </form>
+                                            </td>
+                                            <td class="text-center">€{{ item.unit_price|floatformat:2 }}</td>
+                                            <td class="text-center">€{{ item.total_price|floatformat:2 }}</td>
+                                            <td class="text-center">
+                                                <form method="POST" action="{% url 'update_bag' %}">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                                    <input type="hidden" name="quantity" value="0">
+                                                    <!-- Trash Button -->
+                                                    <button type="submit"
+                                                            class="btn btn-danger"
+                                                            aria-label="Remove {{ item.product.product_name }} from shopping bag">
+                                                        <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                {% else %}
-                    <div class="text-center">
-                        <p class="alert alert-warning mx-auto">
-                            Your shopping bag is empty. <a href="{% url 'all_products' %}">Browse Products</a>
-                        </p>
-                    </div>
-                {% endif %}
+                        <div class="text-end mt-3">
+                            <p class="h6">Subtotal: €{{ total|floatformat:2 }}</p>
+                            <p class="h6">Delivery: €{{ delivery|floatformat:2 }}</p>
+                            <p class="h4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></p>
+                            {% if free_delivery_delta > 0 %}
+                                <p class="text-warning bg-dark d-inline-block px-4 py-1 mt-2 rounded-0">
+                                    Spend €{{ free_delivery_delta|floatformat:2 }} more to get free delivery!
+                                </p>
+                            {% endif %}
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-end mt-3">
+                                <a href="{% url 'all_products' %}"
+                                   class="btn btn-outline-dark px-4 py-2">
+                                    <i class="fa-solid fa-plus" aria-hidden="true"></i>&nbsp;
+                                    Add More Items
+                                </a>
+                                <a href="{% url 'checkout' %}" class="btn btn-success px-4 py-2">
+                                    Proceed to Checkout &nbsp;
+                                    <i class="fa-solid fa-credit-card"></i>
+                                </a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="text-center">
+                            <p class="alert alert-warning mx-auto">
+                                Your shopping bag is empty. <a href="{% url 'all_products' %}" class="alert-link">Browse Products</a>
+                            </p>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-    </section>
-</main>
-
+        </section>
+    </main>
 {% endblock %}
-
 {% block postload_js %}
-<script>
+    <script>
     function changeBagQuantity(productId, change) {
         let quantityInput = document.getElementById(`quantity-${productId}`);
         let incrementButton = document.getElementById(`increment-${productId}`);
@@ -134,5 +149,5 @@
             alert("You have reached the maximum stock limit: " + max);
         }
     }
-</script>
+    </script>
 {% endblock %}

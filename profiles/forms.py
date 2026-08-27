@@ -10,8 +10,7 @@ class UserProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders and classes, remove auto generated labels
-        and set autofocus
+        Add placeholders and classes and set autofocus
         """
         super().__init__(*args, **kwargs)
         placeholders = {
@@ -34,7 +33,7 @@ class UserProfileForm(forms.ModelForm):
 
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'profile-form'
-            self.fields[field].label = False
+            self.fields[field].label = placeholders[field]
 
 
 class BusinessNameSignupForm(forms.Form):

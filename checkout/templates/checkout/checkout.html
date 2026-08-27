@@ -41,26 +41,36 @@ https://www.youtube.com/watch?v=eAja_pKhiCM&t=376s
                     <!-- Billing details -->
                     <fieldset id="billing-address-fields" class="rounded p-3 mt-3 d-none">
                         <legend class="h6 fw-bold">Billing Address:</legend>
+                        <label for="billing-address-line-1" class="visually-hidden">Billing address line 1</label>
                         <input type="text"
+                               id="billing-address-line-1"
                                name="billing_address_line_1"
                                class="form-control checkout mb-3"
                                placeholder="Address line 1"
                                data-billing-required>
+                        <label for="billing-address-line-2" class="visually-hidden">Billing address line 2</label>
                         <input type="text"
+                               id="billing-address-line-2"
                                name="billing_address_line_2"
                                class="form-control checkout mb-3"
                                placeholder="Address line 2">
+                        <label for="billing-town" class="visually-hidden">Billing town</label>
                         <input type="text"
+                               id="billing-town"
                                name="billing_town"
                                class="form-control checkout mb-3"
                                placeholder="Town"
                                data-billing-required>
+                        <label for="billing-eircode-or-postcode" class="visually-hidden">Billing Eircode or postcode</label>
                         <input type="text"
+                               id="billing-eircode-or-postcode"
                                name="billing_postcode"
                                class="form-control checkout mb-3"
                                placeholder="Eircode / Postcode"
                                data-billing-required>
-                        <select name="billing_country"
+                        <label for="billing-country" class="visually-hidden">Billing country</label>
+                        <select id="billing-country"
+                                name="billing_country"
                                 class="form-select checkout"
                                 data-billing-required>
                             <option value="">Select country</option>

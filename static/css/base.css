@@ -21,6 +21,19 @@ body {
     width: auto;
 }
 
+.documents .btn-outline-primary {
+    color: #0a58ca;
+    border-color: #0a58ca;
+}
+
+.documents .btn-outline-primary:hover,
+.documents .btn-outline-primary:focus,
+.documents .btn-outline-primary:active {
+    color: #ffffff;
+    background-color: #0a58ca;
+    border-color: #0a58ca;
+}
+
 header {
     position: relative;
     background-color: #f0f0f0;    
@@ -57,6 +70,16 @@ footer .link:hover {
 .facebook-link i {
     margin-right: 5px;
     font-size: 22px;
+}
+
+.contact-email-link {
+    color: #0a58ca;
+    text-decoration: underline;
+}
+
+.contact-email-link:hover,
+.contact-email-link:focus {
+    color: #084298;
 }
 
 .facebook-link:hover {
