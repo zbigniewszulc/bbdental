@@ -23,9 +23,10 @@ def contact_us_view(request):
             user_subject = 'Thank you for contacting BBDental'
             user_message = (
                 f"Dear {contact.name},\n\n"
-                f"Thank you for reaching out to us. We received your message and will get back to you shortly.\n\n"
+                "Thank you for reaching out to us. We received your message "
+                "and will get back to you shortly.\n\n"
                 f"Your message:\n{contact.message}\n\n"
-                f"Best regards,\nBB Dental Team"
+                "Best regards,\nBB Dental Team"
             )
 
             admin_subject = f'New contact form submission from {contact.name}'
@@ -55,10 +56,18 @@ def contact_us_view(request):
                 fail_silently=False,
             )
 
-            messages.success(request, "Thank you for your message! A confirmation email has been sent.")
+            messages.success(
+                request,
+                "Thank you for your message! A confirmation email has been "
+                "sent."
+            )
             return redirect('contact_form')
         else:
-            messages.error(request, "There was an error with your submission. Please fix the errors and try again.")
+            messages.error(
+                request,
+                "There was an error with your submission. "
+                "Please fix the errors and try again."
+            )
     else:
         form = ContactForm()
 

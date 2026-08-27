@@ -82,7 +82,7 @@ class Order(models.Model):
         if not already set
         """
         if not self.order_number:
-            self.order_number = self._generate_order_number()   
+            self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
 
     def update_total(self):
