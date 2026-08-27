@@ -49,7 +49,7 @@ footer .link:hover {
 .facebook-link {
     font-size: 18px;
     font-weight: bold;
-    color: #1877F2; 
+    color: #0a58ca; 
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
@@ -60,7 +60,7 @@ footer .link:hover {
 }
 
 .facebook-link:hover {
-    color: #0a58ca; 
+    color: #084298; 
     text-decoration: underline;
 }
 
